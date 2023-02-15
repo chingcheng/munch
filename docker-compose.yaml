@@ -1,4 +1,10 @@
 # volumes:
+volumes:
+  postgres-data:
+    external: true
+  pg-admin:
+    external: true
+
 services:
   fastapi:
     build:
@@ -8,7 +14,65 @@ services:
       - 8000:8000
     volumes:
       - ./sample_service:/app
-      
+  postgres:
+      build:
+          context: ./relational-data
+          dockerfile: ./Dockerfile.dev
+      volumes:
+          - postgres-data:/var/lib/postgresql/data
+      environment:
+          - POSTGRES_MULTIPLE_DATABASES=accounts, munches, comments
+          - POSTGRES_PASSWORD=password
+      ports:
+          - 15432:5432
+
+  pg-admin:
+    image: dpage/pgadmin4
+    volumes:
+      - pg-admin:/var/lib/pgadmin
+    ports:
+      - 8082:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: munch@munch.com
+      PGADMIN_DEFAULT_PASSWORD: munchbunch
+      PGADMIN_DISABLE_POSTFIX: 1
+
+  accounts:
+      build:
+          context: ./accounts-service
+          dockerfile: ./Dockerfile.dev
+      ports:
+          - "8010:8000"
+      volumes:
+          - ./accounts-service:/app
+      environment:
+        DATABASE_URL: postgresql://accounts:password@postgres/accounts-service
+        WAIT_HOSTS: postgres:5432
+
+  munches:
+      build:
+          context: ./munches-service
+          dockerfile: ./Dockerfile.dev
+      ports:
+          - "8020:8000"
+      volumes:
+          - ./munches-service:/app
+      environment:
+        DATABASE_URL: postgresql://accounts:password@postgres/munches-service
+        WAIT_HOSTS: postgres:5432
+
+  comments:
+      build:
+          context: ./comments-service
+          dockerfile: ./Dockerfile.dev
+      ports:
+          - "8030:8000"
+      volumes:
+          - ./comments-service:/app
+      environment:
+        DATABASE_URL: postgresql://accounts:password@postgres/comments-service
+        WAIT_HOSTS: postgres:5432
+
   ghi:
     image: node:lts-bullseye
     command: /bin/bash run.sh
@@ -22,5 +86,6 @@ services:
       NODE_ENV: development
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
-      REACT_APP_SAMPLE_SERVICE_API_HOST: http://localhost:8000
-            
+      REACT_APP_ACCOUNTS_API_HOST: http://localhost:8010
+      REACT_APP_MUNCHES_API_HOST: http://localhost:8020
+      REACT_APP_COMMENTS_API_HOST: http://localhost:8030
