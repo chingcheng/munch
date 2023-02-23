@@ -1,11 +1,7 @@
 from fastapi import FastAPI
-import os
-from psycopg_pool import ConnectionPool
-from routers import munches
-
-
+from routers import munches, accounts, comments
 
 app = FastAPI()
 app.include_router(munches.router)
-
-pool = ConnectionPool(conninfo=os.environ["DATABASE_URL"])
+app.include_router(accounts.router)
+app.include_router(comments.router)

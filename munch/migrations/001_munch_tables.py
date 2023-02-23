@@ -23,11 +23,10 @@ steps = [
         CREATE TABLE munches (
             id SERIAL PRIMARY KEY NOT NULL,
             location VARCHAR(100) NOT NULL,
-            rating INTEGER CHECK (rating >= 0 AND rating <=5) NOT NULL,
+            rating INTEGER NOT NULL,
             review TEXT NOT NULL,
             photo TEXT NOT NULL,
-            tag BOOLEAN,
-            user_id INTEGER NOT NULL REFERENCES users(id)
+            tag BOOLEAN
         );
         """,
         # "Down" SQL statement
@@ -41,8 +40,7 @@ steps = [
         CREATE TABLE comments (
             id SERIAL PRIMARY KEY NOT NULL,
             comment TEXT NOT NULL,
-            munch_id INTEGER NOT NULL REFERENCES munches(id),
-            user_id INTEGER NOT NULL REFERENCES users(id)
+            munch_id INTEGER NOT NULL REFERENCES munches(id)
         );
         """,
         # "Down" SQL statement
