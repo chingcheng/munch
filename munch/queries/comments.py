@@ -49,12 +49,14 @@ class CommentRepository:
                     result = db.execute(
                         """
                         UPDATE comments
-                        SET comment = %s
-                        WHERE id = %s
+                        SET comment = %s, munch_id = %s
+                        WHERE id = %s AND munch_id = %s
                         """,
                         [
                             comment.comment,
                             comment.munch_id,
+                            comment_id,
+                            comment.munch_id
                         ]
                     )
                     return self.comment_in_to_out(comment_id, comment)
