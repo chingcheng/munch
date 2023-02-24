@@ -45,8 +45,11 @@ services:
     volumes:
       - ./munch:/app
     environment:
+      SIGNING_KEY: <QO;Y15-+76^v|^U^[c&j!Wip-m1-'<(aFcBO6h
       DATABASE_URL: postgresql://munch:password@postgres/munch
       WAIT_HOSTS: postgres:5432
+      WAIT_BEFORE: 5
+      WAIT_TIMEOUT: 60
 
   ghi:
     image: node:lts-bullseye
