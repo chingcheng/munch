@@ -1,32 +1,73 @@
-from fastapi import APIRouter
-from queries.accounts import AccountIn
+from fastapi import (
+    Depends,
+    HTTPException,
+    status,
+    Response,
+    APIRouter,
+    Request,
+)
+from jwtdown_fastapi.authentication import Token
+from authenticator import authenticator
 
+from pydantic import BaseModel
+
+from queries.accounts import (
+    AccountIn,
+    AccountOut,
+    AccountQueries,
+    DuplicateAccountError,
+)
+
+class AccountForm(BaseModel):
+    username: str
+    password: str
+
+class AccountToken(Token):
+    account: AccountOut
+
+class HttpError(BaseModel):
+    detail: str
 
 router = APIRouter()
 
-@router.post("/token")
-def sign_in(account: AccountIn):
-    return account
-
-
-@router.delete("/token")
-def sign_out(account: AccountIn):
-    pass
-
-
-@router.delete("/users/{user_id}")
-def delete_user(account: AccountIn):
-    return account
-
-
-@router.put("/accounts/{account_id}")
-def update_account(
-    account_id: int,
-    account: AccountIn,
+@router.get("/protected", response_model=bool)
+async def get_protected(
+    #add services to be protected
+    # Example: munches: MunchQueries = Depends()
+        #return munches.get_account_munches(account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
-    pass
-router = APIRouter()
+    return True
 
-@router.delete("/token")
-def sign_out(account: AccountIn):
-    return SignIn
+@router.get("/token", response_model=AccountToken | None)
+async def get_token(
+    request: Request,
+    account: AccountOut = Depends(authenticator.try_get_current_account_data)
+) -> AccountToken | None:
+    if account and authenticator.cookie_name in request.cookies:
+        return {
+            "access_token": request.cookies[authenticator.cookie_name],
+            "type": "Bearer",
+            "account": account,
+        }
+
+
+@router.post("/accounts", response_model=AccountToken | HttpError)
+async def create_account(
+    info: AccountIn,
+    request: Request,
+    response: Response,
+    accounts: AccountQueries = Depends(),
+):
+
+    hashed_password = authenticator.hash_password(info.password)
+    try:
+        account = accounts.create(info, hashed_password)
+    except DuplicateAccountError:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Cannot create an account with those credentials",
+        )
+    form = AccountForm(username=info.username, password=info.password)
+    token = await authenticator.login(response, request, form, accounts)
+    return AccountToken(account=account, **token.dict())
