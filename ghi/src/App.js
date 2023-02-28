@@ -8,6 +8,7 @@ import { AuthProvider, useToken } from "./Auth";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import LandingPage from "./LandingPage";
+import CreateMunch from "./CreateMunchForm";
 
 function GetToken() {
   // Get token from JWT cookie (if already logged in)
@@ -48,7 +49,9 @@ function getRandomImage(images) {
 }
 
 function App() {
-  const [backgroundImage, setBackgroundImage] = useState(getRandomImage(images));
+  const [backgroundImage, setBackgroundImage] = useState(
+    getRandomImage(images)
+  );
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -97,16 +100,31 @@ function App() {
       <div>
         <BrowserRouter>
           <AuthProvider>
-          <GetToken />
-          <Routes>
-            <Route path="/" element={<LandingPage backgroundImage={backgroundImage}/>} />
-          </Routes>
-          <Routes>
-            <Route path="login" element={<LoginForm backgroundImage={backgroundImage}/>} />
-            {/* <Route path="logout" element={<LogoutComponent />} /> */}
-            <Route path="signup" element={<SignupForm backgroundImage={backgroundImage}/>} />
-          </Routes>
-          <Routes>{/* <Route path="home" element={<HomePage />} /> */}</Routes>
+            <GetToken />
+            <Routes>
+              <Route
+                path="/"
+                element={<LandingPage backgroundImage={backgroundImage} />}
+              />
+            </Routes>
+            <Routes>
+              <Route
+                path="login"
+                element={<LoginForm backgroundImage={backgroundImage} />}
+              />
+              {/* <Route path="logout" element={<LogoutComponent />} /> */}
+              <Route
+                path="signup"
+                element={<SignupForm backgroundImage={backgroundImage} />}
+              />
+              <Route
+                path="munches-create"
+                element={<CreateMunch backgroundImage={backgroundImage} />}
+              />
+            </Routes>
+            <Routes>
+              {/* <Route path="home" element={<HomePage />} /> */}
+            </Routes>
           </AuthProvider>
         </BrowserRouter>
       </div>
