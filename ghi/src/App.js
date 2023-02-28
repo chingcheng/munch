@@ -9,6 +9,7 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import LandingPage from "./LandingPage";
 import CreateMunch from "./CreateMunchForm";
+import MunchDetail from "./MunchDetail";
 
 function GetToken() {
   // Get token from JWT cookie (if already logged in)
@@ -120,6 +121,10 @@ function App() {
               <Route
                 path="munches-create"
                 element={<CreateMunch backgroundImage={backgroundImage} />}
+              />
+              <Route
+                path="munches/:munch_id"
+                element={<MunchDetail />}
               />
             </Routes>
             <Routes>
