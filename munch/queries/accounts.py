@@ -1,6 +1,9 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, Union
 from queries.pool import pool
+
+class Error(BaseModel):
+    message: str
 
 class DuplicateAccountError(ValueError):
     pass
@@ -93,6 +96,49 @@ class AccountQueries():
         except Exception:
             return {"message": "Could not create a user"}
 
-    def account_in_to_out(self, id: int, hashed_password: str, user: AccountIn):
+    def delete(self, id: int) -> bool:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        DELETE FROM users
+                        WHERE id = %s
+                        """,
+                        [id]
+                    )
+                    return True
+        except Exception:
+            return False
+
+    def update(self, id: int, user: AccountIn) -> Union[AccountOut, Error]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        UPDATE users
+                        SET first_name= %s,
+                            last_name= %s,
+                            username = %s,
+                            email = %s,
+                            bio = %s
+                        WHERE id = %s
+                        """,
+                    [
+
+                        user.first_name,
+                        user.last_name,
+                        user.username,
+                        user.email,
+                        user.bio,
+                        id
+                    ]
+                    )
+                    return self.account_in_to_out(id, user)
+        except Exception:
+            return {"message": "Could not update your account"}
+
+    def account_in_to_out(self, id: int, user: AccountIn):
         old_data = user.dict()
-        return AccountOutWithPassword(id=id, hashed_password=hashed_password, **old_data)
+        return AccountOut(id=id, **old_data)

@@ -12,6 +12,8 @@ class MunchIn(BaseModel):
     review: str
     photo: str
     tag: Optional[bool]
+    city: str
+    state: str
 
 
 class MunchOut(BaseModel):
@@ -21,6 +23,8 @@ class MunchOut(BaseModel):
     review: str
     photo: str
     tag: Optional[bool]
+    city: str
+    state: str
 
 
 class MunchRepository:
@@ -30,7 +34,7 @@ class MunchRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, location, rating, review, photo, tag
+                        SELECT id, location, rating, review, photo, tag, city, state
                         FROM munches;
                         """
                     )
@@ -48,9 +52,9 @@ class MunchRepository:
                     result = db.execute(
                         """
                         INSERT INTO munches
-                            (location, rating, review, photo, tag)
+                            (location, rating, review, photo, tag, city, state)
                         VALUES
-                            (%s, %s, %s, %s, %s)
+                            (%s, %s, %s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
@@ -58,7 +62,9 @@ class MunchRepository:
                             munch.rating,
                             munch.review,
                             munch.photo,
-                            munch.tag
+                            munch.tag,
+                            munch.city,
+                            munch.state
                         ]
                     )
                     id = result.fetchone()[0]
@@ -73,7 +79,7 @@ class MunchRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, location, rating, review, photo, tag
+                        SELECT id, location, rating, review, photo, tag, city, state
                         FROM munches
                         WHERE id = %s
                         """,
@@ -112,7 +118,9 @@ class MunchRepository:
                             rating= %s,
                             review = %s,
                             photo = %s,
-                            tag = %s
+                            tag = %s,
+                            city = %s,
+                            state = %s
                         WHERE id = %s
                         """,
                     [
@@ -121,6 +129,8 @@ class MunchRepository:
                         munch.review,
                         munch.photo,
                         munch.tag,
+                        munch.city,
+                        munch.state,
                         munch_id
                     ]
                     )
@@ -140,4 +150,6 @@ class MunchRepository:
             review=record[3],
             photo=record[4],
             tag=record[5],
+            city = record[6],
+            state = record[7]
         )
