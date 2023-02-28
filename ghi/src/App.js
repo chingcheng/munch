@@ -9,6 +9,7 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import LandingPage from "./LandingPage";
 import CreateMunch from "./CreateMunchForm";
+import HomePage from "./HomePage";
 
 function GetToken() {
   // Get token from JWT cookie (if already logged in)
@@ -123,7 +124,10 @@ function App() {
               />
             </Routes>
             <Routes>
-              {/* <Route path="home" element={<HomePage />} /> */}
+              <Route
+                path="home"
+                element={<HomePage backgroundImage={backgroundImage} />}
+              />
             </Routes>
           </AuthProvider>
         </BrowserRouter>
