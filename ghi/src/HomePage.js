@@ -56,18 +56,6 @@ function HomePage({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <NavLink to="/">
-          <img
-            src="./munch_icon.png"
-            alt="Icon"
-            width="65px"
-            style={{
-              position: "absolute",
-              top: 9,
-              left: 15,
-            }}
-          />
-        </NavLink>
         <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
           <img src="./munch_transparent.png" alt="" width="450" />
           <div>
@@ -76,6 +64,7 @@ function HomePage({ backgroundImage }) {
             </p>
           </div>
         </div>
+        {/* <div><</div> */}
         <div className="container">
           <div className="row">
             {munchColumns.map((munchList, index) => (

@@ -38,3 +38,55 @@ code {
 .btn {
   color: #8f6036;
 }
+
+.navbar-nav li a {
+  width: 140px;
+}
+
+.nav-link {
+  background-color: rgba(255, 204, 0, 0.5);
+  border-radius: 20px;
+  font-weight: bold;
+  margin: 6px;
+}
+
+.nav-item a:hover {
+  background-color: rgba(255, 204, 0, 0.7);
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* @import "navbar-fixed"; */
+
+/* body {
+  @include media-breakpoint-up($navbar-sidebar-breakpoint) {
+    margin-left: $navbar-sidebar-width;
+  }
+}
+
+.navbar {
+  &.fixed-left {
+    @include navbar-sidebar;
+    @include media-breakpoint-up($navbar-sidebar-breakpoint) {
+      right: auto;
+
+      .navbar-nav {
+        .nav-item {
+          .dropdown-toggle {
+            &:after {
+              border-top: $caret-width solid transparent;
+              border-left: $caret-width solid;
+              border-bottom: $caret-width solid transparent;
+              border-right: none;
+              vertical-align: baseline;
+            }
+          }
+
+          .dropdown-menu {
+            left: 100%;
+          }
+        }
+      }
+    }
+  }
+} */
