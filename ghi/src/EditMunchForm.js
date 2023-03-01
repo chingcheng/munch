@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate, NavLink, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import { useAuthContext } from "./Auth";
@@ -116,7 +116,7 @@ function EditMunch({ backgroundImage }) {
     }
   };
 
-  const getOneMunch = async () => {
+  const getOneMunch = useCallback(async () => {
     const url = `http://localhost:8010/munches/${id}`;
     const fetchConfig = {
       method: "get",
@@ -135,11 +135,11 @@ function EditMunch({ backgroundImage }) {
       setPhoto(data.photo);
       setRating(data.rating);
     }
-  };
+  });
 
   useEffect(() => {
     getOneMunch();
-  }, [token]);
+  }, [getOneMunch]);
 
   return (
     <>
