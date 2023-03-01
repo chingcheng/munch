@@ -1,6 +1,7 @@
 from pydantic import BaseModel
-from typing import Optional, Union
+from typing import Union
 from queries.pool import pool
+
 
 class Error(BaseModel):
     message: str
@@ -148,15 +149,14 @@ class AccountQueries():
                             bio = %s
                         WHERE id = %s
                         """,
-                    [
-
-                        user.first_name,
-                        user.last_name,
-                        user.username,
-                        user.email,
-                        user.bio,
-                        id
-                    ]
+                        [
+                            user.first_name,
+                            user.last_name,
+                            user.username,
+                            user.email,
+                            user.bio,
+                            id
+                        ]
                     )
                     return self.account_in_to_out(id, user)
         except Exception:
