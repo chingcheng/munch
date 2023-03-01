@@ -12,6 +12,7 @@ import CreateMunch from "./CreateMunchForm";
 import HomePage from "./HomePage";
 import MunchDetail from "./MunchDetail";
 import UpdateMunch from "./UpdateMunchForm";
+import Logout from "./Logout";
 
 function GetToken() {
   // Get token from JWT cookie (if already logged in)
@@ -135,7 +136,9 @@ function App() {
                 path="login"
                 element={<LoginForm backgroundImage={backgroundImage} />}
               />
-              {/* <Route path="logout" element={<LogoutComponent />} /> */}
+              <Route
+                path="logout"
+                element={<Logout />} />
               <Route
                 path="signup"
                 element={<SignupForm backgroundImage={backgroundImage} />}
