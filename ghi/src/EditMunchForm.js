@@ -135,7 +135,7 @@ function EditMunch({ backgroundImage }) {
       setPhoto(data.photo);
       setRating(data.rating);
     }
-  }, [id, token]);
+  });
 
   useEffect(() => {
     getOneMunch();
