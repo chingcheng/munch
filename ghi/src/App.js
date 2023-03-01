@@ -124,7 +124,7 @@ function App() {
               />
               <Route
                 path="munches/:id"
-                element={<MunchDetail id={2}/>}
+                element={<MunchDetail />}
               />
             </Routes>
             <Routes>

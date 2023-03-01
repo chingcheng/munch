@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import { useAuthContext } from './Auth'
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams} from "react-router-dom";
 
-function MunchDetail({id}) {
-    const [munch, setMunches] = useState([])
+function MunchDetail() {
+    let { id } = useParams();
+    const [munch, setMunch] = useState([])
     const { token } = useAuthContext
 
-    const getMunches = async () => {
+    const getOneMunch = async () => {
         const url =`http://localhost:8010/munches/${id}`;
         const fetchConfig = {
         method: "get",
@@ -18,17 +19,18 @@ function MunchDetail({id}) {
         console.log("response", response)
         if(response.ok) {
             const data = await response.json();
-            setMunches(data);
+            setMunch(data);
         }
     };
 
 
     useEffect(() => {
-    getMunches();
-    }, [token]);
+    getOneMunch();
+    }, [token, id]);
 
     return (
-      <>
+    <>
+      <body>
         <div className="container-fluid removeMargin">
           <div
             className="p-5 bg-image"
@@ -40,18 +42,18 @@ function MunchDetail({id}) {
             }}
           >
             <div className="hero-image text-center center-block">
-              <h1>
-              </h1>
+              <h1>{munch.location}</h1>
+                <h2>{munch.city}{ munch.state}</h2>
+
               <div className="d-grid gap-2 d-md-flex justify-content-md-center"></div>
               <div className="container mt-3">
               </div>
               <p></p>
               <div className="container mt-3">
-        <body></body>
         <table>
           <thead>
             <tr>
-              <th>Location</th>
+            <th>Location</th>
               <th>City</th>
               <th>State</th>
               <th>Review</th>
@@ -75,6 +77,7 @@ function MunchDetail({id}) {
     </div>
 </div>
 </div>
+</body>
 </>
 );
 }
