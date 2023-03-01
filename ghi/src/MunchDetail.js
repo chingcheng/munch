@@ -17,7 +17,6 @@ function MunchDetail({ backgroundImage }) {
           },
         };
         const response = await fetch(url, fetchConfig);
-        console.log("response", response)
         if(response.ok) {
             const data = await response.json();
             setMunch(data);
@@ -43,7 +42,7 @@ function MunchDetail({ backgroundImage }) {
         >
           <NavLink to="/">
             <img
-              src="./munch_icon.png"
+              src="../munch_icon.png"
               alt="Icon"
               width="65px"
               style={{
@@ -61,7 +60,7 @@ function MunchDetail({ backgroundImage }) {
                     <NavLink to="/">
                       <p className="text-center">
                         <img
-                          src="./munch_transparent.png"
+                          src="../munch_transparent.png"
                           alt="Logo"
                           style={{
                             maxWidth: "100%",

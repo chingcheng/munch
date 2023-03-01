@@ -142,7 +142,7 @@ function UpdateMunch({ backgroundImage }) {
       >
         <NavLink to="/">
           <img
-            src="./munch_icon.png"
+            src="../munch_icon.png"
             alt="Icon"
             width="65px"
             style={{
@@ -164,7 +164,7 @@ function UpdateMunch({ backgroundImage }) {
                   <NavLink to="/">
                     <h1 className="text-center">
                       <img
-                        src="./munch_transparent.png"
+                        src="../munch_transparent.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -175,7 +175,7 @@ function UpdateMunch({ backgroundImage }) {
                   </NavLink>
                   <p>
                     <img
-                      src="./munch_slogan.png"
+                      src="../munch_slogan.png"
                       alt="Slogan"
                       style={{
                         maxWidth: "100%",

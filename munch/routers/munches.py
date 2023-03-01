@@ -6,6 +6,7 @@ from queries.munches import (
     MunchOut,
     MunchRepository,
 )
+from authenticator import authenticator
 
 router = APIRouter()
 
