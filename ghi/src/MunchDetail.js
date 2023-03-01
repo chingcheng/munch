@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "./Auth";
-import { NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 
 function MunchDetail({ backgroundImage }) {
@@ -106,19 +106,21 @@ function MunchDetail({ backgroundImage }) {
                     <p style={{ color: "#FFE085" }}>{munch.review}</p>
                   </div>
                   <div className="col text-center">
-                    <button
-                      className="btn btn-lg lead text-bold text"
-                      style={{
-                        width: "100%",
-                        background: "#F8D876",
-                        fontWeight: "750",
-                        color: "#512b20",
-                      }}
-                      type="submit"
-                      value="Edit Munch"
-                    >
-                      Edit Munch
-                    </button>
+                    <Link to={`/munches/edit/${munch.id}`}>
+                      <button
+                        className="btn btn-lg lead text-bold text"
+                        style={{
+                          width: "100%",
+                          background: "#F8D876",
+                          fontWeight: "750",
+                          color: "#512b20",
+                        }}
+                        type="submit"
+                        value="Edit Munch"
+                      >
+                        Edit Munch
+                      </button>
+                    </Link>
                   </div>
                 </form>
               </div>
