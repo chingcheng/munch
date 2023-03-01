@@ -139,7 +139,7 @@ function EditMunch({ backgroundImage }) {
 
   useEffect(() => {
     getOneMunch();
-  }, [getOneMunch]);
+  }, [getOneMunch, id, token]);
 
   return (
     <>
