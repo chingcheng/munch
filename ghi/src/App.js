@@ -123,8 +123,8 @@ function App() {
                 element={<CreateMunch backgroundImage={backgroundImage} />}
               />
               <Route
-                path="munches/:munch_id"
-                element={<MunchDetail />}
+                path="munches/:id"
+                element={<MunchDetail id={2}/>}
               />
             </Routes>
             <Routes>
