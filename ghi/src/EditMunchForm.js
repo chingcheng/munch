@@ -139,7 +139,7 @@ function EditMunch({ backgroundImage }) {
 
   useEffect(() => {
     getOneMunch();
-  }, [token, id]);
+  }, [getOneMunch, token, id]);
 
   return (
     <>
@@ -153,7 +153,7 @@ function EditMunch({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <div>
+        <NavLink>
           <img
             src="../../munch_icon.png"
             alt="Icon"
@@ -164,7 +164,7 @@ function EditMunch({ backgroundImage }) {
               left: 15,
             }}
           />
-        </div>
+        </NavLink>
         <div className="container text-center mt-5">
           <div className="row">
             <div className="offset-3 col-6">
@@ -174,7 +174,7 @@ function EditMunch({ backgroundImage }) {
                   id="create-signup-form"
                   onSubmit={handleSubmit}
                 >
-                  <div>
+                  <NavLink>
                     <h1 className="text-center">
                       <img
                         src="../../munch_transparent.png"
@@ -185,7 +185,7 @@ function EditMunch({ backgroundImage }) {
                         }}
                       />
                     </h1>
-                  </div>
+                  </NavLink>
                   <p>
                     <img
                       src="../../munch_slogan.png"
