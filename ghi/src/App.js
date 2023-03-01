@@ -10,6 +10,8 @@ import SignupForm from "./SignupForm";
 import LandingPage from "./LandingPage";
 import CreateMunch from "./CreateMunchForm";
 import HomePage from "./HomePage";
+import MunchDetail from "./MunchDetail";
+import UpdateMunch from "./UpdateMunchForm";
 
 function GetToken() {
   // Get token from JWT cookie (if already logged in)
@@ -50,6 +52,25 @@ function getRandomImage(images) {
 }
 
 function App() {
+  //<<< GET MUNCHES FUNCTION - RESOLVE MERGE CONFLICT HERE >>>
+  const [munches, setMunches] = useState([]);
+
+  const getMunches = async () => {
+    const url = "http://localhost:8010/munches";
+    const response = await fetch(url);
+
+    if (response.ok) {
+      const data = await response.json();
+      const munches = data.munches;
+      setMunches(munches);
+    }
+  };
+
+  useEffect(() => {
+    getMunches();
+  }, [setMunches]);
+
+  // <<< BACKGROUND IMAGE >>>
   const [backgroundImage, setBackgroundImage] = useState(
     getRandomImage(images)
   );
@@ -122,6 +143,20 @@ function App() {
               <Route
                 path="munches-create"
                 element={<CreateMunch backgroundImage={backgroundImage} />}
+              />
+              <Route
+                path="munches-update/:id"
+                element={
+                  <UpdateMunch
+                    backgroundImage={backgroundImage}
+                    munches={munches}
+                    getMunches={getMunches}
+                  />
+                }
+              />
+              <Route
+                path="munches/:id"
+                element={<MunchDetail backgroundImage={backgroundImage} />}
               />
             </Routes>
             <Routes>

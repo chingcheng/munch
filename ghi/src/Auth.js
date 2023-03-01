@@ -13,6 +13,7 @@ export async function getTokenInternal() {
     const response = await fetch(url, {
       credentials: "include",
     });
+    // console.log("response!!", response)
     if (response.ok) {
       const data = await response.json();
       internalToken = data.access_token;
