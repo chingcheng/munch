@@ -6,7 +6,7 @@ function MunchesColumn(props) {
   return (
     <div className="col">
       {props.list.map((munch) => (
-        <div key={munch.id} className="card mb-3 shadow">
+        <div key={munch.id} className="card mb-3 shadow rounded">
           <img
             src={munch.photo}
             className="card-img-top"
@@ -17,7 +17,9 @@ function MunchesColumn(props) {
             <p className="card-review">{munch.review}</p>
           </div>
           <div className="card-footer">
-            <small className="text-muted">Rating: {munch.rating}/5</small>
+            <small className="text-muted text-end">
+              Rating: {munch.rating}/5
+            </small>
           </div>
         </div>
       ))}

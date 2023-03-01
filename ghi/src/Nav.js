@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function Nav({ backgroundImage }) {
   return (
     <>
-      <div
+      {/* <div
         className="offcanvas offcanvas-end show"
         id="demo"
         style={{ transform: "translateX(0)" }}
@@ -33,7 +33,7 @@ function Nav({ backgroundImage }) {
             <button className="btn btn-dark">Automobiles List</button>
           </NavLink>
         </div>
-      </div>
+      </div> */}
       <nav
         className="navbar navbar-expand-sm navbar-dark"
         style={{
