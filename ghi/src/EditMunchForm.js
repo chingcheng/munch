@@ -105,6 +105,7 @@ function EditMunch({ backgroundImage }) {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -112,7 +113,7 @@ function EditMunch({ backgroundImage }) {
     if (response.ok) {
       setSubmitted(true);
       clearState();
-      navigate("/login");
+      navigate("/home");
     }
   };
 
@@ -140,7 +141,7 @@ function EditMunch({ backgroundImage }) {
 
   useEffect(() => {
     getOneMunch();
-  }, [getOneMunch, id, token]);
+  }, [id, token]);
 
   return (
     <>
