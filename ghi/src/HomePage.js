@@ -64,7 +64,9 @@ function HomePage({ backgroundImage }) {
             </p>
           </div>
         </div>
-        {/* <div><</div> */}
+        <div className="container">
+          <div className="row"></div>
+        </div>
         <div className="container">
           <div className="row">
             {munchColumns.map((munchList, index) => (
