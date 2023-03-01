@@ -11,6 +11,7 @@ class CommentIn(BaseModel):
     comment: str
     munch_id: int
 
+
 class CommentOut(BaseModel):
     id: int
     comment: str
