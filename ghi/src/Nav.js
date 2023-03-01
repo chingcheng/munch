@@ -35,12 +35,15 @@ function Nav({ backgroundImage }) {
         </div>
       </div> */}
       <nav
-        className="navbar navbar-expand-sm navbar-dark"
+        className="navbar navbar-dark"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
           backgroundColor: "#FFFAEB",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
+          position: "absolute",
+          left: 3,
+          top: -4,
         }}
       >
         <div className="container-fluid">
@@ -76,12 +79,12 @@ function Nav({ backgroundImage }) {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/munches-create">
+                <NavLink className="nav-link" to="/munches/create">
                   Create a Munch
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/munches-create">
+                <NavLink className="nav-link" to="/account">
                   Account
                 </NavLink>
               </li>
@@ -93,8 +96,10 @@ function Nav({ backgroundImage }) {
         {`
           .nav-link {
             width: 10rem;
-            display: flex;
+            display: block;
+            text-align: center;
             justify-content: center;
+            flex-direction: column;
             align-items: center;
           }
         `}

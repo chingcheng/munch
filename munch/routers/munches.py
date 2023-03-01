@@ -53,10 +53,18 @@ def update_munch(
     id: int,
     munch: MunchIn,
     repo:MunchRepository = Depends(),
+    account_data: Optional[dict] = Depends(authenticator.try_get_current_account_data),
 ) -> Union[Error, MunchOut]:
-    if munch is None:
-        raise HTTPException(status_code = 400, detail="Munch not found")
-    return repo.update(id, munch)
+    existing_munch = repo.get_one(id)
+    if existing_munch is None:
+        raise HTTPException(status_code = 404, detail="Munch not found")
+    if account_data is not None:
+        return repo.update(id, munch)
+    else:
+        raise HTTPException(status_code = 401, detail="Unauthorized")
+    # if munch is None:
+    #     raise HTTPException(status_code = 400, detail="Munch not found")
+    # return repo.update(id, munch)
 
 
 @router.delete("/munches/{id}", response_model=bool)

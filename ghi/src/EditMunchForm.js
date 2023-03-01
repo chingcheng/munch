@@ -6,7 +6,7 @@ import { useAuthContext } from "./Auth";
 function EditMunch({ backgroundImage }) {
   let { id } = useParams();
   const navigate = useNavigate();
-  const { token } = useAuthContext;
+  const { token } = useAuthContext();
   const [location, setLocation] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -125,6 +125,7 @@ function EditMunch({ backgroundImage }) {
       },
     };
     const response = await fetch(url, fetchConfig);
+    console.log("Edit Token:", token);
     console.log("response", response);
     if (response.ok) {
       const data = await response.json();
@@ -313,7 +314,7 @@ function EditMunch({ backgroundImage }) {
                   </div>
 
                   {/* SUBMIT BUTTON */}
-                  <div className="button-container" style={{ dislay: "flex" }}>
+                  <div className="button-container" style={{ display: "flex" }}>
                     {/* <div className="col-2 text-center"> */}
                     <button
                       className="btn btn-md lead text-bold text mx-2"

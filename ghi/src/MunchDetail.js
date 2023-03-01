@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useAuthContext } from "./Auth";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
@@ -8,8 +8,7 @@ function MunchDetail({ backgroundImage }) {
   const [munch, setMunch] = useState([]);
   const { token } = useAuthContext();
 
-  const getOneMunch = async () => {
-    console.log("token!!!", token);
+  const getOneMunch = useCallback(async () => {
     const url = `http://localhost:8010/munches/${id}`;
     const fetchConfig = {
       method: "get",
@@ -19,15 +18,16 @@ function MunchDetail({ backgroundImage }) {
     };
     const response = await fetch(url, fetchConfig);
     console.log("response!!", response);
+    console.log("Detail Token:", token);
     if (response.ok) {
       const data = await response.json();
       setMunch(data);
     }
-  };
+  }, [id, token]);
 
   useEffect(() => {
     getOneMunch();
-  }, [token, id]);
+  }, [getOneMunch, token, id]);
 
   return (
     <>
@@ -106,7 +106,7 @@ function MunchDetail({ backgroundImage }) {
                     <p style={{ color: "#FFE085" }}>{munch.review}</p>
                   </div>
                   <div className="col text-center">
-                    <Link to={`/munches/edit/${munch.id}`}>
+                    <Link to={`/munches/edit/${id}`}>
                       <button
                         className="btn btn-lg lead text-bold text"
                         style={{
