@@ -44,6 +44,7 @@ async def get_protected(
 ):
     return True
 
+
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
     request: Request,
@@ -84,6 +85,7 @@ def delete_account(
     repo: AccountQueries = Depends(),
 ) -> bool:
     return repo.delete(id)
+
 
 @router.put("/accounts/{id}", response_model=AccountOut)
 def update_account(
