@@ -3,10 +3,9 @@ import { useNavigate, NavLink, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import { useAuthContext } from "./Auth";
 
-function UpdateMunch({ backgroundImage }) {
+function EditMunch({ backgroundImage }) {
   let { id } = useParams();
   const navigate = useNavigate();
-  //   const [munch, setMunches] = useState([]);
   const { token } = useAuthContext;
   const [location, setLocation] = useState("");
   const [city, setCity] = useState("");
@@ -71,6 +70,20 @@ function UpdateMunch({ backgroundImage }) {
     // setTag("");
     // setTags("");
     setSubmitted(false);
+  };
+
+  const handleDelete = async () => {
+    const munchUrl = `http://localhost:8010/munches/${id}`;
+    const fetchConfig = {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const response = await fetch(munchUrl, fetchConfig);
+    if (response.ok) {
+      navigate("/login");
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -140,9 +153,9 @@ function UpdateMunch({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <NavLink to="/">
+        <div>
           <img
-            src="./munch_icon.png"
+            src="../../munch_icon.png"
             alt="Icon"
             width="65px"
             style={{
@@ -151,7 +164,7 @@ function UpdateMunch({ backgroundImage }) {
               left: 15,
             }}
           />
-        </NavLink>
+        </div>
         <div className="container text-center mt-5">
           <div className="row">
             <div className="offset-3 col-6">
@@ -161,10 +174,10 @@ function UpdateMunch({ backgroundImage }) {
                   id="create-signup-form"
                   onSubmit={handleSubmit}
                 >
-                  <NavLink to="/">
+                  <div>
                     <h1 className="text-center">
                       <img
-                        src="./munch_transparent.png"
+                        src="../../munch_transparent.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -172,10 +185,10 @@ function UpdateMunch({ backgroundImage }) {
                         }}
                       />
                     </h1>
-                  </NavLink>
+                  </div>
                   <p>
                     <img
-                      src="./munch_slogan.png"
+                      src="../../munch_slogan.png"
                       alt="Slogan"
                       style={{
                         maxWidth: "100%",
@@ -241,7 +254,7 @@ function UpdateMunch({ backgroundImage }) {
                       Review
                     </label>
                   </div>
-                  <div className="form-floating mb-3">
+                  <div className="form-floating">
                     <button
                       type="button"
                       className="btn text-bold"
@@ -263,7 +276,7 @@ function UpdateMunch({ backgroundImage }) {
                       style={{ display: "none" }}
                     />
                     {photo && (
-                      <div className="mb-3">
+                      <div className="my-3">
                         <img
                           src={photo}
                           alt="preview"
@@ -300,19 +313,37 @@ function UpdateMunch({ backgroundImage }) {
                   </div>
 
                   {/* SUBMIT BUTTON */}
-                  <div className="col text-center">
+                  <div className="button-container" style={{ dislay: "flex" }}>
+                    {/* <div className="col-2 text-center"> */}
                     <button
-                      className="btn btn-lg lead text-bold text"
+                      className="btn btn-md lead text-bold text mx-2"
                       style={{
-                        width: "100%",
+                        // width: "100%",
                         background: "#F8D876",
                         fontWeight: "750",
                         color: "#512b20",
+                        flexBasis: "50%",
                       }}
                       type="submit"
-                      value="Create Munch"
+                      value="Update Munch"
                     >
                       Edit Munch
+                    </button>
+                    {"  "}
+                    <button
+                      onClick={handleDelete}
+                      className="btn btn-md lead text-bold text mx-2"
+                      style={{
+                        // width: "100%",
+                        background: "#FF4B3E",
+                        fontWeight: "750",
+                        color: "white",
+                        flexBasis: "50%",
+                      }}
+                      type="button"
+                      value="Delete Munch"
+                    >
+                      Delete Munch
                     </button>
                   </div>
                 </form>
@@ -333,4 +364,4 @@ function UpdateMunch({ backgroundImage }) {
   );
 }
 
-export default UpdateMunch;
+export default EditMunch;

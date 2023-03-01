@@ -9,10 +9,10 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import LandingPage from "./LandingPage";
 import CreateMunch from "./CreateMunchForm";
-import UpdateMunch from "./UpdateMunchForm";
+import EditMunch from "./EditMunchForm";
 
 function GetToken() {
-  // Get token from JWT cookie (if already logged in)
+  // Get token from JWT co okie (if already logged in)
   useToken();
   return null;
 }
@@ -138,13 +138,13 @@ function App() {
                 element={<SignupForm backgroundImage={backgroundImage} />}
               />
               <Route
-                path="munches-create"
+                path="munches/create"
                 element={<CreateMunch backgroundImage={backgroundImage} />}
               />
               <Route
-                path="munches-update/:id"
+                path="munches/edit/:id"
                 element={
-                  <UpdateMunch
+                  <EditMunch
                     backgroundImage={backgroundImage}
                     munches={munches}
                     getMunches={getMunches}

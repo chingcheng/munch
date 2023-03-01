@@ -30,7 +30,7 @@ function LandingPage({ backgroundImage }) {
           </NavLink>
           <div className="hero-image text-center center-block">
             <h1>
-              <img src="./munch_transparent.png" alt="Logo" width="400px" />
+              <img src="/munch_transparent.png" alt="Logo" width="400px" />
             </h1>
             <p>
               <img src="./munch_slogan.png" alt="Slogan" width="300px" />
