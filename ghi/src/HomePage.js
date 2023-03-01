@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, NavLink } from "react-router-dom";
-import { Rating } from "react-simple-star-rating";
+import { Link } from "react-router-dom";
 import { useAuthContext } from "./Auth";
 
 function MunchesColumn(props) {
@@ -13,7 +12,7 @@ function MunchesColumn(props) {
               <img
                 src={munch.photo}
                 className="card-img-top"
-                alt={`Photo of ${munch.location}`}
+                alt={`${munch.location}`}
                 style={{ maxWidth: "100%", maxHeight: "250px" }}
               />
               <div
