@@ -11,7 +11,7 @@ from authenticator import authenticator
 router = APIRouter()
 
 
-@router.get("/munches", response_model=Union[List[MunchOut], Error])
+@router.get("/munches/{user_id}", response_model=Union[List[MunchOut], Error])
 def get_all_munches(
     repo: MunchRepository = Depends()
 ):
