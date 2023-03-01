@@ -9,11 +9,11 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import LandingPage from "./LandingPage";
 import CreateMunch from "./CreateMunchForm";
-import UpdateMunch from "./UpdateMunchForm";
 import HomePage from "./HomePage";
 import MunchDetail from "./MunchDetail";
 import EditMunch from "./EditMunchForm";
 import Logout from "./Logout";
+import EditUser from "./EditUser";
 
 function GetToken() {
   // Get token from JWT co okie (if already logged in)
@@ -143,6 +143,10 @@ function App() {
               <Route
                 path="signup"
                 element={<SignupForm backgroundImage={backgroundImage} />}
+              />
+              <Route
+                path="accounts/:id"
+                element={<EditUser backgroundImage={backgroundImage} />}
               />
               <Route
                 path="munches/create"

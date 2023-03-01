@@ -81,7 +81,7 @@ function Nav({ backgroundImage }) {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/munches-create">
+                <NavLink className="nav-link" to="/accounts/:id">
                   Account
                 </NavLink>
               </li>

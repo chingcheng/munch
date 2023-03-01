@@ -6,7 +6,7 @@ import { useAuthContext } from "./Auth";
 function EditMunch({ backgroundImage }) {
   let { id } = useParams();
   const navigate = useNavigate();
-  const { token } = useAuthContext;
+  const { token } = useAuthContext();
   const [location, setLocation] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
