@@ -23,23 +23,28 @@ from queries.accounts import (
 
 )
 
+
 class AccountForm(BaseModel):
     username: str
     password: str
 
+
 class AccountToken(Token):
     account: AccountOut
+
 
 class HttpError(BaseModel):
     detail: str
 
+
 router = APIRouter()
+
 
 @router.get("/protected", response_model=bool)
 async def get_protected(
-    #add services to be protected
+    # add services to be protected
     # Example: munches: MunchQueries = Depends()
-        #return munches.get_account_munches(account_data)
+        # return munches.get_account_munches(account_data)
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return True
