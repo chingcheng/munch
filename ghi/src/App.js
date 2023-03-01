@@ -154,7 +154,7 @@ function App() {
               />
               <Route
                 path="munches/:id"
-                element={<MunchDetail />}
+                element={<MunchDetail backgroundImage={backgroundImage} />}
               />
             </Routes>
             <Routes>
