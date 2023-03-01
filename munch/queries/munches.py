@@ -123,16 +123,16 @@ class MunchRepository:
                             state = %s
                         WHERE id = %s
                         """,
-                    [
-                        munch.location,
-                        munch.rating,
-                        munch.review,
-                        munch.photo,
-                        munch.tag,
-                        munch.city,
-                        munch.state,
-                        munch_id
-                    ]
+                        [
+                            munch.location,
+                            munch.rating,
+                            munch.review,
+                            munch.photo,
+                            munch.tag,
+                            munch.city,
+                            munch.state,
+                            munch_id
+                        ]
                     )
                     return self.munch_in_to_out(munch_id, munch)
         except Exception:
@@ -150,6 +150,6 @@ class MunchRepository:
             review=record[3],
             photo=record[4],
             tag=record[5],
-            city = record[6],
-            state = record[7]
+            city=record[6],
+            state=record[7]
         )
