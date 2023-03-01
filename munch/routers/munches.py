@@ -7,12 +7,15 @@ from queries.munches import (
     MunchRepository,
 )
 
+from authenticator import authenticator
+
 router = APIRouter()
 
 
 @router.get("/munches", response_model=Union[List[MunchOut], Error])
 def get_all_munches(
-    repo: MunchRepository = Depends()
+    repo: MunchRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.get_all()
 

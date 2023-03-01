@@ -35,13 +35,15 @@ class HttpError(BaseModel):
 
 router = APIRouter()
 
-@router.get("/protected", response_model=bool)
+@router.get("munch/protected", response_model=bool)
 async def get_protected(
     #add services to be protected
-    # Example: munches: MunchQueries = Depends()
+    #munches: MunchQueries = Depends()
         #return munches.get_account_munches(account_data)
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
+    # if account_data:
+    #     return account_data["id"]
     return True
 
 @router.get("/token", response_model=AccountToken | None)

@@ -1,26 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
+import { useAuthContext } from "./Auth";
 
 function MunchesColumn(props) {
   return (
     <div className="col">
       {props.list.map((munch) => (
-        <div key={munch.id} className="card mb-3 shadow rounded">
-          <img
-            src={munch.photo}
-            className="card-img-top"
-            alt={`Photo of ${munch.location}`}
-          />
-          <div className="card-body">
-            <h5 className="card-location">{munch.location}</h5>
-            <p className="card-review">{munch.review}</p>
-          </div>
-          <div className="card-footer">
-            <small className="text-muted text-end">
-              Rating: {munch.rating}/5
-            </small>
-          </div>
+        <div key={munch.id}>
+          <a href="http://localhost:3000/munches/${munch.id}">
+            <div
+              //   key={munch.id}
+              className="card mb-3 shadow"
+              style={{ height: "500px" }}
+            >
+              <img
+                src={munch.photo}
+                className="card-img-top"
+                alt={`Photo of ${munch.location}`}
+                style={{ maxWidth: "100%", maxHeight: "350px" }}
+              />
+              <div
+                className="card-body"
+                style={{ height: "100px", overflow: "hidden" }}
+              >
+                <h5 className="card-location">{munch.location}</h5>
+                <p className="card-review">{munch.review}</p>
+              </div>
+              <div className="card-footer" style={{ height: "50px" }}>
+                <small className="text-muted">Rating: {munch.rating}/5</small>
+              </div>
+            </div>
+          </a>
         </div>
       ))}
     </div>
@@ -28,11 +39,21 @@ function MunchesColumn(props) {
 }
 function HomePage({ backgroundImage }) {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
+  const { token } = useAuthContext();
+  console.log("TOKEN!:", token);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8010/munches");
+        const url = `http://localhost:8010/munches`;
+        const fetchConfig = {
+          method: "get",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+
+        const response = await fetch(url, fetchConfig);
         if (response.ok) {
           const data = await response.json();
           const munchColumns = [[], [], []];
@@ -44,7 +65,7 @@ function HomePage({ backgroundImage }) {
       }
     };
     fetchData();
-  }, []);
+  }, [token]);
 
   return (
     <>
