@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional, Union
 from queries.pool import pool
 
+
 class Error(BaseModel):
     message: str
 
@@ -32,9 +33,16 @@ class MunchRepository:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    result = db.execute(
+                    db.execute(
                         """
-                        SELECT id, location, rating, review, photo, tag, city, state
+                        SELECT id,
+                            location,
+                            rating,
+                            review,
+                            photo,
+                            tag,
+                            city,
+                            state
                         FROM munches;
                         """
                     )
@@ -111,7 +119,7 @@ class MunchRepository:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    result = db.execute(
+                    db.execute(
                         """
                         UPDATE munches
                         SET location= %s,
