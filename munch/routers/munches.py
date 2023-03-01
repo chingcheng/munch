@@ -35,11 +35,14 @@ def get_one_munch(
     id: int,
     response: Response,
     repo: MunchRepository = Depends(),
+    account_data: Optional[dict] = Depends(authenticator.try_get_current_account_data),
 ) -> MunchOut:
     munch = repo.get_one(id)
+    if account_data is not None and munch is not None:
+        return munch
     if munch is None:
         raise HTTPException(status_code = 404, detail="Munch not found")
-    return munch
+    raise HTTPException(status_code = 401, detail="Unauthorized")
 
 
 @router.put("/munches/{id}", response_model=Union[MunchOut, Error])

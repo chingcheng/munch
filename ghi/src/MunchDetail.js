@@ -6,9 +6,11 @@ import { Rating } from "react-simple-star-rating";
 function MunchDetail({ backgroundImage }) {
     let { id } = useParams();
     const [munch, setMunch] = useState([])
-    const { token } = useAuthContext
+    const { token } = useAuthContext();
+
 
     const getOneMunch = async () => {
+        console.log("token!!!", token)
         const url =`http://localhost:8010/munches/${id}`;
         const fetchConfig = {
         method: "get",
@@ -17,6 +19,7 @@ function MunchDetail({ backgroundImage }) {
           },
         };
         const response = await fetch(url, fetchConfig);
+        console.log("response!!", response);
         if(response.ok) {
             const data = await response.json();
             setMunch(data);
