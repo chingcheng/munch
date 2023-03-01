@@ -47,6 +47,7 @@ function MunchDetail({id}) {
               </div>
               <p></p>
               <div className="container mt-3">
+        <body></body>
         <table>
           <thead>
             <tr>
