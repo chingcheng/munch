@@ -310,7 +310,7 @@ function UpdateMunch({ backgroundImage }) {
                         color: "#512b20",
                       }}
                       type="submit"
-                      value="Create Munch"
+                      value="Edit Munch"
                     >
                       Edit Munch
                     </button>

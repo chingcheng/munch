@@ -8,17 +8,13 @@ function MunchesColumn(props) {
     <div className="col">
       {props.list.map((munch) => (
         <div key={munch.id}>
-          <a href="http://localhost:3000/munches/${munch.id}">
-            <div
-              //   key={munch.id}
-              className="card mb-3 shadow"
-              style={{ height: "500px" }}
-            >
+          <Link to={`/munches/${munch.id}`}>
+            <div className="card mb-3 shadow" style={{ height: "400px" }}>
               <img
                 src={munch.photo}
                 className="card-img-top"
                 alt={`Photo of ${munch.location}`}
-                style={{ maxWidth: "100%", maxHeight: "350px" }}
+                style={{ maxWidth: "100%", maxHeight: "250px" }}
               />
               <div
                 className="card-body"
@@ -31,7 +27,7 @@ function MunchesColumn(props) {
                 <small className="text-muted">Rating: {munch.rating}/5</small>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
       ))}
     </div>
