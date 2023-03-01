@@ -87,7 +87,14 @@ class MunchRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, location, rating, review, photo, tag, city, state
+                        SELECT id,
+                            location,
+                            rating,
+                            review,
+                            photo,
+                            tag,
+                            city,
+                            state
                         FROM munches
                         WHERE id = %s
                         """,

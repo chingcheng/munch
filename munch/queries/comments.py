@@ -41,12 +41,12 @@ class CommentRepository:
         except Exception:
             return {"message": "Create comment did not work"}
 
-
-    def update(self, comment_id: int, comment: CommentIn) -> Union[CommentOut, Error]:
+    def update(self, comment_id: int, comment: CommentIn) -> Union[CommentOut,
+                                                                   Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    result = db.execute(
+                    db.execute(
                         """
                         UPDATE comments
                         SET comment = %s, munch_id = %s
@@ -63,7 +63,6 @@ class CommentRepository:
         except Exception:
             return {"comment": "Could not update that comment"}
 
-
     def delete(self, comment_id: int) -> bool:
         try:
             with pool.connection() as conn:
@@ -79,11 +78,9 @@ class CommentRepository:
         except Exception:
             return False
 
-
     def comment_in_to_out(self, id: int, comment: CommentIn):
         old_data = comment.dict()
         return CommentOut(id=id, **old_data)
-
 
     def record_to_comment_out(self, record):
         return CommentOut(
