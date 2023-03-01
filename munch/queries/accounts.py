@@ -5,8 +5,10 @@ from queries.pool import pool
 class Error(BaseModel):
     message: str
 
+
 class DuplicateAccountError(ValueError):
     pass
+
 
 class AccountIn(BaseModel):
     first_name: str
@@ -18,7 +20,7 @@ class AccountIn(BaseModel):
 
 
 class AccountOut(BaseModel):
-    #tried switching the order
+    # tried switching the order
     id: int
     first_name: str
     last_name: str
@@ -29,6 +31,7 @@ class AccountOut(BaseModel):
 
 class AccountOutWithPassword(AccountOut):
     hashed_password: str
+
 
 class AccountQueries():
     def record_to_account_out(self, record) -> AccountOutWithPassword:
@@ -69,7 +72,8 @@ class AccountQueries():
         except Exception:
             return {"message": "Could not get account"}
 
-    def create(self, user: AccountIn, hashed_password: str) -> AccountOutWithPassword:
+    def create(self, user: AccountIn,
+               hashed_password: str) -> AccountOutWithPassword:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -86,19 +90,20 @@ class AccountQueries():
                         VALUES
                             (%s, %s, %s, %s, %s, %s)
                         RETURNING id,
-                        first_name,
-                        last_name,
-                        email,
-                        username,
-                        hashed_password,
-                        bio;
+                            first_name,
+                            last_name,
+                            email,
+                            username,
+                            hashed_password,
+                            bio;
                         """,
-                        [user.first_name,
-                         user.last_name,
-                         user.email,
-                         user.username,
-                         hashed_password,
-                         user.bio,
+                        [
+                            user.first_name,
+                            user.last_name,
+                            user.email,
+                            user.username,
+                            hashed_password,
+                            user.bio,
                         ]
                     )
                     id = result.fetchone()[0]
@@ -136,8 +141,8 @@ class AccountQueries():
                     db.execute(
                         """
                         UPDATE users
-                        SET first_name= %s,
-                            last_name= %s,
+                        SET first_name = %s,
+                            last_name = %s,
                             username = %s,
                             email = %s,
                             bio = %s
