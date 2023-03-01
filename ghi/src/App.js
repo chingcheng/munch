@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Nav from "./Nav";
+import Nav from "./Nav";
 // import Construct from "./Construct.js";
 // import ErrorNotification from "./ErrorNotification";
 import "./App.css";
@@ -9,6 +9,7 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import LandingPage from "./LandingPage";
 import CreateMunch from "./CreateMunchForm";
+import HomePage from "./HomePage";
 import MunchDetail from "./MunchDetail";
 import UpdateMunch from "./UpdateMunchForm";
 
@@ -120,6 +121,7 @@ function App() {
     <>
       <div>
         <BrowserRouter>
+          <Nav backgroundImage={backgroundImage} />
           <AuthProvider>
             <GetToken />
             <Routes>
@@ -158,7 +160,10 @@ function App() {
               />
             </Routes>
             <Routes>
-              {/* <Route path="home" element={<HomePage />} /> */}
+              <Route
+                path="home"
+                element={<HomePage backgroundImage={backgroundImage} />}
+              />
             </Routes>
           </AuthProvider>
         </BrowserRouter>
