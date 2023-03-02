@@ -18,7 +18,10 @@ def get_all_munches(
     repo: MunchRepository = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
-    return repo.get_all()
+    if account_data is not None:
+        return repo.get_all()
+    else:
+        raise HTTPException(status_code = 401, detail="Unauthorized")
 
 
 @router.post("/munches", response_model=Union[MunchOut, Error])
@@ -30,6 +33,7 @@ def create_munch(
 ):
     if account_data is not None:
         try:
+            munch.user_id= account_data["id"]
             return repo.create(munch)
         except Exception:
             raise HTTPException(status_code=400, detail="Create munch did not work")
