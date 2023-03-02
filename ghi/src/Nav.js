@@ -4,36 +4,6 @@ import { NavLink } from "react-router-dom";
 function Nav({ backgroundImage }) {
   return (
     <>
-      {/* <div
-        className="offcanvas offcanvas-end show"
-        id="demo"
-        style={{ transform: "translateX(0)" }}
-      >
-        <div className="offcanvas-header">
-          <h1 className="offcanvas-title">Inventory</h1>
-        </div>
-        <div className="offcanvas-body">
-          <p>Click one of the navigation links below:</p>
-          <NavLink className="nav-link" to="/manufacturers/new/">
-            <button className="btn btn-dark">Create a Manufacturer</button>
-          </NavLink>
-          <NavLink className="nav-link" to="/manufacturers/">
-            <button className="btn btn-dark">Manufacturer List</button>
-          </NavLink>
-          <NavLink className="nav-link" to="/models/new">
-            <button className="btn btn-dark">Add a Vehicle Model</button>
-          </NavLink>
-          <NavLink className="nav-link" to="/models/">
-            <button className="btn btn-dark">Vehicle Models List</button>
-          </NavLink>
-          <NavLink className="nav-link" to="/automobiles/new">
-            <button className="btn btn-dark">Add an Automobile</button>
-          </NavLink>
-          <NavLink className="nav-link" to="/automobiles/all">
-            <button className="btn btn-dark">Automobiles List</button>
-          </NavLink>
-        </div>
-      </div> */}
       <nav
         className="navbar navbar-dark"
         style={{
@@ -75,7 +45,7 @@ function Nav({ backgroundImage }) {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/signup">
-                  SignUp
+                  Sign Up
                 </NavLink>
               </li>
               <li className="nav-item">
