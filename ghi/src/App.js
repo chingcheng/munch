@@ -14,10 +14,10 @@ import MunchDetail from "./MunchDetail";
 import EditMunch from "./EditMunchForm";
 import Logout from "./Logout";
 import EditUser from "./EditUser";
-
+import AllMunches from "./AllMunches";
 
 function GetToken() {
-  // Get token from JWT co okie (if already logged in)
+  // Get token from JWT cookie (if already logged in)
   useToken();
   return null;
 }
@@ -137,9 +137,7 @@ function App() {
                 path="login"
                 element={<LoginForm backgroundImage={backgroundImage} />}
               />
-              <Route
-                path="logout"
-                element={<Logout />} />
+              <Route path="logout" element={<Logout />} />
               <Route
                 path="signup"
                 element={<SignupForm backgroundImage={backgroundImage} />}
@@ -171,6 +169,12 @@ function App() {
               <Route
                 path="home"
                 element={<HomePage backgroundImage={backgroundImage} />}
+              />
+            </Routes>
+            <Routes>
+              <Route
+                path="feed"
+                element={<AllMunches backgroundImage={backgroundImage} />}
               />
             </Routes>
           </AuthProvider>
