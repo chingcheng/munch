@@ -72,20 +72,6 @@ function EditMunch({ backgroundImage }) {
     setSubmitted(false);
   };
 
-  const handleDelete = async () => {
-    const munchUrl = `http://localhost:8010/munches/${id}`;
-    const fetchConfig = {
-      method: "delete",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const response = await fetch(munchUrl, fetchConfig);
-    if (response.ok) {
-      navigate("/home");
-    }
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
