@@ -66,21 +66,6 @@ function SignupForm({ backgroundImage }) {
     }
   };
 
-  // if (token) {
-  //   return <Navigate to="/" />;
-  // }
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   await signup(
-  //     firstName,
-  //     lastName,
-  //     email,
-  //     username,
-  //     password
-  //   )
-  // }
-
   return (
     <>
       <div

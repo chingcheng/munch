@@ -8,8 +8,6 @@ from queries.munches import (
 )
 from authenticator import authenticator
 
-from authenticator import authenticator
-
 router = APIRouter()
 
 
@@ -68,9 +66,6 @@ def update_munch(
         return repo.update(id, munch)
     else:
         raise HTTPException(status_code = 401, detail="Unauthorized")
-    # if munch is None:
-    #     raise HTTPException(status_code = 400, detail="Munch not found")
-    # return repo.update(id, munch)
 
 
 @router.delete("/munches/{id}", response_model=bool)

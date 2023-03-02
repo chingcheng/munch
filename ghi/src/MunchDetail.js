@@ -9,6 +9,7 @@ function MunchDetail({ backgroundImage }) {
   const [munch, setMunch] = useState([]);
   const { token } = useAuthContext();
 
+
   const handleDelete = async () => {
     const munchUrl = `http://localhost:8010/munches/${id}`;
     const fetchConfig = {
@@ -22,6 +23,7 @@ function MunchDetail({ backgroundImage }) {
       navigate("/home");
     }
   };
+
 
   const getOneMunch = useCallback(async () => {
     const url = `http://localhost:8010/munches/${id}`;
@@ -40,6 +42,7 @@ function MunchDetail({ backgroundImage }) {
     }
   }, [id, token]);
 
+  
   useEffect(() => {
     getOneMunch();
   }, [getOneMunch, token, id]);

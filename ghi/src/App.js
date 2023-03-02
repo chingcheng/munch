@@ -55,33 +55,18 @@ function getRandomImage(images) {
 }
 
 function App() {
-  //<<< GET MUNCHES FUNCTION - RESOLVE MERGE CONFLICT HERE >>>
+  //<<< GET MUNCHES FUNCTION >>>
   const [munches, setMunches] = useState([]);
 
   const getMunches = async () => {
     const url = "http://localhost:8010/munches";
     const response = await fetch(url);
-    console.log('app response', response)
-
     if (response.ok) {
       const data = await response.json();
       const munches = data.munches;
       setMunches(munches);
     }
   };
-
-  //   const getUser = async () => {
-  //   const url =`http://localhost:8010/accounts/${id}`;
-  //   const fetchConfig = {
-  //   method: "get",
-  //   headers: {
-  //       Authorization: `Bearer ${token}`
-  //     },
-  //   }
-  //   if (response.ok) {
-
-  //   }
-  // }
 
   useEffect(() => {
     getMunches();

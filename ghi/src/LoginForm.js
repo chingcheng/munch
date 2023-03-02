@@ -6,16 +6,17 @@ import { useToken } from "./Auth";
 function LoginForm({ backgroundImage }) {
   const navigate = useNavigate();
   const { login } = useToken();
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
+
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,24 +25,6 @@ function LoginForm({ backgroundImage }) {
       navigate("/home");
     }
   };
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   const error = await login(username, password);
-  //   if (error) {
-  //     isLoggedIn(false);
-  //     return (
-  //       <div
-  //         className="alert text-center alert-success mb-0 p-4 mt-4"
-  //         id="danger-message"
-  //       >
-  //         Could not log in
-  //       </div>
-  //     );
-  //   } else {
-  //     return redirect("/");
-  //   }
-  // };
 
   return (
     <>

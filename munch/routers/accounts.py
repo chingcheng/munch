@@ -20,7 +20,6 @@ from queries.accounts import (
     DuplicateAccountError,
     AccountOutWithPassword,
     Error
-
 )
 
 class AccountForm(BaseModel):
@@ -86,6 +85,7 @@ def delete_account(
     repo: AccountQueries = Depends(),
 ) -> bool:
     return repo.delete(id)
+
 
 @router.put("/accounts/{id}", response_model=AccountOut)
 def update_account(

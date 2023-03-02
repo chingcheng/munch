@@ -7,9 +7,7 @@ from queries.comments import (
     CommentRepository,
 )
 
-
 router = APIRouter()
-
 
 @router.post("/munches/{munch_id}", response_model = Union[CommentOut, Error])
 def create_comment(
