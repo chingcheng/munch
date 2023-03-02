@@ -63,6 +63,25 @@ class AccountQueries():
         except Exception:
             return {"message": "Could not get account"}
 
+        # def get_one(self, id: int) -> AccountOut:
+    #     try:
+    #         with pool.connection() as conn:
+    #             with conn.cursor() as db:
+    #                 result = db.execute(
+    #                     """
+    #                     SELECT id, first_name, last_name, email, username, bio
+    #                     FROM users
+    #                     WHERE id = %s
+    #                     """,
+    #                     [id],
+    #                 )
+    #                 record = result.fetchone()
+    #                 if record is None:
+    #                     return None
+    #                 return self.record_to_account_out(record)
+    #     except Exception:
+    #         return {"message": "Could not get account"}
+
     def create(self, user: AccountIn, hashed_password: str) -> AccountOutWithPassword:
         try:
             with pool.connection() as conn:
@@ -142,3 +161,14 @@ class AccountQueries():
     def account_in_to_out(self, id: int, user: AccountIn):
         old_data = user.dict()
         return AccountOut(id=id, **old_data)
+
+
+    # def record_to_account_out(self, record):
+    #     return AccountOut(
+    #         id=record[0],
+    #         first_name=record[1],
+    #         last_name=record[2],
+    #         email=record[3],
+    #         username=record[4],
+    #         bio=record[5],
+    #     )
