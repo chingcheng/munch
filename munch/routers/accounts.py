@@ -8,8 +8,6 @@ from fastapi import (
 )
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
-from typing import Union
-
 
 from pydantic import BaseModel
 
@@ -18,31 +16,35 @@ from queries.accounts import (
     AccountOut,
     AccountQueries,
     DuplicateAccountError,
-    AccountOutWithPassword,
-    Error
-
+    AccountOutWithPassword
 )
+
 
 class AccountForm(BaseModel):
     username: str
     password: str
 
+
 class AccountToken(Token):
     account: AccountOut
+
 
 class HttpError(BaseModel):
     detail: str
 
+
 router = APIRouter()
+
 
 @router.get("/protected", response_model=bool)
 async def get_protected(
-    #add services to be protected
+    # add services to be protected
     # Example: munches: MunchQueries = Depends()
-        #return munches.get_account_munches(account_data)
+        # return munches.get_account_munches(account_data)
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return True
+
 
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
@@ -84,6 +86,7 @@ def delete_account(
     repo: AccountQueries = Depends(),
 ) -> bool:
     return repo.delete(id)
+
 
 @router.put("/accounts/{id}", response_model=AccountOut)
 def update_account(

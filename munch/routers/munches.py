@@ -26,7 +26,7 @@ def create_munch(
     try:
         return repo.create(munch)
     except Exception:
-        raise HTTPException(status_code=400, detail="Create munch did not work")
+        raise HTTPException(status_code=400, detail="Create munch failed")
 
 
 @router.get("/munches/{munch_id}", response_model=Optional[MunchOut])
@@ -37,7 +37,7 @@ def get_one_munch(
 ) -> MunchOut:
     munch = repo.get_one(munch_id)
     if munch is None:
-        raise HTTPException(status_code = 404, detail="Munch not found")
+        raise HTTPException(status_code=404, detail="Munch not found")
     return munch
 
 
@@ -45,10 +45,10 @@ def get_one_munch(
 def update_munch(
     munch_id: int,
     munch: MunchIn,
-    repo:MunchRepository = Depends(),
+    repo: MunchRepository = Depends(),
 ) -> Union[Error, MunchOut]:
     if munch is None:
-        raise HTTPException(status_code = 400, detail="Munch not found")
+        raise HTTPException(status_code=400, detail="Munch not found")
     return repo.update(munch_id, munch)
 
 
