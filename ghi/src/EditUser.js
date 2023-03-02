@@ -42,6 +42,11 @@ function EditUser({ backgroundImage }) {
     event.target.style.resize = "none";
   };
 
+  const handlePasswordChange = (event) => {
+    const value = event.target.value;
+    setPassword(value);
+  }
+
   const clearState = () => {
     setFirstName("");
     setLastName("");
@@ -246,9 +251,10 @@ return (
                   </label>
                   <div className="form-floating mb-3">
                     <input
+                      onChange={handlePasswordChange}
                       placeholder="Password"
                       required
-                      type="text"
+                      type="password"
                       name="password"
                       className="form-control"
                       value={password}
