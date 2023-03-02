@@ -13,6 +13,7 @@ function EditMunch({ backgroundImage }) {
   const [rating, setRating] = useState("");
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
+  const [userId, setUserId] = useState("");
   //   const [tag, setTag] = useState("");
   //   const [tags, setTags] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -55,6 +56,11 @@ function EditMunch({ backgroundImage }) {
     }
   };
 
+  const handleUserIdChange = (event) => {
+    const value = event.target.value;
+    setUserId(value);
+  };
+
   //   const handleTagChange = (event) => {
   //     const value = event.target.value;
   //     setTag(value);
@@ -67,6 +73,7 @@ function EditMunch({ backgroundImage }) {
     setRating("");
     setReview("");
     setPhoto("");
+    setUserId("");
     // setTag("");
     // setTags("");
     setSubmitted(false);
@@ -83,6 +90,7 @@ function EditMunch({ backgroundImage }) {
     data.rating = rating;
     data.review = review;
     data.photo = photo;
+    data.user_id = userId;
     // data.tag = tag;
 
     const munchUrl = `http://localhost:8010/munches/${id}`;
@@ -122,6 +130,7 @@ function EditMunch({ backgroundImage }) {
       setReview(data.review);
       setPhoto(data.photo);
       setRating(data.rating);
+      setUserId(data.user_id);
     }
   }, [id, token]);
 
@@ -297,6 +306,19 @@ function EditMunch({ backgroundImage }) {
                       fillColor="#FFE085"
                       emptyColor="gray"
                       className="foo" // Will remove the inline style if applied
+                    />
+                  </div>
+
+                  {/* hidden user id */}
+                  <div className="form-floating mb-3">
+                    <input
+                      onChange={handleUserIdChange}
+                      placeholder="userId"
+                      rows="20"
+                      type="integer"
+                      name="userId"
+                      className="form-control"
+                      value={userId}
                     />
                   </div>
 

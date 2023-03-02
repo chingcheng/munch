@@ -57,7 +57,7 @@ function HomePage({ backgroundImage }) {
     }
   };
 
-  const fetchFilterMunches = async () => {
+  const fetchFilterMunches = async (userId) => {
     try {
       const url = `http://localhost:8010/munches`;
       const fetchConfig = {
