@@ -26,11 +26,13 @@ def create_munch(
     munch: MunchIn,
     response: Response,
     repo: MunchRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
-    try:
-        return repo.create(munch)
-    except Exception:
-        raise HTTPException(status_code=400, detail="Create munch did not work")
+    if account_data is not None:
+        try:
+            return repo.create(munch)
+        except Exception:
+            raise HTTPException(status_code=400, detail="Create munch did not work")
 
 
 @router.get("/munches/{id}", response_model=Optional[MunchOut])

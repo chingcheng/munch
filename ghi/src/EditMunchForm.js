@@ -82,7 +82,7 @@ function EditMunch({ backgroundImage }) {
     };
     const response = await fetch(munchUrl, fetchConfig);
     if (response.ok) {
-      navigate("/login");
+      navigate("/home");
     }
   };
 
@@ -316,15 +316,13 @@ function EditMunch({ backgroundImage }) {
 
                   {/* SUBMIT BUTTON */}
                   <div className="button-container" style={{ display: "flex" }}>
-                    {/* <div className="col-2 text-center"> */}
                     <button
                       className="btn btn-md lead text-bold text mx-2"
                       style={{
-                        // width: "100%",
                         background: "#F8D876",
                         fontWeight: "750",
                         color: "#512b20",
-                        flexBasis: "50%",
+                        width: "100%",
                       }}
                       type="submit"
                       value="Update Munch"
@@ -332,21 +330,6 @@ function EditMunch({ backgroundImage }) {
                       Edit Munch
                     </button>
                     {"  "}
-                    <button
-                      onClick={handleDelete}
-                      className="btn btn-md lead text-bold text mx-2"
-                      style={{
-                        // width: "100%",
-                        background: "#FF4B3E",
-                        fontWeight: "750",
-                        color: "white",
-                        flexBasis: "50%",
-                      }}
-                      type="button"
-                      value="Delete Munch"
-                    >
-                      Delete Munch
-                    </button>
                   </div>
                 </form>
                 {submitted && (

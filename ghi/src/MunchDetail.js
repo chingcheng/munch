@@ -1,12 +1,27 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useAuthContext } from "./Auth";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 
 function MunchDetail({ backgroundImage }) {
   let { id } = useParams();
+  const navigate = useNavigate();
   const [munch, setMunch] = useState([]);
   const { token } = useAuthContext();
+
+  const handleDelete = async () => {
+    const munchUrl = `http://localhost:8010/munches/${id}`;
+    const fetchConfig = {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const response = await fetch(munchUrl, fetchConfig);
+    if (response.ok) {
+      navigate("/home");
+    }
+  };
 
   const getOneMunch = useCallback(async () => {
     const url = `http://localhost:8010/munches/${id}`;
@@ -105,22 +120,40 @@ function MunchDetail({ backgroundImage }) {
                   <div className="form-floating mb-3">
                     <p style={{ color: "#FFE085" }}>{munch.review}</p>
                   </div>
-                  <div className="col text-center">
+                  <div
+                    className="button-container"
+                    style={{ display: "flex", justifyContent: "center" }}
+                  >
                     <Link to={`/munches/edit/${id}`}>
                       <button
-                        className="btn btn-lg lead text-bold text"
+                        className="btn btn-md lead text-bold text mx-2"
                         style={{
-                          width: "100%",
                           background: "#F8D876",
                           fontWeight: "750",
                           color: "#512b20",
+                          width: "150px",
                         }}
                         type="submit"
-                        value="Edit Munch"
+                        value="Update Munch"
                       >
                         Edit Munch
                       </button>
                     </Link>
+                    {"  "}
+                    <button
+                      onClick={handleDelete}
+                      className="btn btn-md lead text-bold text mx-2"
+                      style={{
+                        background: "#FF4B3E",
+                        fontWeight: "750",
+                        color: "white",
+                        width: "150px",
+                      }}
+                      type="button"
+                      value="Delete Munch"
+                    >
+                      Delete Munch
+                    </button>
                   </div>
                 </form>
               </div>
