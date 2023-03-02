@@ -12,7 +12,7 @@ class MunchAuthenticator(Authenticator):
     ) -> AccountOutWithPassword:
         # Use your repo to get the account based on the
         # username (which could be an email)
-        return accounts.get(username)
+        return accounts.get_one_with_password(username)
 
     def get_account_getter(
         self,

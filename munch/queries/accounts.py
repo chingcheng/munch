@@ -31,7 +31,7 @@ class AccountOutWithPassword(AccountOut):
     hashed_password: str
 
 class AccountQueries():
-    def record_to_account_out(self, record) -> AccountOutWithPassword:
+    def record_to_account_out_with_password(self, record) -> AccountOutWithPassword:
         account_dict = {
             "id": record[0],
             "first_name": record[1],
@@ -44,7 +44,7 @@ class AccountQueries():
 
         return account_dict
 
-    def get(self, username: str) -> AccountOutWithPassword:
+    def get_one_with_password(self, username: str) -> AccountOutWithPassword:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -59,9 +59,29 @@ class AccountQueries():
                     record = result.fetchone()
                     if record is None:
                         return None
-                    return self.record_to_account_out(record)
+                    return self.record_to_account_out_with_password(record)
         except Exception:
             return {"message": "Could not get account"}
+
+
+    # def get_one(self, id: int) -> AccountOut:
+    #     try:
+    #         with pool.connection() as conn:
+    #             with conn.cursor() as db:
+    #                 result = db.execute(
+    #                     """
+    #                     SELECT id, first_name, last_name, email, username, bio
+    #                     FROM users
+    #                     WHERE id = %s
+    #                     """,
+    #                     [id],
+    #                 )
+    #                 record = result.fetchone()
+    #                 if record is None:
+    #                     return None
+    #                 return self.record_to_account_out(record)
+    #     except Exception:
+    #         return {"message": "Could not get account"}
 
     def create(self, user: AccountIn, hashed_password: str) -> AccountOutWithPassword:
         try:
@@ -132,7 +152,7 @@ class AccountQueries():
                         user.username,
                         user.email,
                         user.bio,
-                        id
+                        id,
                     ]
                     )
                     return self.account_in_to_out(id, user)
@@ -142,3 +162,13 @@ class AccountQueries():
     def account_in_to_out(self, id: int, user: AccountIn):
         old_data = user.dict()
         return AccountOut(id=id, **old_data)
+
+    # def record_to_account_out(self, record):
+    #     return AccountOut(
+    #         id=record[0],
+    #         first_name=record[1],
+    #         last_name=record[2],
+    #         email=record[3],
+    #         username=record[4],
+    #         bio=record[5],
+    #     )

@@ -13,10 +13,10 @@ function EditUser({ backgroundImage }) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
-  const [password, setPassword] = useState("");
+  // const [password, setPassword] = useState("");
   const [submitted, setSubmitted] = useState(false);
   // const [user, setUser] = useState([])
-
+  console.log('token', token)
   const handleFirstNameChange = (event) => {
     const value = event.target.value;
     setFirstName(value);
@@ -44,10 +44,10 @@ function EditUser({ backgroundImage }) {
     event.target.style.resize = "none";
   };
 
-  const handlePasswordChange = (event) => {
-    const value = event.target.value;
-    setPassword(value);
-  }
+  // const handlePasswordChange = (event) => {
+  //   const value = event.target.value;
+  //   setPassword(value);
+  // }
 
   const clearState = () => {
     setUserId("");
@@ -84,7 +84,7 @@ function EditUser({ backgroundImage }) {
    data.username = username;
    data.email = email;
    data.bio = bio;
-   data.password = password;
+  //  data.password = password;
 
    const url = `http://localhost:8010/accounts/${id}`;
    const fetchConfig = {
@@ -123,7 +123,7 @@ function EditUser({ backgroundImage }) {
       setEmail(data.email);
       setUsername(data.username);
       setBio(data.bio);
-      setPassword(data.password);
+      // setPassword(data.password);
     }
   }, [id, token]);
 
@@ -258,7 +258,7 @@ return (
                     Bio
                   </label>
                   </div>
-                  <div className="form-floating mb-3">
+                  {/* <div className="form-floating mb-3">
                     <input
                       onChange={handlePasswordChange}
                       placeholder="Confirm Password"
@@ -271,7 +271,7 @@ return (
                     <label className="form-label" htmlFor="password">
                       Confirm Password
                     </label>
-                  </div>
+                  </div> */}
                 {/* SUBMIT BUTTON */}
                 <div className="button-container" style={{ dislay: "flex" }}>
                   {/* <div className="col-2 text-center"> */}

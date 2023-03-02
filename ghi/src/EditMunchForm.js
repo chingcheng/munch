@@ -13,6 +13,7 @@ function EditMunch({ backgroundImage }) {
   const [rating, setRating] = useState("");
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
+   const [userId, setUserId] = useState("");
   //   const [tag, setTag] = useState("");
   //   const [tags, setTags] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -55,12 +56,18 @@ function EditMunch({ backgroundImage }) {
     }
   };
 
+  const handleUserIdChange = (event) => {
+    const value = event.target.value;
+    setUserId(value);
+  };
+
   //   const handleTagChange = (event) => {
   //     const value = event.target.value;
   //     setTag(value);
   //   };
 
   const clearState = () => {
+    setUserId("");
     setLocation("");
     setCity("");
     setState("");
@@ -83,6 +90,7 @@ function EditMunch({ backgroundImage }) {
     data.rating = rating;
     data.review = review;
     data.photo = photo;
+    // data.user_id = user_id;
     // data.tag = tag;
 
     const munchUrl = `http://localhost:8010/munches/${id}`;
@@ -122,6 +130,7 @@ function EditMunch({ backgroundImage }) {
       setReview(data.review);
       setPhoto(data.photo);
       setRating(data.rating);
+      setUserId(data.user_id)
     }
   }, [id, token]);
 
