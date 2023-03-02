@@ -12,6 +12,7 @@ function CreateMunch({ backgroundImage }) {
   const [rating, setRating] = useState("");
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
+  const [userId, setUserId]= useState("");
   //   const [tag, setTag] = useState("");
   //   const [tags, setTags] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -66,6 +67,7 @@ function CreateMunch({ backgroundImage }) {
     setRating("");
     setReview("");
     setPhoto("");
+    setUserId("");
     // setTag("");
     // setTags("");
     setSubmitted(false);
@@ -82,6 +84,7 @@ function CreateMunch({ backgroundImage }) {
     data.rating = rating;
     data.review = review;
     data.photo = photo;
+    data.user_id= userId;
     // data.tag = tag;
 
     const munchUrl = "http://localhost:8010/munches";

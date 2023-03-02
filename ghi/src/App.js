@@ -14,7 +14,6 @@ import MunchDetail from "./MunchDetail";
 import EditMunch from "./EditMunchForm";
 import Logout from "./Logout";
 import EditUser from "./EditUser";
-import EditMunch from "./EditMunchForm";
 
 function GetToken() {
   // Get token from JWT co okie (if already logged in)

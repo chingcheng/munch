@@ -7,6 +7,7 @@ function EditUser({ backgroundImage }) {
   let { id } = useParams();
   const navigate = useNavigate();
   const { token } = useAuthContext();
+  const [userId, setUserId] = useState("")
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -48,6 +49,7 @@ function EditUser({ backgroundImage }) {
   }
 
   const clearState = () => {
+    setUserId("");
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -75,11 +77,13 @@ function EditUser({ backgroundImage }) {
 
    const data = {};
 
+   data.id = userId;
    data.first_name = firstName;
    data.last_name = lastName;
    data.username = username;
    data.email = email;
    data.bio = bio;
+   data.password = password;
 
    const url = `http://localhost:8010/accounts/${id}`;
    const fetchConfig = {
@@ -87,6 +91,7 @@ function EditUser({ backgroundImage }) {
      body: JSON.stringify(data),
      headers: {
        "Content-Type": "application/json",
+        Authorization:`Bearer ${token}`,
      },
    };
 
@@ -99,7 +104,6 @@ function EditUser({ backgroundImage }) {
  };
 
   const getUser = useCallback(async () => {
-    console.log("token!!!", token)
     const url =`http://localhost:8010/accounts/${id}`;
     const fetchConfig = {
     method: "get",
@@ -108,20 +112,20 @@ function EditUser({ backgroundImage }) {
       },
     };
     const response = await fetch(url, fetchConfig);
-    console.log("response!!", response);
-    if(response.ok) {
+    if (response.ok) {
       const data = await response.json();
+      setUserId(data.id);
       setFirstName(data.first_name);
       setLastName(data.last_name);
       setEmail(data.email);
       setUsername(data.username);
       setBio(data.bio);
     }
-  });
+  }, [id, token]);
 
   useEffect(() => {
     getUser();
-  }, [token, id]);
+  }, [getUser, id, token]);
 
 return (
   <>
@@ -249,10 +253,11 @@ return (
                   <label className="form-label" htmlFor="bio">
                     Bio
                   </label>
+                  </div>
                   <div className="form-floating mb-3">
                     <input
                       onChange={handlePasswordChange}
-                      placeholder="Password"
+                      placeholder="Confirm Password"
                       required
                       type="password"
                       name="password"
@@ -260,11 +265,9 @@ return (
                       value={password}
                     />
                     <label className="form-label" htmlFor="password">
-                      Password
+                      Confirm Password
                     </label>
                   </div>
-                </div>
-
                 {/* SUBMIT BUTTON */}
                 <div className="button-container" style={{ dislay: "flex" }}>
                   {/* <div className="col-2 text-center"> */}
@@ -280,7 +283,7 @@ return (
                     type="submit"
                     value="Edit Profile"
                   >
-                    Done
+                    Submit
                   </button>
                   {"  "}
                   <button
