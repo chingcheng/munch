@@ -32,34 +32,62 @@ function MunchesColumn(props) {
     </div>
   );
 }
+
 function HomePage({ backgroundImage }) {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
-  console.log("TOKEN!:", token);
+  const [userId, setUserId] = useState("");
+  const [munches, setMunches] = useState([]);
+
+  const fetchID = async () => {
+    try {
+      const url = `http://localhost:8010/token`;
+      const fetchConfig = {
+        credentials: "include",
+      };
+
+      const response = await fetch(url, fetchConfig);
+      if (response.ok) {
+        const data = await response.json();
+        setUserId(data.account.id);
+        fetchFilterMunches(data.account.id);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const fetchFilterMunches = async () => {
+    try {
+      const url = `http://localhost:8010/munches`;
+      const fetchConfig = {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await fetch(url, fetchConfig);
+      if (response.ok) {
+        const munches = await response.json();
+        const filteredMunches = munches.filter((munch) =>
+          munch.user_id.includes(userId)
+        );
+        const munchColumns = [[], [], []];
+        filteredMunches.forEach((munch, index) =>
+          munchColumns[index % 3].push(munch)
+        );
+        setMunchColumns(munchColumns);
+        setMunches(filteredMunches);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const url = `http://localhost:8010/munches`;
-        const fetchConfig = {
-          method: "get",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-
-        const response = await fetch(url, fetchConfig);
-        if (response.ok) {
-          const data = await response.json();
-          const munchColumns = [[], [], []];
-          data.forEach((munch, index) => munchColumns[index % 3].push(munch));
-          setMunchColumns(munchColumns);
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    fetchData();
+    fetchID();
+    fetchFilterMunches();
   }, [token]);
 
   return (

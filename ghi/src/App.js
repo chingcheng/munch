@@ -15,7 +15,6 @@ import EditMunch from "./EditMunchForm";
 import Logout from "./Logout";
 import EditUser from "./EditUser";
 
-
 function GetToken() {
   // Get token from JWT co okie (if already logged in)
   useToken();
@@ -137,9 +136,7 @@ function App() {
                 path="login"
                 element={<LoginForm backgroundImage={backgroundImage} />}
               />
-              <Route
-                path="logout"
-                element={<Logout />} />
+              <Route path="logout" element={<Logout />} />
               <Route
                 path="signup"
                 element={<SignupForm backgroundImage={backgroundImage} />}
@@ -170,7 +167,13 @@ function App() {
             <Routes>
               <Route
                 path="home"
-                element={<HomePage backgroundImage={backgroundImage} />}
+                element={
+                  <HomePage
+                    munches={munches}
+                    getMunches={getMunches}
+                    backgroundImage={backgroundImage}
+                  />
+                }
               />
             </Routes>
           </AuthProvider>
