@@ -15,6 +15,7 @@ import EditMunch from "./EditMunchForm";
 import Logout from "./Logout";
 import EditUser from "./EditUser";
 
+
 function GetToken() {
   // Get token from JWT co okie (if already logged in)
   useToken();
@@ -60,6 +61,7 @@ function App() {
   const getMunches = async () => {
     const url = "http://localhost:8010/munches";
     const response = await fetch(url);
+    console.log('app response', response)
 
     if (response.ok) {
       const data = await response.json();
@@ -67,6 +69,19 @@ function App() {
       setMunches(munches);
     }
   };
+
+  //   const getUser = async () => {
+  //   const url =`http://localhost:8010/accounts/${id}`;
+  //   const fetchConfig = {
+  //   method: "get",
+  //   headers: {
+  //       Authorization: `Bearer ${token}`
+  //     },
+  //   }
+  //   if (response.ok) {
+
+  //   }
+  // }
 
   useEffect(() => {
     getMunches();

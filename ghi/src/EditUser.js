@@ -7,7 +7,7 @@ function EditUser({ backgroundImage }) {
   let { id } = useParams();
   const navigate = useNavigate();
   const { token } = useAuthContext();
-  const [userId, setUserId] = useState("")
+  const [userId, setUserId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,6 +15,7 @@ function EditUser({ backgroundImage }) {
   const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  // const [user, setUser] = useState([])
 
   const handleFirstNameChange = (event) => {
     const value = event.target.value;
@@ -112,14 +113,17 @@ function EditUser({ backgroundImage }) {
       },
     };
     const response = await fetch(url, fetchConfig);
+    console.log("response", response)
     if (response.ok) {
       const data = await response.json();
+      // setUser(data)
       setUserId(data.id);
       setFirstName(data.first_name);
       setLastName(data.last_name);
       setEmail(data.email);
       setUsername(data.username);
       setBio(data.bio);
+      setPassword(data.password);
     }
   }, [id, token]);
 

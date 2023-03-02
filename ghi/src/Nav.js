@@ -54,7 +54,7 @@ function Nav({ backgroundImage }) {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/accounts/:id">
+                <NavLink className="nav-link" to={`/accounts/:id`}>
                   Account
                 </NavLink>
               </li>
