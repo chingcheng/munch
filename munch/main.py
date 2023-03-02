@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, auth
 from fastapi.middleware.cors import CORSMiddleware
 import os
 from routers import munches, accounts, comments

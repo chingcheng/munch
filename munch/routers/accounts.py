@@ -32,7 +32,6 @@ class AccountToken(Token):
 class HttpError(BaseModel):
     detail: str
 
-
 router = APIRouter()
 
 
