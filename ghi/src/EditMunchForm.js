@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useNavigate, NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import { useAuthContext } from "./Auth";
 
@@ -72,20 +72,6 @@ function EditMunch({ backgroundImage }) {
     setSubmitted(false);
   };
 
-  const handleDelete = async () => {
-    const munchUrl = `http://localhost:8010/munches/${id}`;
-    const fetchConfig = {
-      method: "delete",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const response = await fetch(munchUrl, fetchConfig);
-    if (response.ok) {
-      navigate("/login");
-    }
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -105,6 +91,7 @@ function EditMunch({ backgroundImage }) {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -112,7 +99,7 @@ function EditMunch({ backgroundImage }) {
     if (response.ok) {
       setSubmitted(true);
       clearState();
-      navigate("/login");
+      navigate("/home");
     }
   };
 
@@ -125,6 +112,7 @@ function EditMunch({ backgroundImage }) {
       },
     };
     const response = await fetch(url, fetchConfig);
+    console.log("Edit Token:", token);
     console.log("response", response);
     if (response.ok) {
       const data = await response.json();
@@ -135,11 +123,11 @@ function EditMunch({ backgroundImage }) {
       setPhoto(data.photo);
       setRating(data.rating);
     }
-  });
+  }, [id, token]);
 
   useEffect(() => {
     getOneMunch();
-  }, [getOneMunch, id, token]);
+  }, [id, token, getOneMunch]);
 
   return (
     <>
@@ -313,16 +301,14 @@ function EditMunch({ backgroundImage }) {
                   </div>
 
                   {/* SUBMIT BUTTON */}
-                  <div className="button-container" style={{ dislay: "flex" }}>
-                    {/* <div className="col-2 text-center"> */}
+                  <div className="button-container" style={{ display: "flex" }}>
                     <button
                       className="btn btn-md lead text-bold text mx-2"
                       style={{
-                        // width: "100%",
                         background: "#F8D876",
                         fontWeight: "750",
                         color: "#512b20",
-                        flexBasis: "50%",
+                        width: "100%",
                       }}
                       type="submit"
                       value="Update Munch"
@@ -330,21 +316,6 @@ function EditMunch({ backgroundImage }) {
                       Edit Munch
                     </button>
                     {"  "}
-                    <button
-                      onClick={handleDelete}
-                      className="btn btn-md lead text-bold text mx-2"
-                      style={{
-                        // width: "100%",
-                        background: "#FF4B3E",
-                        fontWeight: "750",
-                        color: "white",
-                        flexBasis: "50%",
-                      }}
-                      type="button"
-                      value="Delete Munch"
-                    >
-                      Delete Munch
-                    </button>
                   </div>
                 </form>
                 {submitted && (

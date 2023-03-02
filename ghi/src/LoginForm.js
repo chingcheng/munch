@@ -21,27 +21,27 @@ function LoginForm({ backgroundImage }) {
     event.preventDefault();
     const response = await login(username, password);
     if (response === true) {
-      navigate("/");
+      navigate("/home");
     }
   };
 
-    // const handleSubmit = async (event) => {
-    //   event.preventDefault();
-    //   const error = await login(username, password);
-    //   if (error) {
-    //     isLoggedIn(false);
-    //     return (
-    //       <div
-    //         className="alert text-center alert-success mb-0 p-4 mt-4"
-    //         id="danger-message"
-    //       >
-    //         Could not log in
-    //       </div>
-    //     );
-    //   } else {
-    //     return redirect("/");
-    //   }
-    // };
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   const error = await login(username, password);
+  //   if (error) {
+  //     isLoggedIn(false);
+  //     return (
+  //       <div
+  //         className="alert text-center alert-success mb-0 p-4 mt-4"
+  //         id="danger-message"
+  //       >
+  //         Could not log in
+  //       </div>
+  //     );
+  //   } else {
+  //     return redirect("/");
+  //   }
+  // };
 
   return (
     <>
