@@ -242,7 +242,7 @@ return (
                     style={{ minHeight: 100, overflow: "hidden" }}
                     required
                     type="text"
-                    name="review"
+                    name="bio"
                     className="form-control"
                     value={bio}
                   />

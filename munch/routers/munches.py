@@ -14,6 +14,7 @@ router = APIRouter()
 @router.get("/munches/{user_id}", response_model=Union[List[MunchOut], Error])
 def get_all_munches(
     repo: MunchRepository = Depends()
+    account_data: Optional[dict] = Depends(authenticator.try_get_current_account_data),
 ):
     return repo.get_all()
 
@@ -23,6 +24,7 @@ def create_munch(
     munch: MunchIn,
     response: Response,
     repo: MunchRepository = Depends(),
+    account_data: Optional[dict] = Depends(authenticator.try_get_current_account_data),
 ):
     try:
         return repo.create(munch)
