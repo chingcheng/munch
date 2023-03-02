@@ -9,7 +9,6 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import LandingPage from "./LandingPage";
 import CreateMunch from "./CreateMunchForm";
-import UpdateMunch from "./UpdateMunchForm";
 import HomePage from "./HomePage";
 import MunchDetail from "./MunchDetail";
 import EditMunch from "./EditMunchForm";

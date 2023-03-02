@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
+import { useAuthContext } from "./Auth";
 
 function CreateMunch({ backgroundImage }) {
   const navigate = useNavigate();
+  const { token } = useAuthContext();
   const [location, setLocation] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -88,6 +90,7 @@ function CreateMunch({ backgroundImage }) {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -95,7 +98,7 @@ function CreateMunch({ backgroundImage }) {
     if (response.ok) {
       setSubmitted(true);
       clearState();
-      navigate("/login");
+      navigate("/home");
     }
   };
 
