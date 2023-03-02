@@ -112,7 +112,7 @@ function EditMunch({ backgroundImage }) {
     if (response.ok) {
       setSubmitted(true);
       clearState();
-      navigate("/login");
+      navigate("/home");
     }
   };
 
@@ -125,6 +125,7 @@ function EditMunch({ backgroundImage }) {
       },
     };
     const response = await fetch(url, fetchConfig);
+    console.log("token", token);
     console.log("response", response);
     if (response.ok) {
       const data = await response.json();
@@ -139,7 +140,7 @@ function EditMunch({ backgroundImage }) {
 
   useEffect(() => {
     getOneMunch();
-  }, [getOneMunch, id, token]);
+  }, [id, token]);
 
   return (
     <>
@@ -313,7 +314,7 @@ function EditMunch({ backgroundImage }) {
                   </div>
 
                   {/* SUBMIT BUTTON */}
-                  <div className="button-container" style={{ dislay: "flex" }}>
+                  <div className="button-container" style={{ display: "flex" }}>
                     {/* <div className="col-2 text-center"> */}
                     <button
                       className="btn btn-md lead text-bold text mx-2"
