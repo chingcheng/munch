@@ -41,51 +41,25 @@ const UserPage = ({backgroundImage}) => {
   const {userName} = useParams();
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
-  // const { id, user_id } = useParams;
   const [userId, setUserId] = useState("");
-  // console.log("username", userName)
-  console.log("USERID", userId)
-
-  // const { id } = useParams();
-  // const { userId, setuserId } = useState("");
-  // const { username, setUsername } = useState("");
-
-  // const getUser = useCallback(async () => {
-  //   const fetchConfig = {
-  //     method: "get",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   };
-  //   const response = await fetch(url, fetchConfig);
-  //   console.log("response", response);
-  //   if (response.ok) {
-  //     const data = await response.json();
-  //     // setUser(data)
-  //     setUsername(data.username);
-  //   }
-  // }, [id, token]);
 
  useEffect(() => {
   const getUserId = async () => {
-    const userUrl = `http://localhost:8010/accounts/`;
+    const userUrl = `http://localhost:8010/accounts`;
     const fetchConfig = {
       method: "get",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
+
     const response = await fetch(userUrl, fetchConfig);
-    // console.log("response", response)
     if (response.ok) {
       const users = await response.json();
       const current_user = users.filter((user) => user.username === userName)
-      // console.log("userID:", current_user)
       const current_user_id = current_user[0].id
-      // console.log("current_user_id:", current_user_id)
-      // console.log("userName", userName)
+      console.log("current_user_id", current_user_id)
       setUserId(current_user_id);
-      // console.log("userId", userId)
       fetchFilterMunches(current_user[0].id)
     }
   }
@@ -99,17 +73,12 @@ const UserPage = ({backgroundImage}) => {
           Authorization: `Bearer ${token}`,
         },
       };
-      console.log("userId:", userId)
-
       const response = await fetch(url, fetchConfig);
-      console.log("response", response)
+
       if (response.ok) {
-        console.log("userName", userName)
         const munches = await response.json();
-        console.log("munches", munches)
-        const filteredMunches = munches.filter((munch) =>
-          munch.user_id.includes(userId));
-        console.log("filteredMunches", filteredMunches)
+        const filteredMunches = munches.
+        filter((munch) => munch.user_id.includes(userId));
         const munchColumns = [[], [], []];
         filteredMunches.forEach((munch, index) =>
           munchColumns[index % 3].push(munch)
@@ -121,28 +90,8 @@ const UserPage = ({backgroundImage}) => {
     }
   };
     getUserId();
-    fetchFilterMunches();
+    // fetchFilterMunches();
   }, [token, userId]);
-
-
-
-  // const getUsername = async (userId) => {
-  //   const usernameUrl = `http://localhost:8010/accounts/${userId}`;
-  //   const fetchConfig = {
-  //     method: "get",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   };
-  //   const response = await fetch(usernameUrl, fetchConfig);
-  //   if (response.ok) {
-  //     const data = await response.json();
-  //     console.log("DATA:", data);
-  //     const username = data.username;
-  //     console.log("USERNAME:", username);
-  //     setUsername(username);
-  //   }
-  // };
 
   return (
     <>
