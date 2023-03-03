@@ -5,39 +5,48 @@ import { useAuthContext } from "./Auth";
 function MunchesColumn(props) {
   return (
     <div className="col">
-      {props.list.map((munch) => (
-        <div key={munch.id}>
-          <Link to={`/munches/${munch.id}`} className="card-link">
-            <div className="card mb-3 shadow" style={{ height: "400px" }}>
-              <img
-                src={munch.photo}
-                className="card-img-top"
-                alt={`${munch.location}`}
-                style={{ maxWidth: "100%", maxHeight: "250px" }}
-              />
-              <div
-                className="card-body"
-                style={{ height: "100px", overflow: "hidden" }}
-              >
-                <h5 className="card-location">
-                  {munch.location} - {munch.username}
-                </h5>
+      {/* {props.list.map((munch) => ( */}
+      {props
+        .filter((munch) => munch.user_id === user_id)
+        .map((munch) => {
+          return (
+            <div key={munch.id}>
+              <Link to={`/munches/${munch.id}`} className="card-link">
+                <div className="card mb-3 shadow" style={{ height: "400px" }}>
+                  <img
+                    src={munch.photo}
+                    className="card-img-top"
+                    alt={`${munch.location}`}
+                    style={{ maxWidth: "100%", maxHeight: "250px" }}
+                  />
+                  <div
+                    className="card-body"
+                    style={{ height: "100px", overflow: "hidden" }}
+                  >
+                    <h5 className="card-location">
+                      {munch.location} - {munch.username}
+                    </h5>
 
-                <p className="card-review">{munch.review}</p>
-              </div>
-              <div className="card-footer" style={{ height: "50px" }}>
-                <small className="text-muted">Rating: {munch.rating}/5</small>
-              </div>
+                    <p className="card-review">{munch.review}</p>
+                  </div>
+                  <div className="card-footer" style={{ height: "50px" }}>
+                    <small className="text-muted">
+                      Rating: {munch.rating}/5
+                    </small>
+                  </div>
+                </div>
+              </Link>
             </div>
-          </Link>
-        </div>
-      ))}
+          );
+        })}
     </div>
   );
 }
-function AllMunches({ backgroundImage }) {
+
+function UserPage({ backgroundImage }) {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
+  const { id, user_id } = useParams;
   // const { id } = useParams();
   // const { userId, setuserId } = useState("");
   // const { username, setUsername } = useState("");
@@ -142,4 +151,4 @@ function AllMunches({ backgroundImage }) {
   );
 }
 
-export default AllMunches;
+export default UserPage;

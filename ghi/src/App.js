@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Nav from "./Nav";
 // import Construct from "./Construct.js";
 // import ErrorNotification from "./ErrorNotification";
@@ -15,6 +15,8 @@ import EditMunch from "./EditMunchForm";
 import Logout from "./Logout";
 import EditUser from "./EditUser";
 import AllMunches from "./AllMunches";
+import { useAuthContext } from "./Auth";
+import UserPage from "./UserPage";
 
 function GetToken() {
   // Get token from JWT cookie (if already logged in)
@@ -57,6 +59,9 @@ function getRandomImage(images) {
 function App() {
   //<<< GET MUNCHES FUNCTION >>>
   const [munches, setMunches] = useState([]);
+  const { id } = useParams;
+  const { token } = useAuthContext;
+  const [username, setUsername] = useState("");
 
   const getMunches = async () => {
     const url = "http://localhost:8010/munches";
@@ -65,6 +70,22 @@ function App() {
       const data = await response.json();
       const munches = data.munches;
       setMunches(munches);
+    }
+  };
+
+  const getUsername = async (userId) => {
+    const usernameUrl = `http://localhost:8010/accounts/${id}`;
+    const fetchConfig = {
+      method: "get",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const response = await fetch(usernameUrl, fetchConfig);
+    if (response.ok) {
+      const data = await response.json();
+      const username = data.username;
+      setUsername(username);
     }
   };
 
@@ -175,6 +196,12 @@ function App() {
               <Route
                 path="feed"
                 element={<AllMunches backgroundImage={backgroundImage} />}
+              />
+            </Routes>
+            <Routes>
+              <Route
+                path="filtered"
+                element={<UserPage backgroundImage={backgroundImage} />}
               />
             </Routes>
           </AuthProvider>

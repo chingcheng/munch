@@ -57,9 +57,7 @@ function MunchDetail({ backgroundImage }) {
     const response = await fetch(usernameUrl, fetchConfig);
     if (response.ok) {
       const data = await response.json();
-      console.log("DATA:", data);
       const username = data.username;
-      console.log("USERNAME:", username);
       setUsername(username);
     }
   };
@@ -142,7 +140,7 @@ function MunchDetail({ backgroundImage }) {
                       style={{ maxWidth: "100%" }}
                     />
                   </div>
-                  <Link to={`/login`} className="card-link">
+                  <Link to={`/filtered/`} className="card-link">
                     <div className="form-floating mb-3">
                       <h2
                         style={{
