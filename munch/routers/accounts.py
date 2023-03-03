@@ -8,7 +8,7 @@ from fastapi import (
 )
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
-from typing import Optional
+from typing import List, Optional, Union
 from pydantic import BaseModel
 
 
@@ -18,6 +18,7 @@ from queries.accounts import (
     AccountQueries,
     DuplicateAccountError,
     AccountOutWithPassword,
+    Error
 )
 
 
@@ -124,3 +125,33 @@ def get_account(
         raise HTTPException(status_code=404, detail="User not found")
     if account_data is None:
         raise HTTPException(status_code=401, detail="Unauthorized")
+
+
+@router.get("/accounts", response_model=Union[List[AccountOut], Error])
+def get_all_accounts(
+    repo: AccountQueries = Depends(),
+    account_data: dict = Depends(
+        authenticator.get_current_account_data),
+):
+    if account_data is not None:
+        return repo.get_all()
+    else:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+
+
+# @router.get("/accounts/{username}", response_model=AccountOut)
+# def get_account_with_username(
+#     username: str,
+#     response: Response,
+#     repo: AccountQueries = Depends(),
+#     account_data: Optional[dict] = Depends(
+#         authenticator.try_get_current_account_data
+#     ),
+# ) -> AccountOut:
+#     user = repo.get_one_with_username(username)
+#     if user is not None and account_data is not None:
+#         return user
+#     if user is None:
+#         raise HTTPException(status_code=404, detail="User not found")
+#     if account_data is None:
+#         raise HTTPException(status_code=401, detail="Unauthorized")
