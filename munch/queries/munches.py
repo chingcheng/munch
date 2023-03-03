@@ -172,7 +172,7 @@ class MunchRepository:
             review=record[3],
             photo=record[4],
             tag=record[5],
-            city = record[6],
-            state = record[7],
-            user_id = record[8]
+            city=record[6],
+            state=record[7],
+            user_id=record[8]
         )
