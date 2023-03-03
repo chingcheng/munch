@@ -73,7 +73,7 @@ function MunchDetail({ backgroundImage }) {
             <div className="offset-3 col-6">
               <div className="shadow p-2 m-4">
                 <form className="form p-5 m-1" id="create-signup-form">
-                  <NavLink to="/">
+                  <NavLink to="/home">
                     <p className="text-center">
                       <img
                         src="../munch_transparent.png"

@@ -17,12 +17,15 @@ function MunchesColumn(props) {
               />
               <div
                 className="card-body"
-                style={{ height: "100px", overflow: "hidden" }}
+                style={{ height: "110px", overflow: "hidden" }}
               >
                 <h5 className="card-location">{munch.location}</h5>
                 <p className="card-review">{munch.review}</p>
               </div>
-              <div className="card-footer" style={{ height: "50px" }}>
+              <div
+                className="card-footer"
+                style={{ height: "40px", textAlign: "right" }}
+              >
                 <small className="text-muted">Rating: {munch.rating}/5</small>
               </div>
             </div>
@@ -52,9 +55,9 @@ function HomePage({ backgroundImage }) {
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
           const munches = await response.json();
-          const filteredMunches = munches.filter((munch) =>
-            munch.user_id.includes(userId)
-          );
+          const filteredMunches = munches
+            .filter((munch) => munch.user_id.includes(userId))
+            .reverse();
           const munchColumns = [[], [], []];
           filteredMunches.forEach((munch, index) =>
             munchColumns[index % 3].push(munch)
