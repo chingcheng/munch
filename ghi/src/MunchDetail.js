@@ -4,11 +4,12 @@ import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 
 function MunchDetail({ backgroundImage }) {
-  let { id } = useParams();
+  let { id, user_id } = useParams();
   const navigate = useNavigate();
   const [munch, setMunch] = useState([]);
   const { token } = useAuthContext();
-
+  const [username, setUsername] = useState("");
+  const [userId, setUserId] = useState("");
 
   const handleDelete = async () => {
     const munchUrl = `http://localhost:8010/munches/${id}`;
@@ -24,7 +25,6 @@ function MunchDetail({ backgroundImage }) {
     }
   };
 
-
   const getOneMunch = useCallback(async () => {
     const url = `http://localhost:8010/munches/${id}`;
     const fetchConfig = {
@@ -38,13 +38,35 @@ function MunchDetail({ backgroundImage }) {
     console.log("Detail Token:", token);
     if (response.ok) {
       const data = await response.json();
+      console.log("1MunchDATA:", data);
+      console.log(data.user_id);
+      setUserId(data.user_id);
+      getUsername(data.user_id);
       setMunch(data);
     }
   }, [id, token]);
 
-  
+  const getUsername = async (userId) => {
+    const usernameUrl = `http://localhost:8010/accounts/${userId}`;
+    const fetchConfig = {
+      method: "get",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const response = await fetch(usernameUrl, fetchConfig);
+    if (response.ok) {
+      const data = await response.json();
+      console.log("DATA:", data);
+      const username = data.username;
+      console.log("USERNAME:", username);
+      setUsername(username);
+    }
+  };
+
   useEffect(() => {
     getOneMunch();
+    getUsername();
   }, [getOneMunch, token, id]);
 
   return (

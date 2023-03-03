@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useAuthContext } from "./Auth";
 
 function MunchesColumn(props) {
@@ -35,12 +35,30 @@ function MunchesColumn(props) {
 function AllMunches({ backgroundImage }) {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
+  const { id } = useParams();
   console.log("TOKEN!:", token);
+
+  // const getUser = useCallback(async () => {
+  //   const fetchConfig = {
+  //     method: "get",
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   };
+  //   const response = await fetch(url, fetchConfig);
+  //   console.log("response", response);
+  //   if (response.ok) {
+  //     const data = await response.json();
+  //     // setUser(data)
+  //     setUsername(data.username);
+  //   }
+  // }, [id, token]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const url = `http://localhost:8010/munches`;
+        // const usernameUrl = `http://localhost:8010/accounts/${id}`;
         const fetchConfig = {
           method: "get",
           headers: {
@@ -51,6 +69,7 @@ function AllMunches({ backgroundImage }) {
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
           const data = await response.json();
+          console.log("data", data);
           const munchColumns = [[], [], []];
           data.forEach((munch, index) => munchColumns[index % 3].push(munch));
           setMunchColumns(munchColumns);
