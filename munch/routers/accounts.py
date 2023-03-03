@@ -8,7 +8,6 @@ from fastapi import (
 )
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
-from typing import Union
 
 
 from pydantic import BaseModel
