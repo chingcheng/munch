@@ -68,7 +68,7 @@ function EditUser({ backgroundImage }) {
     };
     const response = await fetch(accountUrl, fetchConfig);
     if (response.ok) {
-      navigate("/");
+      navigate("/login");
     }
   };
 

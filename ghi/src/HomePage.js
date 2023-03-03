@@ -32,6 +32,7 @@ function MunchesColumn(props) {
     </div>
   );
 }
+
 function HomePage({ backgroundImage }) {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();

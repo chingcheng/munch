@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional, Union
 from queries.pool import pool
 
+
 class Error(BaseModel):
     message: str
 
@@ -34,9 +35,18 @@ class MunchRepository:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    result = db.execute(
+                    db.execute(
                         """
-                        SELECT id, location, rating, review, photo, tag, city, state, user_id
+                        SELECT
+                            id,
+                            location,
+                            rating,
+                            review,
+                            photo,
+                            tag,
+                            city,
+                            state,
+                            user_id
                         FROM munches;
                         """
                     )
@@ -54,7 +64,16 @@ class MunchRepository:
                     result = db.execute(
                         """
                         INSERT INTO munches
-                            (location, rating, review, photo, tag, city, state, user_id)
+                            (
+                                location,
+                                rating,
+                                review,
+                                photo,
+                                tag,
+                                city,
+                                state,
+                                user_id
+                            )
                         VALUES
                             (%s, %s, %s, %s, %s, %s, %s, %s)
                         RETURNING id;
@@ -82,7 +101,16 @@ class MunchRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, location, rating, review, photo, tag, city, state, user_id
+                        SELECT
+                            id,
+                            location,
+                            rating,
+                            review,
+                            photo,
+                            tag,
+                            city,
+                            state,
+                            user_id
                         FROM munches
                         WHERE id = %s
                         """,
@@ -114,30 +142,30 @@ class MunchRepository:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    result = db.execute(
+                    db.execute(
                         """
                         UPDATE munches
-                        SET location= %s,
-                            rating= %s,
-                            review = %s,
-                            photo = %s,
-                            tag = %s,
-                            city = %s,
-                            state = %s,
-                            user_id = %s,
-                        WHERE id = %s AND user_id = %s
+                        SET location=%s,
+                            rating=%s,
+                            review=%s,
+                            photo=%s,
+                            tag=%s,
+                            city=%s,
+                            state=%s,
+                            user_id=%s
+                        WHERE id=%s AND user_id =%s
                         """,
-                    [
-                        munch.location,
-                        munch.rating,
-                        munch.review,
-                        munch.photo,
-                        munch.tag,
-                        munch.city,
-                        munch.state,
-                        munch_id,
-                        munch.user_id,
-                    ]
+                        [
+                            munch.location,
+                            munch.rating,
+                            munch.review,
+                            munch.photo,
+                            munch.tag,
+                            munch.city,
+                            munch.state,
+                            munch_id,
+                            munch.user_id,
+                        ]
                     )
                     return self.munch_in_to_out(munch_id, munch)
         except Exception:
@@ -155,7 +183,7 @@ class MunchRepository:
             review=record[3],
             photo=record[4],
             tag=record[5],
-            city = record[6],
-            state = record[7],
-            user_id = record[8]
+            city=record[6],
+            state=record[7],
+            user_id=record[8]
         )

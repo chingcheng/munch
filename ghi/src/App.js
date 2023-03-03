@@ -189,7 +189,13 @@ function App() {
             <Routes>
               <Route
                 path="home"
-                element={<HomePage backgroundImage={backgroundImage} />}
+                element={
+                  <HomePage
+                    munches={munches}
+                    getMunches={getMunches}
+                    backgroundImage={backgroundImage}
+                  />
+                }
               />
             </Routes>
             <Routes>
