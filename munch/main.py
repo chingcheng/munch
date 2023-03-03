@@ -13,7 +13,8 @@ app.include_router(authenticator.router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        os.environ.get("CORS_HOST", "http://localhost:3000")
+        os.environ.get("CORS_HOST", "http://localhost:3000",
+                       "https://munch.nov-pt-10.mod3projects.com")
     ],
     allow_credentials=True,
     allow_methods=["*"],
