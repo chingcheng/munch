@@ -112,7 +112,7 @@ function EditUser({ backgroundImage }) {
       },
     };
     const response = await fetch(url, fetchConfig);
-    console.log("response", response);
+    // console.log("response", response)
     if (response.ok) {
       const data = await response.json();
       // setUser(data)
