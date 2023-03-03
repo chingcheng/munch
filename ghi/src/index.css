@@ -30,6 +30,11 @@ code {
   border-radius: 10%;
 }
 
+.detail-box {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10%;
+}
+
 .center-block {
   display: block;
   margin-top: 250px;

@@ -68,23 +68,23 @@ function MunchDetail({ backgroundImage }) {
             }}
           />
         </NavLink>
-        <div className="container text-center mt-5">
+        <div className="container mt-5">
           <div className="row">
             <div className="offset-3 col-6">
               <div className="shadow p-2 m-4">
-                <form className="form p-5 m-1" id="create-signup-form">
-                  <NavLink to="/home">
-                    <p className="text-center">
-                      <img
-                        src="../munch_transparent.png"
-                        alt="Logo"
-                        style={{
-                          maxWidth: "100%",
-                          width: "7350px",
-                        }}
-                      />
-                    </p>
-                  </NavLink>
+                <form className="detail-box p-5 m-1" id="create-signup-form">
+                  {/* HEADER */}
+
+                  {/* PHOTO */}
+                  <div className="form-floating mb-3">
+                    <img
+                      src={munch.photo}
+                      alt="preview"
+                      style={{ maxWidth: "100%" }}
+                    />
+                  </div>
+
+                  {/* LOCATION */}
                   <div className="form-floating mb-3">
                     <h2
                       style={{
@@ -95,10 +95,14 @@ function MunchDetail({ backgroundImage }) {
                       {munch.location}
                     </h2>
                   </div>
+
+                  {/* CITY AND STATE */}
                   <div className="form-floating mb-3"></div>
                   <h6 style={{ color: "#FFE085" }}>
-                    {munch.city}, {munch.state}
+                    {munch.city}, {munch.state}, {munch.user_id}
                   </h6>
+
+                  {/* RATING */}
                   <div className="form-floating mb-4">
                     <Rating
                       rate={munch.rating}
@@ -110,16 +114,13 @@ function MunchDetail({ backgroundImage }) {
                       className="foo" // Will remove the inline style if applied
                     />
                   </div>
-                  <div className="form-floating mb-3">
-                    <img
-                      src={munch.photo}
-                      alt="preview"
-                      style={{ maxWidth: "100%" }}
-                    />
-                  </div>
+
+                  {/* REVIEW */}
                   <div className="form-floating mb-3">
                     <p style={{ color: "#FFE085" }}>{munch.review}</p>
                   </div>
+
+                  {/* BUTTONS */}
                   <div
                     className="button-container"
                     style={{ display: "flex", justifyContent: "center" }}
