@@ -9,7 +9,6 @@ function MunchDetail({ backgroundImage }) {
   const [munch, setMunch] = useState([]);
   const { token } = useAuthContext();
 
-
   const handleDelete = async () => {
     const munchUrl = `http://localhost:8010/munches/${id}`;
     const fetchConfig = {
@@ -23,7 +22,6 @@ function MunchDetail({ backgroundImage }) {
       navigate("/home");
     }
   };
-
 
   const getOneMunch = useCallback(async () => {
     const url = `http://localhost:8010/munches/${id}`;
@@ -42,7 +40,6 @@ function MunchDetail({ backgroundImage }) {
     }
   }, [id, token]);
 
-  
   useEffect(() => {
     getOneMunch();
   }, [getOneMunch, token, id]);
@@ -135,6 +132,7 @@ function MunchDetail({ backgroundImage }) {
                           fontWeight: "750",
                           color: "#512b20",
                           width: "150px",
+                          height: "40px",
                         }}
                         type="submit"
                         value="Update Munch"
@@ -151,6 +149,7 @@ function MunchDetail({ backgroundImage }) {
                         fontWeight: "750",
                         color: "white",
                         width: "150px",
+                        height: "40px",
                       }}
                       type="button"
                       value="Delete Munch"

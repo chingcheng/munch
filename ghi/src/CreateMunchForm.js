@@ -12,7 +12,7 @@ function CreateMunch({ backgroundImage }) {
   const [rating, setRating] = useState("");
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
-  const [userId, setUserId]= useState("");
+  const [userId, setUserId] = useState("");
   //   const [tag, setTag] = useState("");
   //   const [tags, setTags] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -84,7 +84,7 @@ function CreateMunch({ backgroundImage }) {
     data.rating = rating;
     data.review = review;
     data.photo = photo;
-    data.user_id= userId;
+    data.user_id = userId;
     // data.tag = tag;
 
     const munchUrl = "http://localhost:8010/munches";
@@ -165,10 +165,10 @@ function CreateMunch({ backgroundImage }) {
                   id="create-signup-form"
                   onSubmit={handleSubmit}
                 >
-                  <NavLink to="/">
-                    <h1 className="text-center">
+                  <NavLink to="/home">
+                    <h1 className="text-center mb-3">
                       <img
-                        src="../munch_transparent.png"
+                        src="../create_munch.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -177,16 +177,6 @@ function CreateMunch({ backgroundImage }) {
                       />
                     </h1>
                   </NavLink>
-                  <p>
-                    <img
-                      src="../munch_slogan.png"
-                      alt="Slogan"
-                      style={{
-                        maxWidth: "100%",
-                        width: "350px",
-                      }}
-                    />
-                  </p>
                   <div className="form-floating mb-3">
                     <input
                       onChange={handleLocationChange}
@@ -252,6 +242,7 @@ function CreateMunch({ backgroundImage }) {
                       style={{
                         background: "#FFDE79",
                         color: "#512b20",
+                        fontWeight: "bold",
                       }}
                       onClick={() => fileInputRef.current.click()}
                     >
@@ -308,15 +299,17 @@ function CreateMunch({ backgroundImage }) {
                     <button
                       className="btn btn-md lead text-bold text"
                       style={{
-                        width: "100%",
+                        width: "50%",
                         background: "#F8D876",
                         fontWeight: "750",
+                        fontSize: "18px",
+                        height: "40px",
                         color: "#512b20",
                       }}
                       type="submit"
                       value="Create Munch"
                     >
-                      Post Munch
+                      Post
                     </button>
                   </div>
                 </form>
