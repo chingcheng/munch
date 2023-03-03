@@ -56,27 +56,15 @@ function MunchDetail({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <NavLink to="/">
-          <img
-            src="../munch_icon.png"
-            alt="Icon"
-            width="65px"
-            style={{
-              position: "absolute",
-              top: 9,
-              left: 15,
-            }}
-          />
-        </NavLink>
         <div className="container mt-5">
           <div className="row">
             <div className="offset-3 col-6">
               <div className="shadow p-2 m-4">
-                <form className="detail-box p-5 m-1" id="create-signup-form">
+                <form className="card p-3 m-1" id="create-signup-form">
                   {/* HEADER */}
 
                   {/* PHOTO */}
-                  <div className="form-floating mb-3">
+                  <div className="form-floating mb-2">
                     <img
                       src={munch.photo}
                       alt="preview"
@@ -84,26 +72,23 @@ function MunchDetail({ backgroundImage }) {
                     />
                   </div>
 
-                  {/* LOCATION */}
-                  <div className="form-floating mb-3">
+                  {/* LOCATION CITY AND STATE*/}
+                  <div className="form-floating">
                     <h2
                       style={{
-                        color: "#FFE085",
+                        color: "black",
                         size: "40px",
                       }}
                     >
                       {munch.location}
                     </h2>
+                    <h5>
+                      {munch.city}, {munch.state}
+                    </h5>
                   </div>
 
-                  {/* CITY AND STATE */}
-                  <div className="form-floating mb-3"></div>
-                  <h6 style={{ color: "#FFE085" }}>
-                    {munch.city}, {munch.state}, {munch.user_id}
-                  </h6>
-
                   {/* RATING */}
-                  <div className="form-floating mb-4">
+                  <div className="mb-4">
                     <Rating
                       rate={munch.rating}
                       size={35}
@@ -117,7 +102,7 @@ function MunchDetail({ backgroundImage }) {
 
                   {/* REVIEW */}
                   <div className="form-floating mb-3">
-                    <p style={{ color: "#FFE085" }}>{munch.review}</p>
+                    <p style={{ color: "black" }}>{munch.review}</p>
                   </div>
 
                   {/* BUTTONS */}
