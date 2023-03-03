@@ -1,50 +1,91 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, NavLink } from "react-router-dom";
-import { Rating } from "react-simple-star-rating";
+import { Link } from "react-router-dom";
+import { useAuthContext } from "./Auth";
 
 function MunchesColumn(props) {
   return (
     <div className="col">
       {props.list.map((munch) => (
-        <div key={munch.id} className="card mb-3 shadow rounded">
-          <img
-            src={munch.photo}
-            className="card-img-top"
-            alt={`Photo of ${munch.location}`}
-          />
-          <div className="card-body">
-            <h5 className="card-location">{munch.location}</h5>
-            <p className="card-review">{munch.review}</p>
-          </div>
-          <div className="card-footer">
-            <small className="text-muted text-end">
-              Rating: {munch.rating}/5
-            </small>
-          </div>
+        <div key={munch.id}>
+          <Link to={`/munches/${munch.id}`} className="card-link">
+            <div className="card mb-3 shadow" style={{ height: "400px" }}>
+              <img
+                src={munch.photo}
+                className="card-img-top"
+                alt={`${munch.location}`}
+                style={{ maxWidth: "100%", maxHeight: "250px" }}
+              />
+              <div
+                className="card-body"
+                style={{ height: "100px", overflow: "hidden" }}
+              >
+                <h5 className="card-location">{munch.location}</h5>
+                <p className="card-review">{munch.review}</p>
+              </div>
+              <div className="card-footer" style={{ height: "50px" }}>
+                <small className="text-muted">Rating: {munch.rating}/5</small>
+              </div>
+            </div>
+          </Link>
         </div>
       ))}
     </div>
   );
 }
+
 function HomePage({ backgroundImage }) {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
+  const { token } = useAuthContext();
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchFilterMunches = async (userId) => {
       try {
-        const response = await fetch("http://localhost:8010/munches");
+        const url = `http://localhost:8010/munches`;
+        const fetchConfig = {
+          method: "get",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+
+        const response = await fetch(url, fetchConfig);
         if (response.ok) {
-          const data = await response.json();
+          const munches = await response.json();
+          const filteredMunches = munches.filter((munch) =>
+            munch.user_id.includes(userId)
+          );
           const munchColumns = [[], [], []];
-          data.forEach((munch, index) => munchColumns[index % 3].push(munch));
+          filteredMunches.forEach((munch, index) =>
+            munchColumns[index % 3].push(munch)
+          );
           setMunchColumns(munchColumns);
         }
       } catch (e) {
         console.error(e);
       }
     };
-    fetchData();
-  }, []);
+    const fetchID = async () => {
+      try {
+        const url = `http://localhost:8010/token`;
+        const fetchConfig = {
+          credentials: "include",
+        };
+
+        const response = await fetch(url, fetchConfig);
+        if (response.ok) {
+          const data = await response.json();
+          setUserId(data.account.id);
+          fetchFilterMunches(data.account.id);
+          console.log(userId);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetchID();
+    // fetchFilterMunches();
+  }, [token, userId]);
 
   return (
     <>

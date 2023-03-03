@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
+import { useAuthContext } from "./Auth";
 
 function CreateMunch({ backgroundImage }) {
   const navigate = useNavigate();
+  const { token } = useAuthContext();
   const [location, setLocation] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [rating, setRating] = useState("");
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
+  const [userId, setUserId]= useState("");
   //   const [tag, setTag] = useState("");
   //   const [tags, setTags] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -64,6 +67,7 @@ function CreateMunch({ backgroundImage }) {
     setRating("");
     setReview("");
     setPhoto("");
+    setUserId("");
     // setTag("");
     // setTags("");
     setSubmitted(false);
@@ -80,6 +84,7 @@ function CreateMunch({ backgroundImage }) {
     data.rating = rating;
     data.review = review;
     data.photo = photo;
+    data.user_id= userId;
     // data.tag = tag;
 
     const munchUrl = "http://localhost:8010/munches";
@@ -88,6 +93,7 @@ function CreateMunch({ backgroundImage }) {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -95,7 +101,7 @@ function CreateMunch({ backgroundImage }) {
     if (response.ok) {
       setSubmitted(true);
       clearState();
-      navigate("/login");
+      navigate("/home");
     }
   };
 
@@ -140,7 +146,7 @@ function CreateMunch({ backgroundImage }) {
       >
         <NavLink to="/">
           <img
-            src="./munch_icon.png"
+            src="../munch_icon.png"
             alt="Icon"
             width="65px"
             style={{
@@ -162,7 +168,7 @@ function CreateMunch({ backgroundImage }) {
                   <NavLink to="/">
                     <h1 className="text-center">
                       <img
-                        src="./munch_transparent.png"
+                        src="../munch_transparent.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -173,7 +179,7 @@ function CreateMunch({ backgroundImage }) {
                   </NavLink>
                   <p>
                     <img
-                      src="./munch_slogan.png"
+                      src="../munch_slogan.png"
                       alt="Slogan"
                       style={{
                         maxWidth: "100%",
@@ -261,7 +267,7 @@ function CreateMunch({ backgroundImage }) {
                       style={{ display: "none" }}
                     />
                     {photo && (
-                      <div className="mb-3">
+                      <div className="my-3">
                         <img
                           src={photo}
                           alt="preview"
@@ -300,7 +306,7 @@ function CreateMunch({ backgroundImage }) {
                   {/* SUBMIT BUTTON */}
                   <div className="col text-center">
                     <button
-                      className="btn btn-lg lead text-bold text"
+                      className="btn btn-md lead text-bold text"
                       style={{
                         width: "100%",
                         background: "#F8D876",

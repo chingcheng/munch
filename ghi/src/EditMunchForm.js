@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import { useAuthContext } from "./Auth";
 
-function UpdateMunch({ backgroundImage }) {
+function EditMunch({ backgroundImage }) {
   let { id } = useParams();
   const navigate = useNavigate();
-  //   const [munch, setMunches] = useState([]);
-  const { token } = useAuthContext;
+  const { token } = useAuthContext();
   const [location, setLocation] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [rating, setRating] = useState("");
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
+  const [userId, setUserId] = useState("");
   //   const [tag, setTag] = useState("");
   //   const [tags, setTags] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -56,6 +56,11 @@ function UpdateMunch({ backgroundImage }) {
     }
   };
 
+  const handleUserIdChange = (event) => {
+    const value = event.target.value;
+    setUserId(value);
+  };
+
   //   const handleTagChange = (event) => {
   //     const value = event.target.value;
   //     setTag(value);
@@ -68,6 +73,7 @@ function UpdateMunch({ backgroundImage }) {
     setRating("");
     setReview("");
     setPhoto("");
+    setUserId("");
     // setTag("");
     // setTags("");
     setSubmitted(false);
@@ -84,6 +90,7 @@ function UpdateMunch({ backgroundImage }) {
     data.rating = rating;
     data.review = review;
     data.photo = photo;
+    data.user_id = userId;
     // data.tag = tag;
 
     const munchUrl = `http://localhost:8010/munches/${id}`;
@@ -92,6 +99,7 @@ function UpdateMunch({ backgroundImage }) {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -99,34 +107,39 @@ function UpdateMunch({ backgroundImage }) {
     if (response.ok) {
       setSubmitted(true);
       clearState();
-      navigate("/login");
-    }
-  };
-
-  const getOneMunch = async () => {
-    const url = `http://localhost:8010/munches/${id}`;
-    const fetchConfig = {
-      method: "get",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    const response = await fetch(url, fetchConfig);
-    console.log("response", response);
-    if (response.ok) {
-      const data = await response.json();
-      setLocation(data.location);
-      setCity(data.city);
-      setState(data.state);
-      setReview(data.review);
-      setPhoto(data.photo);
-      setRating(data.rating);
+      navigate("/home");
     }
   };
 
   useEffect(() => {
+    const getOneMunch = async () => {
+      try {
+        const url = `http://localhost:8010/munches/${id}`;
+        const fetchConfig = {
+          method: "get",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await fetch(url, fetchConfig);
+        console.log("Edit Token:", token);
+        console.log("response", response);
+        if (response.ok) {
+          const data = await response.json();
+          setLocation(data.location);
+          setCity(data.city);
+          setState(data.state);
+          setReview(data.review);
+          setPhoto(data.photo);
+          setRating(data.rating);
+          setUserId(data.user_id);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
     getOneMunch();
-  }, [token, id]);
+  }, [id, token]);
 
   return (
     <>
@@ -140,9 +153,9 @@ function UpdateMunch({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <NavLink to="/">
+        <NavLink>
           <img
-            src="../munch_icon.png"
+            src="../../munch_icon.png"
             alt="Icon"
             width="65px"
             style={{
@@ -161,10 +174,10 @@ function UpdateMunch({ backgroundImage }) {
                   id="create-signup-form"
                   onSubmit={handleSubmit}
                 >
-                  <NavLink to="/">
+                  <NavLink>
                     <h1 className="text-center">
                       <img
-                        src="../munch_transparent.png"
+                        src="../../munch_transparent.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -175,7 +188,7 @@ function UpdateMunch({ backgroundImage }) {
                   </NavLink>
                   <p>
                     <img
-                      src="../munch_slogan.png"
+                      src="../../munch_slogan.png"
                       alt="Slogan"
                       style={{
                         maxWidth: "100%",
@@ -241,7 +254,7 @@ function UpdateMunch({ backgroundImage }) {
                       Review
                     </label>
                   </div>
-                  <div className="form-floating mb-3">
+                  <div className="form-floating">
                     <button
                       type="button"
                       className="btn text-bold"
@@ -263,7 +276,7 @@ function UpdateMunch({ backgroundImage }) {
                       style={{ display: "none" }}
                     />
                     {photo && (
-                      <div className="mb-3">
+                      <div className="my-3">
                         <img
                           src={photo}
                           alt="preview"
@@ -299,21 +312,35 @@ function UpdateMunch({ backgroundImage }) {
                     />
                   </div>
 
+                  {/* hidden user id */}
+                  <div className="form-floating mb-3 d-none">
+                    <input
+                      onChange={handleUserIdChange}
+                      placeholder="userId"
+                      rows="20"
+                      type="integer"
+                      name="userId"
+                      className="form-control"
+                      value={userId}
+                    />
+                  </div>
+
                   {/* SUBMIT BUTTON */}
-                  <div className="col text-center">
+                  <div className="button-container" style={{ display: "flex" }}>
                     <button
-                      className="btn btn-lg lead text-bold text"
+                      className="btn btn-md lead text-bold text mx-2"
                       style={{
-                        width: "100%",
                         background: "#F8D876",
                         fontWeight: "750",
                         color: "#512b20",
+                        width: "100%",
                       }}
                       type="submit"
-                      value="Create Munch"
+                      value="Update Munch"
                     >
                       Edit Munch
                     </button>
+                    {"  "}
                   </div>
                 </form>
                 {submitted && (
@@ -333,4 +360,4 @@ function UpdateMunch({ backgroundImage }) {
   );
 }
 
-export default UpdateMunch;
+export default EditMunch;

@@ -11,10 +11,12 @@ import LandingPage from "./LandingPage";
 import CreateMunch from "./CreateMunchForm";
 import HomePage from "./HomePage";
 import MunchDetail from "./MunchDetail";
-import UpdateMunch from "./UpdateMunchForm";
+import EditMunch from "./EditMunchForm";
+import Logout from "./Logout";
+import EditUser from "./EditUser";
 
 function GetToken() {
-  // Get token from JWT cookie (if already logged in)
+  // Get token from JWT co okie (if already logged in)
   useToken();
   return null;
 }
@@ -52,13 +54,12 @@ function getRandomImage(images) {
 }
 
 function App() {
-  //<<< GET MUNCHES FUNCTION - RESOLVE MERGE CONFLICT HERE >>>
+  //<<< GET MUNCHES FUNCTION >>>
   const [munches, setMunches] = useState([]);
 
   const getMunches = async () => {
     const url = "http://localhost:8010/munches";
     const response = await fetch(url);
-
     if (response.ok) {
       const data = await response.json();
       const munches = data.munches;
@@ -135,19 +136,23 @@ function App() {
                 path="login"
                 element={<LoginForm backgroundImage={backgroundImage} />}
               />
-              {/* <Route path="logout" element={<LogoutComponent />} /> */}
+              <Route path="logout" element={<Logout />} />
               <Route
                 path="signup"
                 element={<SignupForm backgroundImage={backgroundImage} />}
               />
               <Route
-                path="munches-create"
+                path="accounts/:id"
+                element={<EditUser backgroundImage={backgroundImage} />}
+              />
+              <Route
+                path="munches/create"
                 element={<CreateMunch backgroundImage={backgroundImage} />}
               />
               <Route
-                path="munches-update/:id"
+                path="munches/edit/:id"
                 element={
-                  <UpdateMunch
+                  <EditMunch
                     backgroundImage={backgroundImage}
                     munches={munches}
                     getMunches={getMunches}
@@ -162,7 +167,13 @@ function App() {
             <Routes>
               <Route
                 path="home"
-                element={<HomePage backgroundImage={backgroundImage} />}
+                element={
+                  <HomePage
+                    munches={munches}
+                    getMunches={getMunches}
+                    backgroundImage={backgroundImage}
+                  />
+                }
               />
             </Routes>
           </AuthProvider>

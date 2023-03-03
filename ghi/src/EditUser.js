@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import { useToken } from "./Auth";
-import { useNavigate, NavLink } from "react-router-dom";
+import React, { useEffect, useState, useCallback } from "react";
+import { useAuthContext } from "./Auth";
+import { useNavigate, NavLink, useParams } from "react-router-dom";
 
-function SignupForm({ backgroundImage }) {
+function EditUser({ backgroundImage }) {
+  let { id } = useParams();
   const navigate = useNavigate();
-  const { signup } = useToken();
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
+  const { token } = useAuthContext();
+  const [userId, setUserId] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [bio, setBio] = useState("");
+  const [password, setPassword] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  // const [user, setUser] = useState([])
 
   const handleFirstNameChange = (event) => {
     const value = event.target.value;
@@ -33,38 +36,99 @@ function SignupForm({ backgroundImage }) {
     setUsername(value);
   };
 
+  const handleBioChange = (event) => {
+    const value = event.target.value;
+    setBio(value);
+    event.target.style.height = `${event.target.scrollHeight}px`;
+    event.target.style.resize = "none";
+  };
+
   const handlePasswordChange = (event) => {
     const value = event.target.value;
     setPassword(value);
   };
 
   const clearState = () => {
+    setUserId("");
     setFirstName("");
     setLastName("");
     setEmail("");
     setUsername("");
-    setPassword("");
     setBio("");
     setSubmitted(false);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await signup(
-      first_name,
-      last_name,
-      email,
-      username,
-      password,
-      bio
-    );
-    console.log("response!!!!", response);
-    if (response === true) {
-      setSubmitted(true);
-      clearState();
+  const handleDelete = async () => {
+    const accountUrl = `http://localhost:8010/accounts/${id}`;
+    const fetchConfig = {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const response = await fetch(accountUrl, fetchConfig);
+    if (response.ok) {
       navigate("/login");
     }
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const data = {};
+
+    data.id = userId;
+    data.first_name = firstName;
+    data.last_name = lastName;
+    data.username = username;
+    data.email = email;
+    data.bio = bio;
+    data.password = password;
+
+    const url = `http://localhost:8010/accounts/${id}`;
+    const fetchConfig = {
+      method: "put",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const response = await fetch(url, fetchConfig);
+    if (response.ok) {
+      setSubmitted(true);
+      clearState();
+      navigate("/home");
+    }
+  };
+
+  const getUser = useCallback(async () => {
+    const url = `http://localhost:8010/accounts/${id}`;
+    const fetchConfig = {
+      method: "get",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const response = await fetch(url, fetchConfig);
+    console.log("response", response);
+    if (response.ok) {
+      const data = await response.json();
+      // setUser(data)
+      setUserId(data.id);
+      setFirstName(data.first_name);
+      setLastName(data.last_name);
+      setEmail(data.email);
+      setUsername(data.username);
+      setBio(data.bio);
+      setPassword(data.password);
+    }
+  }, [id, token]);
+
+  useEffect(() => {
+    getUser();
+  }, [getUser, id, token]);
 
   return (
     <>
@@ -78,9 +142,9 @@ function SignupForm({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <NavLink to="/">
+        <NavLink>
           <img
-            src="./munch_icon.png"
+            src="../../munch_icon.png"
             alt="Icon"
             width="65px"
             style={{
@@ -96,13 +160,13 @@ function SignupForm({ backgroundImage }) {
               <div className="shadow p-2 m-4">
                 <form
                   className="form p-5 m-1"
-                  id="create-signup-form"
+                  id="update-user-form"
                   onSubmit={handleSubmit}
                 >
-                  <NavLink to="/">
+                  <NavLink>
                     <h1 className="text-center">
                       <img
-                        src="./munch_transparent.png"
+                        src="../../munch_transparent.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -113,7 +177,7 @@ function SignupForm({ backgroundImage }) {
                   </NavLink>
                   <p>
                     <img
-                      src="./munch_slogan.png"
+                      src="../../munch_slogan.png"
                       alt="Slogan"
                       style={{
                         maxWidth: "100%",
@@ -129,7 +193,7 @@ function SignupForm({ backgroundImage }) {
                       type="text"
                       name="first_name"
                       className="form-control"
-                      value={first_name}
+                      value={firstName}
                     />
                     <label className="form-label" htmlFor="first_name">
                       First Name
@@ -141,11 +205,11 @@ function SignupForm({ backgroundImage }) {
                       placeholder="Last Name"
                       required
                       type="text"
-                      name="last_name"
+                      name="city"
                       className="form-control"
-                      value={last_name}
+                      value={lastName}
                     />
-                    <label className="form-label" htmlFor="last_name">
+                    <label className="form-label" htmlFor="location">
                       Last Name
                     </label>
                   </div>
@@ -173,14 +237,30 @@ function SignupForm({ backgroundImage }) {
                       className="form-control"
                       value={username}
                     />
-                    <label className="form-label" htmlFor="email">
+                    <label className="form-label" htmlFor="username">
                       Username
+                    </label>
+                  </div>
+                  <div className="form-floating mb-3">
+                    <textarea
+                      onChange={handleBioChange}
+                      placeholder="bio"
+                      rows="20"
+                      style={{ minHeight: 100, overflow: "hidden" }}
+                      required
+                      type="text"
+                      name="bio"
+                      className="form-control"
+                      value={bio}
+                    />
+                    <label className="form-label" htmlFor="bio">
+                      Bio
                     </label>
                   </div>
                   <div className="form-floating mb-3">
                     <input
                       onChange={handlePasswordChange}
-                      placeholder="Password"
+                      placeholder="Confirm Password"
                       required
                       type="password"
                       name="password"
@@ -188,36 +268,41 @@ function SignupForm({ backgroundImage }) {
                       value={password}
                     />
                     <label className="form-label" htmlFor="password">
-                      Password
+                      Confirm Password
                     </label>
                   </div>
-                  {/* <div className="form-floating mb-3">
-                    <input
-                      onChange={handleBioChange}
-                      placeholder="Bio"
-                      type="text"
-                      name="bio"
-                      id="bio"
-                      className="form-control"
-                      value={bio}
-                    />
-                    <label className="form-label" htmlFor="bio">
-                      Bio
-                    </label>
-                  </div> */}
-                  <div className="col text-center">
+                  {/* SUBMIT BUTTON */}
+                  <div className="button-container" style={{ dislay: "flex" }}>
+                    {/* <div className="col-2 text-center"> */}
                     <button
-                      className="btn btn-lg lead text-bold text"
+                      className="btn btn-md lead text-bold text mx-2"
                       style={{
-                        width: "100%",
+                        // width: "100%",
                         background: "#F8D876",
                         fontWeight: "750",
                         color: "#512b20",
+                        flexBasis: "50%",
                       }}
                       type="submit"
-                      value="Sign Up"
+                      value="Edit Profile"
                     >
-                      Sign Up
+                      Submit
+                    </button>
+                    {"  "}
+                    <button
+                      onClick={handleDelete}
+                      className="btn btn-md lead text-bold text mx-2"
+                      style={{
+                        // width: "100%",
+                        background: "#FF4B3E",
+                        fontWeight: "750",
+                        color: "white",
+                        flexBasis: "50%",
+                      }}
+                      type="button"
+                      value="Delete Account"
+                    >
+                      Delete Account
                     </button>
                   </div>
                 </form>
@@ -226,7 +311,7 @@ function SignupForm({ backgroundImage }) {
                     className="alert text-center alert-success mb-0 p-4 mt-4"
                     id="success-message"
                   >
-                    Your account has been created!
+                    Your munch has been posted!
                   </div>
                 )}
               </div>
@@ -237,5 +322,4 @@ function SignupForm({ backgroundImage }) {
     </>
   );
 }
-
-export default SignupForm;
+export default EditUser;

@@ -21,7 +21,6 @@ class AccountIn(BaseModel):
 
 
 class AccountOut(BaseModel):
-    # tried switching the order
     id: int
     first_name: str
     last_name: str
@@ -55,12 +54,12 @@ class AccountQueries():
                     result = db.execute(
                         """
                         SELECT id,
-                            first_name,
-                            last_name,
-                            email,
-                            username,
-                            hashed_password,
-                            bio
+                        first_name,
+                        last_name,
+                        email,
+                        username,
+                        hashed_password,
+                        bio
                         FROM users
                         WHERE username = %s
                         """,
@@ -73,6 +72,29 @@ class AccountQueries():
         except Exception:
             return {"message": "Could not get account"}
 
+    def get_one(self, id: int) -> AccountOut:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT id,
+                        first_name,
+                        last_name, email,
+                        username,
+                        bio
+                        FROM users
+                        WHERE id = %s
+                        """,
+                        [id],
+                    )
+                    record = result.fetchone()
+                    if record is None:
+                        return None
+                    return self.record_to_account_out_without_password(record)
+        except Exception:
+            return {"message": "Could not get account"}
+
     def create(self, user: AccountIn,
                hashed_password: str) -> AccountOutWithPassword:
         try:
@@ -80,14 +102,15 @@ class AccountQueries():
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        INSERT INTO users(
-                            first_name,
-                            last_name,
-                            email,
-                            username,
-                            hashed_password,
-                            bio
-                        )
+                        INSERT INTO users
+                            (
+                                first_name,
+                                last_name,
+                                email,
+                                username,
+                                hashed_password,
+                                bio
+                            )
                         VALUES
                             (%s, %s, %s, %s, %s, %s)
                         RETURNING id,
@@ -142,14 +165,15 @@ class AccountQueries():
                     db.execute(
                         """
                         UPDATE users
-                        SET first_name = %s,
-                            last_name = %s,
+                        SET first_name= %s,
+                            last_name= %s,
                             username = %s,
                             email = %s,
                             bio = %s
                         WHERE id = %s
                         """,
                         [
+
                             user.first_name,
                             user.last_name,
                             user.username,
@@ -165,3 +189,13 @@ class AccountQueries():
     def account_in_to_out(self, id: int, user: AccountIn):
         old_data = user.dict()
         return AccountOut(id=id, **old_data)
+
+    def record_to_account_out_without_password(self, record):
+        return AccountOut(
+            id=record[0],
+            first_name=record[1],
+            last_name=record[2],
+            email=record[3],
+            username=record[4],
+            bio=record[5],
+        )

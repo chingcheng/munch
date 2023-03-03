@@ -13,7 +13,6 @@ export async function getTokenInternal() {
     const response = await fetch(url, {
       credentials: "include",
     });
-    // console.log("response!!", response)
     if (response.ok) {
       const data = await response.json();
       internalToken = data.access_token;
@@ -81,7 +80,7 @@ export function useToken() {
       await fetch(url, { method: "delete", credentials: "include" });
       internalToken = null;
       setToken(null);
-      navigate("/");
+      navigate("/login");
     }
   }
 
