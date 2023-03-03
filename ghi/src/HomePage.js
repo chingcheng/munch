@@ -86,8 +86,8 @@ function HomePage({ backgroundImage }) {
 
   useEffect(() => {
     fetchID();
-    fetchFilterMunches();
-  }, [token]);
+    // fetchFilterMunches();
+  }, [fetchID, token]);
 
   return (
     <>
