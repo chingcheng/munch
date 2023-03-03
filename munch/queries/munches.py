@@ -63,7 +63,16 @@ class MunchRepository:
                     result = db.execute(
                         """
                         INSERT INTO munches
-                            (location, rating, review, photo, tag, city, state, user_id)
+                            (
+                                location,
+                                rating,
+                                review,
+                                photo,
+                                tag,
+                                city,
+                                state,
+                                user_id,
+                            )
                         VALUES
                             (%s, %s, %s, %s, %s, %s, %s, %s)
                         RETURNING id;
@@ -144,17 +153,17 @@ class MunchRepository:
                             user_id = %s,
                         WHERE id = %s AND user_id = %s
                         """,
-                    [
-                        munch.location,
-                        munch.rating,
-                        munch.review,
-                        munch.photo,
-                        munch.tag,
-                        munch.city,
-                        munch.state,
-                        munch_id,
-                        munch.user_id,
-                    ]
+                        [
+                            munch.location,
+                            munch.rating,
+                            munch.review,
+                            munch.photo,
+                            munch.tag,
+                            munch.city,
+                            munch.state,
+                            munch_id,
+                            munch.user_id,
+                        ]
                     )
                     return self.munch_in_to_out(munch_id, munch)
         except Exception:

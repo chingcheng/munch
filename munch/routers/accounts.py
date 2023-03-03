@@ -8,13 +8,13 @@ from fastapi import (
 )
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
-from typing import Union
 from pydantic import BaseModel
 from queries.accounts import (
     AccountIn,
     AccountOut,
     AccountOutWithPassword,
     AccountQueries,
+    DuplicateAccountError,
 )
 
 
@@ -35,10 +35,10 @@ router = APIRouter()
 
 
 @router.get("munch/protected", response_model=bool)
-async def get_protected (
+async def get_protected(
     # add services to be protected
-    #munches: MunchQueries = Depends()
-        #return munches.get_account_munches(account_data)
+    # munches: MunchQueries = Depends()
+        # return munches.get_account_munches(account_data)
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return True

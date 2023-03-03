@@ -19,7 +19,7 @@ def get_all_munches(
     if account_data is not None:
         return repo.get_all()
     else:
-        raise HTTPException(status_code = 401, detail="Unauthorized")
+        raise HTTPException(status_code=401, detail="Unauthorized")
 
 
 @router.post("/munches", response_model=Union[MunchOut, Error])
@@ -31,7 +31,7 @@ def create_munch(
 ):
     if account_data is not None:
         try:
-            munch.user_id= account_data["id"]
+            munch.user_id = account_data["id"]
             return repo.create(munch)
         except Exception:
             raise HTTPException(status_code=400,
@@ -44,7 +44,8 @@ def get_one_munch(
     response: Response,
     repo: MunchRepository = Depends(),
     account_data: Optional[dict] = Depends(
-    authenticator.try_get_current_account_data),
+        authenticator.try_get_current_account_data
+    ),
 ) -> MunchOut:
     munch = repo.get_one(id)
     if account_data is not None and munch is not None:
@@ -60,7 +61,8 @@ def update_munch(
     munch: MunchIn,
     repo: MunchRepository = Depends(),
     account_data: Optional[dict] = Depends(
-    authenticator.try_get_current_account_data),
+        authenticator.try_get_current_account_data
+    ),
 ) -> Union[Error, MunchOut]:
     existing_munch = repo.get_one(id)
     if existing_munch is None:
