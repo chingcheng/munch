@@ -112,7 +112,7 @@ function EditUser({ backgroundImage }) {
       },
     };
     const response = await fetch(url, fetchConfig);
-    console.log("response", response);
+    // console.log("response", response)
     if (response.ok) {
       const data = await response.json();
       // setUser(data)
@@ -163,10 +163,10 @@ function EditUser({ backgroundImage }) {
                   id="update-user-form"
                   onSubmit={handleSubmit}
                 >
-                  <NavLink>
-                    <h1 className="text-center">
+                  <NavLink to="/home">
+                    <h1 className="text-center mb-3">
                       <img
-                        src="../../munch_transparent.png"
+                        src="../../edit_account.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -175,16 +175,6 @@ function EditUser({ backgroundImage }) {
                       />
                     </h1>
                   </NavLink>
-                  <p>
-                    <img
-                      src="../../munch_slogan.png"
-                      alt="Slogan"
-                      style={{
-                        maxWidth: "100%",
-                        width: "350px",
-                      }}
-                    />
-                  </p>
                   <div className="form-floating mb-3">
                     <input
                       onChange={handleFirstNameChange}
@@ -273,15 +263,14 @@ function EditUser({ backgroundImage }) {
                   </div>
                   {/* SUBMIT BUTTON */}
                   <div className="button-container" style={{ dislay: "flex" }}>
-                    {/* <div className="col-2 text-center"> */}
                     <button
-                      className="btn btn-md lead text-bold text mx-2"
+                      className="btn btn-md lead text-bold text mx-2 mt-1"
                       style={{
-                        // width: "100%",
                         background: "#F8D876",
                         fontWeight: "750",
                         color: "#512b20",
-                        flexBasis: "50%",
+                        width: "150px",
+                        height: "40px",
                       }}
                       type="submit"
                       value="Edit Profile"
@@ -291,13 +280,13 @@ function EditUser({ backgroundImage }) {
                     {"  "}
                     <button
                       onClick={handleDelete}
-                      className="btn btn-md lead text-bold text mx-2"
+                      className="btn btn-md lead text-bold text mx-2 mt-1"
                       style={{
-                        // width: "100%",
                         background: "#FF4B3E",
                         fontWeight: "750",
                         color: "white",
-                        flexBasis: "50%",
+                        width: "150px",
+                        height: "40px",
                       }}
                       type="button"
                       value="Delete Account"

@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-// import "navbar-fixed";
 
 function Nav({ backgroundImage }) {
   return (
@@ -50,7 +49,7 @@ function Nav({ backgroundImage }) {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/munches/create">
-                  Create a Munch
+                  Create Munch
                 </NavLink>
               </li>
               <li className="nav-item">

@@ -153,7 +153,7 @@ class MunchRepository:
                             city=%s,
                             state=%s,
                             user_id=%s
-                        WHERE id=%s AND user_id =%s
+                        WHERE id=%s
                         """,
                         [
                             munch.location,
@@ -163,8 +163,8 @@ class MunchRepository:
                             munch.tag,
                             munch.city,
                             munch.state,
-                            munch_id,
                             munch.user_id,
+                            munch_id,
                         ]
                     )
                     return self.munch_in_to_out(munch_id, munch)

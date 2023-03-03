@@ -174,10 +174,10 @@ function EditMunch({ backgroundImage }) {
                   id="create-signup-form"
                   onSubmit={handleSubmit}
                 >
-                  <NavLink>
-                    <h1 className="text-center">
+                  <NavLink to="/home">
+                    <h1 className="text-center mb-3">
                       <img
-                        src="../../munch_transparent.png"
+                        src="../../edit_munch.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -186,16 +186,6 @@ function EditMunch({ backgroundImage }) {
                       />
                     </h1>
                   </NavLink>
-                  <p>
-                    <img
-                      src="../../munch_slogan.png"
-                      alt="Slogan"
-                      style={{
-                        maxWidth: "100%",
-                        width: "350px",
-                      }}
-                    />
-                  </p>
                   <div className="form-floating mb-3">
                     <input
                       onChange={handleLocationChange}
@@ -261,10 +251,11 @@ function EditMunch({ backgroundImage }) {
                       style={{
                         background: "#FFDE79",
                         color: "#512b20",
+                        fontWeight: "bold",
                       }}
                       onClick={() => fileInputRef.current.click()}
                     >
-                      Add a Photo
+                      Change Photo
                     </button>
                     <input
                       type="file"
@@ -334,11 +325,13 @@ function EditMunch({ backgroundImage }) {
                         fontWeight: "750",
                         color: "#512b20",
                         width: "100%",
+                        fontSize: "18px",
+                        height: "40px",
                       }}
                       type="submit"
                       value="Update Munch"
                     >
-                      Edit Munch
+                      Submit
                     </button>
                     {"  "}
                   </div>

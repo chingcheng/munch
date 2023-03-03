@@ -11,6 +11,7 @@ from authenticator import authenticator
 from typing import Optional
 from pydantic import BaseModel
 
+
 from queries.accounts import (
     AccountIn,
     AccountOut,
@@ -40,11 +41,11 @@ router = APIRouter()
 async def get_protected(
     # add services to be protected
     # munches: MunchQueries = Depends()
-    # return munches.get_account_munches(account_data)
+        # return munches.get_account_munches(account_data)
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     # if account_data:
-    # return account_data["id"]
+    #     return account_data["id"]
     return True
 
 
@@ -68,7 +69,6 @@ async def create_account(
     response: Response,
     accounts: AccountQueries = Depends(),
 ):
-
     hashed_password = authenticator.hash_password(info.password)
     try:
         account = accounts.create(info, hashed_password)
@@ -88,15 +88,6 @@ def delete_account(
     repo: AccountQueries = Depends(),
 ) -> bool:
     return repo.delete(id)
-
-
-# @router.put("/accounts/{id}", response_model=AccountOut)
-# def update_account(
-#     id: int,
-#     user: AccountIn,
-#     repo: AccountQueries = Depends(),
-# ) -> AccountOutWithPassword:
-#     return repo.update(id, user)
 
 
 @router.put("/accounts/{id}", response_model=AccountOut)
@@ -124,7 +115,7 @@ def get_account(
     repo: AccountQueries = Depends(),
     account_data: Optional[dict] = Depends(
         authenticator.try_get_current_account_data
-        ),
+    ),
 ) -> AccountOut:
     user = repo.get_one(id)
     if user is not None and account_data is not None:
