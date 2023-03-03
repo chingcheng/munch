@@ -142,6 +142,18 @@ function MunchDetail({ backgroundImage }) {
                       style={{ maxWidth: "100%" }}
                     />
                   </div>
+                  <Link to={`/login`} className="card-link">
+                    <div className="form-floating mb-3">
+                      <h2
+                        style={{
+                          color: "#FFE085",
+                          size: "40px",
+                        }}
+                      >
+                        {username}
+                      </h2>
+                    </div>
+                  </Link>
                   <div className="form-floating mb-3">
                     <p style={{ color: "#FFE085" }}>{munch.review}</p>
                   </div>
