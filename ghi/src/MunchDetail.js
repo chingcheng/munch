@@ -4,12 +4,14 @@ import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 
 function MunchDetail({ backgroundImage }) {
-  let { id, user_id } = useParams();
+  let { id, username } = useParams();
   const navigate = useNavigate();
   const [munch, setMunch] = useState([]);
   const { token } = useAuthContext();
-  const [username, setUsername] = useState("");
+  const [userName, setUsername] = useState("");
   const [userId, setUserId] = useState("");
+  console.log("username", username)
+  console.log("userName", userName)
 
   const handleDelete = async () => {
     const munchUrl = `http://localhost:8010/munches/${id}`;
@@ -57,8 +59,8 @@ function MunchDetail({ backgroundImage }) {
     const response = await fetch(usernameUrl, fetchConfig);
     if (response.ok) {
       const data = await response.json();
-      const username = data.username;
-      setUsername(username);
+      const userName = data.username;
+      setUsername(userName);
     }
   };
 
@@ -140,7 +142,7 @@ function MunchDetail({ backgroundImage }) {
                       style={{ maxWidth: "100%" }}
                     />
                   </div>
-                  <Link to={`/filtered/`} className="card-link">
+                  <Link to={`/filtered/${userName}`} className="card-link">
                     <div className="form-floating mb-3">
                       <h2
                         style={{
@@ -148,7 +150,7 @@ function MunchDetail({ backgroundImage }) {
                           size: "40px",
                         }}
                       >
-                        {username}
+                        {userName}
                       </h2>
                     </div>
                   </Link>

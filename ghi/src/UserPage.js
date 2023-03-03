@@ -37,8 +37,9 @@ function MunchesColumn(props){
     </div>
   );
 }
-
-function UserPage({ backgroundImage }) {
+const UserPage = ({backgroundImage}) => {
+  const {user
+    Name} = useParams();
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
   const { id, user_id } = useParams;
@@ -62,36 +63,36 @@ function UserPage({ backgroundImage }) {
   //     setUsername(data.username);
   //   }
   // }, [id, token]);
- useEffect(() => {
-    const fetchFilterMunches = async (userId) => {
-      try {
-        const url = `http://localhost:8010/munches`;
-        const fetchConfig = {
-          method: "get",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
+//  useEffect(() => {
+//     const fetchFilterMunches = async (userId) => {
+//       try {
+//         const url = `http://localhost:8010/munches`;
+//         const fetchConfig = {
+//           method: "get",
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           },
+//         };
 
-        const response = await fetch(url, fetchConfig);
-        if (response.ok) {
-          const munches = await response.json();
-          const filteredMunches = munches.filter((munch) =>
-            munch.user_id.includes(userId)
-          );
-          const munchColumns = [[], [], []];
-          filteredMunches.forEach((munch, index) =>
-            munchColumns[index % 3].push(munch)
-          );
-          setMunchColumns(munchColumns);
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    };
+//         const response = await fetch(url, fetchConfig);
+//         if (response.ok) {
+//           const munches = await response.json();
+//           const filteredMunches = munches.filter((munch) =>
+//             munch.user_id.includes(userId)
+//           );
+//           const munchColumns = [[], [], []];
+//           filteredMunches.forEach((munch, index) =>
+//             munchColumns[index % 3].push(munch)
+//           );
+//           setMunchColumns(munchColumns);
+//         }
+//       } catch (e) {
+//         console.error(e);
+//       }
+//     };
 
-    fetchFilterMunches();
-  }, [token, user_id]);
+//     fetchFilterMunches();
+//   }, [token, user_id]);
 
 
 
@@ -126,10 +127,10 @@ function UserPage({ backgroundImage }) {
         }}
       >
         <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
-          <img src="./munch_transparent.png" alt="" width="450" />
+          <img src="../munch_transparent.png" alt="" width="450" />
           <div>
             <p>
-              <img src="./munch_slogan.png" alt="Slogan" width="300px" />
+              <img src="../munch_slogan.png" alt="Slogan" width="300px" />
             </p>
           </div>
         </div>

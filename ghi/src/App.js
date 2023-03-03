@@ -59,9 +59,9 @@ function getRandomImage(images) {
 function App() {
   //<<< GET MUNCHES FUNCTION >>>
   const [munches, setMunches] = useState([]);
-  const { id } = useParams;
+  const { id, username  } = useParams;
   const { token } = useAuthContext;
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
 
   const getMunches = async () => {
     const url = "http://localhost:8010/munches";
@@ -73,21 +73,21 @@ function App() {
     }
   };
 
-  const getUsername = async (userId) => {
-    const usernameUrl = `http://localhost:8010/accounts/${id}`;
-    const fetchConfig = {
-      method: "get",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    const response = await fetch(usernameUrl, fetchConfig);
-    if (response.ok) {
-      const data = await response.json();
-      const username = data.username;
-      setUsername(username);
-    }
-  };
+  // const getUsername = async (userId) => {
+  //   const usernameUrl = `http://localhost:8010/accounts/${id}`;
+  //   const fetchConfig = {
+  //     method: "get",
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   };
+  //   const response = await fetch(usernameUrl, fetchConfig);
+  //   if (response.ok) {
+  //     const data = await response.json();
+  //     const username = data.username;
+  //     setUsername(username);
+  //   }
+  // };
 
   useEffect(() => {
     getMunches();
@@ -206,7 +206,7 @@ function App() {
             </Routes>
             <Routes>
               <Route
-                path="filtered"
+                path="filtered/:username"
                 element={<UserPage backgroundImage={backgroundImage} />}
               />
             </Routes>
