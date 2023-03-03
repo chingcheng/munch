@@ -2,14 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuthContext } from "./Auth";
 
-function MunchesColumn(props) {
+function MunchesColumn(props){
   return (
     <div className="col">
-      {/* {props.list.map((munch) => ( */}
-      {props
-        .filter((munch) => munch.user_id === user_id)
-        .map((munch) => {
-          return (
+      {props.list.map((munch) => (
             <div key={munch.id}>
               <Link to={`/munches/${munch.id}`} className="card-link">
                 <div className="card mb-3 shadow" style={{ height: "400px" }}>
@@ -37,8 +33,7 @@ function MunchesColumn(props) {
                 </div>
               </Link>
             </div>
-          );
-        })}
+          ))};
     </div>
   );
 }
@@ -47,6 +42,7 @@ function UserPage({ backgroundImage }) {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
   const { id, user_id } = useParams;
+  const {userId, setUserId} = useState("");
   // const { id } = useParams();
   // const { userId, setuserId } = useState("");
   // const { username, setUsername } = useState("");
@@ -66,37 +62,38 @@ function UserPage({ backgroundImage }) {
   //     setUsername(data.username);
   //   }
   // }, [id, token]);
+ useEffect(() => {
+    const fetchFilterMunches = async (userId) => {
+      try {
+        const url = `http://localhost:8010/munches`;
+        const fetchConfig = {
+          method: "get",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
 
-  const fetchData = async () => {
-    try {
-      const url = `http://localhost:8010/munches`;
-      // const usernameUrl = `http://localhost:8010/accounts/${id}`;
-      const fetchConfig = {
-        method: "get",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      const response = await fetch(url, fetchConfig);
-      if (response.ok) {
-        const data = await response.json();
-        console.log("data", data);
-        const munchColumns = [[], [], []];
-        data.forEach((munch, index) => munchColumns[index % 3].push(munch));
-        setMunchColumns(munchColumns);
-        // console.log("data", data);
-        // console.log("user_id", data.user_id);
-        // setuserId(data.user_id);
-        // getUsername(data.user_id);
+        const response = await fetch(url, fetchConfig);
+        if (response.ok) {
+          const munches = await response.json();
+          const filteredMunches = munches.filter((munch) =>
+            munch.user_id.includes(userId)
+          );
+          const munchColumns = [[], [], []];
+          filteredMunches.forEach((munch, index) =>
+            munchColumns[index % 3].push(munch)
+          );
+          setMunchColumns(munchColumns);
+        }
+      } catch (e) {
+        console.error(e);
       }
-    } catch (e) {
-      console.error(e);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  }, [token]);
+    };
+
+    fetchFilterMunches();
+  }, [token, user_id]);
+
+
 
   // const getUsername = async (userId) => {
   //   const usernameUrl = `http://localhost:8010/accounts/${userId}`;
@@ -141,9 +138,9 @@ function UserPage({ backgroundImage }) {
         </div>
         <div className="container">
           <div className="row">
-            {munchColumns.map((munchList, index) => (
+              {munchColumns.map((munchList, index) => (
               <MunchesColumn key={index} list={munchList} />
-            ))}
+               ))}
           </div>
         </div>
       </div>
