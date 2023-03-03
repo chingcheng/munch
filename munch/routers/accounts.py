@@ -9,8 +9,6 @@ from fastapi import (
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
 from typing import Union, Optional
-
-
 from pydantic import BaseModel
 
 from queries.accounts import (
@@ -44,6 +42,7 @@ async def get_protected(
     # if account_data:
     #     return account_data["id"]
     return True
+
 
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
