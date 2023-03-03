@@ -53,10 +53,10 @@ class AccountQueries():
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id,
+                        SELECT
+                        id,
                         first_name,
-                        last_name,
-                        email,
+                        last_name, email,
                         username,
                         hashed_password,
                         bio
@@ -78,11 +78,7 @@ class AccountQueries():
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id,
-                        first_name,
-                        last_name, email,
-                        username,
-                        bio
+                        SELECT id, first_name, last_name, email, username, bio
                         FROM users
                         WHERE id = %s
                         """,
@@ -103,23 +99,22 @@ class AccountQueries():
                     result = db.execute(
                         """
                         INSERT INTO users
-                            (
-                                first_name,
-                                last_name,
-                                email,
-                                username,
-                                hashed_password,
-                                bio
-                            )
-                        VALUES
-                            (%s, %s, %s, %s, %s, %s)
-                        RETURNING id,
-                            first_name,
+                            (first_name,
                             last_name,
                             email,
                             username,
                             hashed_password,
-                            bio;
+                            bio)
+                        VALUES
+                            (%s, %s, %s, %s, %s, %s)
+                        RETURNING
+                        id,
+                        first_name,
+                        last_name,
+                        email,
+                        username,
+                        hashed_password,
+                        bio;
                         """,
                         [
                             user.first_name,
