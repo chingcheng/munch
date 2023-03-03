@@ -71,7 +71,7 @@ function MunchDetail({ backgroundImage }) {
         <div className="container text-center mt-5">
           <div className="row">
             <div className="offset-3 col-6">
-              <div className="shadow p-2 m-4">
+              {/* <div className="shadow p-2 m-4">
                 <form className="form p-5 m-1" id="create-signup-form">
                   <NavLink to="/home">
                     <p className="text-center">
@@ -158,6 +158,30 @@ function MunchDetail({ backgroundImage }) {
                     </button>
                   </div>
                 </form>
+              </div> */}
+              <div className="col mx-auto d-flex justify-content-center">
+                <div
+                  className="card"
+                  style={{ height: "800px", width: "800px" }}
+                >
+                  <img src={munch.photo} className="card-img-top" alt="Munch" />
+                  <div className="card-body">
+                    <h5 className="card-title">{munch.location}</h5>
+                    <p className="card-text">{munch.review}</p>
+                    <Link
+                      to={`/munches/edit/${id}`}
+                      className="btn btn-warning mx-1"
+                    >
+                      Edit Munch
+                    </Link>
+                    <button
+                      onClick={handleDelete}
+                      className="btn btn-danger mx-1"
+                    >
+                      Delete Munch
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
