@@ -37,7 +37,8 @@ class MunchRepository:
                 with conn.cursor() as db:
                     db.execute(
                         """
-                        SELECT id,
+                        SELECT
+                            id,
                             location,
                             rating,
                             review,
@@ -71,7 +72,7 @@ class MunchRepository:
                                 tag,
                                 city,
                                 state,
-                                user_id,
+                                user_id
                             )
                         VALUES
                             (%s, %s, %s, %s, %s, %s, %s, %s)
@@ -100,7 +101,8 @@ class MunchRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id,
+                        SELECT
+                            id,
                             location,
                             rating,
                             review,
@@ -143,15 +145,15 @@ class MunchRepository:
                     db.execute(
                         """
                         UPDATE munches
-                        SET location= %s,
-                            rating= %s,
-                            review = %s,
-                            photo = %s,
-                            tag = %s,
-                            city = %s,
-                            state = %s,
-                            user_id = %s,
-                        WHERE id = %s AND user_id = %s
+                        SET location=%s,
+                            rating=%s,
+                            review=%s,
+                            photo=%s,
+                            tag=%s,
+                            city=%s,
+                            state=%s,
+                            user_id=%s
+                        WHERE id=%s AND user_id =%s
                         """,
                         [
                             munch.location,
