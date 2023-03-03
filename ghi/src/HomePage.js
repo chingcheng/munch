@@ -55,7 +55,7 @@ function HomePage({ backgroundImage }) {
     } catch (e) {
       console.error(e);
     }
-  }, [setUserId, userId]);
+  }, []);
 
   const fetchFilterMunches = async (userId) => {
     try {
