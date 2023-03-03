@@ -38,12 +38,13 @@ function MunchesColumn(props){
   );
 }
 const UserPage = ({backgroundImage}) => {
-  const {user
-    Name} = useParams();
+  const {userName} = useParams();
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
-  const { id, user_id } = useParams;
+  // const { id, user_id } = useParams;
   const {userId, setUserId} = useState("");
+  console.log("username", userName)
+  console.log("useParams", useParams())
   // const { id } = useParams();
   // const { userId, setuserId } = useState("");
   // const { username, setUsername } = useState("");
@@ -63,36 +64,62 @@ const UserPage = ({backgroundImage}) => {
   //     setUsername(data.username);
   //   }
   // }, [id, token]);
-//  useEffect(() => {
-//     const fetchFilterMunches = async (userId) => {
-//       try {
-//         const url = `http://localhost:8010/munches`;
-//         const fetchConfig = {
-//           method: "get",
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         };
+ useEffect(() => {
+const getUserId = async (userName) => {
+  const usernameUrl = `http://localhost:8010/accounts`;
+  const fetchConfig = {
+    method: "get",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await fetch(usernameUrl, fetchConfig);
+  if (response.ok) {
+    const data = await response.json();
+    const userID = data.user_id;
+    // setUsername(userName);
+  }
+};
 
-//         const response = await fetch(url, fetchConfig);
-//         if (response.ok) {
-//           const munches = await response.json();
-//           const filteredMunches = munches.filter((munch) =>
-//             munch.user_id.includes(userId)
-//           );
-//           const munchColumns = [[], [], []];
-//           filteredMunches.forEach((munch, index) =>
-//             munchColumns[index % 3].push(munch)
-//           );
-//           setMunchColumns(munchColumns);
-//         }
-//       } catch (e) {
-//         console.error(e);
-//       }
-//     };
 
-//     fetchFilterMunches();
-//   }, [token, user_id]);
+    const fetchFilterMunches = async (userName) => {
+      try {
+        const url = `http://localhost:8010/munches`;
+        const fetchConfig = {
+          method: "get",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+
+        const response = await fetch(url, fetchConfig);
+        console.log("response", response)
+        if (response.ok) {
+          // console.log("username", username)
+          console.log("userName", userName)
+          console.log("response", response)
+          const munches = await response.json();
+          console.log("munches", munches)
+          console.log("id", munches[1].id);
+          console.log("user_id", munches[0].user_id);
+          const filteredMunches = munches.filter((munch) =>
+            munch.userName.includes(userName)
+          );
+          const munchColumns = [[], [], []];
+          filteredMunches.forEach((munch, index) =>
+            munchColumns[index % 3].push(munch)
+          );
+          setMunchColumns(munchColumns);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+
+
+    fetchFilterMunches();
+  }, [token, userName]);
 
 
 
@@ -135,6 +162,7 @@ const UserPage = ({backgroundImage}) => {
           </div>
         </div>
         <div className="container">
+          <h2>{userName}</h2>
           <div className="row"></div>
         </div>
         <div className="container">

@@ -4,13 +4,13 @@ import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 
 function MunchDetail({ backgroundImage }) {
-  let { id, username } = useParams();
+  let { id } = useParams();
   const navigate = useNavigate();
   const [munch, setMunch] = useState([]);
   const { token } = useAuthContext();
   const [userName, setUsername] = useState("");
   const [userId, setUserId] = useState("");
-  console.log("username", username)
+  // console.log("username", username)
   console.log("userName", userName)
 
   const handleDelete = async () => {

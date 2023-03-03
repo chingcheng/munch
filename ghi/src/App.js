@@ -59,7 +59,7 @@ function getRandomImage(images) {
 function App() {
   //<<< GET MUNCHES FUNCTION >>>
   const [munches, setMunches] = useState([]);
-  const { id, username  } = useParams;
+  const { id, userName  } = useParams;
   const { token } = useAuthContext;
   // const [username, setUsername] = useState("");
 
@@ -206,7 +206,7 @@ function App() {
             </Routes>
             <Routes>
               <Route
-                path="filtered/:username"
+                path="filtered/:userName"
                 element={<UserPage backgroundImage={backgroundImage} />}
               />
             </Routes>
