@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "./Auth";
 
@@ -38,56 +38,54 @@ function HomePage({ backgroundImage }) {
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
 
-  const fetchID = useCallback(async () => {
-    try {
-      const url = `http://localhost:8010/token`;
-      const fetchConfig = {
-        credentials: "include",
-      };
-
-      const response = await fetch(url, fetchConfig);
-      if (response.ok) {
-        const data = await response.json();
-        setUserId(userId);
-        setUserId(data.account.id);
-        fetchFilterMunches(data.account.id);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }, []);
-
-  const fetchFilterMunches = async (userId) => {
-    try {
-      const url = `http://localhost:8010/munches`;
-      const fetchConfig = {
-        method: "get",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      const response = await fetch(url, fetchConfig);
-      if (response.ok) {
-        const munches = await response.json();
-        const filteredMunches = munches.filter((munch) =>
-          munch.user_id.includes(userId)
-        );
-        const munchColumns = [[], [], []];
-        filteredMunches.forEach((munch, index) =>
-          munchColumns[index % 3].push(munch)
-        );
-        setMunchColumns(munchColumns);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   useEffect(() => {
+    const fetchFilterMunches = async (userId) => {
+      try {
+        const url = `http://localhost:8010/munches`;
+        const fetchConfig = {
+          method: "get",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+
+        const response = await fetch(url, fetchConfig);
+        if (response.ok) {
+          const munches = await response.json();
+          const filteredMunches = munches.filter((munch) =>
+            munch.user_id.includes(userId)
+          );
+          const munchColumns = [[], [], []];
+          filteredMunches.forEach((munch, index) =>
+            munchColumns[index % 3].push(munch)
+          );
+          setMunchColumns(munchColumns);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    const fetchID = async () => {
+      try {
+        const url = `http://localhost:8010/token`;
+        const fetchConfig = {
+          credentials: "include",
+        };
+
+        const response = await fetch(url, fetchConfig);
+        if (response.ok) {
+          const data = await response.json();
+          setUserId(data.account.id);
+          fetchFilterMunches(data.account.id);
+          console.log(userId);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
     fetchID();
     // fetchFilterMunches();
-  }, [fetchID, token]);
+  }, [token, userId]);
 
   return (
     <>

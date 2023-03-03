@@ -310,7 +310,7 @@ function EditMunch({ backgroundImage }) {
                   </div>
 
                   {/* hidden user id */}
-                  <div className="form-floating mb-3">
+                  <div className="form-floating mb-3 d-none">
                     <input
                       onChange={handleUserIdChange}
                       placeholder="userId"
