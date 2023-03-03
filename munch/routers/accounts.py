@@ -8,8 +8,9 @@ from fastapi import (
 )
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
-from typing import Union, Optional
+from typing import Optional
 from pydantic import BaseModel
+
 
 from queries.accounts import (
     AccountIn,
@@ -17,26 +18,30 @@ from queries.accounts import (
     AccountQueries,
     DuplicateAccountError,
     AccountOutWithPassword,
-    Error
 )
+
 
 class AccountForm(BaseModel):
     username: str
     password: str
 
+
 class AccountToken(Token):
     account: AccountOut
+
 
 class HttpError(BaseModel):
     detail: str
 
+
 router = APIRouter()
+
 
 @router.get("munch/protected", response_model=bool)
 async def get_protected(
-    #add services to be protected
-    #munches: MunchQueries = Depends()
-        #return munches.get_account_munches(account_data)
+    # add services to be protected
+    # munches: MunchQueries = Depends()
+        # return munches.get_account_munches(account_data)
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     # if account_data:
@@ -64,7 +69,6 @@ async def create_account(
     response: Response,
     accounts: AccountQueries = Depends(),
 ):
-
     hashed_password = authenticator.hash_password(info.password)
     try:
         account = accounts.create(info, hashed_password)
@@ -86,29 +90,22 @@ def delete_account(
     return repo.delete(id)
 
 
-# @router.put("/accounts/{id}", response_model=AccountOut)
-# def update_account(
-#     id: int,
-#     user: AccountIn,
-#     repo: AccountQueries = Depends(),
-# ) -> AccountOutWithPassword:
-#     return repo.update(id, user)
-
-
 @router.put("/accounts/{id}", response_model=AccountOut)
 def update_account(
     id: int,
     user: AccountIn,
     repo: AccountQueries = Depends(),
-    account_data: Optional[dict] = Depends(authenticator.try_get_current_account_data),
+    account_data: Optional[dict] = Depends(
+        authenticator.try_get_current_account_data
+    ),
 ) -> AccountOutWithPassword:
     existing_user = repo.get_one(id)
     if existing_user is not None and account_data is not None:
         return repo.update(id, user)
     if existing_user is None:
-        raise HTTPException(status_code = 404, detail="User not found")
+        raise HTTPException(status_code=404, detail="User not found")
     if account_data is None:
-        raise HTTPException(status_code = 401, detail="Unauthorized")
+        raise HTTPException(status_code=401, detail="Unauthorized")
 
 
 @router.get("/accounts/{id}", response_model=AccountOut)
@@ -116,12 +113,14 @@ def get_account(
     id: int,
     response: Response,
     repo: AccountQueries = Depends(),
-    account_data: Optional[dict] = Depends(authenticator.try_get_current_account_data),
+    account_data: Optional[dict] = Depends(
+        authenticator.try_get_current_account_data
+    ),
 ) -> AccountOut:
     user = repo.get_one(id)
     if user is not None and account_data is not None:
         return user
     if user is None:
-        raise HTTPException(status_code = 404, detail="User not found")
+        raise HTTPException(status_code=404, detail="User not found")
     if account_data is None:
-        raise HTTPException(status_code = 401, detail="Unauthorized")
+        raise HTTPException(status_code=401, detail="Unauthorized")
