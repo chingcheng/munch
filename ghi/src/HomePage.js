@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "./Auth";
 
@@ -38,7 +38,7 @@ function HomePage({ backgroundImage }) {
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
 
-  const fetchID = async () => {
+  const fetchID = useCallback(async () => {
     try {
       const url = `http://localhost:8010/token`;
       const fetchConfig = {
@@ -55,7 +55,7 @@ function HomePage({ backgroundImage }) {
     } catch (e) {
       console.error(e);
     }
-  };
+  });
 
   const fetchFilterMunches = async (userId) => {
     try {
