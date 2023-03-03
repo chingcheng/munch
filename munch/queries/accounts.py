@@ -1,12 +1,15 @@
 from pydantic import BaseModel
-from typing import Optional, Union
+from typing import Union
 from queries.pool import pool
+
 
 class Error(BaseModel):
     message: str
 
+
 class DuplicateAccountError(ValueError):
     pass
+
 
 class AccountIn(BaseModel):
     first_name: str
@@ -18,7 +21,6 @@ class AccountIn(BaseModel):
 
 
 class AccountOut(BaseModel):
-    #tried switching the order
     id: int
     first_name: str
     last_name: str
@@ -29,6 +31,7 @@ class AccountOut(BaseModel):
 
 class AccountOutWithPassword(AccountOut):
     hashed_password: str
+
 
 class AccountQueries():
     def record_to_account_out(self, record) -> AccountOutWithPassword:
@@ -50,7 +53,13 @@ class AccountQueries():
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, first_name, last_name, email, username, hashed_password, bio
+                        SELECT id,
+                        first_name,
+                        last_name,
+                        email,
+                        username,
+                        hashed_password,
+                        bio
                         FROM users
                         WHERE username = %s
                         """,
@@ -69,7 +78,11 @@ class AccountQueries():
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, first_name, last_name, email, username, bio
+                        SELECT id,
+                        first_name,
+                        last_name, email,
+                        username,
+                        bio
                         FROM users
                         WHERE id = %s
                         """,
@@ -82,24 +95,39 @@ class AccountQueries():
         except Exception:
             return {"message": "Could not get account"}
 
-    def create(self, user: AccountIn, hashed_password: str) -> AccountOutWithPassword:
+    def create(self, user: AccountIn,
+               hashed_password: str) -> AccountOutWithPassword:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
                         INSERT INTO users
-                            (first_name, last_name, email, username, hashed_password, bio)
+                            (
+                                first_name,
+                                last_name,
+                                email,
+                                username,
+                                hashed_password,
+                                bio
+                            )
                         VALUES
                             (%s, %s, %s, %s, %s, %s)
-                        RETURNING id, first_name, last_name, email, username, hashed_password, bio;
+                        RETURNING id,
+                            first_name,
+                            last_name,
+                            email,
+                            username,
+                            hashed_password,
+                            bio;
                         """,
-                        [user.first_name,
-                         user.last_name,
-                         user.email,
-                         user.username,
-                         hashed_password,
-                         user.bio,
+                        [
+                            user.first_name,
+                            user.last_name,
+                            user.email,
+                            user.username,
+                            hashed_password,
+                            user.bio,
                         ]
                     )
                     id = result.fetchone()[0]
@@ -144,15 +172,15 @@ class AccountQueries():
                             bio = %s
                         WHERE id = %s
                         """,
-                    [
+                        [
 
-                        user.first_name,
-                        user.last_name,
-                        user.username,
-                        user.email,
-                        user.bio,
-                        id
-                    ]
+                            user.first_name,
+                            user.last_name,
+                            user.username,
+                            user.email,
+                            user.bio,
+                            id
+                        ]
                     )
                     return self.account_in_to_out(id, user)
         except Exception:
@@ -161,7 +189,6 @@ class AccountQueries():
     def account_in_to_out(self, id: int, user: AccountIn):
         old_data = user.dict()
         return AccountOut(id=id, **old_data)
-
 
     def record_to_account_out_without_password(self, record):
         return AccountOut(
