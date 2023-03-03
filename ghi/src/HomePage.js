@@ -37,7 +37,6 @@ function HomePage({ backgroundImage }) {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
-  const [munches, setMunches] = useState([]);
 
   const fetchID = async () => {
     try {
@@ -49,6 +48,7 @@ function HomePage({ backgroundImage }) {
       const response = await fetch(url, fetchConfig);
       if (response.ok) {
         const data = await response.json();
+        setUserId(userId);
         setUserId(data.account.id);
         fetchFilterMunches(data.account.id);
       }
@@ -78,7 +78,6 @@ function HomePage({ backgroundImage }) {
           munchColumns[index % 3].push(munch)
         );
         setMunchColumns(munchColumns);
-        setMunches(filteredMunches);
       }
     } catch (e) {
       console.error(e);
