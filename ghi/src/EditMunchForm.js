@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import { useAuthContext } from "./Auth";
@@ -111,32 +111,35 @@ function EditMunch({ backgroundImage }) {
     }
   };
 
-  const getOneMunch = useCallback(async () => {
-    const url = `http://localhost:8010/munches/${id}`;
-    const fetchConfig = {
-      method: "get",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    const response = await fetch(url, fetchConfig);
-    console.log("Edit Token:", token);
-    console.log("response", response);
-    if (response.ok) {
-      const data = await response.json();
-      setLocation(data.location);
-      setCity(data.city);
-      setState(data.state);
-      setReview(data.review);
-      setPhoto(data.photo);
-      setRating(data.rating);
-      setUserId(data.user_id);
-    }
-  }, [id, token]);
-
   useEffect(() => {
+    const getOneMunch = async () => {
+      try {
+        const url = `http://localhost:8010/munches/${id}`;
+        const fetchConfig = {
+          method: "get",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await fetch(url, fetchConfig);
+        console.log("Edit Token:", token);
+        console.log("response", response);
+        if (response.ok) {
+          const data = await response.json();
+          setLocation(data.location);
+          setCity(data.city);
+          setState(data.state);
+          setReview(data.review);
+          setPhoto(data.photo);
+          setRating(data.rating);
+          setUserId(data.user_id);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
     getOneMunch();
-  }, [id, token, getOneMunch]);
+  }, [id, token]);
 
   return (
     <>
