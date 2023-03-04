@@ -93,6 +93,7 @@ function MunchDetail({ backgroundImage }) {
                         {munch.rating}
                         <img
                           src="../star.png"
+                          alt="star"
                           style={{
                             width: "0.9em",
                             height: "0.9em",
@@ -154,17 +155,3 @@ function MunchDetail({ backgroundImage }) {
 }
 
 export default MunchDetail;
-
-{
-  /* <div className="form-floating mb-3">
-                      <Rating
-                        rate={munch.rating}
-                        size={35}
-                        label
-                        transition
-                        fillColor="#FFE085"
-                        emptyColor="gray"
-                        className="foo" // Will remove the inline style if applied
-                      />
-                    </div> */
-}

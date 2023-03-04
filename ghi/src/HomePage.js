@@ -44,6 +44,7 @@ function MunchesColumn(props) {
                     Rating: {munch.rating}
                     <img
                       src="../star.png"
+                      alt="star"
                       style={{
                         width: "0.9em",
                         height: "0.9em",
@@ -112,7 +113,6 @@ function HomePage({ backgroundImage }) {
       }
     };
     fetchID();
-    // fetchFilterMunches();
   }, [token, userId]);
 
   return (
