@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useAuthContext } from "./Auth";
-import { useNavigate, NavLink, useParams } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 
 function EditUser({ backgroundImage }) {
   let { id } = useParams();
@@ -14,7 +14,6 @@ function EditUser({ backgroundImage }) {
   const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  // const [user, setUser] = useState([])
 
   const handleFirstNameChange = (event) => {
     const value = event.target.value;
@@ -114,7 +113,6 @@ function EditUser({ backgroundImage }) {
     const response = await fetch(url, fetchConfig);
     if (response.ok) {
       const data = await response.json();
-      // setUser(data)
       setUserId(data.id);
       setFirstName(data.first_name);
       setLastName(data.last_name);
@@ -141,18 +139,6 @@ function EditUser({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <NavLink>
-          <img
-            src="../../munch_icon.png"
-            alt="Icon"
-            width="65px"
-            style={{
-              position: "absolute",
-              top: 9,
-              left: 15,
-            }}
-          />
-        </NavLink>
         <div className="container text-center mt-5">
           <div className="row">
             <div className="offset-3 col-6">
@@ -162,7 +148,7 @@ function EditUser({ backgroundImage }) {
                   id="update-user-form"
                   onSubmit={handleSubmit}
                 >
-                  <NavLink to="/home">
+                  <Link to="/home">
                     <h1 className="text-center mb-3">
                       <img
                         src="../../edit_account.png"
@@ -173,7 +159,7 @@ function EditUser({ backgroundImage }) {
                         }}
                       />
                     </h1>
-                  </NavLink>
+                  </Link>
                   <div className="form-floating mb-3">
                     <input
                       onChange={handleFirstNameChange}

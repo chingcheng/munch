@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./Nav";
-// import Construct from "./Construct.js";
-// import ErrorNotification from "./ErrorNotification";
 import "./App.css";
 import { AuthProvider, useToken } from "./Auth";
 import LoginForm from "./LoginForm";
@@ -18,7 +16,6 @@ import AllMunches from "./AllMunches";
 import UserPage from "./UserPage";
 
 function GetToken() {
-  // Get token from JWT cookie (if already logged in)
   useToken();
   return null;
 }

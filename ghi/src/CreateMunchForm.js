@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import { useAuthContext } from "./Auth";
 
@@ -117,18 +117,6 @@ function CreateMunch({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <NavLink to="/">
-          <img
-            src="../munch_icon.png"
-            alt="Icon"
-            width="65px"
-            style={{
-              position: "absolute",
-              top: 9,
-              left: 15,
-            }}
-          />
-        </NavLink>
         <div className="container text-center mt-5">
           <div className="row">
             <div className="offset-3 col-6">
@@ -138,7 +126,7 @@ function CreateMunch({ backgroundImage }) {
                   id="create-signup-form"
                   onSubmit={handleSubmit}
                 >
-                  <NavLink to="/home">
+                  <Link to="/home">
                     <h1 className="text-center mb-3">
                       <img
                         src="../create_munch.png"
@@ -149,7 +137,7 @@ function CreateMunch({ backgroundImage }) {
                         }}
                       />
                     </h1>
-                  </NavLink>
+                  </Link>
                   <div className="form-floating mb-3">
                     <input
                       onChange={handleLocationChange}

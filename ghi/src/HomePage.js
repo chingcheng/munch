@@ -8,7 +8,7 @@ function MunchesColumn(props) {
       {props.list.map((munch) => (
         <div key={munch.id}>
           <Link to={`/munches/${munch.id}`} className="card-link">
-            <div className="card mb-3 shadow" style={{ height: "400px" }}>
+            <div className="card mb-3 shadow" style={{ height: "415px" }}>
               <img
                 src={munch.photo}
                 className="card-img-top"
@@ -17,16 +17,42 @@ function MunchesColumn(props) {
               />
               <div
                 className="card-body"
-                style={{ height: "110px", overflow: "hidden" }}
+                style={{
+                  height: "100%",
+                  overflow: "hidden",
+                }}
               >
                 <h5 className="card-location">{munch.location}</h5>
                 <p className="card-review">{munch.review}</p>
               </div>
               <div
                 className="card-footer"
-                style={{ height: "40px", textAlign: "right" }}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  height: "40px",
+                }}
               >
-                <small className="text-muted">Rating: {munch.rating}/5</small>
+                <div className="location-info">
+                  <small className="text-muted">
+                    {munch.city}, {munch.state}
+                  </small>
+                </div>
+                <div className="rating-info">
+                  <small className="text-muted">
+                    Rating: {munch.rating}
+                    <img
+                      src="../star.png"
+                      alt="star"
+                      style={{
+                        width: "0.9em",
+                        height: "0.9em",
+                        marginTop: "-0.25em",
+                      }}
+                    ></img>
+                  </small>
+                </div>
               </div>
             </div>
           </Link>
