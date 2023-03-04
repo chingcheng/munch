@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useAuthContext } from "./Auth";
 import { Link, useParams, useNavigate } from "react-router-dom";
-// import { Rating } from "react-simple-star-rating";
 
 function MunchDetail({ backgroundImage }) {
   let { id } = useParams();
