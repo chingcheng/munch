@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useToken } from "./Auth";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function SignupForm({ backgroundImage }) {
   const navigate = useNavigate();
@@ -12,6 +12,7 @@ function SignupForm({ backgroundImage }) {
   const [password, setPassword] = useState("");
   const [bio, setBio] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleFirstNameChange = (event) => {
     const value = event.target.value;
@@ -63,6 +64,8 @@ function SignupForm({ backgroundImage }) {
       setSubmitted(true);
       clearState();
       navigate("/login");
+    } else {
+      setError("Username or email is already in use.");
     }
   };
 
@@ -78,18 +81,6 @@ function SignupForm({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <NavLink to="/">
-          <img
-            src="./munch_icon.png"
-            alt="Icon"
-            width="65px"
-            style={{
-              position: "absolute",
-              top: 9,
-              left: 15,
-            }}
-          />
-        </NavLink>
         <div className="container text-center mt-5">
           <div className="row">
             <div className="offset-3 col-6">
@@ -99,7 +90,7 @@ function SignupForm({ backgroundImage }) {
                   id="create-signup-form"
                   onSubmit={handleSubmit}
                 >
-                  <NavLink to="/">
+                  <Link to="/">
                     <h1 className="text-center">
                       <img
                         src="./munch_transparent.png"
@@ -110,7 +101,7 @@ function SignupForm({ backgroundImage }) {
                         }}
                       />
                     </h1>
-                  </NavLink>
+                  </Link>
                   <p>
                     <img
                       src="./munch_slogan.png"
@@ -191,20 +182,6 @@ function SignupForm({ backgroundImage }) {
                       Password
                     </label>
                   </div>
-                  {/* <div className="form-floating mb-3">
-                    <input
-                      onChange={handleBioChange}
-                      placeholder="Bio"
-                      type="text"
-                      name="bio"
-                      id="bio"
-                      className="form-control"
-                      value={bio}
-                    />
-                    <label className="form-label" htmlFor="bio">
-                      Bio
-                    </label>
-                  </div> */}
                   <div className="col text-center">
                     <button
                       className="btn btn-lg lead text-bold text"
@@ -220,6 +197,9 @@ function SignupForm({ backgroundImage }) {
                       Sign Up
                     </button>
                   </div>
+                  {error && (
+                    <div className="alert alert-danger mt-3">{error}</div>
+                  )}
                 </form>
                 {submitted && (
                   <div

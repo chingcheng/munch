@@ -1,6 +1,6 @@
 import "./index.css";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function LandingPage({ backgroundImage }) {
   return (
@@ -16,18 +16,6 @@ function LandingPage({ backgroundImage }) {
             minHeight: "100vh",
           }}
         >
-          <NavLink to="/">
-            <img
-              src="./munch_icon.png"
-              alt="Icon"
-              width="65px"
-              style={{
-                position: "absolute",
-                top: 9,
-                left: 15,
-              }}
-            />
-          </NavLink>
           <div className="hero-image text-center center-block">
             <h1>
               <img src="/munch_transparent.png" alt="Logo" width="400px" />
@@ -37,7 +25,7 @@ function LandingPage({ backgroundImage }) {
             </p>
             <div className="d-grid gap-2 d-md-flex justify-content-md-center"></div>
             <div className="container mt-3">
-              <NavLink
+              <Link
                 to="login"
                 className="btn text-bold"
                 style={{
@@ -48,11 +36,11 @@ function LandingPage({ backgroundImage }) {
                 }}
               >
                 Log In{" "}
-              </NavLink>
+              </Link>
             </div>
             <p></p>
             <div className="container mt-3">
-              <NavLink
+              <Link
                 to="signup"
                 className="btn text-bold login-btn-text"
                 style={{
@@ -63,7 +51,7 @@ function LandingPage({ backgroundImage }) {
                 }}
               >
                 Sign Up{" "}
-              </NavLink>
+              </Link>
             </div>
           </div>
         </div>
