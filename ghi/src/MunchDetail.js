@@ -10,8 +10,8 @@ function MunchDetail({ backgroundImage }) {
   const { token } = useAuthContext();
   const [userName, setUsername] = useState("");
   const [userId, setUserId] = useState("");
-  // console.log("username", username)
   console.log("userName", userName)
+  console.log("userId", userId)
 
   const handleDelete = async () => {
     const munchUrl = `http://localhost:8010/munches/${id}`;
@@ -36,12 +36,8 @@ function MunchDetail({ backgroundImage }) {
       },
     };
     const response = await fetch(url, fetchConfig);
-    console.log("response!!", response);
-    console.log("Detail Token:", token);
     if (response.ok) {
       const data = await response.json();
-      console.log("1MunchDATA:", data);
-      console.log(data.user_id);
       setUserId(data.user_id);
       getUsername(data.user_id);
       setMunch(data);
@@ -67,7 +63,7 @@ function MunchDetail({ backgroundImage }) {
   useEffect(() => {
     getOneMunch();
     getUsername();
-  }, [getOneMunch, token, id]);
+  }, [getUsername, getOneMunch, token, id]);
 
   return (
     <>

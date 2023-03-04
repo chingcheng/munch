@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./Nav";
 // import Construct from "./Construct.js";
 // import ErrorNotification from "./ErrorNotification";
@@ -15,7 +15,6 @@ import EditMunch from "./EditMunchForm";
 import Logout from "./Logout";
 import EditUser from "./EditUser";
 import AllMunches from "./AllMunches";
-import { useAuthContext } from "./Auth";
 import UserPage from "./UserPage";
 
 function GetToken() {
@@ -59,8 +58,8 @@ function getRandomImage(images) {
 function App() {
   //<<< GET MUNCHES FUNCTION >>>
   const [munches, setMunches] = useState([]);
-  const { id, userName  } = useParams;
-  const { token } = useAuthContext;
+  // const { id, userName  } = useParams;
+  // const { token } = useAuthContext;
   // const [username, setUsername] = useState("");
 
   const getMunches = async () => {
@@ -72,22 +71,6 @@ function App() {
       setMunches(munches);
     }
   };
-
-  // const getUsername = async (userId) => {
-  //   const usernameUrl = `http://localhost:8010/accounts/${id}`;
-  //   const fetchConfig = {
-  //     method: "get",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   };
-  //   const response = await fetch(usernameUrl, fetchConfig);
-  //   if (response.ok) {
-  //     const data = await response.json();
-  //     const username = data.username;
-  //     setUsername(username);
-  //   }
-  // };
 
   useEffect(() => {
     getMunches();
@@ -105,40 +88,6 @@ function App() {
 
     return () => clearInterval(intervalId);
   }, []);
-
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setBackgroundImage((prevImage) => {
-  //       const currentIndex = images.indexOf(prevImage);
-  //       const nextIndex = (currentIndex + 1) % images.length;
-  //       return images[nextIndex];
-  //     });
-  //   }, 24 * 60 * 60 * 1000);
-
-  //   return () => clearInterval(intervalId);
-  // }, []);
-
-  // const [launch_info, setLaunchInfo] = useState([]);
-  // const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   async function getData() {
-  //     let url = `${process.env.REACT_APP_SAMPLE_SERVICE_API_HOST}/api/launch-details`;
-  //     console.log("fastapi url: ", url);
-  //     let response = await fetch(url);
-  //     console.log("------- hello? -------");
-  //     let data = await response.json();
-
-  //     if (response.ok) {
-  //       console.log("got launch data!");
-  //       setLaunchInfo(data.launch_details);
-  //     } else {
-  //       console.log("drat! something happened");
-  //       setError(data.message);
-  //     }
-  //   }
-  //   getData();
-  // }, []);
 
   return (
     <>

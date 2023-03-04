@@ -77,8 +77,7 @@ const UserPage = ({backgroundImage}) => {
 
       if (response.ok) {
         const munches = await response.json();
-        const filteredMunches = munches.
-        filter((munch) => munch.user_id.includes(userId));
+        const filteredMunches = munches.filter((munch) => munch.user_id.includes(userId));
         const munchColumns = [[], [], []];
         filteredMunches.forEach((munch, index) =>
           munchColumns[index % 3].push(munch)
@@ -90,8 +89,7 @@ const UserPage = ({backgroundImage}) => {
     }
   };
     getUserId();
-    // fetchFilterMunches();
-  }, [token, userId]);
+  }, [token, userId, userName]);
 
   return (
     <>

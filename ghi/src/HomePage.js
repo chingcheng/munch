@@ -87,7 +87,6 @@ function HomePage({ backgroundImage }) {
       }
     };
     fetchID();
-    // fetchFilterMunches();
   }, [token, userId]);
 
   return (

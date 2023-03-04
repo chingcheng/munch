@@ -1,6 +1,39 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useAuthContext } from "./Auth";
+// import EditUser from "./EditUser";
+
 
 function Nav({ backgroundImage }) {
+  const {id} = useParams();
+  const { token } = useAuthContext();
+  console.log("useParams", useParams())
+  console.log("id", id)
+
+  useEffect(() => {
+  const fetchID = async () => {
+    try {
+      const url = `http://localhost:8010/token`;
+      const fetchConfig = {
+        credentials: "include",
+      };
+
+      const response = await fetch(url, fetchConfig);
+      console.log('response', response)
+      if (response.ok) {
+        const data = await response.json();
+        // setUserId(data.account.username);
+        console.log("data:", data)
+        console.log("userId", data.account.id);
+        console.log("username:", data.account.username);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  fetchID();
+  }, [token, id]);
+
   return (
     <>
       <nav
@@ -52,9 +85,14 @@ function Nav({ backgroundImage }) {
                   Create Munch
                 </NavLink>
               </li>
-              <li className="nav-item">
+             <li className="nav-item">
                 <NavLink className="nav-link" to={`/accounts/:id`}>
                   Account
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to={`/feed`}>
+                  Munch Bunch
                 </NavLink>
               </li>
               <li className="nav-item">
