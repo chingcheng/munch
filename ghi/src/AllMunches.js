@@ -57,7 +57,7 @@ function AllMunches({ backgroundImage }) {
   //     setUsername(data.username);
   //   }
   // }, [id, token]);
-
+useEffect(() => {
   const fetchData = async () => {
     try {
       const url = `http://localhost:8010/munches`;
@@ -85,7 +85,7 @@ function AllMunches({ backgroundImage }) {
       console.error(e);
     }
   };
-  useEffect(() => {
+
     fetchData();
   }, [token]);
 

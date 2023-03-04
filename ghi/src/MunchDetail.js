@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthContext } from "./Auth";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
@@ -26,43 +26,43 @@ function MunchDetail({ backgroundImage }) {
     }
   };
 
-  const getOneMunch = useCallback(async () => {
-    const url = `http://localhost:8010/munches/${id}`;
-    const fetchConfig = {
-      method: "get",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    const response = await fetch(url, fetchConfig);
-    if (response.ok) {
-      const data = await response.json();
-      setUserId(data.user_id);
-      getUsername(data.user_id);
-      setMunch(data);
-    }
-  }, [id, token]);
-
-  const getUsername = async (userId) => {
-    const usernameUrl = `http://localhost:8010/accounts/${userId}`;
-    const fetchConfig = {
-      method: "get",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    const response = await fetch(usernameUrl, fetchConfig);
-    if (response.ok) {
-      const data = await response.json();
-      const userName = data.username;
-      setUsername(userName);
-    }
-  };
-
   useEffect(() => {
+    const getOneMunch = async () => {
+      const url = `http://localhost:8010/munches/${id}`;
+      const fetchConfig = {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await fetch(url, fetchConfig);
+      if (response.ok) {
+        const data = await response.json();
+        setUserId(data.user_id);
+        getUsername(data.user_id);
+        setMunch(data);
+      }
+    }
+
+    const getUsername = async (userId) => {
+      const usernameUrl = `http://localhost:8010/accounts/${userId}`;
+      const fetchConfig = {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await fetch(usernameUrl, fetchConfig);
+      if (response.ok) {
+        const data = await response.json();
+        const userName = data.username;
+        setUsername(userName);
+      }
+    };
+
     getOneMunch();
     getUsername();
-  }, [getUsername, getOneMunch, token, id]);
+  }, [token, id]);
 
   return (
     <>
