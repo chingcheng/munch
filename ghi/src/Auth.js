@@ -90,7 +90,7 @@ export function useToken() {
     form.append("username", username);
     form.append("password", password);
     const response = await fetch(url, {
-      mode: "no-cors",
+      // mode: "no-cors",
       method: "post",
       credentials: "include",
       body: form,
@@ -107,7 +107,7 @@ export function useToken() {
   async function signup(firstName, lastName, email, username, password, bio) {
     const url = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts`;
     const response = await fetch(url, {
-      mode: "no-cors",
+      // mode: "no-cors",
       method: "post",
       body: JSON.stringify({
         first_name: firstName,
