@@ -11,8 +11,7 @@ app.include_router(comments.router)
 app.include_router(authenticator.router)
 
 origins = [
-    "http://localhost:3000",
-    os.environ.get("CORS_HOST", None),
+    os.environ.get("CORS_HOST", "http://localhost:3000"),
 ]
 
 app.add_middleware(

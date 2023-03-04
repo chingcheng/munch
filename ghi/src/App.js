@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Nav from "./Nav";
-// import Construct from "./Construct.js";
-// import ErrorNotification from "./ErrorNotification";
+import Nav from "./Nav";
 import "./App.css";
 import { AuthProvider, useToken } from "./Auth";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import LandingPage from "./LandingPage";
 import CreateMunch from "./CreateMunchForm";
+import HomePage from "./HomePage";
+import MunchDetail from "./MunchDetail";
+import EditMunch from "./EditMunchForm";
+import Logout from "./Logout";
+import EditUser from "./EditUser";
 
 function GetToken() {
-  // Get token from JWT cookie (if already logged in)
   useToken();
   return null;
 }
@@ -49,6 +51,24 @@ function getRandomImage(images) {
 }
 
 function App() {
+  //<<< GET MUNCHES FUNCTION >>>
+  const [munches, setMunches] = useState([]);
+
+  const getMunches = async () => {
+    const url = "http://localhost:8010/munches";
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.json();
+      const munches = data.munches;
+      setMunches(munches);
+    }
+  };
+
+  useEffect(() => {
+    getMunches();
+  }, [setMunches]);
+
+  // <<< BACKGROUND IMAGE >>>
   const [backgroundImage, setBackgroundImage] = useState(
     getRandomImage(images)
   );
@@ -61,44 +81,11 @@ function App() {
     return () => clearInterval(intervalId);
   }, []);
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setBackgroundImage((prevImage) => {
-  //       const currentIndex = images.indexOf(prevImage);
-  //       const nextIndex = (currentIndex + 1) % images.length;
-  //       return images[nextIndex];
-  //     });
-  //   }, 24 * 60 * 60 * 1000);
-
-  //   return () => clearInterval(intervalId);
-  // }, []);
-
-  // const [launch_info, setLaunchInfo] = useState([]);
-  // const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   async function getData() {
-  //     let url = `${process.env.REACT_APP_SAMPLE_SERVICE_API_HOST}/api/launch-details`;
-  //     console.log("fastapi url: ", url);
-  //     let response = await fetch(url);
-  //     console.log("------- hello? -------");
-  //     let data = await response.json();
-
-  //     if (response.ok) {
-  //       console.log("got launch data!");
-  //       setLaunchInfo(data.launch_details);
-  //     } else {
-  //       console.log("drat! something happened");
-  //       setError(data.message);
-  //     }
-  //   }
-  //   getData();
-  // }, []);
-
   return (
     <>
       <div>
         <BrowserRouter>
+          <Nav backgroundImage={backgroundImage} />
           <AuthProvider>
             <GetToken />
             <Routes>
@@ -112,18 +99,45 @@ function App() {
                 path="login"
                 element={<LoginForm backgroundImage={backgroundImage} />}
               />
-              {/* <Route path="logout" element={<LogoutComponent />} /> */}
+              <Route path="logout" element={<Logout />} />
               <Route
                 path="signup"
                 element={<SignupForm backgroundImage={backgroundImage} />}
               />
               <Route
-                path="munches-create"
+                path="accounts/:id"
+                element={<EditUser backgroundImage={backgroundImage} />}
+              />
+              <Route
+                path="munches/create"
                 element={<CreateMunch backgroundImage={backgroundImage} />}
+              />
+              <Route
+                path="munches/edit/:id"
+                element={
+                  <EditMunch
+                    backgroundImage={backgroundImage}
+                    munches={munches}
+                    getMunches={getMunches}
+                  />
+                }
+              />
+              <Route
+                path="munches/:id"
+                element={<MunchDetail backgroundImage={backgroundImage} />}
               />
             </Routes>
             <Routes>
-              {/* <Route path="home" element={<HomePage />} /> */}
+              <Route
+                path="home"
+                element={
+                  <HomePage
+                    munches={munches}
+                    getMunches={getMunches}
+                    backgroundImage={backgroundImage}
+                  />
+                }
+              />
             </Routes>
           </AuthProvider>
         </BrowserRouter>

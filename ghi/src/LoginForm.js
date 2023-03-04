@@ -1,18 +1,19 @@
 import "./index.css";
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useToken } from "./Auth";
 
 function LoginForm({ backgroundImage }) {
   const navigate = useNavigate();
   const { login } = useToken();
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
+
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
@@ -21,27 +22,11 @@ function LoginForm({ backgroundImage }) {
     event.preventDefault();
     const response = await login(username, password);
     if (response === true) {
-      navigate("/");
+      navigate("/home");
+    } else {
+      setError("Incorrect username or password.");
     }
   };
-
-    // const handleSubmit = async (event) => {
-    //   event.preventDefault();
-    //   const error = await login(username, password);
-    //   if (error) {
-    //     isLoggedIn(false);
-    //     return (
-    //       <div
-    //         className="alert text-center alert-success mb-0 p-4 mt-4"
-    //         id="danger-message"
-    //       >
-    //         Could not log in
-    //       </div>
-    //     );
-    //   } else {
-    //     return redirect("/");
-    //   }
-    // };
 
   return (
     <>
@@ -55,18 +40,6 @@ function LoginForm({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <NavLink to="/">
-          <img
-            src="./munch_icon.png"
-            alt="Icon"
-            width="65px"
-            style={{
-              position: "absolute",
-              top: 9,
-              left: 15,
-            }}
-          />
-        </NavLink>
         <div className="container text-center mt-5">
           <div className="row row-login-size">
             <div className="offset-3 col-6">
@@ -76,7 +49,7 @@ function LoginForm({ backgroundImage }) {
                   id="create-login-form"
                   onSubmit={handleSubmit}
                 >
-                  <NavLink to="/">
+                  <Link to="/">
                     <h1 className="text-center mb-3">
                       <img
                         src="./munch_transparent.png"
@@ -87,7 +60,7 @@ function LoginForm({ backgroundImage }) {
                         }}
                       />
                     </h1>
-                  </NavLink>
+                  </Link>
                   <div className="form-floating mb-3">
                     <input
                       onChange={handleUsernameChange}
@@ -131,6 +104,9 @@ function LoginForm({ backgroundImage }) {
                       Log In
                     </button>
                   </div>
+                  {error && (
+                    <div className="alert alert-danger mt-3">{error}</div>
+                  )}
                 </form>
               </div>
             </div>
@@ -140,4 +116,5 @@ function LoginForm({ backgroundImage }) {
     </>
   );
 }
+
 export default LoginForm;

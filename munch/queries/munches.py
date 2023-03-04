@@ -15,6 +15,7 @@ class MunchIn(BaseModel):
     tag: Optional[bool]
     city: str
     state: str
+    user_id: str
 
 
 class MunchOut(BaseModel):
@@ -26,6 +27,7 @@ class MunchOut(BaseModel):
     tag: Optional[bool]
     city: str
     state: str
+    user_id: str
 
 
 class MunchRepository:
@@ -35,14 +37,16 @@ class MunchRepository:
                 with conn.cursor() as db:
                     db.execute(
                         """
-                        SELECT id,
+                        SELECT
+                            id,
                             location,
                             rating,
                             review,
                             photo,
                             tag,
                             city,
-                            state
+                            state,
+                            user_id
                         FROM munches;
                         """
                     )
@@ -60,9 +64,18 @@ class MunchRepository:
                     result = db.execute(
                         """
                         INSERT INTO munches
-                            (location, rating, review, photo, tag, city, state)
+                            (
+                                location,
+                                rating,
+                                review,
+                                photo,
+                                tag,
+                                city,
+                                state,
+                                user_id
+                            )
                         VALUES
-                            (%s, %s, %s, %s, %s, %s, %s)
+                            (%s, %s, %s, %s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
@@ -72,7 +85,8 @@ class MunchRepository:
                             munch.photo,
                             munch.tag,
                             munch.city,
-                            munch.state
+                            munch.state,
+                            munch.user_id,
                         ]
                     )
                     id = result.fetchone()[0]
@@ -87,14 +101,16 @@ class MunchRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id,
+                        SELECT
+                            id,
                             location,
                             rating,
                             review,
                             photo,
                             tag,
                             city,
-                            state
+                            state,
+                            user_id
                         FROM munches
                         WHERE id = %s
                         """,
@@ -129,14 +145,15 @@ class MunchRepository:
                     db.execute(
                         """
                         UPDATE munches
-                        SET location= %s,
-                            rating= %s,
-                            review = %s,
-                            photo = %s,
-                            tag = %s,
-                            city = %s,
-                            state = %s
-                        WHERE id = %s
+                        SET location=%s,
+                            rating=%s,
+                            review=%s,
+                            photo=%s,
+                            tag=%s,
+                            city=%s,
+                            state=%s,
+                            user_id=%s
+                        WHERE id=%s
                         """,
                         [
                             munch.location,
@@ -146,7 +163,8 @@ class MunchRepository:
                             munch.tag,
                             munch.city,
                             munch.state,
-                            munch_id
+                            munch.user_id,
+                            munch_id,
                         ]
                     )
                     return self.munch_in_to_out(munch_id, munch)
@@ -166,5 +184,6 @@ class MunchRepository:
             photo=record[4],
             tag=record[5],
             city=record[6],
-            state=record[7]
+            state=record[7],
+            user_id=record[8]
         )

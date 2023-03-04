@@ -7,7 +7,6 @@ from queries.comments import (
     CommentRepository,
 )
 
-
 router = APIRouter()
 
 

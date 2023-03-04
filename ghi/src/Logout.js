@@ -1,7 +1,7 @@
 import { useToken } from "./Auth";
 
 function Logout() {
-  const logout = useToken()[2];
+  const { logout } = useToken();
   logout();
 }
 
