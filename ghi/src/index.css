@@ -65,3 +65,11 @@ code {
 .card-link:hover {
   color: inherit;
 }
+
+.card-city-state {
+  color: #999;
+}
+
+.nav-link.active {
+  background-color: #ffe185be;
+}

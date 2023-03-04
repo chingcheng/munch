@@ -33,27 +33,47 @@ function Nav({ backgroundImage }) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/home">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/home"
+                >
                   Home
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/login">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/login"
+                >
                   Login
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/signup">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/signup"
+                >
                   Sign Up
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/munches/create">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/munches/create"
+                >
                   Create Munch
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to={`/accounts/:id`}>
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to={`/accounts/:id`}
+                >
                   Account
                 </NavLink>
               </li>

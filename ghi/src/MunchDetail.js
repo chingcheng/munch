@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useAuthContext } from "./Auth";
-import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
-import { Rating } from "react-simple-star-rating";
+import { Link, useParams, useNavigate } from "react-router-dom";
+// import { Rating } from "react-simple-star-rating";
 
 function MunchDetail({ backgroundImage }) {
   let { id } = useParams();
@@ -56,135 +56,97 @@ function MunchDetail({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <NavLink to="/">
-          <img
-            src="../munch_icon.png"
-            alt="Icon"
-            width="65px"
-            style={{
-              position: "absolute",
-              top: 9,
-              left: 15,
-            }}
-          />
-        </NavLink>
-        <div className="container text-center mt-5">
+        <div className="container mt-5">
           <div className="row">
             <div className="offset-3 col-6">
-              {/* <div className="shadow p-2 m-4">
-                <form className="form p-5 m-1" id="create-signup-form">
-                  <NavLink to="/home">
-                    <p className="text-center">
-                      <img
-                        src="../munch_transparent.png"
-                        alt="Logo"
-                        style={{
-                          maxWidth: "100%",
-                          width: "7350px",
-                        }}
-                      />
-                    </p>
-                  </NavLink>
-                  <div className="form-floating mb-3">
-                    <h2
-                      style={{
-                        color: "#FFE085",
-                        size: "40px",
-                      }}
-                    >
-                      {munch.location}
-                    </h2>
-                  </div>
-                  <div className="form-floating mb-3"></div>
-                  <h6 style={{ color: "#FFE085" }}>
-                    {munch.city}, {munch.state}
-                  </h6>
-                  <div className="form-floating mb-4">
-                    <Rating
-                      rate={munch.rating}
-                      size={35}
-                      label
-                      transition
-                      fillColor="#FFE085"
-                      emptyColor="gray"
-                      className="foo" // Will remove the inline style if applied
-                    />
-                  </div>
-                  <div className="form-floating mb-3">
-                    <img
-                      src={munch.photo}
-                      alt="preview"
-                      style={{ maxWidth: "100%" }}
-                    />
-                  </div>
-                  <div className="form-floating mb-3">
-                    <p style={{ color: "#FFE085" }}>{munch.review}</p>
-                  </div>
-                  <div
-                    className="button-container"
-                    style={{ display: "flex", justifyContent: "center" }}
-                  >
-                    <Link to={`/munches/edit/${id}`}>
-                      <button
-                        className="btn btn-md lead text-bold text mx-2"
-                        style={{
-                          background: "#F8D876",
-                          fontWeight: "750",
-                          color: "#512b20",
-                          width: "150px",
-                          height: "40px",
-                        }}
-                        type="submit"
-                        value="Update Munch"
-                      >
-                        Edit Munch
-                      </button>
-                    </Link>
-                    {"  "}
-                    <button
-                      onClick={handleDelete}
-                      className="btn btn-md lead text-bold text mx-2"
-                      style={{
-                        background: "#FF4B3E",
-                        fontWeight: "750",
-                        color: "white",
-                        width: "150px",
-                        height: "40px",
-                      }}
-                      type="button"
-                      value="Delete Munch"
-                    >
-                      Delete Munch
-                    </button>
-                  </div>
-                </form>
-              </div> */}
               <div className="col mx-auto d-flex justify-content-center">
                 <div
                   className="card"
-                  style={{ height: "800px", width: "800px" }}
+                  style={{
+                    height: "auto",
+                    width: "550px",
+                  }}
                 >
-                  <img src={munch.photo} className="card-img-top" alt="Munch" />
+                  <img
+                    src={munch.photo}
+                    className="card-img-top pt-3 px-3"
+                    alt="Munch"
+                  />
                   <div className="card-body">
-                    <h5 className="card-title">{munch.location}</h5>
-                    <p className="card-text">{munch.review}</p>
-                    <Link
-                      to={`/munches/edit/${id}`}
-                      className="btn btn-warning mx-1"
+                    <h3
+                      className="card-location"
+                      style={{
+                        marginBottom: "0",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
                     >
-                      Edit Munch
-                    </Link>
-                    <button
-                      onClick={handleDelete}
-                      className="btn btn-danger mx-1"
-                    >
-                      Delete Munch
-                    </button>
+                      {munch.location}
+                      <h7
+                        className="d-flex"
+                        style={{
+                          fontSize: "0.7em",
+                          justifyContent: "end",
+                          marginLeft: "auto",
+                        }}
+                      >
+                        {munch.rating}
+                        <img
+                          src="../star.png"
+                          style={{
+                            width: "0.9em",
+                            height: "0.9em",
+                            marginTop: "0.15em",
+                          }}
+                        ></img>
+                      </h7>
+                    </h3>
+                    <h7 className="card-city-state" style={{ marginTop: "0" }}>
+                      {munch.city}, {munch.state}
+                    </h7>
+                    <p className="card-review pt-3">{munch.review}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div
+          className="button-container mt-4"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <Link to={`/munches/edit/${id}`}>
+            <button
+              className="btn btn-md lead text-bold text mx-2"
+              style={{
+                background: "#F8D876",
+                fontWeight: "750",
+                color: "#512b20",
+                width: "150px",
+                height: "40px",
+              }}
+              type="submit"
+              value="Update Munch"
+            >
+              Edit Munch
+            </button>
+          </Link>
+          {"  "}
+          <button
+            onClick={handleDelete}
+            className="btn btn-md lead text-bold text mx-2"
+            style={{
+              background: "#FF4B3E",
+              fontWeight: "750",
+              color: "white",
+              width: "150px",
+              height: "40px",
+            }}
+            type="button"
+            value="Delete Munch"
+          >
+            Delete Munch
+          </button>
         </div>
       </div>
     </>
@@ -192,3 +154,17 @@ function MunchDetail({ backgroundImage }) {
 }
 
 export default MunchDetail;
+
+{
+  /* <div className="form-floating mb-3">
+                      <Rating
+                        rate={munch.rating}
+                        size={35}
+                        label
+                        transition
+                        fillColor="#FFE085"
+                        emptyColor="gray"
+                        className="foo" // Will remove the inline style if applied
+                      />
+                    </div> */
+}
