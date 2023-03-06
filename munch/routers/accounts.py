@@ -70,6 +70,7 @@ async def create_account(
     response: Response,
     accounts: AccountQueries = Depends(),
 ):
+    print("HELLOOOO WORLD!!!!!!!!!!")
     hashed_password = authenticator.hash_password(info.password)
     try:
         account = accounts.create(info, hashed_password)
