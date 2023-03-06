@@ -194,7 +194,7 @@ function SignupForm({ backgroundImage }) {
                       type="submit"
                       value="Sign Up"
                     >
-                      HELLO!!!!! Up
+                      Sign Up
                     </button>
                   </div>
                   {error && (

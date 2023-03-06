@@ -90,7 +90,6 @@ export function useToken() {
     form.append("username", username);
     form.append("password", password);
     const response = await fetch(url, {
-      mode: "no-cors",
       method: "post",
       credentials: "include",
       body: form,
