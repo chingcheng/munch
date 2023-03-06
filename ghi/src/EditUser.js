@@ -246,8 +246,7 @@ function EditUser({ backgroundImage }) {
                       Confirm Password
                     </label>
                   </div>
-                  {/* SUBMIT BUTTON */}
-                  <div className="button-container" style={{ dislay: "flex" }}>
+                  <div className="button-container" style={{ display: "flex" }}>
                     <button
                       className="btn btn-md lead text-bold text mx-2 mt-1"
                       style={{

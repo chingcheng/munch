@@ -13,8 +13,6 @@ function CreateMunch({ backgroundImage }) {
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
   const [userId, setUserId] = useState("");
-  //   const [tag, setTag] = useState("");
-  //   const [tags, setTags] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const fileInputRef = React.createRef();
 
@@ -55,10 +53,6 @@ function CreateMunch({ backgroundImage }) {
     }
   };
 
-  //   const handleTagChange = (event) => {
-  //     const value = event.target.value;
-  //     setTag(value);
-  //   };
 
   const clearState = () => {
     setLocation("");
@@ -68,8 +62,6 @@ function CreateMunch({ backgroundImage }) {
     setReview("");
     setPhoto("");
     setUserId("");
-    // setTag("");
-    // setTags("");
     setSubmitted(false);
   };
 
@@ -85,7 +77,6 @@ function CreateMunch({ backgroundImage }) {
     data.review = review;
     data.photo = photo;
     data.user_id = userId;
-    // data.tag = tag;
 
     const munchUrl = "http://localhost:8010/munches";
     const fetchConfig = {
@@ -228,20 +219,6 @@ function CreateMunch({ backgroundImage }) {
                       </div>
                     )}
                   </div>
-                  {/* <div className="form-floating mb-3">
-                    <input
-                      onChange={handleTagChange}
-                      placeholder="Tags"
-                      required
-                      type="text"
-                      name="tags"
-                      className="form-control"
-                      value={tag}
-                    />
-                    <label className="form-label" htmlFor="tags">
-                      Tags
-                    </label>
-                  </div> */}
                   <div className="form-floating mb-3">
                     <Rating
                       onClick={handleRatingChange}
@@ -251,11 +228,9 @@ function CreateMunch({ backgroundImage }) {
                       transition
                       fillColor="#FFE085"
                       emptyColor="gray"
-                      className="foo" // Will remove the inline style if applied
+                      className="foo"
                     />
                   </div>
-
-                  {/* SUBMIT BUTTON */}
                   <div className="col text-center">
                     <button
                       className="btn btn-md lead text-bold text"

@@ -59,7 +59,6 @@ function SignupForm({ backgroundImage }) {
       password,
       bio
     );
-    console.log("response!!!!", response);
     if (response === true) {
       setSubmitted(true);
       clearState();

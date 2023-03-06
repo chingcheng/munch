@@ -9,9 +9,8 @@ function MunchDetail({ backgroundImage }) {
   const { token } = useAuthContext();
   const [userName, setUsername] = useState("");
   const [userId, setUserId] = useState("");
-  console.log("userName", userName)
-  console.log("userId", userId)
-
+  console.log(userId);
+  
   const handleDelete = async () => {
     const munchUrl = `http://localhost:8010/munches/${id}`;
     const fetchConfig = {

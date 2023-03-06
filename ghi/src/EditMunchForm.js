@@ -14,8 +14,6 @@ function EditMunch({ backgroundImage }) {
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
   const [userId, setUserId] = useState("");
-  //   const [tag, setTag] = useState("");
-  //   const [tags, setTags] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const fileInputRef = React.createRef();
 
@@ -61,11 +59,6 @@ function EditMunch({ backgroundImage }) {
     setUserId(value);
   };
 
-  //   const handleTagChange = (event) => {
-  //     const value = event.target.value;
-  //     setTag(value);
-  //   };
-
   const clearState = () => {
     setLocation("");
     setCity("");
@@ -74,8 +67,6 @@ function EditMunch({ backgroundImage }) {
     setReview("");
     setPhoto("");
     setUserId("");
-    // setTag("");
-    // setTags("");
     setSubmitted(false);
   };
 
@@ -91,7 +82,6 @@ function EditMunch({ backgroundImage }) {
     data.review = review;
     data.photo = photo;
     data.user_id = userId;
-    // data.tag = tag;
 
     const munchUrl = `http://localhost:8010/munches/${id}`;
     const fetchConfig = {
@@ -122,8 +112,6 @@ function EditMunch({ backgroundImage }) {
           },
         };
         const response = await fetch(url, fetchConfig);
-        console.log("Edit Token:", token);
-        console.log("response", response);
         if (response.ok) {
           const data = await response.json();
           setLocation(data.location);
@@ -264,20 +252,6 @@ function EditMunch({ backgroundImage }) {
                       </div>
                     )}
                   </div>
-                  {/* <div className="form-floating mb-3">
-                    <input
-                      onChange={handleTagChange}
-                      placeholder="Tags"
-                      required
-                      type="text"
-                      name="tags"
-                      className="form-control"
-                      value={tag}
-                    />
-                    <label className="form-label" htmlFor="tags">
-                      Tags
-                    </label>
-                  </div> */}
                   <div className="form-floating mb-3">
                     <Rating
                       onClick={handleRatingChange}
@@ -287,11 +261,9 @@ function EditMunch({ backgroundImage }) {
                       transition
                       fillColor="#FFE085"
                       emptyColor="gray"
-                      className="foo" // Will remove the inline style if applied
+                      className="foo"
                     />
                   </div>
-
-                  {/* hidden user id */}
                   <div className="form-floating mb-3 d-none">
                     <input
                       onChange={handleUserIdChange}
@@ -303,8 +275,6 @@ function EditMunch({ backgroundImage }) {
                       value={userId}
                     />
                   </div>
-
-                  {/* SUBMIT BUTTON */}
                   <div className="button-container" style={{ display: "flex" }}>
                     <button
                       className="btn btn-md lead text-bold text mx-2"

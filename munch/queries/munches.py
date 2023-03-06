@@ -92,7 +92,6 @@ class MunchRepository:
                     id = result.fetchone()[0]
                     return self.munch_in_to_out(id, munch)
         except Exception:
-            print("exception!!!!!!!!", Exception)
             return {"message": "Create munch did not work"}
 
     def get_one(self, munch_id: int) -> Optional[MunchOut]:

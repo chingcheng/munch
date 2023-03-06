@@ -38,30 +38,11 @@ function MunchesColumn(props) {
 function AllMunches({ backgroundImage }) {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
-  // const { id } = useParams();
-  // const { userId, setuserId } = useState("");
-  // const { username, setUsername } = useState("");
 
-  // const getUser = useCallback(async () => {
-  //   const fetchConfig = {
-  //     method: "get",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   };
-  //   const response = await fetch(url, fetchConfig);
-  //   console.log("response", response);
-  //   if (response.ok) {
-  //     const data = await response.json();
-  //     // setUser(data)
-  //     setUsername(data.username);
-  //   }
-  // }, [id, token]);
 useEffect(() => {
   const fetchData = async () => {
     try {
       const url = `http://localhost:8010/munches`;
-      // const usernameUrl = `http://localhost:8010/accounts/${id}`;
       const fetchConfig = {
         method: "get",
         headers: {
@@ -72,14 +53,9 @@ useEffect(() => {
       const response = await fetch(url, fetchConfig);
       if (response.ok) {
         const data = await response.json();
-        console.log("data", data);
         const munchColumns = [[], [], []];
         data.forEach((munch, index) => munchColumns[index % 3].push(munch));
         setMunchColumns(munchColumns);
-        // console.log("data", data);
-        // console.log("user_id", data.user_id);
-        // setuserId(data.user_id);
-        // getUsername(data.user_id);
       }
     } catch (e) {
       console.error(e);
@@ -88,24 +64,6 @@ useEffect(() => {
 
     fetchData();
   }, [token]);
-
-  // const getUsername = async (userId) => {
-  //   const usernameUrl = `http://localhost:8010/accounts/${userId}`;
-  //   const fetchConfig = {
-  //     method: "get",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   };
-  //   const response = await fetch(usernameUrl, fetchConfig);
-  //   if (response.ok) {
-  //     const data = await response.json();
-  //     console.log("DATA:", data);
-  //     const username = data.username;
-  //     console.log("USERNAME:", username);
-  //     setUsername(username);
-  //   }
-  // };
 
   return (
     <>

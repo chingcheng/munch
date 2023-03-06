@@ -106,7 +106,6 @@ function HomePage({ backgroundImage }) {
           const data = await response.json();
           setUserId(data.account.id);
           fetchFilterMunches(data.account.id);
-          console.log(userId);
         }
       } catch (e) {
         console.error(e);

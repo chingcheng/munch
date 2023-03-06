@@ -58,7 +58,6 @@ const UserPage = ({backgroundImage}) => {
       const users = await response.json();
       const current_user = users.filter((user) => user.username === userName)
       const current_user_id = current_user[0].id
-      console.log("current_user_id", current_user_id)
       setUserId(current_user_id);
       fetchFilterMunches(current_user[0].id)
     }

@@ -40,13 +40,8 @@ router = APIRouter()
 
 @router.get("munch/protected", response_model=bool)
 async def get_protected(
-    # add services to be protected
-    # munches: MunchQueries = Depends()
-        # return munches.get_account_munches(account_data)
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
-    # if account_data:
-    #     return account_data["id"]
     return True
 
 
@@ -70,7 +65,6 @@ async def create_account(
     response: Response,
     accounts: AccountQueries = Depends(),
 ):
-    print("HELLOOOO WORLD!!!!!!!!!!")
     hashed_password = authenticator.hash_password(info.password)
     try:
         account = accounts.create(info, hashed_password)
@@ -88,7 +82,13 @@ async def create_account(
 def delete_account(
     id: int,
     repo: AccountQueries = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> bool:
+    if account_data["id"] != id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Cannot delete another user's account",
+        )
     return repo.delete(id)
 
 
@@ -102,12 +102,13 @@ def update_account(
     ),
 ) -> AccountOutWithPassword:
     existing_user = repo.get_one(id)
-    if existing_user is not None and account_data is not None:
-        return repo.update(id, user)
     if existing_user is None:
         raise HTTPException(status_code=404, detail="User not found")
     if account_data is None:
         raise HTTPException(status_code=401, detail="Unauthorized")
+    if existing_user.id != account_data["id"]:
+        raise HTTPException(status_code=403, detail="Forbidden")
+    return repo.update(id, user)
 
 
 @router.get("/accounts/{id}", response_model=AccountOut)
@@ -138,21 +139,3 @@ def get_all_accounts(
         return repo.get_all()
     else:
         raise HTTPException(status_code=401, detail="Unauthorized")
-
-
-# @router.get("/accounts/{username}", response_model=AccountOut)
-# def get_account_with_username(
-#     username: str,
-#     response: Response,
-#     repo: AccountQueries = Depends(),
-#     account_data: Optional[dict] = Depends(
-#         authenticator.try_get_current_account_data
-#     ),
-# ) -> AccountOut:
-#     user = repo.get_one_with_username(username)
-#     if user is not None and account_data is not None:
-#         return user
-#     if user is None:
-#         raise HTTPException(status_code=404, detail="User not found")
-#     if account_data is None:
-#         raise HTTPException(status_code=401, detail="Unauthorized")

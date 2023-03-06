@@ -14,6 +14,7 @@ import Logout from "./Logout";
 import EditUser from "./EditUser";
 import AllMunches from "./AllMunches";
 import UserPage from "./UserPage";
+import GetAccount from "./AccountView";
 
 function GetToken() {
   useToken();
@@ -53,11 +54,7 @@ function getRandomImage(images) {
 }
 
 function App() {
-  //<<< GET MUNCHES FUNCTION >>>
   const [munches, setMunches] = useState([]);
-  // const { id, userName  } = useParams;
-  // const { token } = useAuthContext;
-  // const [username, setUsername] = useState("");
 
   const getMunches = async () => {
     const url = "http://localhost:8010/munches";
@@ -73,7 +70,6 @@ function App() {
     getMunches();
   }, [setMunches]);
 
-  // <<< BACKGROUND IMAGE >>>
   const [backgroundImage, setBackgroundImage] = useState(
     getRandomImage(images)
   );
@@ -114,18 +110,16 @@ function App() {
                 element={<EditUser backgroundImage={backgroundImage} />}
               />
               <Route
+                path="accounts"
+                element={<GetAccount backgroundImage={backgroundImage} />}
+              />
+              <Route
                 path="munches/create"
                 element={<CreateMunch backgroundImage={backgroundImage} />}
               />
               <Route
                 path="munches/edit/:id"
-                element={
-                  <EditMunch
-                    backgroundImage={backgroundImage}
-                    munches={munches}
-                    getMunches={getMunches}
-                  />
-                }
+                element={<EditMunch backgroundImage={backgroundImage} />}
               />
               <Route
                 path="munches/:id"
