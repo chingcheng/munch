@@ -62,7 +62,7 @@ function EditUser({ backgroundImage }) {
     const fetchConfig = {
       method: "delete",
       headers: {
-        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     };
     const response = await fetch(accountUrl, fetchConfig);
