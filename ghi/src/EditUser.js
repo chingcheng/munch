@@ -246,12 +246,15 @@ function EditUser({ backgroundImage }) {
                       Confirm Password
                     </label>
                   </div>
-                  <div className="button-container" style={{ display: "flex" }}>
+                  <div
+                    className="button-container"
+                    style={{ display: "flex", justifyContent: "center" }}
+                  >
                     <button
                       className="btn btn-md lead text-bold text mx-2 mt-1"
                       style={{
                         background: "#F8D876",
-                        fontWeight: "750",
+                        fontWeight: "725",
                         color: "#512b20",
                         width: "150px",
                         height: "40px",
@@ -267,7 +270,7 @@ function EditUser({ backgroundImage }) {
                       className="btn btn-md lead text-bold text mx-2 mt-1"
                       style={{
                         background: "#FF4B3E",
-                        fontWeight: "750",
+                        fontWeight: "725",
                         color: "white",
                         width: "150px",
                         height: "40px",

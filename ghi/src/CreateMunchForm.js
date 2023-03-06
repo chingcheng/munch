@@ -53,7 +53,6 @@ function CreateMunch({ backgroundImage }) {
     }
   };
 
-
   const clearState = () => {
     setLocation("");
     setCity("");
@@ -190,11 +189,11 @@ function CreateMunch({ backgroundImage }) {
                   <div className="form-floating mb-3">
                     <button
                       type="button"
-                      className="btn text-bold"
+                      className="btn"
                       style={{
                         background: "#FFDE79",
                         color: "#512b20",
-                        fontWeight: "bold",
+                        fontWeight: "725",
                       }}
                       onClick={() => fileInputRef.current.click()}
                     >
@@ -237,7 +236,7 @@ function CreateMunch({ backgroundImage }) {
                       style={{
                         width: "50%",
                         background: "#F8D876",
-                        fontWeight: "750",
+                        fontWeight: "725",
                         fontSize: "18px",
                         height: "40px",
                         color: "#512b20",
