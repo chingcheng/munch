@@ -86,11 +86,12 @@ export function useToken() {
 
   async function login(username, password) {
     const url = `${process.env.REACT_APP_MUNCH_API_HOST}/token`;
+    console.log("TOKEN", token)
     const form = new FormData();
     form.append("username", username);
     form.append("password", password);
     const response = await fetch(url, {
-      mode: "no-cors",
+      // mode: "no-cors",
       method: "post",
       credentials: "include",
       body: form,
@@ -99,6 +100,7 @@ export function useToken() {
       const token = await getTokenInternal();
       setToken(token);
       return true;
+      console.log("token", token)
     }
     let error = await response.json();
     return handleErrorMessage(error);
@@ -107,7 +109,7 @@ export function useToken() {
   async function signup(firstName, lastName, email, username, password, bio) {
     const url = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts`;
     const response = await fetch(url, {
-      mode: "no-cors",
+      // mode: "no-cors",
       method: "post",
       body: JSON.stringify({
         first_name: firstName,

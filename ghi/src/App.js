@@ -12,6 +12,7 @@ import MunchDetail from "./MunchDetail";
 import EditMunch from "./EditMunchForm";
 import Logout from "./Logout";
 import EditUser from "./EditUser";
+import User from "./User";
 
 function GetToken() {
   useToken();
@@ -107,6 +108,10 @@ function App() {
               <Route
                 path="accounts/:id"
                 element={<EditUser backgroundImage={backgroundImage} />}
+              />
+              <Route
+                path="accounts"
+                element={<User backgroundImage={backgroundImage} />}
               />
               <Route
                 path="munches/create"

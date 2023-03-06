@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Route } from "react-router-dom";
+import EditUser from "./EditUser";
 
 function Nav({ backgroundImage }) {
   return (
@@ -53,7 +54,7 @@ function Nav({ backgroundImage }) {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to={`/accounts/:id`}>
+                <NavLink className="nav-link" to={"/accounts"} element={<EditUser/>}>
                   Account
                 </NavLink>
               </li>

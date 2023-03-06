@@ -3,7 +3,8 @@ import { useAuthContext } from "./Auth";
 import { useNavigate, NavLink, useParams } from "react-router-dom";
 
 function EditUser({ backgroundImage }) {
-  let { id } = useParams();
+  // let params = useParams();
+  const {id} = useParams();
   const navigate = useNavigate();
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
@@ -14,6 +15,10 @@ function EditUser({ backgroundImage }) {
   const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  console.log("ID", id)
+  // console.log("params", params)
+  console.log("useParams", useParams())
 
   const handleFirstNameChange = (event) => {
     const value = event.target.value;
@@ -95,6 +100,7 @@ function EditUser({ backgroundImage }) {
     };
 
     const response = await fetch(url, fetchConfig);
+    console.log("response", response)
     if (response.ok) {
       setSubmitted(true);
       clearState();
