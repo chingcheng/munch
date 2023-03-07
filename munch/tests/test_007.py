@@ -48,9 +48,6 @@ def test_get_all_munches():
 
     response = client.get("/munches")
 
-    print("STATUS", response.status_code)
-    print("RESPONSE", response.json())
-
     assert response.status_code == 200
     assert response.json() == [all_munches_test]
 
