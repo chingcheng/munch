@@ -1,10 +1,10 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { useAuthContext, useToken } from "./Auth";
+import { useAuthContext } from "./Auth";
 
 function Nav({ backgroundImage }) {
   const { token } = useAuthContext();
-  const { logout } = useToken();
+  // const { logout } = useToken();
   const [user, setUser] = useState([]);
 
   useEffect(() => {
