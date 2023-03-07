@@ -1,6 +1,6 @@
 # Munch
 
-Munch is a web application for individuals who are interested in creating and/or reading restaurant reviews.
+Munch is a web application for individuals who are interested in creating and/or reading food-related reviews.
 
 ## Key Features - MVP
 
