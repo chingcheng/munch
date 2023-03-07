@@ -152,9 +152,7 @@ const UserPage = ({ backgroundImage }) => {
                         style={{
                           fontSize: "24px",
                         }}
-                      >
-                        User:
-                      </h5>
+                      ></h5>
                       <h5 className="card-text">{userName}</h5>
                     </div>
                     <p className="add-friend mx-4">

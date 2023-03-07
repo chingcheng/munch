@@ -38,16 +38,18 @@ function Nav({ backgroundImage }) {
         }}
       >
         <div className="container-fluid">
-          <NavLink className="navbar-brand" to="/">
+          <NavLink className="navbar-brand mb-2" to="/">
             <img
-              src="/munch_icon.png"
+              src="/munch_transparent.png"
               alt="Icon"
               style={{
-                width: "65px",
+                width: "110px",
+                marginTop: "20px",
+                marginLeft: "20px",
               }}
             />
           </NavLink>
-          <button
+          {/* <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -57,7 +59,7 @@ function Nav({ backgroundImage }) {
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
-          </button>
+          </button> */}
           <div className="navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">

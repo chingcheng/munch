@@ -90,7 +90,6 @@ code {
   font-size: 24px;
   width: 80px;
   text-align: left;
-  /* color: #8f6036; */
 }
 
 .value {
@@ -99,10 +98,3 @@ code {
   flex: 1;
   padding: 10px;
 }
-
-/* .navbar-toggler {
-  position: absolute;
-  top: 5;
-  right: 0;
-  z-index: 1;
-} */
