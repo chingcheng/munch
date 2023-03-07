@@ -93,7 +93,7 @@ function LoginForm({ backgroundImage }) {
                   </div>
                   <div className="col text-center">
                     <button
-                      className="btn btn-lg lead text-bold text"
+                      className="btn btn-lg lead text-bold text mb-4"
                       style={{
                         width: "100%",
                         background: "#FFE085",
@@ -104,6 +104,9 @@ function LoginForm({ backgroundImage }) {
                       Log In
                     </button>
                   </div>
+                  <a href="signup" class="signup-munchkin">
+                    Join the Munch Bunch!
+                  </a>
                   {error && (
                     <div className="alert alert-danger mt-3">{error}</div>
                   )}

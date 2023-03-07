@@ -56,10 +56,10 @@ code {
 }
 
 .nav-item a:hover {
-  background-color: #ffe185be;
+  background-color: #ffbf01;
   border-radius: 20px;
   font-weight: bold;
-  color: #8f6036 !important;
+  color: #ffffff !important;
 }
 
 .card-link {
@@ -97,4 +97,35 @@ code {
   text-align: left;
   flex: 1;
   padding: 10px;
+}
+
+.munchkin-link {
+  color: #ffe185be;
+  font-size: 20px;
+}
+
+a.munchkin-link:hover {
+  color: #512b20;
+  /* color: #ffe185be; */
+  text-shadow: 0 0 10px #fff, 0 0 20px #ffe185be, 0 0 30px #ffe185be,
+    0 0 40px #ffe185be, 0 0 70px #ffe185be, 0 0 80px #ffe185be,
+    0 0 100px #ffe185be;
+}
+
+.signup-munchkin {
+  color: #ffe185be;
+  font-size: 20px;
+}
+
+a.signup-munchkin:hover {
+  color: #512b20;
+  /* color: #ffe185be; */
+  text-shadow: 0 0 10px #fff, 0 0 20px #ffe185be, 0 0 30px #ffe185be,
+    0 0 40px #ffe185be, 0 0 70px #ffe185be, 0 0 80px #ffe185be,
+    0 0 100px #ffe185be;
+}
+
+.btn:hover {
+  background: #ffbf01 !important;
+  color: #ffffffbe !important;
 }
