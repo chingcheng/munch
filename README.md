@@ -15,9 +15,9 @@ View a live demo of this project here: https://munchbunch.gitlab.io/munch/
 
 ## Design
 
-GHI
-Wireframe
-API
+- GHI
+- Wireframe
+- API
 
 ## Installation
 
@@ -38,8 +38,8 @@ API
 
 ## Maintainers
 
-@mschingcheng
-@kennedycassiday
-@matthewlmai
-@jason.dai
-@felipsh
+- @mschingcheng
+- @kennedycassiday
+- @matthewlmai
+- @jason.dai
+- @felipsh
