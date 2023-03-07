@@ -140,22 +140,16 @@ const UserPage = ({ backgroundImage }) => {
               <div className="col d-flex justify-content-center">
                 <div
                   className="card"
-                  style={{ height: "65px", width: "280px", display: "flex" }}
+                  style={{ height: "65px", width: "180px", display: "flex" }}
                 >
                   <div
                     className="card-body"
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <div className="label-value">
-                      <h5
-                        className="card-title mx-3"
-                        style={{
-                          fontSize: "24px",
-                        }}
-                      ></h5>
-                      <h5 className="card-text">{userName}</h5>
+                      <h5 className="card-text mx-1">{userName}</h5>
                     </div>
-                    <p className="add-friend mx-4">
+                    <p className="add-friend mx-1">
                       <img
                         src="/add-friend.png"
                         alt="Add Friend"
