@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "./Auth";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function GetAccount({ backgroundImage }) {
   const { token } = useAuthContext();
@@ -65,39 +65,58 @@ function GetAccount({ backgroundImage }) {
         }}
       >
         <div className="shadow p-2 m-4"></div>
-        <NavLink to="/home">
+        <Link to="/account">
           <p className="text-center">
             <img
-              src="../munch_transparent.png"
-              alt="Logo"
+              src="/munch_account.png"
+              alt="Munch Account"
               style={{
                 maxWidth: "100%",
                 width: "350px",
               }}
             />
           </p>
-        </NavLink>
-        <div className="container text-center mt-5">
+        </Link>
+        <div className="container text-center">
           <div className="row">
             <div className="offset-3 col-6">
               <div className="col mx-auto d-flex justify-content-center">
                 <div
                   className="card"
-                  style={{ height: "800px", width: "800px" }}
+                  style={{ height: "auto", width: "auto", display: "flex" }}
                 >
                   <div className="card-body">
-                    <h5 className="card-title">{username}</h5>
-                    <p className="card-text">
-                      {firstName} {lastName}
+                    <p className="text-center mb-4">
+                      <img
+                        src="/user.png"
+                        alt="User"
+                        style={{
+                          maxWidth: "100%",
+                          width: "125px",
+                        }}
+                      />
                     </p>
-                    <h5 className="card-title">{email}</h5>
-                    <p className="card-text">{bio}</p>
-                    <Link
-                      to={`/accounts/${userId}`}
-                      className="btn btn-warning mx-1"
-                    >
+                    <div className="label-value">
+                      <h5 className="card-title label mx-3">User:</h5>
+                      <h5 className="card value mx-3">{username}</h5>
+                    </div>
+                    <div className="label-value">
+                      <h5 className="card-title label mx-3">Name:</h5>
+                      <h5 className="card value mx-3">
+                        {firstName} {lastName}
+                      </h5>
+                    </div>
+                    <div className="label-value">
+                      <h5 className="card-title label mx-3">Email:</h5>
+                      <h5 className="card value mx-3">{email}</h5>
+                    </div>
+                    <div className="label-value">
+                      <h5 className="card-title label mx-3">Bio:</h5>
+                      <h5 className="card value mx-3">{bio}</h5>
+                    </div>
+                    <Link to={`/accounts/${userId}`}>
                       <button
-                        className="btn btn-md lead text-bold text mx-2"
+                        className="btn btn-md lead text-bold text mx-2 mt-2"
                         style={{
                           background: "#F8D876",
                           fontWeight: "725",

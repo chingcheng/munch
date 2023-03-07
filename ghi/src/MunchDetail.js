@@ -144,7 +144,7 @@ if(userId === munch.user_id){
                       >
                         {munch.rating}
                         <img
-                          src="../star.png"
+                          src="/star.png"
                           alt="star"
                           style={{
                             width: "0.9em",

@@ -82,10 +82,13 @@ function App() {
     return () => clearInterval(intervalId);
   }, []);
 
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, "");
+
   return (
     <>
       <div>
-        <BrowserRouter>
+        <BrowserRouter basename={basename}>
           <Nav backgroundImage={backgroundImage} />
           <AuthProvider>
             <GetToken />
@@ -94,8 +97,6 @@ function App() {
                 path="/"
                 element={<LandingPage backgroundImage={backgroundImage} />}
               />
-            </Routes>
-            <Routes>
               <Route
                 path="login"
                 element={<LoginForm backgroundImage={backgroundImage} />}
@@ -125,8 +126,6 @@ function App() {
                 path="munches/:id"
                 element={<MunchDetail backgroundImage={backgroundImage} />}
               />
-            </Routes>
-            <Routes>
               <Route
                 path="home"
                 element={
@@ -137,14 +136,10 @@ function App() {
                   />
                 }
               />
-            </Routes>
-            <Routes>
               <Route
                 path="feed"
                 element={<AllMunches backgroundImage={backgroundImage} />}
               />
-            </Routes>
-            <Routes>
               <Route
                 path="filtered/:userName"
                 element={<UserPage backgroundImage={backgroundImage} />}

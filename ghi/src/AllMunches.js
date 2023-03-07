@@ -43,7 +43,7 @@ function MunchesColumn(props) {
                   <small className="text-muted">
                     Rating: {munch.rating}
                     <img
-                      src="../star.png"
+                      src="/star.png"
                       alt="star"
                       style={{
                         width: "0.9em",
@@ -103,14 +103,11 @@ function AllMunches({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
-          <img src="./munch_transparent.png" alt="" width="450" />
-          <div>
-            <p>
-              <img src="./munch_slogan.png" alt="Slogan" width="300px" />
-            </p>
+        <Link to="/feed">
+          <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
+            <img src="./munch_bunch.png" alt="Munch Bunch" width="450" />
           </div>
-        </div>
+        </Link>
         <div className="container">
           <div className="row"></div>
         </div>
