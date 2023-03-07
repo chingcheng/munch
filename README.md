@@ -1,6 +1,6 @@
 # Munch
 
-Munch is a web application for individuals who are interested in creating and/or reading food recommendations.
+Munch is a web application for individuals who are interested in creating and/or reading restaurant reviews.
 
 ## Key Features - MVP
 
@@ -15,9 +15,9 @@ View a live demo of this project here: https://munchbunch.gitlab.io/munch/
 
 ## Design
 
-- GHI
-- [Wireframe](https://excalidraw.com/#room=07938bbad0a1321891a1,IcHB5aelPznBrjBTOLua5w)
-- API
+- [GHI](docs/ghi.md)
+- [Wireframe](docs/wireframe.md)
+- [API](docs/api.md)
 
 ## Installation
 
