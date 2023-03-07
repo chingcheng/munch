@@ -5,6 +5,7 @@ import { useAuthContext } from "./Auth";
 function Nav({ backgroundImage }) {
   const { id } = useParams();
   const { token } = useAuthContext();
+  console.log(token);
 
   useEffect(() => {
     const fetchID = async () => {
@@ -34,41 +35,27 @@ function Nav({ backgroundImage }) {
           backgroundColor: "#FFFAEB",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
-          position: "absolute",
-          left: 3,
-          top: -4,
+          position: "fixed",
         }}
       >
         <div className="container-fluid">
-          <NavLink className="navbar-brand" to="/">
-            <img src="./munch_icon.png" alt="Icon" width="65px" />
+          <NavLink className="navbar-brand mb-2" to="/">
+            <img
+              src="/munch_transparent.png"
+              alt="Munch"
+              style={{
+                width: "110px",
+                marginTop: "20px",
+                marginLeft: "20px",
+              }}
+            />
           </NavLink>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className="navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  activeClassName="active"
-                  to="/home"
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
+                  activeclassname="active"
                   to="/login"
                 >
                   Login
@@ -77,7 +64,7 @@ function Nav({ backgroundImage }) {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  activeClassName="active"
+                  activeclassname="active"
                   to="/signup"
                 >
                   Sign Up
@@ -86,7 +73,25 @@ function Nav({ backgroundImage }) {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  activeClassName="active"
+                  activeclassname="active"
+                  to="/home"
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  activeclassname="active"
+                  to={`/feed`}
+                >
+                  Munch Bunch
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  activeclassname="active"
                   to="/munches/create"
                 >
                   Create Munch
@@ -95,15 +100,10 @@ function Nav({ backgroundImage }) {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  activeClassName="active"
+                  activeclassname="active"
                   to={`/accounts`}
                 >
                   Account
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to={`/feed`}>
-                  Munch Bunch
                 </NavLink>
               </li>
               <li className="nav-item">

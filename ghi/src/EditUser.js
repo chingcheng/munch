@@ -13,7 +13,6 @@ function EditUser({ backgroundImage }) {
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
   const handleFirstNameChange = (event) => {
     const value = event.target.value;
@@ -54,7 +53,6 @@ function EditUser({ backgroundImage }) {
     setEmail("");
     setUsername("");
     setBio("");
-    setSubmitted(false);
   };
 
   const handleDelete = async () => {
@@ -96,9 +94,8 @@ function EditUser({ backgroundImage }) {
 
     const response = await fetch(url, fetchConfig);
     if (response.ok) {
-      setSubmitted(true);
       clearState();
-      navigate("/home");
+      navigate("/accounts");
     }
   };
 
@@ -148,10 +145,10 @@ function EditUser({ backgroundImage }) {
                   id="update-user-form"
                   onSubmit={handleSubmit}
                 >
-                  <Link to="/home">
+                  <Link to="/accounts">
                     <h1 className="text-center mb-3">
                       <img
-                        src="../../edit_account.png"
+                        src="/edit_account.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -282,14 +279,6 @@ function EditUser({ backgroundImage }) {
                     </button>
                   </div>
                 </form>
-                {submitted && (
-                  <div
-                    className="alert text-center alert-success mb-0 p-4 mt-4"
-                    id="success-message"
-                  >
-                    Your munch has been posted!
-                  </div>
-                )}
               </div>
             </div>
           </div>

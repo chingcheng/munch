@@ -8,7 +8,7 @@ function MunchesColumn(props) {
       {props.list.map((munch) => (
         <div key={munch.id}>
           <Link to={`/munches/${munch.id}`} className="card-link">
-            <div className="card mb-3 shadow" style={{ height: "400px" }}>
+            <div className="card mb-3 shadow" style={{ height: "415px" }}>
               <img
                 src={munch.photo}
                 className="card-img-top"
@@ -17,16 +17,42 @@ function MunchesColumn(props) {
               />
               <div
                 className="card-body"
-                style={{ height: "100px", overflow: "hidden" }}
+                style={{
+                  height: "100%",
+                  overflow: "hidden",
+                }}
               >
-                <h5 className="card-location">
-                  {munch.location} - {munch.username}
-                </h5>
-
+                <h5 className="card-location">{munch.location}</h5>
                 <p className="card-review">{munch.review}</p>
               </div>
-              <div className="card-footer" style={{ height: "50px" }}>
-                <small className="text-muted">Rating: {munch.rating}/5</small>
+              <div
+                className="card-footer"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  height: "40px",
+                }}
+              >
+                <div className="location-info">
+                  <small className="text-muted">
+                    {munch.city}, {munch.state}
+                  </small>
+                </div>
+                <div className="rating-info">
+                  <small className="text-muted">
+                    Rating: {munch.rating}
+                    <img
+                      src="/star.png"
+                      alt="star"
+                      style={{
+                        width: "0.9em",
+                        height: "0.9em",
+                        marginTop: "-0.25em",
+                      }}
+                    ></img>
+                  </small>
+                </div>
               </div>
             </div>
           </Link>
@@ -103,19 +129,44 @@ const UserPage = ({ backgroundImage }) => {
           minHeight: "100vh",
         }}
       >
-        <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
-          <img src="../munch_transparent.png" alt="" width="450" />
-          <div>
-            <p>
-              <img src="../munch_slogan.png" alt="Slogan" width="300px" />
-            </p>
+        <Link to="/feed">
+          <div className="px-4 py-5 mt-0 text-center bg-transparent">
+            <img src="/munch_bunch.png" alt="Munch Bunch" width="450" />
+          </div>
+        </Link>
+        <div className="container text-center">
+          <div className="row">
+            <div className="offset-3 col-6">
+              <div className="col d-flex justify-content-center">
+                <div
+                  className="card"
+                  style={{ height: "65px", width: "180px", display: "flex" }}
+                >
+                  <div
+                    className="card-body"
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <div className="label-value">
+                      <h5 className="card-text mx-1">{userName}</h5>
+                    </div>
+                    <p className="add-friend mx-1">
+                      <img
+                        src="/add-friend.png"
+                        alt="Add Friend"
+                        style={{
+                          maxWidth: "100%",
+                          width: "35px",
+                          alignItems: "end",
+                        }}
+                      />
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="container">
-          <h2>{userName}</h2>
-          <div className="row"></div>
-        </div>
-        <div className="container">
+        <div className="container mt-5">
           <div className="row">
             {munchColumns.map((munchList, index) => (
               <MunchesColumn key={index} list={munchList} />

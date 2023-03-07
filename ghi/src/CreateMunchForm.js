@@ -13,7 +13,6 @@ function CreateMunch({ backgroundImage }) {
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
   const [userId, setUserId] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const fileInputRef = React.createRef();
 
   const handleLocationChange = (event) => {
@@ -61,7 +60,6 @@ function CreateMunch({ backgroundImage }) {
     setReview("");
     setPhoto("");
     setUserId("");
-    setSubmitted(false);
   };
 
   const handleSubmit = async (event) => {
@@ -89,7 +87,6 @@ function CreateMunch({ backgroundImage }) {
 
     const response = await fetch(munchUrl, fetchConfig);
     if (response.ok) {
-      setSubmitted(true);
       clearState();
       navigate("/home");
     }
@@ -119,7 +116,7 @@ function CreateMunch({ backgroundImage }) {
                   <Link to="/home">
                     <h1 className="text-center mb-3">
                       <img
-                        src="../create_munch.png"
+                        src="/create_munch.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -248,14 +245,6 @@ function CreateMunch({ backgroundImage }) {
                     </button>
                   </div>
                 </form>
-                {submitted && (
-                  <div
-                    className="alert text-center alert-success mb-0 p-4 mt-4"
-                    id="success-message"
-                  >
-                    Your munch has been posted!
-                  </div>
-                )}
               </div>
             </div>
           </div>
