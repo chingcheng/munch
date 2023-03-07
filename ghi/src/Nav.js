@@ -83,7 +83,7 @@ function Nav({ backgroundImage }) {
                 <NavLink
                   className="nav-link"
                   activeclassname="active"
-                  to={`/feed`}
+                  to={`/munchbunch`}
                 >
                   Munch Bunch
                 </NavLink>

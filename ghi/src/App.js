@@ -137,11 +137,11 @@ function App() {
                 }
               />
               <Route
-                path="feed"
+                path="munchbunch"
                 element={<AllMunches backgroundImage={backgroundImage} />}
               />
               <Route
-                path="filtered/:userName"
+                path="munches/:userName"
                 element={<UserPage backgroundImage={backgroundImage} />}
               />
             </Routes>
