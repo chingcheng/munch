@@ -88,7 +88,7 @@ function App() {
   return (
     <>
       <div>
-        <BrowserRouter>
+        <BrowserRouter basename={basename}>
           <Nav backgroundImage={backgroundImage} />
           <AuthProvider>
             <GetToken />
