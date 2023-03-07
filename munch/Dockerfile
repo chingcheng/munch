@@ -6,14 +6,12 @@ WORKDIR /app
 # Modify these instructions to do that
 COPY requirements.txt requirements.txt
 COPY main.py main.py
-COPY accounts.py accounts.py
-COPY comments.py comments.py
-COPY munches.py munches.py
+
 
 # Copy all of the subdirectories in your service's directory
 # Modify these instructions to do that
-# COPY queries queries
-# COPY routers routers
+COPY queries queries
+COPY routers routers
 
 
 # If you're using a relational database with migrations,
