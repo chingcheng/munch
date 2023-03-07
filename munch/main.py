@@ -13,9 +13,10 @@ app.include_router(authenticator.router)
 
 origins = [
     "http://localhost:3000",
+    "https://munch.nov-pt-10.mod3projects.com",
     os.environ.get(
             "CORS_HOST",
-            "https://munch.nov-pt-10.mod3projects.com"
+            "REACT_APP_MUNCH_API_HOST"
         )
 ]
 

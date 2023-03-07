@@ -68,7 +68,7 @@ function AllMunches({ backgroundImage }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `http://localhost:8010/munches`;
+        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
         const fetchConfig = {
           method: "get",
           headers: {

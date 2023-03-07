@@ -70,7 +70,7 @@ const UserPage = ({ backgroundImage }) => {
 
   useEffect(() => {
     const getUserId = async () => {
-      const userUrl = `http://localhost:8010/accounts`;
+      const userUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts`;
       const fetchConfig = {
         method: "get",
         headers: {
@@ -90,7 +90,7 @@ const UserPage = ({ backgroundImage }) => {
 
     const fetchFilterMunches = async (userId) => {
       try {
-        const url = `http://localhost:8010/munches`;
+        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
         const fetchConfig = {
           method: "get",
           headers: {

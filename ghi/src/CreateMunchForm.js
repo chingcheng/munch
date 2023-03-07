@@ -75,7 +75,7 @@ function CreateMunch({ backgroundImage }) {
     data.photo = photo;
     data.user_id = userId;
 
-    const munchUrl = "http://localhost:8010/munches";
+    const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
     const fetchConfig = {
       method: "post",
       body: JSON.stringify(data),

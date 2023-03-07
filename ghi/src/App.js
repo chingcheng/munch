@@ -57,7 +57,7 @@ function App() {
   const [munches, setMunches] = useState([]);
 
   const getMunches = async () => {
-    const url = "http://localhost:8010/munches";
+    const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();

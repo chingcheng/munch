@@ -10,7 +10,7 @@ function Nav({ backgroundImage }) {
   useEffect(() => {
     const fetchID = async () => {
       try {
-        const url = `http://localhost:8010/token`;
+        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/token`;
         const fetchConfig = {
           credentials: "include",
         };

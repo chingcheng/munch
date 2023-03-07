@@ -81,7 +81,7 @@ function EditMunch({ backgroundImage }) {
     data.photo = photo;
     data.user_id = userId;
 
-    const munchUrl = `http://localhost:8010/munches/${id}`;
+    const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
     const fetchConfig = {
       method: "put",
       body: JSON.stringify(data),
@@ -101,7 +101,7 @@ function EditMunch({ backgroundImage }) {
   useEffect(() => {
     const getOneMunch = async () => {
       try {
-        const url = `http://localhost:8010/munches/${id}`;
+        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
         const fetchConfig = {
           method: "get",
           headers: {

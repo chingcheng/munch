@@ -14,7 +14,7 @@ function GetAccount({ backgroundImage }) {
   useEffect(() => {
     const fetchID = async () => {
       try {
-        const url = `http://localhost:8010/token`;
+        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/token`;
         const fetchConfig = {
           credentials: "include",
         };
@@ -30,7 +30,7 @@ function GetAccount({ backgroundImage }) {
     };
 
     const getUser = async () => {
-      const userUrl = `http://localhost:8010/accounts/${userId}`;
+      const userUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${userId}`;
       const fetchConfig = {
         method: "get",
         headers: {
