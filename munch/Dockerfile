@@ -6,8 +6,9 @@ WORKDIR /app
 # Modify these instructions to do that
 COPY requirements.txt requirements.txt
 COPY main.py main.py
-COPY models.py models.py
-COPY queries.py queries.py
+COPY accounts.py accounts.py
+COPY comments.py comments.py
+COPY munches.py munches.py
 
 # Copy all of the subdirectories in your service's directory
 # Modify these instructions to do that
