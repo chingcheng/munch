@@ -89,7 +89,7 @@ function GetAccount({ backgroundImage }) {
                     <p className="text-center mb-4">
                       <img
                         src="/user.png"
-                        alt="Profile Photo"
+                        alt="User"
                         style={{
                           maxWidth: "100%",
                           width: "125px",

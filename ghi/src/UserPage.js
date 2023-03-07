@@ -160,7 +160,7 @@ const UserPage = ({ backgroundImage }) => {
                     <p className="add-friend mx-4">
                       <img
                         src="/add-friend.png"
-                        alt="Friend Photo"
+                        alt="Add Friend"
                         style={{
                           maxWidth: "100%",
                           width: "35px",
