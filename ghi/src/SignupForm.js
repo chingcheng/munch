@@ -187,7 +187,7 @@ function SignupForm({ backgroundImage }) {
                       style={{
                         width: "100%",
                         background: "#F8D876",
-                        fontWeight: "750",
+                        fontWeight: "725",
                         color: "#512b20",
                       }}
                       type="submit"

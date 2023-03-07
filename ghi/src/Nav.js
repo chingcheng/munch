@@ -2,28 +2,27 @@ import { NavLink, useParams } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useAuthContext } from "./Auth";
 
-
 function Nav({ backgroundImage }) {
-  const {id} = useParams();
+  const { id } = useParams();
   const { token } = useAuthContext();
 
   useEffect(() => {
-  const fetchID = async () => {
-    try {
-      const url = `http://localhost:8010/token`;
-      const fetchConfig = {
-        credentials: "include",
-      };
+    const fetchID = async () => {
+      try {
+        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/token`;
+        const fetchConfig = {
+          credentials: "include",
+        };
 
-      const response = await fetch(url, fetchConfig);
-      if (response.ok) {
-        await response.json();
+        const response = await fetch(url, fetchConfig);
+        if (response.ok) {
+          await response.json();
+        }
+      } catch (e) {
+        console.error(e);
       }
-    } catch (e) {
-      console.error(e);
-    }
-  };
-  fetchID();
+    };
+    fetchID();
   }, [token, id]);
 
   return (

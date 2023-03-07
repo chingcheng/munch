@@ -10,7 +10,7 @@ function MunchDetail({ backgroundImage }) {
   const [userName, setUsername] = useState("");
   const [userId, setUserId] = useState("");
   console.log(userId);
-  
+
   const handleDelete = async () => {
     const munchUrl = `http://localhost:8010/munches/${id}`;
     const fetchConfig = {
@@ -41,7 +41,7 @@ function MunchDetail({ backgroundImage }) {
         getUsername(data.user_id);
         setMunch(data);
       }
-    }
+    };
 
     const getUsername = async (userId) => {
       const usernameUrl = `http://localhost:8010/accounts/${userId}`;
@@ -87,20 +87,21 @@ function MunchDetail({ backgroundImage }) {
                   }}
                 >
                   <Link to={`/filtered/${userName}`} className="card-link">
-                    <div className="form-floating mb-3">
+                    <div className="form-floating mx-3 mt-1">
                       <h2
                         style={{
-                          color: "#FFE085",
-                          size: "40px",
+                          color: "black",
+                          fontSize: "15px",
+                          textAlign: "right",
                         }}
                       >
-                        {userName}
+                        @{userName}
                       </h2>
                     </div>
                   </Link>
                   <img
                     src={munch.photo}
-                    className="card-img-top pt-3 px-3"
+                    className="card-img-top px-3"
                     alt="Munch"
                   />
                   <div className="card-body">
@@ -152,7 +153,7 @@ function MunchDetail({ backgroundImage }) {
               className="btn btn-md lead text-bold text mx-2"
               style={{
                 background: "#F8D876",
-                fontWeight: "750",
+                fontWeight: "725",
                 color: "#512b20",
                 width: "150px",
                 height: "40px",
@@ -169,7 +170,7 @@ function MunchDetail({ backgroundImage }) {
             className="btn btn-md lead text-bold text mx-2"
             style={{
               background: "#FF4B3E",
-              fontWeight: "750",
+              fontWeight: "725",
               color: "white",
               width: "150px",
               height: "40px",

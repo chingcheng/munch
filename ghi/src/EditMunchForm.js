@@ -223,11 +223,11 @@ function EditMunch({ backgroundImage }) {
                   <div className="form-floating">
                     <button
                       type="button"
-                      className="btn text-bold"
+                      className="btn"
                       style={{
                         background: "#FFDE79",
                         color: "#512b20",
-                        fontWeight: "bold",
+                        fontWeight: "725",
                       }}
                       onClick={() => fileInputRef.current.click()}
                     >
@@ -280,7 +280,7 @@ function EditMunch({ backgroundImage }) {
                       className="btn btn-md lead text-bold text mx-2"
                       style={{
                         background: "#F8D876",
-                        fontWeight: "750",
+                        fontWeight: "725",
                         color: "#512b20",
                         width: "100%",
                         fontSize: "18px",
