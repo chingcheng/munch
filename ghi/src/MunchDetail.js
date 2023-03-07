@@ -12,7 +12,7 @@ function MunchDetail({ backgroundImage }) {
   console.log(userId);
 
   const handleDelete = async () => {
-    const munchUrl = `http://localhost:8010/munches/${id}`;
+    const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
     const fetchConfig = {
       method: "delete",
       headers: {
@@ -27,7 +27,7 @@ function MunchDetail({ backgroundImage }) {
 
   useEffect(() => {
     const getOneMunch = async () => {
-      const url = `http://localhost:8010/munches/${id}`;
+      const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
       const fetchConfig = {
         method: "get",
         headers: {
@@ -44,7 +44,7 @@ function MunchDetail({ backgroundImage }) {
     };
 
     const getUsername = async (userId) => {
-      const usernameUrl = `http://localhost:8010/accounts/${userId}`;
+      const usernameUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${userId}`;
       const fetchConfig = {
         method: "get",
         headers: {

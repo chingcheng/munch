@@ -58,7 +58,7 @@ function EditUser({ backgroundImage }) {
   };
 
   const handleDelete = async () => {
-    const accountUrl = `http://localhost:8010/accounts/${id}`;
+    const accountUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${id}`;
     const fetchConfig = {
       method: "delete",
       headers: {
@@ -84,7 +84,7 @@ function EditUser({ backgroundImage }) {
     data.bio = bio;
     data.password = password;
 
-    const url = `http://localhost:8010/accounts/${id}`;
+    const url = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${id}`;
     const fetchConfig = {
       method: "put",
       body: JSON.stringify(data),
@@ -103,7 +103,7 @@ function EditUser({ backgroundImage }) {
   };
 
   const getUser = useCallback(async () => {
-    const url = `http://localhost:8010/accounts/${id}`;
+    const url = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${id}`;
     const fetchConfig = {
       method: "get",
       headers: {

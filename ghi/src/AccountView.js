@@ -30,7 +30,7 @@ function GetAccount({ backgroundImage }) {
     };
 
     const getUser = async () => {
-      const userUrl = `http://localhost:8010/accounts/${userId}`;
+      const userUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${userId}`;
       const fetchConfig = {
         method: "get",
         headers: {
