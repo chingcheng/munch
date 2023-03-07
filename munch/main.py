@@ -16,7 +16,7 @@ app.add_middleware(
     allow_origins=[
         os.environ.get(
             "CORS_HOST",
-            "https://munchbunch.gitlab.io"
+            "https://munch.nov-pt-10.mod3projects.com"
         )
     ],
     allow_credentials=True,
