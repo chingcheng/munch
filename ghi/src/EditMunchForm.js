@@ -153,7 +153,7 @@ function EditMunch({ backgroundImage }) {
                   <Link to="/home">
                     <h1 className="text-center mb-3">
                       <img
-                        src="../../edit_munch.png"
+                        src="/edit_munch.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",

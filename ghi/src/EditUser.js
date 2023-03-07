@@ -98,7 +98,7 @@ function EditUser({ backgroundImage }) {
     if (response.ok) {
       setSubmitted(true);
       clearState();
-      navigate("/home");
+      navigate("/accounts");
     }
   };
 
@@ -148,10 +148,10 @@ function EditUser({ backgroundImage }) {
                   id="update-user-form"
                   onSubmit={handleSubmit}
                 >
-                  <Link to="/home">
+                  <Link to="/accounts">
                     <h1 className="text-center mb-3">
                       <img
-                        src="../../edit_account.png"
+                        src="/edit_account.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",

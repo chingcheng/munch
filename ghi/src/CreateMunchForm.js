@@ -119,7 +119,7 @@ function CreateMunch({ backgroundImage }) {
                   <Link to="/home">
                     <h1 className="text-center mb-3">
                       <img
-                        src="../create_munch.png"
+                        src="/create_munch.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
