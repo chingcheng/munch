@@ -82,6 +82,9 @@ function App() {
     return () => clearInterval(intervalId);
   }, []);
 
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, "");
+
   return (
     <>
       <div>
