@@ -14,8 +14,7 @@ app.include_router(authenticator.router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        os.environ.get("CORS_HOST", "http://localhost:3000",
-                       "https://munchbunch.gitlab.io")
+        os.environ.get("CORS_HOST", "https://munchbunch.gitlab.io")
     ],
     allow_credentials=True,
     allow_methods=["*"],
