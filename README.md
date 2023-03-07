@@ -16,13 +16,13 @@ View a live demo of this project here: https://munchbunch.gitlab.io/munch/
 ## Design
 
 - GHI
-- Wireframe
+- [Wireframe](https://excalidraw.com/#room=07938bbad0a1321891a1,IcHB5aelPznBrjBTOLua5w)
 - API
 
 ## Installation
 
 1. Fork repository
-2. Clone repository to local: git clone https://gitlab.com/munchbunch/munch.git
+2. Clone repository to local: git clone https://<span></span>gitlab.com/munchbunch/munch.git
 3. cd into new project directory
 4. Run: docker volume create postgres-data
 5. Run: docker compose build
