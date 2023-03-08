@@ -6,36 +6,43 @@ from authenticator import authenticator
 client = TestClient(app)
 
 
-def get_current_munch_data_mock():
-    return {
-        "id": 5,
-        "location": "string"
-    }
-
-
 class GetMunchRepositoryMock(MunchRepository):
-    def get_munch_by_id(self, id: int) -> MunchOut:
-        if id == 5:
+    def get_one(self, id: int) -> MunchOut:
+        if id == 0:
             return MunchOut(
-                id=5,
+                id=0,
                 location="string",
-                rating=5,
+                rating=0,
                 review="string",
                 photo="string",
                 tag=False,
                 city="string",
                 state="string",
-                user_id="1"
+                user_id="0"
             )
         else:
             return None
 
 
-def test_get_account():
+test_account = {
+  "id": 0,
+  "first_name": "string",
+  "last_name": "string",
+  "email": "string",
+  "username": "string",
+  "bio": "string"
+}
+
+
+def account_override():
+    return test_account
+
+
+def test_get_one_munch():
     app.dependency_overrides[MunchRepository] = GetMunchRepositoryMock
     app.dependency_overrides[
         authenticator.get_current_account_data
-        ] = get_current_munch_data_mock
+        ] = account_override
 
     response = client.get("/munches/5")
     data = response.json()
@@ -44,14 +51,14 @@ def test_get_account():
     else:
         assert response.status_code == 200
         assert data == {
-            "id": 5,
+            "id": 0,
             "location": "string",
-            "rating": 5,
+            "rating": 0,
             "review": "string",
             "tag": False,
             "photo": "string",
             "city": "string",
             "state": "string",
-            "user_id": "1"
+            "user_id": "0"
         }
     app.dependency_overrides = {}
