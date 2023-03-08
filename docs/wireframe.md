@@ -23,19 +23,19 @@ This page was intended to be displayed when a user logs-in. It exhibits all munc
 <br>
 ![Home Page](wireframes/home-page.png)
 
+## Create Munch Page
+
+This page was intended to allow the logged-in user to create a munch. The munch would then be displayed on the user's Home Page. The user could edit or delete the munch after creating it.
+<br>
+<br>
+![Create Munch Page](wireframes/create-munch-page.png)
+
 ## Detail Munch Page
 
 This page was intended to allow the logged-in user view the details of one of their existing munches.
 <br>
 <br>
 ![Detail Munch Page](wireframes/detail-view-page.png)
-
-## Create Munch Page
-
-This page was intended to allow the logged-in user to create a munch.
-<br>
-<br>
-![Create Munch Page](wireframes/create-munch-page.png)
 
 ## Edit Munch Page
 
