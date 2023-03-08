@@ -7,7 +7,7 @@ function MunchesColumn(props) {
     <div className="col">
       {props.list.map((munch) => (
         <div key={munch.id}>
-          <Link to={`/munches/${munch.id}`} className="card-link">
+          <Link to={`/munch/${munch.id}`} className="card-link">
             <div
               className="card"
               style={{

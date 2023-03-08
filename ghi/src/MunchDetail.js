@@ -164,7 +164,7 @@ function MunchDetail({ backgroundImage }) {
           className="button-container mt-4"
           style={{ display: "flex", justifyContent: "center" }}
         >
-          <Link to={`/munches/edit/${id}`}>
+          <Link to={`/munch/edit/${id}`}>
             <button
               className="btn btn-md lead text-bold text mx-2"
               style={{
@@ -250,7 +250,7 @@ function MunchDetail({ backgroundImage }) {
                     }}
                   >
                     {munch.location}
-                    <div
+                    <h7
                       className="d-flex"
                       style={{
                         fontSize: "0.7em",
@@ -268,11 +268,11 @@ function MunchDetail({ backgroundImage }) {
                           marginTop: "0.15em",
                         }}
                       ></img>
-                    </div>
+                    </h7>
                   </h3>
-                  <p className="card-city-state" style={{ marginTop: "0" }}>
+                  <h7 className="card-city-state" style={{ marginTop: "0" }}>
                     {munch.city}, {munch.state}
-                  </p>
+                  </h7>
                   <p className="card-review pt-3">{munch.review}</p>
                 </div>
               </div>
@@ -287,5 +287,4 @@ function MunchDetail({ backgroundImage }) {
     </div>
   );
 }
-
 export default MunchDetail;

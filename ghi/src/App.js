@@ -91,7 +91,6 @@ function App() {
         <BrowserRouter basename={basename}>
           <AuthProvider>
             <GetToken />
-            {/* <div className="container"> */}
             <Nav backgroundImage={backgroundImage} />
             <Routes>
               <Route
@@ -116,16 +115,20 @@ function App() {
                 element={<GetAccount backgroundImage={backgroundImage} />}
               />
               <Route
-                path="munches/create"
+                path="munch/create"
                 element={<CreateMunch backgroundImage={backgroundImage} />}
               />
               <Route
-                path="munches/edit/:id"
+                path="munch/edit/:id"
                 element={<EditMunch backgroundImage={backgroundImage} />}
               />
               <Route
-                path="munches/:id"
+                path="munch/:id"
                 element={<MunchDetail backgroundImage={backgroundImage} />}
+              />
+              <Route
+                path="munches/:userName"
+                element={<UserPage backgroundImage={backgroundImage} />}
               />
               <Route
                 path="home"
@@ -141,10 +144,10 @@ function App() {
                 path="munchbunch"
                 element={<AllMunches backgroundImage={backgroundImage} />}
               />
-              <Route
+              {/* <Route
                 path="munches/:userName"
                 element={<UserPage backgroundImage={backgroundImage} />}
-              />
+              /> */}
             </Routes>
           </AuthProvider>
         </BrowserRouter>
