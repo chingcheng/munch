@@ -9,8 +9,6 @@ function MunchDetail({ backgroundImage }) {
   const { token } = useAuthContext();
   const [userName, setUsername] = useState("");
   const [userId, setUserId] = useState("");
-  console.log("token", token)
-  console.log("userId:", userId)
 
   const handleDelete = async () => {
     const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
@@ -38,9 +36,7 @@ function MunchDetail({ backgroundImage }) {
       const response = await fetch(url, fetchConfig);
       if (response.ok) {
         const data = await response.json();
-        console.log("data", data)
         getUsername(data.user_id);
-        console.log("user_id:", data.user_id)
         setMunch(data);
       }
     };
@@ -56,7 +52,6 @@ function MunchDetail({ backgroundImage }) {
       const response = await fetch(usernameUrl, fetchConfig);
       if (response.ok) {
         const data = await response.json();
-        console.log("data:", data)
         const userName = data.username;
         setUsername(userName);
       }
@@ -72,7 +67,6 @@ function MunchDetail({ backgroundImage }) {
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
           const data = await response.json();
-          console.log("DATAAAAAAA!!!!!!!!!!!!", data)
           setUserId(data.account.id);
         }
       } catch (e) {
@@ -86,7 +80,6 @@ function MunchDetail({ backgroundImage }) {
   }, [token, id]);
 
 if(userId === Number(munch.user_id)){
-  console.log("munch.user_id", munch.user_id)
   return (
       <div
         className="p-5 bg-image"
@@ -295,8 +288,7 @@ if(userId === Number(munch.user_id)){
         </div>
       </div>
 
-            )
-          }
-
+      )
+    }
 
 export default MunchDetail;
