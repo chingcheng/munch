@@ -89,9 +89,9 @@ function App() {
     <>
       <div>
         <BrowserRouter basename={basename}>
-          <Nav backgroundImage={backgroundImage} />
           <AuthProvider>
             <GetToken />
+            <Nav backgroundImage={backgroundImage} />
             <Routes>
               <Route
                 path="/"
