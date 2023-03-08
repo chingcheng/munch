@@ -58,6 +58,14 @@ function Nav({ backgroundImage }) {
                   activeclassname="active"
                   to="/login"
                 >
+                  <img
+                    src="/login.png"
+                    alt="login"
+                    style={{
+                      width: "15px",
+                      marginBottom: "3px",
+                    }}
+                  />{" "}
                   Login
                 </NavLink>
               </li>
@@ -67,6 +75,14 @@ function Nav({ backgroundImage }) {
                   activeclassname="active"
                   to="/signup"
                 >
+                  <img
+                    src="/signup.png"
+                    alt="signup"
+                    style={{
+                      width: "15px",
+                      marginBottom: "3px",
+                    }}
+                  />{" "}
                   Sign Up
                 </NavLink>
               </li>
@@ -76,6 +92,14 @@ function Nav({ backgroundImage }) {
                   activeclassname="active"
                   to="/home"
                 >
+                  <img
+                    src="/home.png"
+                    alt="home"
+                    style={{
+                      width: "15px",
+                      marginBottom: "3px",
+                    }}
+                  />{" "}
                   Home
                 </NavLink>
               </li>
@@ -85,7 +109,15 @@ function Nav({ backgroundImage }) {
                   activeclassname="active"
                   to={`/feed`}
                 >
-                  Munch Bunch
+                  <img
+                    src="/friends.png"
+                    alt="friends"
+                    style={{
+                      width: "17px",
+                      marginBottom: "3px",
+                    }}
+                  />{" "}
+                  Bunch
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -94,7 +126,15 @@ function Nav({ backgroundImage }) {
                   activeclassname="active"
                   to="/munches/create"
                 >
-                  Create Munch
+                  <img
+                    src="/create.png"
+                    alt="create"
+                    style={{
+                      width: "18px",
+                      marginBottom: "3px",
+                    }}
+                  />{" "}
+                  Create
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -103,11 +143,27 @@ function Nav({ backgroundImage }) {
                   activeclassname="active"
                   to={`/accounts`}
                 >
+                  <img
+                    src="/account.png"
+                    alt="account"
+                    style={{
+                      width: "15px",
+                      marginBottom: "3px",
+                    }}
+                  />{" "}
                   Account
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/logout">
+                  <img
+                    src="/logout.png"
+                    alt="logout"
+                    style={{
+                      width: "15px",
+                      marginBottom: "3px",
+                    }}
+                  />{" "}
                   Logout
                 </NavLink>
               </li>

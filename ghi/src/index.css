@@ -105,8 +105,8 @@ code {
 }
 
 a.munchkin-link:hover {
-  color: #512b20;
-  /* color: #ffe185be; */
+  /* color: #512b20; */
+  color: #ffe185be;
   text-shadow: 0 0 10px #fff, 0 0 20px #ffe185be, 0 0 30px #ffe185be,
     0 0 40px #ffe185be, 0 0 70px #ffe185be, 0 0 80px #ffe185be,
     0 0 100px #ffe185be;
@@ -118,8 +118,8 @@ a.munchkin-link:hover {
 }
 
 a.signup-munchkin:hover {
-  color: #512b20;
-  /* color: #ffe185be; */
+  /* color: #512b20; */
+  color: #ffe185be;
   text-shadow: 0 0 10px #fff, 0 0 20px #ffe185be, 0 0 30px #ffe185be,
     0 0 40px #ffe185be, 0 0 70px #ffe185be, 0 0 80px #ffe185be,
     0 0 100px #ffe185be;
