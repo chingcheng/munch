@@ -136,7 +136,7 @@ const UserPage = ({ backgroundImage }) => {
           minHeight: "100vh",
         }}
       >
-        <Link to="/feed">
+        <Link to="/munchbunch">
           <div className="px-4 py-5 mt-0 text-center bg-transparent">
             <img src="/munch_bunch.png" alt="Munch Bunch" width="450" />
           </div>
