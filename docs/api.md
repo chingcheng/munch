@@ -20,6 +20,7 @@ JSON Request Body:
 <br>
 <br>
 Returns (Status Code 200):
+
 `{
   "id": 0,
   "location": "string",
@@ -33,12 +34,78 @@ Returns (Status Code 200):
 }`
 
 ![Get All Munches](api/get-all-munches.png)
+<br>
+<br>
+Returns (Status Code 200):
+
+`[
+  {
+    "id": 0,
+    "location": "string",
+    "rating": 0,
+    "review": "string",
+    "photo": "string",
+    "tag": true,
+    "city": "string",
+    "state": "string",
+    "user_id": "string"
+  }
+]`
 
 ![Get One Munch](api/get-one-munch.png)
+<br>
+<br>
+Returns (Status Code 200):
+
+`{
+  "id": 0,
+  "location": "string",
+  "rating": 0,
+  "review": "string",
+  "photo": "string",
+  "tag": true,
+  "city": "string",
+  "state": "string",
+  "user_id": "string"
+}`
 
 ![Update Munch](api/update-munch.png)
+<br>
+<br>
+JSON Request Body:
+
+`{
+  "location": "string",
+  "rating": 0,
+  "review": "string",
+  "photo": "string",
+  "tag": true,
+  "city": "string",
+  "state": "string",
+  "user_id": "string"
+}`
+<br>
+<br>
+Returns (Status Code 200):
+
+`{
+  "id": 0,
+  "location": "string",
+  "rating": 0,
+  "review": "string",
+  "photo": "string",
+  "tag": true,
+  "city": "string",
+  "state": "string",
+  "user_id": "string"
+}`
 
 ![Delete Munch](api/delete-munch.png)
+<br>
+<br>
+Returns (Status Code 200):
+
+`true`
 
 ## Accounts
 
