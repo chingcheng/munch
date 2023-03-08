@@ -4,10 +4,12 @@
 
 ![Create Munch](api/create-munch.png)
 <br>
-JSON Request Body
+<br>
+JSON Request Body:
 ![Request Body](api/cm-request-body.png)
 <br>
-Returns (Status Code 200)
+<br>
+Returns (Status Code 200):
 ![Response Body](api/cm-response-body.png)
 
 ![Get All Munches](api/get-all-munches.png)
