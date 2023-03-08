@@ -92,7 +92,7 @@ function Nav({ backgroundImage }) {
                 <NavLink
                   className="nav-link"
                   activeclassname="active"
-                  to="/munches/create"
+                  to="/munch/create"
                 >
                   Create Munch
                 </NavLink>
