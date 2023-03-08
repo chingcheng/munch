@@ -23,48 +23,50 @@ class CreateMunchQueries:
         return result
 
 
-mock_user = {
-    "id": 0,
-    "first_name": "string",
-    "last_name": "string",
-    "email": "string",
-    "username": "string",
-    "bio": "string"
+test_account = {
+  "id": 0,
+  "first_name": "string",
+  "last_name": "string",
+  "email": "string",
+  "username": "string",
+  "bio": "string"
 }
 
 
 def account_override():
-    return mock_user
+    return test_account
 
 
 def test_create_munch():
+
     app.dependency_overrides[MunchRepository] = CreateMunchQueries
+
     app.dependency_overrides[
         authenticator.try_get_current_account_data
         ] = account_override
 
     json = {
-        "id": 0,
-        "location": "string",
-        "rating": 0,
-        "review": "string",
-        "photo": "string",
-        "tag": False,
-        "city": "string",
-        "state": "string",
-        "user_id": '0'
+            "id": 0,
+            "location": "string",
+            "rating": 0,
+            "review": "string",
+            "photo": "string",
+            "tag": False,
+            "city": "string",
+            "state": "string",
+            "user_id": '0'
     }
 
     expected = {
-        "id": 0,
-        "location": "string",
-        "rating": 0,
-        "review": "string",
-        "photo": "string",
-        "tag": False,
-        "city": "string",
-        "state": "string",
-        "user_id": "0"
+            "id": 0,
+            "location": "string",
+            "rating": 0,
+            "review": "string",
+            "photo": "string",
+            "tag": False,
+            "city": "string",
+            "state": "string",
+            "user_id": '0'
     }
 
     response = client.post("/munches", json=json)
