@@ -141,7 +141,7 @@ function App() {
                 element={<AllMunches backgroundImage={backgroundImage} />}
               />
               <Route
-                path="munches/:userName"
+                path="filtered/:userName"
                 element={<UserPage backgroundImage={backgroundImage} />}
               />
             </Routes>
