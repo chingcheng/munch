@@ -16,7 +16,7 @@ View a live demo of this project here: https://munchbunch.gitlab.io/munch/
 ## Design
 
 - [GHI](docs/ghi.md)
-- [Wireframe](docs/wf.md)
+- [Wireframe](docs/wireframe.md)
 - [API](docs/api.md)
 
 ## Installation

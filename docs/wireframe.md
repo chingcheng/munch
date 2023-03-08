@@ -28,7 +28,7 @@ This page was intended to be displayed when a user logs-in. It exhibits all munc
 This page was intended to allow the logged-in user view the details of one of their existing munches.
 <br>
 <br>
-![Detail Munch Page](wireframes/detail-munch-page.png)
+![Detail Munch Page](wireframes/detail-view-page.png)
 
 ## Create Munch Page
 
