@@ -4,7 +4,7 @@ Munch is a web application for individuals who are interested in creating and/or
 
 ## Key Features - MVP
 
-1. Users are able to sign up for an account, log-in, and log-out.
+1. Users are able to sign-up for an account, log-in, and log-out.
 2. After logging in, users can view their account details, edit their account and delete their account.
 3. After logging in, users can create reviews, and edit/delete their own reviews.
 4. After logging in, users can view other users' profiles and reviews.

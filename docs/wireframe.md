@@ -2,14 +2,14 @@
 
 These are diagrams created during the exploratory phase of the project.
 
-## Signup Page
+## Sign-up Page
 
 This was intended to be the page a user would utilize to create an account.
 <br>
 <br>
 ![Signup Page](wireframes/signup-page.png)
 
-## Login Page
+## Log-in Page
 
 This was intended to be the page a user would utilize to log-in to their account.
 <br>
