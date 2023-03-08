@@ -20,7 +20,7 @@ JSON Request Body:
 <br>
 <br>
 Returns (Status Code 200):
-'''{
+```{
   "id": 0,
   "location": "string",
   "rating": 0,
@@ -30,7 +30,7 @@ Returns (Status Code 200):
   "city": "string",
   "state": "string",
   "user_id": "string"
-}'''
+}```
 
 ![Get All Munches](api/get-all-munches.png)
 
