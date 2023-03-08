@@ -231,7 +231,7 @@ Returns (Status Code 200):
 ## Authentication
 
 ![Login](api/login.png)
-This action logs an existing user into the app.
+This action logs an existing user into the application.
 <br>
 <br>
 Request Body:
@@ -248,3 +248,11 @@ Returns (Status Code 200):
 <br>
 <br>
 <br>
+![Logout](api/logout.png)
+This action logs an existing user out of the application.
+<br>
+<br>
+
+Returns (Status Code 200):
+
+`true`
