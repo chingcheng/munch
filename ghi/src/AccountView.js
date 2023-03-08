@@ -49,7 +49,9 @@ function GetAccount({ backgroundImage }) {
       }
     };
     fetchID();
-    getUser();
+    if (userId) {
+      getUser();
+    }
   }, [token, userId]);
 
   return (

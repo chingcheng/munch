@@ -28,44 +28,6 @@ function Nav({ backgroundImage }) {
                 }}
               />
             </NavLink>
-            {/* <div className="navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <NavLink
-                    className="nav-link"
-                    activeclassname="active"
-                    to="/login"
-                  >
-                    <img
-                      src="/login.png"
-                      alt="home"
-                      style={{
-                        width: "15px",
-                        marginBottom: "3px",
-                      }}
-                    />{" "}
-                    Login
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    className="nav-link"
-                    activeclassname="active"
-                    to="/signup"
-                  >
-                    <img
-                      src="/signup.png"
-                      alt="home"
-                      style={{
-                        width: "15px",
-                        marginBottom: "3px",
-                      }}
-                    />{" "}
-                    Sign Up
-                  </NavLink>
-                </li>
-              </ul>
-            </div> */}
           </div>
         </nav>
         <style>

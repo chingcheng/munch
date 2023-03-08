@@ -108,8 +108,8 @@ const UserPage = ({ backgroundImage }) => {
 
         if (response.ok) {
           const munches = await response.json();
-          const filteredMunches = munches.filter((munch) =>
-            munch.user_id.includes(userId)
+          const filteredMunches = munches.filter(
+            (munch) => Number(munch.user_id) === userId
           );
           const munchColumns = [[], [], []];
           filteredMunches.forEach((munch, index) =>

@@ -9,7 +9,7 @@ function MunchesColumn(props) {
         <div key={munch.id}>
           <Link to={`/munch/${munch.id}`} className="card-link">
             <div
-              className="card"
+              className="card mb"
               style={{
                 height: "415px",
                 marginBottom: "35px",
@@ -20,7 +20,7 @@ function MunchesColumn(props) {
                 src={munch.photo}
                 className="card-img-top"
                 alt={`${munch.location}`}
-                style={{ width: "100%", height: "250px", objectFit: "cover" }}
+                style={{ maxWidth: "100%", maxHeight: "250px" }}
               />
               <div
                 className="card-body"
@@ -48,7 +48,7 @@ function MunchesColumn(props) {
                 </div>
                 <div className="rating-info">
                   <small className="text-muted">
-                    {munch.rating}
+                    Rating: {munch.rating}
                     <img
                       src="/star.png"
                       alt="star"
@@ -89,7 +89,7 @@ function HomePage({ backgroundImage }) {
         if (response.ok) {
           const munches = await response.json();
           const filteredMunches = munches
-            .filter((munch) => munch.user_id.includes(userId))
+            .filter((munch) => Number(munch.user_id) === userId)
             .reverse();
           const munchColumns = [[], [], []];
           filteredMunches.forEach((munch, index) =>

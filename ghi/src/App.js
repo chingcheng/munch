@@ -54,21 +54,21 @@ function getRandomImage(images) {
 }
 
 function App() {
-  const [munches, setMunches] = useState([]);
+  // const [munches, setMunches] = useState([]);
 
-  const getMunches = async () => {
-    const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
-    const response = await fetch(url);
-    if (response.ok) {
-      const data = await response.json();
-      const munches = data.munches;
-      setMunches(munches);
-    }
-  };
+  // const getMunches = async () => {
+  //   const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
+  //   const response = await fetch(url);
+  //   if (response.ok) {
+  //     const data = await response.json();
+  //     const munches = data.munches;
+  //     setMunches(munches);
+  //   }
+  // };
 
-  useEffect(() => {
-    getMunches();
-  }, [setMunches]);
+  // useEffect(() => {
+  //   getMunches();
+  // }, [setMunches]);
 
   const [backgroundImage, setBackgroundImage] = useState(() => {
     const storedImage = localStorage.getItem("backgroundImage");
@@ -146,8 +146,8 @@ function App() {
                 path="home"
                 element={
                   <HomePage
-                    munches={munches}
-                    getMunches={getMunches}
+                    // munches={munches}
+                    // getMunches={getMunches}
                     backgroundImage={backgroundImage}
                   />
                 }
@@ -156,10 +156,6 @@ function App() {
                 path="munchbunch"
                 element={<AllMunches backgroundImage={backgroundImage} />}
               />
-              {/* <Route
-                path="munches/:userName"
-                element={<UserPage backgroundImage={backgroundImage} />}
-              /> */}
             </Routes>
           </AuthProvider>
         </BrowserRouter>

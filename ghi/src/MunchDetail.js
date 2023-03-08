@@ -43,6 +43,7 @@ function MunchDetail({ backgroundImage }) {
 
     const getUsername = async (userId) => {
       const usernameUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${userId}`;
+      console.log(userId);
       const fetchConfig = {
         method: "get",
         headers: {
@@ -75,7 +76,9 @@ function MunchDetail({ backgroundImage }) {
     };
 
     getOneMunch();
-    getUsername();
+    if (userId) {
+      getUsername();
+    }
     fetchID();
   }, [token, id]);
 
@@ -150,9 +153,9 @@ function MunchDetail({ backgroundImage }) {
                         ></img>
                       </div>
                     </h3>
-                    <p className="card-city-state" style={{ marginTop: "0" }}>
+                    <div className="card-city-state" style={{ marginTop: "0" }}>
                       {munch.city}, {munch.state}
-                    </p>
+                    </div>
                     <p className="card-review pt-3">{munch.review}</p>
                   </div>
                 </div>
@@ -250,7 +253,7 @@ function MunchDetail({ backgroundImage }) {
                     }}
                   >
                     {munch.location}
-                    <h7
+                    <div
                       className="d-flex"
                       style={{
                         fontSize: "0.7em",
@@ -268,11 +271,11 @@ function MunchDetail({ backgroundImage }) {
                           marginTop: "0.15em",
                         }}
                       ></img>
-                    </h7>
+                    </div>
                   </h3>
-                  <h7 className="card-city-state" style={{ marginTop: "0" }}>
+                  <p className="card-city-state" style={{ marginTop: "0" }}>
                     {munch.city}, {munch.state}
-                  </h7>
+                  </p>
                   <p className="card-review pt-3">{munch.review}</p>
                 </div>
               </div>
