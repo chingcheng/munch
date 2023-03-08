@@ -3,6 +3,7 @@
 ## Munches
 
 ![Create Munch](api/create-munch.png)
+This action creates a munch tied to a specific user and stores it within the database.
 <br>
 <br>
 JSON Request Body:
@@ -35,6 +36,7 @@ Returns (Status Code 200):
 <br>
 <br>
 ![Get All Munches](api/get-all-munches.png)
+This action gets all munches stored within the database.
 <br>
 <br>
 Returns (Status Code 200):
@@ -55,6 +57,7 @@ Returns (Status Code 200):
 <br>
 <br>
 ![Get One Munch](api/get-one-munch.png)
+This action gets the single munch tied to the input id.
 <br>
 <br>
 Returns (Status Code 200):
@@ -73,6 +76,7 @@ Returns (Status Code 200):
 <br>
 <br>
 ![Update Munch](api/update-munch.png)
+This action updates the single munch tied to the input id.
 <br>
 <br>
 JSON Request Body:
@@ -105,6 +109,7 @@ Returns (Status Code 200):
 <br>
 <br>
 ![Delete Munch](api/delete-munch.png)
+This action deletes the single munch tied to the input id.
 <br>
 <br>
 Returns (Status Code 200):
