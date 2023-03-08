@@ -6,27 +6,28 @@ from authenticator import authenticator
 client = TestClient(app)
 
 
-class TestAccountQueries:
+class GetAllAccounts:
     def get_all(self):
-        return [all_accounts_test]
+        return [get_accounts]
 
 
-all_accounts_test = {
-  "id": 0,
-  "first_name": "string",
-  "last_name": "string",
-  "email": "string",
-  "username": "string",
-  "bio": "string"
-}
+get_accounts = {
+    "id": 1,
+    "first_name": "first",
+    "last_name": "last",
+    "email": "email",
+    "username": "username",
+    "bio": "bio"
+    }
+
 
 test_account = {
-  "id": 0,
-  "first_name": "string",
-  "last_name": "string",
-  "email": "string",
-  "username": "string",
-  "bio": "string"
+  "id": 1,
+  "first_name": "first",
+  "last_name": "last",
+  "email": "email",
+  "username": "username",
+  "bio": "bio"
 }
 
 
@@ -36,7 +37,7 @@ def account_override():
 
 def test_get_all_accounts():
 
-    app.dependency_overrides[AccountQueries] = TestAccountQueries
+    app.dependency_overrides[AccountQueries] = GetAllAccounts
 
     app.dependency_overrides[
         authenticator.try_get_current_account_data
@@ -44,7 +45,10 @@ def test_get_all_accounts():
 
     response = client.get("/accounts")
 
+    print("STATUS", response.status_code)
+    print("RESPONSE", response.json())
+
     assert response.status_code == 200
-    assert response.json() == [all_accounts_test]
+    assert response.json() == [get_accounts]
 
     app.dependency_overrides = {}

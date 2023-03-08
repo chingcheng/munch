@@ -5,7 +5,6 @@ import { useAuthContext } from "./Auth";
 function Nav({ backgroundImage }) {
   const { id } = useParams();
   const { token } = useAuthContext();
-  console.log(token);
 
   useEffect(() => {
     const fetchID = async () => {
@@ -107,7 +106,7 @@ function Nav({ backgroundImage }) {
                 <NavLink
                   className="nav-link"
                   activeclassname="active"
-                  to={`/feed`}
+                  to={`/munchbunch`}
                 >
                   <img
                     src="/friends.png"
