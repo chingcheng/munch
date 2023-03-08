@@ -1,39 +1,11 @@
 import { NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { useAuthContext } from "./Auth";
+import { useAuthContext, useToken } from "./Auth";
 
 function Nav({ backgroundImage }) {
   const { token } = useAuthContext();
-  // const { logout } = useToken();
-  const [user, setUser] = useState([]);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/token`;
-        const fetchConfig = {
-          credentials: "include",
-        };
-
-        const response = await fetch(url, fetchConfig);
-        if (response.ok) {
-          const data = await response.json();
-          setUser(data)
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    fetchUserData();
-  }, [token]);
-
-    // const navigate = useNavigate();
-    // const handleLogout = async (e) => {
-    //   await logout();
-    //   navigate("/login");
-    // };
-
-    if (user === null) {
+  if (token === false) {
       return (
         <>
           <nav
@@ -132,26 +104,6 @@ function Nav({ backgroundImage }) {
           </NavLink>
           <div className="navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
-              {/* <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeclassname="active"
-                  to="/login"
-                >
-                  Login
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeclassname="active"
-                  to="/signup"
-                >
-                  Sign Up
-                </NavLink>
-              </li> */}
-
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
@@ -213,5 +165,4 @@ function Nav({ backgroundImage }) {
   );
   }
 }
-
 export default Nav;
