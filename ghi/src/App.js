@@ -57,7 +57,7 @@ function App() {
   const [munches, setMunches] = useState([]);
 
   const getMunches = async () => {
-    const url = "http://localhost:8010/munches";
+    const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
@@ -82,10 +82,13 @@ function App() {
     return () => clearInterval(intervalId);
   }, []);
 
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, "");
+
   return (
     <>
       <div>
-        <BrowserRouter>
+        <BrowserRouter basename={basename}>
           <Nav backgroundImage={backgroundImage} />
           <AuthProvider>
             <GetToken />
@@ -135,11 +138,11 @@ function App() {
                 }
               />
               <Route
-                path="feed"
+                path="munchbunch"
                 element={<AllMunches backgroundImage={backgroundImage} />}
               />
               <Route
-                path="filtered/:userName"
+                path="munches/:userName"
                 element={<UserPage backgroundImage={backgroundImage} />}
               />
             </Routes>

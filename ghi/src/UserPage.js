@@ -70,7 +70,7 @@ const UserPage = ({ backgroundImage }) => {
 
   useEffect(() => {
     const getUserId = async () => {
-      const userUrl = `http://localhost:8010/accounts`;
+      const userUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts`;
       const fetchConfig = {
         method: "get",
         headers: {
@@ -90,7 +90,7 @@ const UserPage = ({ backgroundImage }) => {
 
     const fetchFilterMunches = async (userId) => {
       try {
-        const url = `http://localhost:8010/munches`;
+        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
         const fetchConfig = {
           method: "get",
           headers: {
@@ -140,24 +140,16 @@ const UserPage = ({ backgroundImage }) => {
               <div className="col d-flex justify-content-center">
                 <div
                   className="card"
-                  style={{ height: "65px", width: "280px", display: "flex" }}
+                  style={{ height: "65px", width: "180px", display: "flex" }}
                 >
                   <div
                     className="card-body"
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <div className="label-value">
-                      <h5
-                        className="card-title mx-3"
-                        style={{
-                          fontSize: "24px",
-                        }}
-                      >
-                        User:
-                      </h5>
-                      <h5 className="card-text">{userName}</h5>
+                      <h5 className="card-text mx-1">{userName}</h5>
                     </div>
-                    <p className="add-friend mx-4">
+                    <p className="add-friend mx-1">
                       <img
                         src="/add-friend.png"
                         alt="Add Friend"
