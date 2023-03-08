@@ -11,7 +11,6 @@ function SignupForm({ backgroundImage }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [bio, setBio] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
   const handleFirstNameChange = (event) => {
@@ -46,7 +45,6 @@ function SignupForm({ backgroundImage }) {
     setUsername("");
     setPassword("");
     setBio("");
-    setSubmitted(false);
   };
 
   const handleSubmit = async (e) => {
@@ -60,7 +58,6 @@ function SignupForm({ backgroundImage }) {
       bio
     );
     if (response === true) {
-      setSubmitted(true);
       clearState();
       navigate("/login");
     } else {
@@ -183,11 +180,11 @@ function SignupForm({ backgroundImage }) {
                   </div>
                   <div className="col text-center">
                     <button
-                      className="btn btn-lg lead text-bold text"
+                      className="btn btn-lg lead text-bold text mb-4"
                       style={{
                         width: "100%",
                         background: "#F8D876",
-                        fontWeight: "750",
+                        fontWeight: "725",
                         color: "#512b20",
                       }}
                       type="submit"
@@ -196,18 +193,13 @@ function SignupForm({ backgroundImage }) {
                       Sign Up
                     </button>
                   </div>
+                  <a href="login" class="munchkin-link">
+                    Already a Munchkin?
+                  </a>
                   {error && (
                     <div className="alert alert-danger mt-3">{error}</div>
                   )}
                 </form>
-                {submitted && (
-                  <div
-                    className="alert text-center alert-success mb-0 p-4 mt-4"
-                    id="success-message"
-                  >
-                    Your account has been created!
-                  </div>
-                )}
               </div>
             </div>
           </div>

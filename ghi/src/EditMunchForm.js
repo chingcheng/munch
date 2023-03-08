@@ -10,11 +10,10 @@ function EditMunch({ backgroundImage }) {
   const [location, setLocation] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
   const [userId, setUserId] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const fileInputRef = React.createRef();
 
   const handleLocationChange = (event) => {
@@ -33,7 +32,7 @@ function EditMunch({ backgroundImage }) {
   };
 
   const handleRatingChange = (rate) => {
-    setRating(rate);
+    setRating(parseInt(rate));
   };
 
   const handleReviewChange = (event) => {
@@ -63,11 +62,10 @@ function EditMunch({ backgroundImage }) {
     setLocation("");
     setCity("");
     setState("");
-    setRating("");
+    setRating(0);
     setReview("");
     setPhoto("");
     setUserId("");
-    setSubmitted(false);
   };
 
   const handleSubmit = async (event) => {
@@ -83,7 +81,7 @@ function EditMunch({ backgroundImage }) {
     data.photo = photo;
     data.user_id = userId;
 
-    const munchUrl = `http://localhost:8010/munches/${id}`;
+    const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
     const fetchConfig = {
       method: "put",
       body: JSON.stringify(data),
@@ -95,7 +93,6 @@ function EditMunch({ backgroundImage }) {
 
     const response = await fetch(munchUrl, fetchConfig);
     if (response.ok) {
-      setSubmitted(true);
       clearState();
       navigate("/home");
     }
@@ -104,7 +101,7 @@ function EditMunch({ backgroundImage }) {
   useEffect(() => {
     const getOneMunch = async () => {
       try {
-        const url = `http://localhost:8010/munches/${id}`;
+        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
         const fetchConfig = {
           method: "get",
           headers: {
@@ -153,7 +150,7 @@ function EditMunch({ backgroundImage }) {
                   <Link to="/home">
                     <h1 className="text-center mb-3">
                       <img
-                        src="../../edit_munch.png"
+                        src="/edit_munch.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -223,11 +220,11 @@ function EditMunch({ backgroundImage }) {
                   <div className="form-floating">
                     <button
                       type="button"
-                      className="btn text-bold"
+                      className="btn"
                       style={{
                         background: "#FFDE79",
                         color: "#512b20",
-                        fontWeight: "bold",
+                        fontWeight: "725",
                       }}
                       onClick={() => fileInputRef.current.click()}
                     >
@@ -255,7 +252,7 @@ function EditMunch({ backgroundImage }) {
                   <div className="form-floating mb-3">
                     <Rating
                       onClick={handleRatingChange}
-                      rate={rating}
+                      ratingValue={rating}
                       size={35}
                       label
                       transition
@@ -280,7 +277,7 @@ function EditMunch({ backgroundImage }) {
                       className="btn btn-md lead text-bold text mx-2"
                       style={{
                         background: "#F8D876",
-                        fontWeight: "750",
+                        fontWeight: "725",
                         color: "#512b20",
                         width: "100%",
                         fontSize: "18px",
@@ -294,14 +291,6 @@ function EditMunch({ backgroundImage }) {
                     {"  "}
                   </div>
                 </form>
-                {submitted && (
-                  <div
-                    className="alert text-center alert-success mb-0 p-4 mt-4"
-                    id="success-message"
-                  >
-                    Your munch has been posted!
-                  </div>
-                )}
               </div>
             </div>
           </div>
