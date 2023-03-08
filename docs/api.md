@@ -35,6 +35,7 @@ Returns (Status Code 200):
 }`
 <br>
 <br>
+<br>
 ![Get All Munches](api/get-all-munches.png)
 This action gets all munches stored within the database.
 <br>
@@ -56,6 +57,7 @@ Returns (Status Code 200):
 ]`
 <br>
 <br>
+<br>
 ![Get One Munch](api/get-one-munch.png)
 This action gets the single munch tied to the input id.
 <br>
@@ -73,6 +75,7 @@ Returns (Status Code 200):
   "state": "string",
   "user_id": "string"
 }`
+<br>
 <br>
 <br>
 ![Update Munch](api/update-munch.png)
@@ -106,6 +109,7 @@ Returns (Status Code 200):
   "state": "string",
   "user_id": "string"
 }`
+<br>
 <br>
 <br>
 ![Delete Munch](api/delete-munch.png)
