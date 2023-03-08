@@ -118,7 +118,3 @@ Returns (Status Code 200):
 ![Update Account](api/update-account.png)
 
 ![Delete Account](api/delete-account.png)
-
-```
-
-```
