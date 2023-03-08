@@ -25,6 +25,22 @@ function MunchDetail({ backgroundImage }) {
   };
 
   useEffect(() => {
+    const getUsername = async () => {
+      const usernameUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${userId}`;
+      const fetchConfig = {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await fetch(usernameUrl, fetchConfig);
+      if (response.ok) {
+        const data = await response.json();
+        const userName = data.username;
+        setUsername(userName);
+      }
+    };
+
     const getOneMunch = async () => {
       const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
       const fetchConfig = {
@@ -38,23 +54,6 @@ function MunchDetail({ backgroundImage }) {
         const data = await response.json();
         getUsername(data.user_id);
         setMunch(data);
-      }
-    };
-
-    const getUsername = async (userId) => {
-      const usernameUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${userId}`;
-      console.log(userId);
-      const fetchConfig = {
-        method: "get",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const response = await fetch(usernameUrl, fetchConfig);
-      if (response.ok) {
-        const data = await response.json();
-        const userName = data.username;
-        setUsername(userName);
       }
     };
 
@@ -75,12 +74,16 @@ function MunchDetail({ backgroundImage }) {
       }
     };
 
-    getOneMunch();
     if (userId) {
       getUsername();
     }
+
+    if (token && userId) {
+      getOneMunch();
+    }
+
     fetchID();
-  }, [token, id]);
+  }, [token, id, userId]);
 
   if (userId === Number(munch.user_id)) {
     return (
