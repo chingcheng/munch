@@ -6,11 +6,31 @@
 <br>
 <br>
 JSON Request Body:
-![Request Body](api/cm-request-body.png)
+
+````{
+  "location": "string",
+  "rating": 0,
+  "review": "string",
+  "photo": "string",
+  "tag": true,
+  "city": "string",
+  "state": "string",
+  "user_id": "string"
+}```
 <br>
 <br>
 Returns (Status Code 200):
-![Response Body](api/cm-response-body.png)
+'''{
+  "id": 0,
+  "location": "string",
+  "rating": 0,
+  "review": "string",
+  "photo": "string",
+  "tag": true,
+  "city": "string",
+  "state": "string",
+  "user_id": "string"
+}'''
 
 ![Get All Munches](api/get-all-munches.png)
 
@@ -31,3 +51,4 @@ Returns (Status Code 200):
 ![Update Account](api/update-account.png)
 
 ![Delete Account](api/delete-account.png)
+````
