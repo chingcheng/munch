@@ -2,10 +2,14 @@
 
 ## Munches
 
-![GET Munches](api/GET-munches.png)
+![Create Munches](api/create-munch.png)
 
-![GET Munches](api/get-one-munch.png)
+![Get One Munch](api/get-all-munches.png)
 
-![GET Munches](api/update-munch.png)
+![Get One Munch](api/get-one-munch.png)
+
+![Update Munch](api/update-munch.png)
+
+![Delete Munch](api/delete-munch.png)
 
 ## Accounts
