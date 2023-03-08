@@ -8,7 +8,14 @@ function MunchesColumn(props) {
       {props.list.map((munch) => (
         <div key={munch.id}>
           <Link to={`/munch/${munch.id}`} className="card-link">
-            <div className="card mb-3 shadow" style={{ height: "415px" }}>
+            <div
+              className="card"
+              style={{
+                height: "415px",
+                marginBottom: "35px",
+                marginLeft: "10px",
+              }}
+            >
               <img
                 src={munch.photo}
                 className="card-img-top"

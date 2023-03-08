@@ -65,7 +65,7 @@ function GetAccount({ backgroundImage }) {
         }}
       >
         <div className="shadow p-2 m-4"></div>
-        <Link to="/account">
+        <Link to="/accounts">
           <p className="text-center">
             <img
               src="/munch_account.png"
