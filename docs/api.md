@@ -119,11 +119,103 @@ Returns (Status Code 200):
 ## Accounts
 
 ![Create Account](api/create-account.png)
+This action creates an account tied to a specific user and stores it within the database.
+<br>
+<br>
+JSON Request Body:
 
+`{
+  "first_name": "string",
+  "last_name": "string",
+  "email": "string",
+  "username": "string",
+  "password": "string",
+  "bio": "string"
+}`
+<br>
+<br>
+Returns (Status Code 200):
+
+`{
+  "access_token": "string",
+  "token_type": "Bearer",
+  "account": {
+    "id": 0,
+    "first_name": "string",
+    "last_name": "string",
+    "email": "string",
+    "username": "string",
+    "bio": "string"
+  }
+}`
+<br>
+<br>
 ![Get All Accounts](api/get-all-accounts.png)
+This action gets all accounts stored within the database.
+<br>
+<br>
+Returns (Status Code 200):
 
+`[
+  {
+    "id": 0,
+    "first_name": "string",
+    "last_name": "string",
+    "email": "string",
+    "username": "string",
+    "bio": "string"
+  }
+]`
+<br>
+<br>
 ![Get One Account](api/get-one-account.png)
+This action gets the single account tied to the input id.
+<br>
+<br>
+Returns (Status Code 200):
 
+`{
+  "id": 0,
+  "first_name": "string",
+  "last_name": "string",
+  "email": "string",
+  "username": "string",
+  "bio": "string"
+}`
+<br>
+<br>
 ![Update Account](api/update-account.png)
+This action updates the single account tied to the input id.
+<br>
+<br>
+JSON Request Body:
 
+`{
+  "first_name": "string",
+  "last_name": "string",
+  "email": "string",
+  "username": "string",
+  "password": "string",
+  "bio": "string"
+}`
+<br>
+<br>
+Returns (Status Code 200):
+
+`{
+  "id": 0,
+  "first_name": "string",
+  "last_name": "string",
+  "email": "string",
+  "username": "string",
+  "bio": "string"
+}`
+<br>
+<br>
 ![Delete Account](api/delete-account.png)
+This action deletes the single account tied to the input id.
+<br>
+<br>
+Returns (Status Code 200):
+
+`true`
