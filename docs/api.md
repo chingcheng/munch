@@ -32,7 +32,8 @@ Returns (Status Code 200):
   "state": "string",
   "user_id": "string"
 }`
-
+<br>
+<br>
 ![Get All Munches](api/get-all-munches.png)
 <br>
 <br>
@@ -51,7 +52,8 @@ Returns (Status Code 200):
     "user_id": "string"
   }
 ]`
-
+<br>
+<br>
 ![Get One Munch](api/get-one-munch.png)
 <br>
 <br>
@@ -68,7 +70,8 @@ Returns (Status Code 200):
   "state": "string",
   "user_id": "string"
 }`
-
+<br>
+<br>
 ![Update Munch](api/update-munch.png)
 <br>
 <br>
@@ -99,7 +102,8 @@ Returns (Status Code 200):
   "state": "string",
   "user_id": "string"
 }`
-
+<br>
+<br>
 ![Delete Munch](api/delete-munch.png)
 <br>
 <br>
