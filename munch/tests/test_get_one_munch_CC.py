@@ -31,7 +31,7 @@ class GetMunchRepositoryMock(MunchRepository):
             return None
 
 
-def test_get_account():
+def test_get_munch():
     app.dependency_overrides[MunchRepository] = GetMunchRepositoryMock
     app.dependency_overrides[
         authenticator.get_current_account_data
