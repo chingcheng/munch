@@ -28,9 +28,9 @@ View a live demo of this project here: https://munchbunch.gitlab.io/munch/
 5. Run: `docker compose build`
 6. Run: `docker compose up`
 
-- Access the application on your web browser at http://localhost:3000/.
+- Access the application on your web browser at http://localhost:3000/
 
-- Access the FastAPI Swagger UI at http://localhost:8010/docs.
+- Access the FastAPI Swagger UI at http://localhost:8010/docs
 
 ## Requirements
 
