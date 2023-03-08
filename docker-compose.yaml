@@ -6,14 +6,6 @@ volumes:
     external: true
 
 services:
-  fastapi:
-    build:
-      context: sample_service
-      dockerfile: Dockerfile.dev
-    ports:
-      - 8000:8000
-    volumes:
-      - ./sample_service:/app
   postgres:
     image: postgres:14.2-bullseye
     volumes:
