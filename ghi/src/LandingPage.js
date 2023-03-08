@@ -27,7 +27,7 @@ function LandingPage({ backgroundImage }) {
             <div className="container mt-3">
               <Link
                 to="login"
-                className="btn text-bold"
+                className="btn text-bold login-btn-text"
                 style={{
                   width: 225,
                   background: "#FFE085",
@@ -42,7 +42,7 @@ function LandingPage({ backgroundImage }) {
             <div className="container mt-3">
               <Link
                 to="signup"
-                className="btn text-bold login-btn-text"
+                className="btn text-bold signup-btn-text"
                 style={{
                   width: 225,
                   background: "#FFE085",

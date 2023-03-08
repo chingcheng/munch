@@ -8,7 +8,7 @@ function MunchesColumn(props) {
       {props.list.map((munch) => (
         <div key={munch.id}>
           <Link to={`/munches/${munch.id}`} className="card-link">
-            <div className="card mb-3 shadow" style={{ height: "400px" }}>
+            <div className="card mb-3 shadow" style={{ height: "415px" }}>
               <img
                 src={munch.photo}
                 className="card-img-top"
@@ -17,16 +17,42 @@ function MunchesColumn(props) {
               />
               <div
                 className="card-body"
-                style={{ height: "100px", overflow: "hidden" }}
+                style={{
+                  height: "100%",
+                  overflow: "hidden",
+                }}
               >
-                <h5 className="card-location">
-                  {munch.location} - {munch.username}
-                </h5>
-
+                <h5 className="card-location">{munch.location}</h5>
                 <p className="card-review">{munch.review}</p>
               </div>
-              <div className="card-footer" style={{ height: "50px" }}>
-                <small className="text-muted">Rating: {munch.rating}/5</small>
+              <div
+                className="card-footer"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  height: "40px",
+                }}
+              >
+                <div className="location-info">
+                  <small className="text-muted">
+                    {munch.city}, {munch.state}
+                  </small>
+                </div>
+                <div className="rating-info">
+                  <small className="text-muted">
+                    Rating: {munch.rating}
+                    <img
+                      src="/star.png"
+                      alt="star"
+                      style={{
+                        width: "0.9em",
+                        height: "0.9em",
+                        marginTop: "-0.25em",
+                      }}
+                    ></img>
+                  </small>
+                </div>
               </div>
             </div>
           </Link>
@@ -39,28 +65,28 @@ function AllMunches({ backgroundImage }) {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
 
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const url = `http://localhost:8010/munches`;
-      const fetchConfig = {
-        method: "get",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
+        const fetchConfig = {
+          method: "get",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
 
-      const response = await fetch(url, fetchConfig);
-      if (response.ok) {
-        const data = await response.json();
-        const munchColumns = [[], [], []];
-        data.forEach((munch, index) => munchColumns[index % 3].push(munch));
-        setMunchColumns(munchColumns);
+        const response = await fetch(url, fetchConfig);
+        if (response.ok) {
+          const data = await response.json();
+          const munchColumns = [[], [], []];
+          data.forEach((munch, index) => munchColumns[index % 3].push(munch));
+          setMunchColumns(munchColumns);
+        }
+      } catch (e) {
+        console.error(e);
       }
-    } catch (e) {
-      console.error(e);
-    }
-  };
+    };
 
     fetchData();
   }, [token]);
@@ -77,14 +103,11 @@ useEffect(() => {
           minHeight: "100vh",
         }}
       >
-        <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
-          <img src="./munch_transparent.png" alt="" width="450" />
-          <div>
-            <p>
-              <img src="./munch_slogan.png" alt="Slogan" width="300px" />
-            </p>
+        <Link to="/feed">
+          <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
+            <img src="./munch_bunch.png" alt="Munch Bunch" width="450" />
           </div>
-        </div>
+        </Link>
         <div className="container">
           <div className="row"></div>
         </div>

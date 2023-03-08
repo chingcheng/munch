@@ -13,7 +13,6 @@ function EditUser({ backgroundImage }) {
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
   const handleFirstNameChange = (event) => {
     const value = event.target.value;
@@ -54,11 +53,10 @@ function EditUser({ backgroundImage }) {
     setEmail("");
     setUsername("");
     setBio("");
-    setSubmitted(false);
   };
 
   const handleDelete = async () => {
-    const accountUrl = `http://localhost:8010/accounts/${id}`;
+    const accountUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${id}`;
     const fetchConfig = {
       method: "delete",
       headers: {
@@ -84,7 +82,7 @@ function EditUser({ backgroundImage }) {
     data.bio = bio;
     data.password = password;
 
-    const url = `http://localhost:8010/accounts/${id}`;
+    const url = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${id}`;
     const fetchConfig = {
       method: "put",
       body: JSON.stringify(data),
@@ -96,14 +94,13 @@ function EditUser({ backgroundImage }) {
 
     const response = await fetch(url, fetchConfig);
     if (response.ok) {
-      setSubmitted(true);
       clearState();
-      navigate("/home");
+      navigate("/accounts");
     }
   };
 
   const getUser = useCallback(async () => {
-    const url = `http://localhost:8010/accounts/${id}`;
+    const url = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${id}`;
     const fetchConfig = {
       method: "get",
       headers: {
@@ -148,10 +145,10 @@ function EditUser({ backgroundImage }) {
                   id="update-user-form"
                   onSubmit={handleSubmit}
                 >
-                  <Link to="/home">
+                  <Link to="/accounts">
                     <h1 className="text-center mb-3">
                       <img
-                        src="../../edit_account.png"
+                        src="/edit_account.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -246,12 +243,15 @@ function EditUser({ backgroundImage }) {
                       Confirm Password
                     </label>
                   </div>
-                  <div className="button-container" style={{ display: "flex" }}>
+                  <div
+                    className="button-container"
+                    style={{ display: "flex", justifyContent: "center" }}
+                  >
                     <button
                       className="btn btn-md lead text-bold text mx-2 mt-1"
                       style={{
                         background: "#F8D876",
-                        fontWeight: "750",
+                        fontWeight: "725",
                         color: "#512b20",
                         width: "150px",
                         height: "40px",
@@ -267,7 +267,7 @@ function EditUser({ backgroundImage }) {
                       className="btn btn-md lead text-bold text mx-2 mt-1"
                       style={{
                         background: "#FF4B3E",
-                        fontWeight: "750",
+                        fontWeight: "725",
                         color: "white",
                         width: "150px",
                         height: "40px",
@@ -279,14 +279,6 @@ function EditUser({ backgroundImage }) {
                     </button>
                   </div>
                 </form>
-                {submitted && (
-                  <div
-                    className="alert text-center alert-success mb-0 p-4 mt-4"
-                    id="success-message"
-                  >
-                    Your munch has been posted!
-                  </div>
-                )}
               </div>
             </div>
           </div>

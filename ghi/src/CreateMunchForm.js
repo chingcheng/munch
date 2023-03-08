@@ -13,7 +13,6 @@ function CreateMunch({ backgroundImage }) {
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
   const [userId, setUserId] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const fileInputRef = React.createRef();
 
   const handleLocationChange = (event) => {
@@ -53,7 +52,6 @@ function CreateMunch({ backgroundImage }) {
     }
   };
 
-
   const clearState = () => {
     setLocation("");
     setCity("");
@@ -62,7 +60,6 @@ function CreateMunch({ backgroundImage }) {
     setReview("");
     setPhoto("");
     setUserId("");
-    setSubmitted(false);
   };
 
   const handleSubmit = async (event) => {
@@ -78,7 +75,7 @@ function CreateMunch({ backgroundImage }) {
     data.photo = photo;
     data.user_id = userId;
 
-    const munchUrl = "http://localhost:8010/munches";
+    const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
     const fetchConfig = {
       method: "post",
       body: JSON.stringify(data),
@@ -90,7 +87,6 @@ function CreateMunch({ backgroundImage }) {
 
     const response = await fetch(munchUrl, fetchConfig);
     if (response.ok) {
-      setSubmitted(true);
       clearState();
       navigate("/home");
     }
@@ -120,7 +116,7 @@ function CreateMunch({ backgroundImage }) {
                   <Link to="/home">
                     <h1 className="text-center mb-3">
                       <img
-                        src="../create_munch.png"
+                        src="/create_munch.png"
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -190,11 +186,11 @@ function CreateMunch({ backgroundImage }) {
                   <div className="form-floating mb-3">
                     <button
                       type="button"
-                      className="btn text-bold"
+                      className="btn"
                       style={{
                         background: "#FFDE79",
                         color: "#512b20",
-                        fontWeight: "bold",
+                        fontWeight: "725",
                       }}
                       onClick={() => fileInputRef.current.click()}
                     >
@@ -237,7 +233,7 @@ function CreateMunch({ backgroundImage }) {
                       style={{
                         width: "50%",
                         background: "#F8D876",
-                        fontWeight: "750",
+                        fontWeight: "725",
                         fontSize: "18px",
                         height: "40px",
                         color: "#512b20",
@@ -249,14 +245,6 @@ function CreateMunch({ backgroundImage }) {
                     </button>
                   </div>
                 </form>
-                {submitted && (
-                  <div
-                    className="alert text-center alert-success mb-0 p-4 mt-4"
-                    id="success-message"
-                  >
-                    Your munch has been posted!
-                  </div>
-                )}
               </div>
             </div>
           </div>
