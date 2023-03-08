@@ -2,11 +2,13 @@
 
 ## Sign-up Page
 
+![Sign-up Page](ghi/signup.png)
+
 ## Log-in Page
 
-## Home Page
+![Log-in Page](ghi/login.png)
 
-![Home Page](ghi/home-page.png)
+## Home Page
 
 ## Create Munch Page
 
