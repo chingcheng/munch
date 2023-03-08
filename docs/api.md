@@ -154,6 +154,7 @@ Returns (Status Code 200):
 }`
 <br>
 <br>
+<br>
 ![Get All Accounts](api/get-all-accounts.png)
 This action gets all accounts stored within the database.
 <br>
@@ -172,6 +173,7 @@ Returns (Status Code 200):
 ]`
 <br>
 <br>
+<br>
 ![Get One Account](api/get-one-account.png)
 This action gets the single account tied to the input id.
 <br>
@@ -186,6 +188,7 @@ Returns (Status Code 200):
   "username": "string",
   "bio": "string"
 }`
+<br>
 <br>
 <br>
 ![Update Account](api/update-account.png)
@@ -214,6 +217,7 @@ Returns (Status Code 200):
   "username": "string",
   "bio": "string"
 }`
+<br>
 <br>
 <br>
 ![Delete Account](api/delete-account.png)
