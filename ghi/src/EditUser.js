@@ -259,7 +259,7 @@ function EditUser({ backgroundImage }) {
                       type="submit"
                       value="Edit Profile"
                     >
-                      Submit
+                      Done
                     </button>
                     {"  "}
                     <button

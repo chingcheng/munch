@@ -286,7 +286,7 @@ function EditMunch({ backgroundImage }) {
                       type="submit"
                       value="Update Munch"
                     >
-                      Submit
+                      Done
                     </button>
                     {"  "}
                   </div>

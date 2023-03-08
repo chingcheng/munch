@@ -104,7 +104,7 @@ function LoginForm({ backgroundImage }) {
                       Log In
                     </button>
                   </div>
-                  <a href="signup" class="signup-munchkin">
+                  <a href="signup" className="signup-munchkin">
                     Join the Munch Bunch!
                   </a>
                   {error && (

@@ -193,7 +193,7 @@ function SignupForm({ backgroundImage }) {
                       Sign Up
                     </button>
                   </div>
-                  <a href="login" class="munchkin-link">
+                  <a href="login" className="munchkin-link">
                     Already a Munchkin?
                   </a>
                   {error && (
