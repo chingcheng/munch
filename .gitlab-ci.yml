@@ -20,8 +20,8 @@ api-unit-test-job:
   script:
     - cd munch
     - pip install -r requirements.txt
-    - export DATABASE_URL='postgresql://munch:password@postgres/munch'
-    - export SIGNING_KEY='<QO;Y15-+76^v|^U^[c&j!Wip-m1-'<(aFcBO6h'
+    - export DATABASE_URL="postgresql://munch:password@postgres/munch"
+    - export SIGNING_KEY="<QO;Y15-+76^v|^U^[c&j!Wip-m1-'<(aFcBO6h"
     - python -m pytest
 
 # Build the React/JavaScript front-end
