@@ -3,7 +3,7 @@
 ## Munches
 
 ![Create Munch](api/create-munch.png)
-This action creates a munch tied to a specific user and stores it within the database.
+This action creates a munch tied to an existing user and stores it within the database.
 <br>
 <br>
 JSON Request Body:
