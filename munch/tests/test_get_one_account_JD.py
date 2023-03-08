@@ -8,16 +8,16 @@ client = TestClient(app)
 
 def get_current_account_data_mock():
     return {
-        "id": 0,
+        "id": 5,
         "username": "tester"
     }
 
 
 class GetAccountQueriesMock(AccountQueries):
     def get_account_by_id(self, id: int) -> AccountOut:
-        if id == 0:
+        if id == 5:
             return AccountOut(
-                id=0,
+                id=5,
                 first_name="test",
                 last_name="test_last",
                 email="test@test.com",
@@ -34,14 +34,14 @@ def test_get_account():
         authenticator.get_current_account_data
         ] = get_current_account_data_mock
 
-    response = client.get("/accounts/0")
+    response = client.get("/accounts/5")
     data = response.json()
     if response.status_code == 404:
         assert data["detail"] == "User not found"
     else:
         assert response.status_code == 200
         assert data == {
-            "id": 0,
+            "id": 5,
             "first_name": "test",
             "last_name": "test_last",
             "email": "test@test.com",

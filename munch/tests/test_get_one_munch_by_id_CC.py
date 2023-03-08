@@ -8,24 +8,24 @@ client = TestClient(app)
 
 class GetMunchRepositoryMock(MunchRepository):
     def get_one(self, id: int) -> MunchOut:
-        if id == 0:
+        if id == 1:
             return MunchOut(
-                id=0,
+                id=1,
                 location="string",
-                rating=0,
+                rating=1,
                 review="string",
                 photo="string",
                 tag=False,
                 city="string",
                 state="string",
-                user_id="0"
+                user_id="1"
             )
         else:
             return None
 
 
 test_account = {
-  "id": 0,
+  "id": 1,
   "first_name": "string",
   "last_name": "string",
   "email": "string",
@@ -51,14 +51,14 @@ def test_get_one_munch():
     else:
         assert response.status_code == 200
         assert data == {
-            "id": 0,
+            "id": 1,
             "location": "string",
-            "rating": 0,
+            "rating": 1,
             "review": "string",
             "tag": False,
             "photo": "string",
             "city": "string",
             "state": "string",
-            "user_id": "0"
+            "user_id": "1"
         }
     app.dependency_overrides = {}
