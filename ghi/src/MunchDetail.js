@@ -288,8 +288,7 @@ if(userId === Number(munch.user_id)){
         </div>
       </div>
 
-            )
-          }
-
+      )
+    }
 
 export default MunchDetail;
