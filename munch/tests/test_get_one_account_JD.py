@@ -8,16 +8,16 @@ client = TestClient(app)
 
 def get_current_account_data_mock():
     return {
-        "id": 5,
+        "id": 0,
         "username": "tester"
     }
 
 
 class GetAccountQueriesMock(AccountQueries):
-    def get_account_by_id(self, id: int) -> AccountOut:
-        if id == 5:
+    def get_one(self, id: int) -> AccountOut:
+        if id == 0:
             return AccountOut(
-                id=5,
+                id=0,
                 first_name="test",
                 last_name="test_last",
                 email="test@test.com",
@@ -41,7 +41,7 @@ def test_get_account():
     else:
         assert response.status_code == 200
         assert data == {
-            "id": 5,
+            "id": 0,
             "first_name": "test",
             "last_name": "test_last",
             "email": "test@test.com",

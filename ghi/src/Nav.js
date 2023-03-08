@@ -21,16 +21,14 @@ function Nav({ backgroundImage }) {
           <div className="container-fluid">
             <NavLink className="navbar-brand mb-2" to="/">
               <img
-                src="/munch_transparent.png"
+                src="/munch_icon.png"
                 alt="Munch"
                 style={{
-                  width: "110px",
-                  marginTop: "20px",
-                  marginLeft: "20px",
+                  width: "60px",
                 }}
               />
             </NavLink>
-            <div className="navbar-collapse" id="navbarSupportedContent">
+            {/* <div className="navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <NavLink
@@ -67,7 +65,7 @@ function Nav({ backgroundImage }) {
                   </NavLink>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
         </nav>
         <style>
