@@ -227,3 +227,24 @@ This action deletes the single account tied to the input id.
 Returns (Status Code 200):
 
 `true`
+
+## Authentication
+
+![Login](api/login.png)
+This action logs an existing user into the app.
+<br>
+<br>
+Request Body:
+
+![Login Request Body](api/login-request.png)
+<br>
+<br>
+Returns (Status Code 200):
+
+`{
+  "access_token": "string",
+  "token_type": "Bearer"
+}`
+<br>
+<br>
+<br>
