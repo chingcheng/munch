@@ -70,13 +70,25 @@ function App() {
     getMunches();
   }, [setMunches]);
 
-  const [backgroundImage, setBackgroundImage] = useState(
-    getRandomImage(images)
-  );
+  const [backgroundImage, setBackgroundImage] = useState(() => {
+    const storedImage = localStorage.getItem("backgroundImage");
+    return storedImage ? storedImage : getRandomImage(images);
+  });
 
   useEffect(() => {
+    const storedImage = localStorage.getItem("backgroundImage");
+    if (storedImage) {
+      setBackgroundImage(storedImage);
+    } else {
+      const randomImage = getRandomImage(images);
+      setBackgroundImage(randomImage);
+      localStorage.setItem("backgroundImage", randomImage);
+    }
+
     const intervalId = setInterval(() => {
-      setBackgroundImage(getRandomImage(images));
+      const randomImage = getRandomImage(images);
+      setBackgroundImage(randomImage);
+      localStorage.setItem("backgroundImage", randomImage);
     }, 24 * 60 * 60 * 1000);
 
     return () => clearInterval(intervalId);
