@@ -1,31 +1,75 @@
-import { NavLink, useParams } from "react-router-dom";
-import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import React from "react";
 import { useAuthContext } from "./Auth";
 
 function Nav({ backgroundImage }) {
-  const { id } = useParams();
   const { token } = useAuthContext();
 
-  useEffect(() => {
-    const fetchID = async () => {
-      try {
-        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/token`;
-        const fetchConfig = {
-          credentials: "include",
-        };
-
-        const response = await fetch(url, fetchConfig);
-        if (response.ok) {
-          await response.json();
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    fetchID();
-  }, [token, id]);
-
-  return (
+  if (token === false) {
+    return (
+      <>
+        <nav
+          className="navbar navbar-dark"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
+            backgroundColor: "#FFFAEB",
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+            position: "fixed",
+          }}
+        >
+          <div className="container-fluid">
+            <NavLink className="navbar-brand mb-2" to="/">
+              <img
+                src="/munch_transparent.png"
+                alt="Munch"
+                style={{
+                  width: "110px",
+                  marginTop: "20px",
+                  marginLeft: "20px",
+                }}
+              />
+            </NavLink>
+            <div className="navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    activeclassname="active"
+                    to="/login"
+                  >
+                    Login
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    activeclassname="active"
+                    to="/signup"
+                  >
+                    Sign Up
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <style>
+          {`
+          .nav-link {
+            width: 10rem;
+            display: block;
+            text-align: center;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+          }
+        `}
+        </style>
+      </>
+    );
+  } else {
+    return (
     <>
       <nav
         className="navbar navbar-dark"
@@ -55,24 +99,6 @@ function Nav({ backgroundImage }) {
                 <NavLink
                   className="nav-link"
                   activeclassname="active"
-                  to="/login"
-                >
-                  Login
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeclassname="active"
-                  to="/signup"
-                >
-                  Sign Up
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeclassname="active"
                   to="/home"
                 >
                   Home
@@ -91,7 +117,7 @@ function Nav({ backgroundImage }) {
                 <NavLink
                   className="nav-link"
                   activeclassname="active"
-                  to="/munches/create"
+                  to="/munch/create"
                 >
                   Create Munch
                 </NavLink>
@@ -128,6 +154,7 @@ function Nav({ backgroundImage }) {
       </style>
     </>
   );
+  }
 }
 
 export default Nav;
