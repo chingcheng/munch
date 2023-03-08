@@ -7,7 +7,7 @@
 <br>
 JSON Request Body:
 
-````{
+`{
   "location": "string",
   "rating": 0,
   "review": "string",
@@ -16,11 +16,11 @@ JSON Request Body:
   "city": "string",
   "state": "string",
   "user_id": "string"
-}```
+}`
 <br>
 <br>
 Returns (Status Code 200):
-```{
+`{
   "id": 0,
   "location": "string",
   "rating": 0,
@@ -30,7 +30,7 @@ Returns (Status Code 200):
   "city": "string",
   "state": "string",
   "user_id": "string"
-}```
+}`
 
 ![Get All Munches](api/get-all-munches.png)
 
@@ -51,4 +51,7 @@ Returns (Status Code 200):
 ![Update Account](api/update-account.png)
 
 ![Delete Account](api/delete-account.png)
-````
+
+```
+
+```
