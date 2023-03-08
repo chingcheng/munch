@@ -5,7 +5,6 @@ import { useAuthContext } from "./Auth";
 function Nav({ backgroundImage }) {
   const { id } = useParams();
   const { token } = useAuthContext();
-  console.log(token);
 
   useEffect(() => {
     const fetchID = async () => {
