@@ -22,11 +22,11 @@ View a live demo of this project here: https://munchbunch.gitlab.io/munch/
 ## Installation
 
 1. Fork repository
-2. Clone repository to local: git clone https://<span></span>gitlab.com/munchbunch/munch.git
-3. cd into new project directory
-4. Run: docker volume create postgres-data
-5. Run: docker compose build
-6. Run: docker compose up
+2. Clone repository to local: `git clone https://gitlab.com/munchbunch/munch.git`
+3. `cd` into new project directory
+4. Run: `docker volume create postgres-data`
+5. Run: `docker compose build`
+6. Run: `docker compose up`
 
 ## Requirements
 
