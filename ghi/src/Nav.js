@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { useAuthContext, useToken } from "./Auth";
+import React from "react";
+import { useAuthContext } from "./Auth";
 
 function Nav({ backgroundImage }) {
   const { token } = useAuthContext();
