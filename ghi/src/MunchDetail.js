@@ -102,7 +102,7 @@ if(userId === Number(munch.user_id)){
                     width: "550px",
                   }}
                 >
-                  <Link to={`/filtered/${userName}`} className="card-link">
+                  <Link to={`/munches/${userName}`} className="card-link">
                     <div className="form-floating mx-3 mt-1">
                       <h2
                         style={{
@@ -165,7 +165,7 @@ if(userId === Number(munch.user_id)){
           style={{ display: "flex", justifyContent: "center" }}
         >
 
-          <Link to={`/munches/edit/${id}`}>
+          <Link to={`/munch/edit/${id}`}>
             <button
               className="btn btn-md lead text-bold text mx-2"
               style={{
@@ -201,94 +201,93 @@ if(userId === Number(munch.user_id)){
       </div>
           )}
         return (
-              <div
-        className="p-5 bg-image"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-          backgroundColor: "#FFFAEB",
-          backgroundSize: "cover",
-          backgroundAttachment: "fixed",
-          minHeight: "100vh",
-        }}
-      >
-        <div className="container mt-5">
-          <div className="row">
-            <div className="offset-3 col-6">
-              <div className="col mx-auto d-flex justify-content-center">
-                <div
-                  className="card"
-                  style={{
-                    height: "auto",
-                    width: "550px",
-                  }}
-                >
-                  <Link to={`/filtered/${userName}`} className="card-link">
-                    <div className="form-floating mx-3 mt-1">
-                      <h2
-                        style={{
-                          color: "black",
-                          fontSize: "15px",
-                          textAlign: "right",
-                        }}
-                      >
-                        @{userName}
-                      </h2>
-                    </div>
-                  </Link>
-                  <img
-                    src={munch.photo}
-                    className="card-img-top px-3"
-                    alt="Munch"
-                  />
-                  <div className="card-body">
-                    <h3
-                      className="card-location"
+          <div
+            className="p-5 bg-image"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
+              backgroundColor: "#FFFAEB",
+              backgroundSize: "cover",
+              backgroundAttachment: "fixed",
+              minHeight: "100vh",
+            }}
+          >
+            <div className="container mt-5">
+              <div className="row">
+                <div className="offset-3 col-6">
+                  <div className="col mx-auto d-flex justify-content-center">
+                    <div
+                      className="card"
                       style={{
-                        marginBottom: "0",
-                        display: "flex",
-                        alignItems: "center",
+                        height: "auto",
+                        width: "550px",
                       }}
                     >
-                      {munch.location}
-                      <h7
-                        className="d-flex"
-                        style={{
-                          fontSize: "0.7em",
-                          justifyContent: "end",
-                          marginLeft: "auto",
-                        }}
-                      >
-                        {munch.rating}
-                        <img
-                          src="../star.png"
-                          alt="star"
+                      <Link to={`/munches/${userName}`} className="card-link">
+                        <div className="form-floating mx-3 mt-1">
+                          <h2
+                            style={{
+                              color: "black",
+                              fontSize: "15px",
+                              textAlign: "right",
+                            }}
+                          >
+                            @{userName}
+                          </h2>
+                        </div>
+                      </Link>
+                      <img
+                        src={munch.photo}
+                        className="card-img-top px-3"
+                        alt="Munch"
+                      />
+                      <div className="card-body">
+                        <h3
+                          className="card-location"
                           style={{
-                            width: "0.9em",
-                            height: "0.9em",
-                            marginTop: "0.15em",
+                            marginBottom: "0",
+                            display: "flex",
+                            alignItems: "center",
                           }}
-                        ></img>
-                      </h7>
-                    </h3>
-                    <h7 className="card-city-state" style={{ marginTop: "0" }}>
-                      {munch.city}, {munch.state}
-                    </h7>
-                    <p className="card-review pt-3">{munch.review}</p>
+                        >
+                          {munch.location}
+                          <h7
+                            className="d-flex"
+                            style={{
+                              fontSize: "0.7em",
+                              justifyContent: "end",
+                              marginLeft: "auto",
+                            }}
+                          >
+                            {munch.rating}
+                            <img
+                              src="../star.png"
+                              alt="star"
+                              style={{
+                                width: "0.9em",
+                                height: "0.9em",
+                                marginTop: "0.15em",
+                              }}
+                            ></img>
+                          </h7>
+                        </h3>
+                        <h7
+                          className="card-city-state"
+                          style={{ marginTop: "0" }}
+                        >
+                          {munch.city}, {munch.state}
+                        </h7>
+                        <p className="card-review pt-3">{munch.review}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div
+              className="button-container mt-4"
+              style={{ display: "flex", justifyContent: "center" }}
+            ></div>
           </div>
-        </div>
-        <div
-          className="button-container mt-4"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-
-        </div>
-      </div>
-
-      )
-    }
-
+        );
+          }
 export default MunchDetail;
