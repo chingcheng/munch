@@ -42,21 +42,6 @@ function LoginForm({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
-        <div className="container-fluid">
-          <Link
-            className="navbar-not-logged"
-            style={{ paddingTop: "10px", paddingLeft: "10px" }}
-            to="/"
-          >
-            <img
-              src={munch_icon}
-              alt="Munch"
-              style={{
-                width: "60px",
-              }}
-            />
-          </Link>
-        </div>
         <div className="container text-center mt-5">
           <div className="row row-login-size">
             <div className="offset-3 col-6">

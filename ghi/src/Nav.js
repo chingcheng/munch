@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
 import { useAuthContext } from "./Auth";
+import munch_icon from "./images/munch_icon.png";
 import munch_transparent from "./images/munch_transparent.png";
 import home from "./images/home.png";
 import friends from "./images/friends.png";
@@ -8,10 +9,48 @@ import create from "./images/create.png";
 import account from "./images/account.png";
 import logout from "./images/logout.png";
 
-function Nav() {
+function Nav({ backgroundImage }) {
   const { token } = useAuthContext();
 
-  if (token) {
+  if (token === false) {
+    return (
+      <>
+        <nav
+          className="navbar navbar-dark"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+            position: "fixed",
+          }}
+        >
+          <div className="container-fluid">
+            <NavLink className="navbar-brand mb-2" to="/">
+              <img
+                src={munch_icon}
+                alt="Munch"
+                style={{
+                  width: "60px",
+                }}
+              />
+            </NavLink>
+          </div>
+        </nav>
+        <style>
+          {`
+          .nav-link {
+            width: 10rem;
+            display: block;
+            text-align: center;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+          }
+        `}
+        </style>
+      </>
+    );
+  } else {
     return (
       <>
         <nav

@@ -19,21 +19,6 @@ function LandingPage({ backgroundImage }) {
             minHeight: "100vh",
           }}
         >
-          <div className="container-fluid">
-            <Link
-              className="navbar-not-logged"
-              style={{ paddingTop: "10px", paddingLeft: "10px" }}
-              to="/"
-            >
-              <img
-                src={munch_icon}
-                alt="Munch"
-                style={{
-                  width: "60px",
-                }}
-              />
-            </Link>
-          </div>
           <div className="hero-image text-center center-block">
             <h1>
               <img src={munch_transparent} alt="Logo" width="400px" />

@@ -87,6 +87,7 @@ function App() {
         <BrowserRouter basename={basename}>
           <AuthProvider>
             <GetToken />
+            <Nav backgroundImage={backgroundImage} />
             <Routes>
               <Route
                 path="/"
@@ -101,9 +102,6 @@ function App() {
                 path="signup"
                 element={<SignupForm backgroundImage={backgroundImage} />}
               />
-            </Routes>
-            <Nav />
-            <Routes>
               <Route path="home" element={<HomePage />} />
               <Route path="munch/edit/:id" element={<EditMunch />} />
               <Route path="munchbunch" element={<AllMunches />} />
