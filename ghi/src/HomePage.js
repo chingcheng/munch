@@ -20,7 +20,7 @@ function MunchesColumn(props) {
                 src={munch.photo}
                 className="card-img-top"
                 alt={`${munch.location}`}
-                style={{ maxWidth: "100%", maxHeight: "250px" }}
+                style={{ width: "100%", height: "250px", objectFit: "cover" }}
               />
               <div
                 className="card-body"
