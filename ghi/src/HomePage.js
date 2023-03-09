@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "./Auth";
+import munch_transparent from "./images/munch_transparent.png";
+import munch_slogan from "./images/munch_slogan.png";
+import star from "./images/star.png";
 
 function MunchesColumn(props) {
   return (
@@ -50,7 +53,7 @@ function MunchesColumn(props) {
                   <small className="text-muted">
                     Rating: {munch.rating}
                     <img
-                      src="/star.png"
+                      src={star}
                       alt="star"
                       style={{
                         width: "0.9em",
@@ -135,10 +138,10 @@ function HomePage({ backgroundImage }) {
       >
         <Link to="/home">
           <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
-            <img src="./munch_transparent.png" alt="" width="450" />
+            <img src={munch_transparent} alt="Logo" width="450" />
             <div>
               <p>
-                <img src="./munch_slogan.png" alt="Slogan" width="350px" />
+                <img src={munch_slogan} alt="Slogan" width="350px" />
               </p>
             </div>
           </div>

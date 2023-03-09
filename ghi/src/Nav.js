@@ -1,6 +1,13 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
 import { useAuthContext } from "./Auth";
+import munch_icon from "./images/munch_icon.png";
+import munch_transparent from "./images/munch_transparent.png";
+import home from "./images/home.png";
+import friends from "./images/friends.png";
+import create from "./images/create.png";
+import account from "./images/account.png";
+import logout from "./images/logout.png";
 
 function Nav({ backgroundImage }) {
   const { token } = useAuthContext();
@@ -21,7 +28,7 @@ function Nav({ backgroundImage }) {
           <div className="container-fluid">
             <NavLink className="navbar-brand mb-2" to="/">
               <img
-                src="/munch_icon.png"
+                src={munch_icon}
                 alt="Munch"
                 style={{
                   width: "60px",
@@ -60,7 +67,7 @@ function Nav({ backgroundImage }) {
           <div className="container-fluid">
             <NavLink className="navbar-brand mb-2" to="/home">
               <img
-                src="/munch_transparent.png"
+                src={munch_transparent}
                 alt="Munch"
                 style={{
                   width: "110px",
@@ -78,7 +85,7 @@ function Nav({ backgroundImage }) {
                     to="/home"
                   >
                     <img
-                      src="/home.png"
+                      src={home}
                       alt="home"
                       style={{
                         width: "15px",
@@ -95,7 +102,7 @@ function Nav({ backgroundImage }) {
                     to={`/munchbunch`}
                   >
                     <img
-                      src="/friends.png"
+                      src={friends}
                       alt="friends"
                       style={{
                         width: "17px",
@@ -112,7 +119,7 @@ function Nav({ backgroundImage }) {
                     to="/munch/create"
                   >
                     <img
-                      src="/create.png"
+                      src={create}
                       alt="create"
                       style={{
                         width: "18px",
@@ -129,7 +136,7 @@ function Nav({ backgroundImage }) {
                     to={`/accounts`}
                   >
                     <img
-                      src="/account.png"
+                      src={account}
                       alt="account"
                       style={{
                         width: "15px",
@@ -142,7 +149,7 @@ function Nav({ backgroundImage }) {
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/logout">
                     <img
-                      src="/logout.png"
+                      src={logout}
                       alt="logout"
                       style={{
                         width: "15px",

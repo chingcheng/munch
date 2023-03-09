@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useAuthContext } from "./Auth";
 import { useNavigate, Link, useParams } from "react-router-dom";
+import edit_account from "./images/edit_account.png";
 
 function EditUser({ backgroundImage }) {
   let { id } = useParams();
@@ -148,7 +149,7 @@ function EditUser({ backgroundImage }) {
                   <Link to="/accounts">
                     <h1 className="text-center mb-3">
                       <img
-                        src="/edit_account.png"
+                        src={edit_account}
                         alt="Logo"
                         style={{
                           maxWidth: "100%",

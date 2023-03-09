@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import { useAuthContext } from "./Auth";
+import edit_munch from "./images/edit_munch.png";
 
 function EditMunch({ backgroundImage }) {
   let { id } = useParams();
@@ -150,8 +151,8 @@ function EditMunch({ backgroundImage }) {
                   <Link to="/home">
                     <h1 className="text-center mb-3">
                       <img
-                        src="/edit_munch.png"
-                        alt="Logo"
+                        src={edit_munch}
+                        alt="Edit Munch"
                         style={{
                           maxWidth: "100%",
                           width: "350px",

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import { useAuthContext } from "./Auth";
+import create_munch from "./images/create_munch.png";
 
 function CreateMunch({ backgroundImage }) {
   const navigate = useNavigate();
@@ -116,7 +117,7 @@ function CreateMunch({ backgroundImage }) {
                   <Link to="/home">
                     <h1 className="text-center mb-3">
                       <img
-                        src="/create_munch.png"
+                        src={create_munch}
                         alt="Logo"
                         style={{
                           maxWidth: "100%",

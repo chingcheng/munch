@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useToken } from "./Auth";
 import { useNavigate, Link } from "react-router-dom";
+import munch_transparent from "./images/munch_transparent.png";
+import munch_slogan from "./images/munch_slogan.png";
 
 function SignupForm({ backgroundImage }) {
   const navigate = useNavigate();
@@ -89,7 +91,7 @@ function SignupForm({ backgroundImage }) {
                   <Link to="/">
                     <h1 className="text-center">
                       <img
-                        src="./munch_transparent.png"
+                        src={munch_transparent}
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -100,7 +102,7 @@ function SignupForm({ backgroundImage }) {
                   </Link>
                   <p>
                     <img
-                      src="./munch_slogan.png"
+                      src={munch_slogan}
                       alt="Slogan"
                       style={{
                         maxWidth: "100%",

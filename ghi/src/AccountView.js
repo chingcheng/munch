@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "./Auth";
 import { Link } from "react-router-dom";
+import munch_account from "./images/munch_account.png";
+import user from "./images/user.png";
 
 function GetAccount({ backgroundImage }) {
   const { token } = useAuthContext();
@@ -70,7 +72,7 @@ function GetAccount({ backgroundImage }) {
         <Link to="/accounts">
           <p className="text-center">
             <img
-              src="/munch_account.png"
+              src={munch_account}
               alt="Munch Account"
               style={{
                 maxWidth: "100%",
@@ -90,7 +92,7 @@ function GetAccount({ backgroundImage }) {
                   <div className="card-body">
                     <p className="text-center mb-4">
                       <img
-                        src="/user.png"
+                        src={user}
                         alt="User"
                         style={{
                           maxWidth: "100%",

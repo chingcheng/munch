@@ -2,6 +2,7 @@ import "./index.css";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useToken } from "./Auth";
+import munch_transparent from "./images/munch_transparent.png";
 
 function LoginForm({ backgroundImage }) {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ function LoginForm({ backgroundImage }) {
                   <Link to="/">
                     <h1 className="text-center mb-3">
                       <img
-                        src="./munch_transparent.png"
+                        src={munch_transparent}
                         alt="Logo"
                         style={{
                           maxWidth: "100%",

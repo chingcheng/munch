@@ -1,6 +1,8 @@
 import "./index.css";
 import React from "react";
 import { Link } from "react-router-dom";
+import munch_transparent from "./images/munch_transparent.png";
+import munch_slogan from "./images/munch_slogan.png";
 
 function LandingPage({ backgroundImage }) {
   return (
@@ -18,10 +20,10 @@ function LandingPage({ backgroundImage }) {
         >
           <div className="hero-image text-center center-block">
             <h1>
-              <img src="/munch_transparent.png" alt="Logo" width="400px" />
+              <img src={munch_transparent} alt="Logo" width="400px" />
             </h1>
             <p>
-              <img src="./munch_slogan.png" alt="Slogan" width="300px" />
+              <img src={munch_slogan} alt="Slogan" width="300px" />
             </p>
             <div className="d-grid gap-2 d-md-flex justify-content-md-center"></div>
             <div className="container mt-3">

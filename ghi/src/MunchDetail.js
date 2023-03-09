@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "./Auth";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import star from "./images/star.png";
 
 function MunchDetail({ backgroundImage }) {
   let { id } = useParams();
@@ -75,8 +76,8 @@ function MunchDetail({ backgroundImage }) {
     };
 
     if (token && userId) {
-      getOneMunch();
       getUsername(userId);
+      getOneMunch();
     }
 
     fetchID();
@@ -143,7 +144,7 @@ function MunchDetail({ backgroundImage }) {
                       >
                         {munch.rating}
                         <img
-                          src="/star.png"
+                          src={star}
                           alt="star"
                           style={{
                             width: "0.9em",
