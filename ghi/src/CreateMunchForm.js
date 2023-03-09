@@ -137,7 +137,7 @@ function CreateMunch({ backgroundImage }) {
                       value={location}
                     />
                     <label className="form-label" htmlFor="location">
-                      Location
+                      Establishment
                     </label>
                   </div>
                   <div className="form-floating mb-3">

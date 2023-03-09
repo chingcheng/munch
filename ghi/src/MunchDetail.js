@@ -264,7 +264,7 @@ function MunchDetail({ backgroundImage }) {
                     >
                       {munch.rating}
                       <img
-                        src="../star.png"
+                        src={star}
                         alt="star"
                         style={{
                           width: "0.9em",

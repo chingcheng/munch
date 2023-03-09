@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuthContext } from "./Auth";
+import munch_bunch from "./images/munch_bunch.png";
+import add_friend from "./images/add_friend.png";
+import star from "./images/star.png";
 
 function MunchesColumn(props) {
   return (
@@ -50,7 +53,7 @@ function MunchesColumn(props) {
                   <small className="text-muted">
                     {munch.rating}
                     <img
-                      src="/star.png"
+                      src={star}
                       alt="star"
                       style={{
                         width: "0.9em",
@@ -138,7 +141,7 @@ const UserPage = ({ backgroundImage }) => {
       >
         <Link to="/munchbunch">
           <div className="px-4 py-5 mt-0 text-center bg-transparent">
-            <img src="/munch_bunch.png" alt="Munch Bunch" width="450" />
+            <img src={munch_bunch} alt="Munch Bunch" width="450" />
           </div>
         </Link>
         <div className="container text-center">
@@ -158,7 +161,7 @@ const UserPage = ({ backgroundImage }) => {
                     </div>
                     <p className="add-friend mx-1">
                       <img
-                        src="/add-friend.png"
+                        src={add_friend}
                         alt="Add Friend"
                         style={{
                           maxWidth: "100%",
