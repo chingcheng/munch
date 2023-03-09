@@ -14,8 +14,10 @@ function MunchesColumn(props) {
               className="card"
               style={{
                 height: "415px",
-                marginBottom: "35px",
-                marginLeft: "10px",
+                marginBottom: "45px",
+                marginLeft: "20px",
+                backgroundColor: "#FFFBFA",
+                border: "0",
               }}
             >
               <img
@@ -41,6 +43,7 @@ function MunchesColumn(props) {
                   justifyContent: "space-between",
                   alignItems: "center",
                   height: "40px",
+                  backgroundColor: "#FFFBFA",
                 }}
               >
                 <div className="location-info">
@@ -70,7 +73,7 @@ function MunchesColumn(props) {
     </div>
   );
 }
-function AllMunches({ backgroundImage }) {
+function AllMunches() {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
 
@@ -105,8 +108,7 @@ function AllMunches({ backgroundImage }) {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-          backgroundColor: "#FFFAEB",
+          backgroundColor: "#FFFBFA",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",

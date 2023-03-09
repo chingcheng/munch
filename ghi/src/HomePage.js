@@ -12,11 +12,15 @@ function MunchesColumn(props) {
         <div key={munch.id}>
           <Link to={`/munch/${munch.id}`} className="card-link">
             <div
-              className="card mb"
+              className="card"
               style={{
                 height: "415px",
-                marginBottom: "35px",
-                marginLeft: "10px",
+                marginBottom: "45px",
+                marginLeft: "20px",
+                backgroundColor: "#FFFBFA",
+                // backgroundColor: "#202231",
+                border: "0",
+                // color: "white",
               }}
             >
               <img
@@ -42,6 +46,8 @@ function MunchesColumn(props) {
                   justifyContent: "space-between",
                   alignItems: "center",
                   height: "40px",
+                  backgroundColor: "#FFFBFA",
+                  // backgroundColor: "#202231",
                 }}
               >
                 <div className="location-info">
@@ -51,7 +57,7 @@ function MunchesColumn(props) {
                 </div>
                 <div className="rating-info">
                   <small className="text-muted">
-                    Rating: {munch.rating}
+                    {munch.rating}
                     <img
                       src={star}
                       alt="star"
@@ -72,7 +78,7 @@ function MunchesColumn(props) {
   );
 }
 
-function HomePage({ backgroundImage }) {
+function HomePage() {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
@@ -129,8 +135,8 @@ function HomePage({ backgroundImage }) {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-          backgroundColor: "#FFFAEB",
+          backgroundColor: "#FFFBFA",
+          // backgroundColor: "#202231",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",

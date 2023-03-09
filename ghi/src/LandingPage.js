@@ -1,6 +1,7 @@
 import "./index.css";
 import React from "react";
 import { Link } from "react-router-dom";
+import munch_icon from "./images/munch_icon.png";
 import munch_transparent from "./images/munch_transparent.png";
 import munch_slogan from "./images/munch_slogan.png";
 
@@ -18,6 +19,21 @@ function LandingPage({ backgroundImage }) {
             minHeight: "100vh",
           }}
         >
+          <div className="container-fluid">
+            <Link
+              className="navbar-not-logged"
+              style={{ paddingTop: "10px", paddingLeft: "10px" }}
+              to="/"
+            >
+              <img
+                src={munch_icon}
+                alt="Munch"
+                style={{
+                  width: "60px",
+                }}
+              />
+            </Link>
+          </div>
           <div className="hero-image text-center center-block">
             <h1>
               <img src={munch_transparent} alt="Logo" width="400px" />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import munch_account from "./images/munch_account.png";
 import user from "./images/user.png";
 
-function GetAccount({ backgroundImage }) {
+function GetAccount() {
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -61,16 +61,14 @@ function GetAccount({ backgroundImage }) {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-          backgroundColor: "#FFFAEB",
+          backgroundColor: "#FFFBFA",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",
         }}
       >
-        <div className="shadow p-2 m-4"></div>
         <Link to="/accounts">
-          <p className="text-center">
+          <p className="text-center mt-5 mb-3">
             <img
               src={munch_account}
               alt="Munch Account"
@@ -87,10 +85,15 @@ function GetAccount({ backgroundImage }) {
               <div className="col mx-auto d-flex justify-content-center">
                 <div
                   className="card"
-                  style={{ height: "auto", width: "auto", display: "flex" }}
+                  style={{
+                    height: "auto",
+                    width: "auto",
+                    display: "flex",
+                    borderRadius: "20px",
+                  }}
                 >
                   <div className="card-body">
-                    <p className="text-center mb-4">
+                    <p className="text-center mt-3 mb-4">
                       <img
                         src={user}
                         alt="User"
@@ -120,11 +123,11 @@ function GetAccount({ backgroundImage }) {
                     </div>
                     <Link to={`/accounts/${userId}`}>
                       <button
-                        className="btn btn-md lead text-bold text mx-2 mt-2"
+                        className="btn btn-md lead text-bold text mx-2 mt-2 mb-2"
                         style={{
-                          background: "#F8D876",
+                          background: "#FFEBAD",
                           fontWeight: "725",
-                          color: "#512b20",
+                          color: "#834534",
                           width: "150px",
                           height: "40px",
                         }}

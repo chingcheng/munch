@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useToken } from "./Auth";
 import { useNavigate, Link } from "react-router-dom";
+import munch_icon from "./images/munch_icon.png";
 import munch_transparent from "./images/munch_transparent.png";
 import munch_slogan from "./images/munch_slogan.png";
 
@@ -79,6 +80,21 @@ function SignupForm({ backgroundImage }) {
           minHeight: "100vh",
         }}
       >
+        <div className="container-fluid">
+          <Link
+            className="navbar-not-logged"
+            style={{ paddingTop: "10px", paddingLeft: "10px" }}
+            to="/"
+          >
+            <img
+              src={munch_icon}
+              alt="Munch"
+              style={{
+                width: "60px",
+              }}
+            />
+          </Link>
+        </div>
         <div className="container text-center mt-5">
           <div className="row">
             <div className="offset-3 col-6">

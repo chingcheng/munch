@@ -3,7 +3,7 @@ import { useAuthContext } from "./Auth";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import star from "./images/star.png";
 
-function MunchDetail({ backgroundImage }) {
+function MunchDetail() {
   let { id } = useParams();
   const navigate = useNavigate();
   const [munch, setMunch] = useState([]);
@@ -88,8 +88,8 @@ function MunchDetail({ backgroundImage }) {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-          backgroundColor: "#FFFAEB",
+          backgroundColor: "#FFFBFA",
+          // backgroundColor: "#202231",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",
@@ -104,6 +104,7 @@ function MunchDetail({ backgroundImage }) {
                   style={{
                     height: "auto",
                     width: "550px",
+                    // border: "0",
                   }}
                 >
                   <Link to={`/munches/${userName}`} className="card-link">
@@ -172,9 +173,9 @@ function MunchDetail({ backgroundImage }) {
             <button
               className="btn btn-md lead text-bold text mx-2"
               style={{
-                background: "#F8D876",
+                background: "#FFEBAD",
                 fontWeight: "725",
-                color: "#512b20",
+                color: "#834534",
                 width: "150px",
                 height: "40px",
               }}
@@ -189,7 +190,7 @@ function MunchDetail({ backgroundImage }) {
             onClick={handleDelete}
             className="btn btn-md lead text-bold text mx-2"
             style={{
-              background: "#FF4B3E",
+              background: "#f4989c",
               fontWeight: "725",
               color: "white",
               width: "150px",
@@ -208,8 +209,8 @@ function MunchDetail({ backgroundImage }) {
     <div
       className="p-5 bg-image"
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-        backgroundColor: "#FFFAEB",
+        backgroundColor: "#FFFBFA",
+        // backgroundColor: "#202231",
         backgroundSize: "cover",
         backgroundAttachment: "fixed",
         minHeight: "100vh",
