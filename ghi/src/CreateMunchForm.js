@@ -78,7 +78,7 @@ function CreateMunch({ backgroundImage }) {
     data.photo = photo;
     data.user_id = userId;
     data.user_username = userUsername;
-
+    console.log("DATA", data)
     const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
     const fetchConfig = {
       method: "post",
@@ -90,6 +90,7 @@ function CreateMunch({ backgroundImage }) {
     };
 
     const response = await fetch(munchUrl, fetchConfig);
+    console.log("response", response)
     if (response.ok) {
       clearState();
       navigate("/home");
