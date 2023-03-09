@@ -25,7 +25,7 @@ function MunchDetail({ backgroundImage }) {
   };
 
   useEffect(() => {
-    const getUsername = async () => {
+    const getUsername = async (userId) => {
       const usernameUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${userId}`;
       const fetchConfig = {
         method: "get",
@@ -74,12 +74,9 @@ function MunchDetail({ backgroundImage }) {
       }
     };
 
-    if (userId) {
-      getUsername();
-    }
-
     if (token && userId) {
       getOneMunch();
+      getUsername(userId);
     }
 
     fetchID();
