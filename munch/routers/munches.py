@@ -35,6 +35,7 @@ def create_munch(
     if account_data is not None:
         try:
             munch.user_id = account_data["id"]
+            munch.user_username = account_data["username"]
             return repo.create(munch)
         except Exception:
             raise HTTPException(status_code=400,

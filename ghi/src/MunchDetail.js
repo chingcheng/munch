@@ -115,7 +115,7 @@ function MunchDetail({ backgroundImage }) {
                           textAlign: "right",
                         }}
                       >
-                        @{userName}
+                        @{munch.user_username}
                       </h2>
                     </div>
                   </Link>
@@ -235,7 +235,7 @@ function MunchDetail({ backgroundImage }) {
                         textAlign: "right",
                       }}
                     >
-                      @{userName}
+                      @{munch.user_username}
                     </h2>
                   </div>
                 </Link>
