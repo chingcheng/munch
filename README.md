@@ -25,8 +25,9 @@ View a live demo of this project here: https://munchbunch.gitlab.io/munch/
 2. Clone repository to local: `git clone https://gitlab.com/munchbunch/munch.git`
 3. `cd` into new project directory
 4. Run: `docker volume create postgres-data`
-5. Run: `docker compose build`
-6. Run: `docker compose up`
+5. Run `docker volume create pg-admin`
+6. Run: `docker compose build`
+7. Run: `docker compose up`
 
 - Access the application on your web browser at http://localhost:3000/
 
