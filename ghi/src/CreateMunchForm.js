@@ -14,6 +14,7 @@ function CreateMunch() {
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
   const [userId, setUserId] = useState("");
+  const[userUsername, setUserUsername] = useState("");
   const fileInputRef = React.createRef();
 
   const handleLocationChange = (event) => {
@@ -61,6 +62,7 @@ function CreateMunch() {
     setReview("");
     setPhoto("");
     setUserId("");
+    setUserUsername("");
   };
 
   const handleSubmit = async (event) => {
@@ -75,7 +77,8 @@ function CreateMunch() {
     data.review = review;
     data.photo = photo;
     data.user_id = userId;
-
+    data.user_username = userUsername;
+    console.log("DATA", data)
     const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
     const fetchConfig = {
       method: "post",
@@ -87,6 +90,7 @@ function CreateMunch() {
     };
 
     const response = await fetch(munchUrl, fetchConfig);
+    console.log("response", response)
     if (response.ok) {
       clearState();
       navigate("/home");

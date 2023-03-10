@@ -8,7 +8,6 @@ function MunchDetail() {
   const navigate = useNavigate();
   const [munch, setMunch] = useState([]);
   const { token } = useAuthContext();
-  const [userName, setUsername] = useState("");
   const [userId, setUserId] = useState("");
 
   const handleDelete = async () => {
@@ -26,22 +25,6 @@ function MunchDetail() {
   };
 
   useEffect(() => {
-    const getUsername = async (userId) => {
-      const usernameUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${userId}`;
-      const fetchConfig = {
-        method: "get",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const response = await fetch(usernameUrl, fetchConfig);
-      if (response.ok) {
-        const data = await response.json();
-        const userName = data.username;
-        setUsername(userName);
-      }
-    };
-
     const getOneMunch = async () => {
       const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
       const fetchConfig = {
@@ -53,7 +36,6 @@ function MunchDetail() {
       const response = await fetch(url, fetchConfig);
       if (response.ok) {
         const data = await response.json();
-        getUsername(data.user_id);
         setMunch(data);
       }
     };
@@ -75,8 +57,7 @@ function MunchDetail() {
       }
     };
 
-    if (token && userId) {
-      getUsername(userId);
+    if (token) {
       getOneMunch();
     }
 
@@ -104,15 +85,18 @@ function MunchDetail() {
                     width: "550px",
                   }}
                 >
-                  <Link to={`/munches/${userName}`} className="card-link">
-                    <div className="card-username mx-3 mt-1">
+                  <Link
+                    to={`/munches/${munch.user_username}`}
+                    className="card-link"
+                  >
+                    <div className="form-floating mx-3 mt-1">
                       <h2
                         style={{
                           fontSize: "15px",
                           textAlign: "right",
                         }}
                       >
-                        @{userName}
+                        @{munch.user_username}
                       </h2>
                     </div>
                   </Link>
@@ -220,7 +204,10 @@ function MunchDetail() {
                   width: "550px",
                 }}
               >
-                <Link to={`/munches/${userName}`} className="card-link">
+                <Link
+                  to={`/munches/${munch.user_username}`}
+                  className="card-link"
+                >
                   <div className="form-floating mx-3 mt-1">
                     <h2
                       style={{
@@ -228,7 +215,7 @@ function MunchDetail() {
                         textAlign: "right",
                       }}
                     >
-                      @{userName}
+                      @{munch.user_username}
                     </h2>
                   </div>
                 </Link>

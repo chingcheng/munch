@@ -19,6 +19,7 @@ function MunchesColumn(props) {
                 border: "0",
               }}
             >
+              <p>@{munch.user_username}</p>
               <img
                 src={munch.photo}
                 className="card-img-top"

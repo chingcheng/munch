@@ -20,7 +20,8 @@ all_munches_test = {
     "tag": False,
     "city": "string",
     "state": "string",
-    "user_id": '0'
+    "user_id": '0',
+    "user_username": "string"
     }
 
 

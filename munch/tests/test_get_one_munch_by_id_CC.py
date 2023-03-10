@@ -18,7 +18,8 @@ class GetMunchRepositoryMock(MunchRepository):
                 tag=False,
                 city="string",
                 state="string",
-                user_id="1"
+                user_id="1",
+                user_username="string"
             )
         else:
             return None
@@ -59,6 +60,7 @@ def test_get_one_munch():
             "photo": "string",
             "city": "string",
             "state": "string",
-            "user_id": "1"
+            "user_id": "1",
+            "user_username": "string"
         }
     app.dependency_overrides = {}

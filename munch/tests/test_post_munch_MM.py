@@ -17,7 +17,8 @@ class CreateMunchQueries:
             "tag": False,
             "city": "string",
             "state": "string",
-            "user_id": '0'
+            "user_id": '0',
+            "user_username": "string"
         }
         result.update(munch)
         return result
@@ -54,7 +55,8 @@ def test_create_munch():
             "tag": False,
             "city": "string",
             "state": "string",
-            "user_id": '0'
+            "user_id": '0',
+            "user_username": "string"
     }
 
     expected = {
@@ -66,7 +68,8 @@ def test_create_munch():
             "tag": False,
             "city": "string",
             "state": "string",
-            "user_id": '0'
+            "user_id": '0',
+            "user_username": "string"
     }
 
     response = client.post("/munches", json=json)
