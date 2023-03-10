@@ -75,8 +75,7 @@
 #light .munch-detail-card {
   background-color: white !important;
   color: black;
-  border: 1px solid rgb(0, 0, 0) !important;
-  border-color: white;
+  border: 1px solid #ffbf01 !important;
 }
 
 #light .card-footer {
@@ -109,8 +108,11 @@
   border-radius: 60px;
 }
 
-/* DARK MODE */
+#light .dark-mode-switch-container {
+  background-color: #fffbfa;
+}
 
+/* DARK MODE */
 
 #dark .login-form {
   background-color: rgba(255, 245, 235, 0.1);
@@ -188,7 +190,6 @@
   background-color: #202231 !important;
   color: white;
   border: 1px solid white !important;
-  border-color: white;
 }
 
 #dark .card-footer {
@@ -220,4 +221,27 @@
   background-color: #30324a;
   color: white;
   border-radius: 60px;
+}
+
+#dark .dark-mode-switch-container {
+  background-color: #202231;
+}
+
+/* CSS SWITCH */
+.dark-mode-switch-container {
+  display: flex;
+  width: 100vw;
+  height: 100px;
+}
+
+.dark-mode-switch-container label {
+  margin: 10px;
+}
+
+#light .dark-mode-switch-container label {
+  color: black;
+}
+
+#dark .dark-mode-switch-container label {
+  color: white;
 }

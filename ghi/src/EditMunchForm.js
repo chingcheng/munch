@@ -83,7 +83,7 @@ function EditMunch() {
     data.review = review;
     data.photo = photo;
     data.user_id = userId;
-    data.user_username= userUsername;
+    data.user_username = userUsername;
 
     const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
     const fetchConfig = {
@@ -276,7 +276,7 @@ function EditMunch() {
                 </div>
                 <div className="button-container" style={{ display: "flex" }}>
                   <button
-                    className="btn btn-md lead text-bold text mx-2"
+                    className="btn btn-md lead text-bold text mx-2 update-btn"
                     style={{
                       background: "#FFEBAD",
                       fontWeight: "725",

@@ -1,9 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./Nav";
-// import "./light-mode.css";
-// import "./dark-mode.css";
-// import "./index.css";
+import "./index.css";
 import "./toggle-theme.css";
 import { AuthProvider, useToken } from "./Auth";
 import LoginForm from "./LoginForm";
@@ -117,12 +115,22 @@ function App() {
               </Routes>
             </AuthProvider>
           </BrowserRouter>
-          <DarkModeSwitch
-            // style={{ marginBottom: "2rem" }}
-            checked={theme === "dark"}
-            onChange={toggleTheme}
-            size={50}
-          />
+          <div
+            className="dark-mode-switch-container"
+            style={{
+              position: "fixed",
+              top: "-25px",
+              right: "25px",
+              padding: "10px",
+              width: "50px",
+            }}
+          >
+            <DarkModeSwitch
+              checked={theme === "dark"}
+              onChange={toggleTheme}
+              size={35}
+            />
+          </div>
         </div>
       </ThemeContext.Provider>
     </>
