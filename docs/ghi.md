@@ -22,4 +22,8 @@
 
 ## Edit Munch Page
 
+![Edit Page](ghi/edit.png)
+
 ## Munchkin Profile Page
+
+![Profile Page](ghi/profile.png)
