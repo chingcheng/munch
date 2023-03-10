@@ -119,10 +119,11 @@ function App() {
             className="dark-mode-switch-container"
             style={{
               position: "fixed",
-              top: "-25px",
+              top: "25px",
               right: "25px",
               padding: "10px",
               width: "50px",
+              height: "55px",
             }}
           >
             <DarkModeSwitch
