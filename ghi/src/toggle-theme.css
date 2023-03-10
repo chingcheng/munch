@@ -1,0 +1,223 @@
+/* LIGHT MODE */
+
+#light .login-form {
+  background-color: rgba(255, 245, 235, 0.1);
+  border-radius: 10%;
+}
+
+#light .signup-form {
+  background-color: rgba(255, 245, 235, 0.1);
+  border-radius: 10%;
+}
+
+#light .form {
+  background-color: white;
+  border-radius: 10%;
+}
+
+#light .btn {
+  color: #8f6036;
+}
+
+#light .nav-link {
+  background-color: #ffc383;
+  border-radius: 20px;
+  font-weight: bold;
+  margin: 6px;
+}
+
+#light .nav-item a:hover {
+  background-color: #ffbf01;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #ffffff !important;
+}
+
+#light .card-link {
+  color: black;
+  text-decoration: none;
+}
+
+#light .card-link:hover {
+  color: inherit;
+}
+
+#light .card-city-state {
+  color: #8c8e8c;
+}
+
+#light .nav-link.active {
+  background-color: #ffa94d;
+}
+
+#light .btn:hover {
+  background: #ffbf01 !important;
+  color: #ffffffbe !important;
+}
+
+#light .form-shadow {
+  box-shadow: 0 2px 4px rgba(80, 80, 80, 0.15);
+}
+
+#light .navbar {
+  background: #fffbfa;
+}
+
+#light .bg-image {
+  background: #fffbfa;
+}
+
+#light .card {
+  background-color: #fffbfa !important;
+  color: black;
+}
+
+#light .munch-detail-card {
+  background-color: white !important;
+  color: black;
+  border: 1px solid rgb(0, 0, 0) !important;
+  border-color: white;
+}
+
+#light .card-footer {
+  background-color: #fffbfa;
+  border-color: black !important;
+  color: #9ba29e;
+}
+
+#light .card-detail {
+  border: 1px white;
+  color: black;
+}
+
+#light .card-username {
+  color: black;
+}
+
+#light .account-detail-card {
+  background-color: #ffffffbe !important;
+  color: black;
+  border: 1px solid #ffbf01 !important;
+  border-color: #ffbf01;
+}
+
+#light .card-bio {
+  height: auto;
+  max-width: 500px;
+  background-color: #ffe6b6;
+  color: rgb(119, 119, 119);
+  border-radius: 60px;
+}
+
+/* DARK MODE */
+
+
+#dark .login-form {
+  background-color: rgba(255, 245, 235, 0.1);
+  border-radius: 10%;
+}
+
+#dark .signup-form {
+  background-color: rgba(255, 245, 235, 0.1);
+  border-radius: 10%;
+}
+
+#dark .form {
+  background-color: #282b3e;
+  border-radius: 10%;
+}
+
+#dark .btn {
+  color: #8f6036;
+}
+
+#dark .nav-link {
+  background-color: #30324a;
+  border-radius: 20px;
+  font-weight: bold;
+  margin: 6px;
+}
+
+#dark .nav-item a:hover {
+  background-color: #ffbf01;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #ffffff !important;
+}
+
+#dark .card-link {
+  color: white;
+  text-decoration: none;
+}
+
+#dark .card-link:hover {
+  color: inherit;
+}
+
+#dark .card-city-state {
+  color: white;
+}
+
+#dark .nav-link.active {
+  background-color: #494c6f;
+}
+
+#dark .btn:hover {
+  background: #ffbf01 !important;
+  color: #ffffffbe !important;
+}
+
+#dark .form-shadow {
+  box-shadow: 0 2px 4px rgba(80, 80, 80, 0.15);
+}
+
+#dark .navbar {
+  background: #202231;
+}
+
+#dark .bg-image {
+  background: #202231;
+}
+
+#dark .card {
+  background-color: #202231 !important;
+  color: white;
+}
+
+#dark .munch-detail-card {
+  background-color: #202231 !important;
+  color: white;
+  border: 1px solid white !important;
+  border-color: white;
+}
+
+#dark .card-footer {
+  background-color: #202231;
+  border-color: white !important;
+  color: white;
+}
+
+#dark .card-detail {
+  border: 1px white;
+  color: white;
+}
+
+#dark .card-username {
+  color: white;
+}
+
+#dark .account-detail-card {
+  background-color: #282b3e !important;
+  color: white;
+  /* border: 1px solid white !important; */
+  border-color: white;
+  border-radius: 20%;
+}
+
+#dark .card-bio {
+  height: auto;
+  max-width: 500px;
+  background-color: #30324a;
+  color: white;
+  border-radius: 60px;
+}
