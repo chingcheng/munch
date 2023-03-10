@@ -50,3 +50,9 @@ This page was intended to allow the logged-in user to view the profile and munch
 <br>
 <br>
 ![Munchkin Profile Page](wireframes/munchkin-profile-page.png)
+
+## Full Original Wireframe
+
+<br>
+<br>
+![Full Original Wireframe](wireframes/Munch_Excalidraw.png)
