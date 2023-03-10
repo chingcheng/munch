@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./Nav";
-import "./light-mode.css";
+// import "./light-mode.css";
 import "./dark-mode.css";
 import "./index.css";
 import { AuthProvider, useToken } from "./Auth";

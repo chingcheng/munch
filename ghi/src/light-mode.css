@@ -1,3 +1,5 @@
+/* LIGHT MODE */
+
 .login-form {
   background-color: rgba(255, 245, 235, 0.1);
   border-radius: 10%;
@@ -97,4 +99,12 @@
   color: black;
   border: 1px solid #ffbf01 !important;
   border-color: #ffbf01;
+}
+
+.card-bio {
+  height: auto;
+  max-width: 500px;
+  background-color: #ffe6b6;
+  color: rgb(119, 119, 119);
+  border-radius: 60px;
 }

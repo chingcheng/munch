@@ -13,13 +13,21 @@ function MunchesColumn(props) {
             <div
               className="card"
               style={{
-                height: "400px",
+                height: "422px",
                 marginBottom: "45px",
                 marginLeft: "20px",
                 border: "0",
               }}
             >
-              <p>@{munch.user_username}</p>
+              <p
+                style={{
+                  textAlign: "right",
+                  marginBottom: "2px",
+                  fontSize: "14px",
+                }}
+              >
+                @{munch.user_username}
+              </p>
               <img
                 src={munch.photo}
                 className="card-img-top"
@@ -35,26 +43,23 @@ function MunchesColumn(props) {
                   margin: 0,
                 }}
               >
-                <h5 className="card-location mt-3">{munch.location}</h5>
-                <p className="card-review">{munch.review}</p>
-              </div>
-              <div
-                className="card-footer"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  padding: 0,
-                  margin: 0,
-                }}
-              >
-                <div className="location-info">
-                  <small className="text">
-                    {munch.city}, {munch.state}
-                  </small>
-                </div>
-                <div className="rating-info">
-                  <small className="text">
+                <h5
+                  className="card-location mt-3"
+                  style={{
+                    marginBottom: "0",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {munch.location}
+                  <div
+                    className="d-flex"
+                    style={{
+                      fontSize: "0.9em",
+                      justifyContent: "end",
+                      marginLeft: "auto",
+                    }}
+                  >
                     {munch.rating}{" "}
                     <img
                       src={star}
@@ -62,11 +67,19 @@ function MunchesColumn(props) {
                       style={{
                         width: "0.9em",
                         height: "0.9em",
-                        marginTop: "-0.25em",
                       }}
                     ></img>
-                  </small>
+                  </div>
+                </h5>
+                <div className="d-flex">
+                  <div
+                    className="card-city-state"
+                    style={{ marginTop: "0", marginBottom: "10px" }}
+                  >
+                    {munch.city}, {munch.state}
+                  </div>
                 </div>
+                <p className="card-review">{munch.review}</p>
               </div>
             </div>
           </Link>

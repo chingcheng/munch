@@ -35,47 +35,43 @@ function MunchesColumn(props) {
                   margin: 0,
                 }}
               >
-                <h5 className="card-location mt-3">{munch.location}</h5>
-                <div
-                  className="d-flex"
+                <h5
+                  className="card-location mt-3"
                   style={{
-                    fontSize: "0.7em",
-                    justifyContent: "end",
-                    marginLeft: "auto",
-                  }}
-                >
-                  <p className="card-review">{munch.review}</p>
-                </div>
-                <div
-                  className="card-footer"
-                  style={{
+                    marginBottom: "0",
                     display: "flex",
-                    justifyContent: "space-between",
                     alignItems: "center",
-                    padding: 0,
-                    margin: 0,
                   }}
                 >
-                  <div className="location-info">
-                    <small className="text">
-                      {munch.city}, {munch.state}
-                    </small>
+                  {munch.location}
+                  <div
+                    className="d-flex"
+                    style={{
+                      fontSize: "0.9em",
+                      justifyContent: "end",
+                      marginLeft: "auto",
+                    }}
+                  >
+                    {munch.rating}{" "}
+                    <img
+                      src={star}
+                      alt="star"
+                      style={{
+                        width: "0.9em",
+                        height: "0.9em",
+                      }}
+                    ></img>
                   </div>
-                  <div className="rating-info">
-                    <small className="text">
-                      {munch.rating}{" "}
-                      <img
-                        src={star}
-                        alt="star"
-                        style={{
-                          width: "0.9em",
-                          height: "0.9em",
-                          marginTop: "-0.25em",
-                        }}
-                      ></img>
-                    </small>
+                </h5>
+                <div className="d-flex">
+                  <div
+                    className="card-city-state"
+                    style={{ marginTop: "0", marginBottom: "10px" }}
+                  >
+                    {munch.city}, {munch.state}
                   </div>
                 </div>
+                <p className="card-review">{munch.review}</p>
               </div>
             </div>
           </Link>

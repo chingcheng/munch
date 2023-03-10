@@ -35,26 +35,23 @@ function MunchesColumn(props) {
                   margin: 0,
                 }}
               >
-                <h5 className="card-location mt-3">{munch.location}</h5>
-                <p className="card-review">{munch.review}</p>
-              </div>
-              <div
-                className="card-footer"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  padding: 0,
-                  margin: 0,
-                }}
-              >
-                <div className="location-info">
-                  <small className="text">
-                    {munch.city}, {munch.state}
-                  </small>
-                </div>
-                <div className="rating-info">
-                  <small className="text">
+                <h5
+                  className="card-location mt-3"
+                  style={{
+                    marginBottom: "0",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {munch.location}
+                  <div
+                    className="d-flex"
+                    style={{
+                      fontSize: "0.9em",
+                      justifyContent: "end",
+                      marginLeft: "auto",
+                    }}
+                  >
                     {munch.rating}{" "}
                     <img
                       src={star}
@@ -62,11 +59,19 @@ function MunchesColumn(props) {
                       style={{
                         width: "0.9em",
                         height: "0.9em",
-                        marginTop: "-0.25em",
                       }}
                     ></img>
-                  </small>
+                  </div>
+                </h5>
+                <div className="d-flex">
+                  <div
+                    className="card-city-state"
+                    style={{ marginTop: "0", marginBottom: "10px" }}
+                  >
+                    {munch.city}, {munch.state}
+                  </div>
                 </div>
+                <p className="card-review">{munch.review}</p>
               </div>
             </div>
           </Link>
@@ -80,6 +85,7 @@ const UserPage = () => {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
+  const [userBio, setUserBio] = useState("");
 
   useEffect(() => {
     const getUserId = async () => {
@@ -96,7 +102,9 @@ const UserPage = () => {
         const users = await response.json();
         const current_user = users.filter((user) => user.username === userName);
         const current_user_id = current_user[0].id;
+        const bio = current_user[0].bio;
         setUserId(current_user_id);
+        setUserBio(bio);
         fetchFilterMunches(current_user[0].id);
       }
     };
@@ -141,7 +149,7 @@ const UserPage = () => {
         }}
       >
         <Link to="/munchbunch">
-          <div className="px-4 py-5 mt-0 text-center bg-transparent">
+          <div className="px-4 py-4 mt-4 text-center bg-transparent">
             <img src={munch_bunch} alt="Munch Bunch" width="450" />
           </div>
         </Link>
@@ -149,32 +157,26 @@ const UserPage = () => {
           <div className="row">
             <div className="offset-3 col-6">
               <div className="col d-flex justify-content-center">
-                <div
-                  className="card"
-                  style={{
-                    height: "65px",
-                    width: "auto",
-                    display: "flex",
-                  }}
-                >
-                  <div
-                    className="card-body"
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <div className="label-value">
-                      <h5 className="card-text mx-1 mt-1">{userName}</h5>
+                <div className="card-bio">
+                  <div className="card-body d-flex justify-content-between">
+                    <div className="label-value-bio py-1 px-5">
+                      <h4 className="card-text mt-2">
+                        {userName}{" "}
+                        <img
+                          src={add_friend}
+                          alt="Add Friend"
+                          style={{
+                            maxWidth: "100%",
+                            width: "35px",
+                            alignItems: "end",
+                            marginLeft: "20px",
+                          }}
+                        />
+                      </h4>
+                      <p className="row mb-2" style={{ textAlign: "center" }}>
+                        {userBio}
+                      </p>
                     </div>
-                    <p className="add-friend mx-1">
-                      <img
-                        src={add_friend}
-                        alt="Add Friend"
-                        style={{
-                          maxWidth: "100%",
-                          width: "35px",
-                          alignItems: "end",
-                        }}
-                      />
-                    </p>
                   </div>
                 </div>
               </div>
