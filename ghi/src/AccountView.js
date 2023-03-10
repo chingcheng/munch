@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useAuthContext } from "./Auth";
 import { Link } from "react-router-dom";
 import munch_account from "./images/munch_account.png";
-import user from "./images/user.png";
 
 function GetAccount() {
   const { token } = useAuthContext();
