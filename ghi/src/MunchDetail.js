@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "./Auth";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import star from "./images/star.png";
 
-function MunchDetail({ backgroundImage }) {
+function MunchDetail() {
   let { id } = useParams();
   const navigate = useNavigate();
   const [munch, setMunch] = useState([]);
   const { token } = useAuthContext();
-  const [userName, setUsername] = useState("");
   const [userId, setUserId] = useState("");
-  console.log("token", token)
-  console.log("userId:", userId)
 
   const handleDelete = async () => {
     const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
@@ -38,27 +36,7 @@ function MunchDetail({ backgroundImage }) {
       const response = await fetch(url, fetchConfig);
       if (response.ok) {
         const data = await response.json();
-        console.log("data", data)
-        getUsername(data.user_id);
-        console.log("user_id:", data.user_id)
         setMunch(data);
-      }
-    };
-
-    const getUsername = async (userId) => {
-      const usernameUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts/${userId}`;
-      const fetchConfig = {
-        method: "get",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const response = await fetch(usernameUrl, fetchConfig);
-      if (response.ok) {
-        const data = await response.json();
-        console.log("data:", data)
-        const userName = data.username;
-        setUsername(userName);
       }
     };
 
@@ -72,7 +50,6 @@ function MunchDetail({ backgroundImage }) {
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
           const data = await response.json();
-          console.log("DATAAAAAAA!!!!!!!!!!!!", data)
           setUserId(data.account.id);
         }
       } catch (e) {
@@ -80,19 +57,18 @@ function MunchDetail({ backgroundImage }) {
       }
     };
 
-    getOneMunch();
-    getUsername();
-    fetchID()
-  }, [token, id]);
+    if (token) {
+      getOneMunch();
+    }
 
-if(userId === Number(munch.user_id)){
-  console.log("munch.user_id", munch.user_id)
-  return (
+    fetchID();
+  }, [token, id, userId]);
+
+  if (userId === Number(munch.user_id)) {
+    return (
       <div
         className="p-5 bg-image"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-          backgroundColor: "#FFFAEB",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",
@@ -103,22 +79,24 @@ if(userId === Number(munch.user_id)){
             <div className="offset-3 col-6">
               <div className="col mx-auto d-flex justify-content-center">
                 <div
-                  className="card"
+                  className="card munch-detail-card"
                   style={{
                     height: "auto",
                     width: "550px",
                   }}
                 >
-                  <Link to={`/filtered/${userName}`} className="card-link">
+                  <Link
+                    to={`/munches/${munch.user_username}`}
+                    className="card-link"
+                  >
                     <div className="form-floating mx-3 mt-1">
                       <h2
                         style={{
-                          color: "black",
                           fontSize: "15px",
                           textAlign: "right",
                         }}
                       >
-                        @{userName}
+                        @{munch.user_username}
                       </h2>
                     </div>
                   </Link>
@@ -129,7 +107,7 @@ if(userId === Number(munch.user_id)){
                   />
                   <div className="card-body">
                     <h3
-                      className="card-location"
+                      className="card-location mt-3"
                       style={{
                         marginBottom: "0",
                         display: "flex",
@@ -137,7 +115,7 @@ if(userId === Number(munch.user_id)){
                       }}
                     >
                       {munch.location}
-                      <h7
+                      <div
                         className="d-flex"
                         style={{
                           fontSize: "0.7em",
@@ -145,21 +123,20 @@ if(userId === Number(munch.user_id)){
                           marginLeft: "auto",
                         }}
                       >
-                        {munch.rating}
+                        {munch.rating}{" "}
                         <img
-                          src="/star.png"
+                          src={star}
                           alt="star"
                           style={{
                             width: "0.9em",
                             height: "0.9em",
-                            marginTop: "0.15em",
                           }}
                         ></img>
-                      </h7>
+                      </div>
                     </h3>
-                    <h7 className="card-city-state" style={{ marginTop: "0" }}>
+                    <div className="card-city-state" style={{ marginTop: "0" }}>
                       {munch.city}, {munch.state}
-                    </h7>
+                    </div>
                     <p className="card-review pt-3">{munch.review}</p>
                   </div>
                 </div>
@@ -171,14 +148,13 @@ if(userId === Number(munch.user_id)){
           className="button-container mt-4"
           style={{ display: "flex", justifyContent: "center" }}
         >
-
-          <Link to={`/munches/edit/${id}`}>
+          <Link to={`/munch/edit/${id}`}>
             <button
               className="btn btn-md lead text-bold text mx-2"
               style={{
-                background: "#F8D876",
+                background: "#FFEBAD",
                 fontWeight: "725",
-                color: "#512b20",
+                color: "#834534",
                 width: "150px",
                 height: "40px",
               }}
@@ -193,7 +169,7 @@ if(userId === Number(munch.user_id)){
             onClick={handleDelete}
             className="btn btn-md lead text-bold text mx-2"
             style={{
-              background: "#FF4B3E",
+              background: "#f4989c",
               fontWeight: "725",
               color: "white",
               width: "150px",
@@ -206,97 +182,93 @@ if(userId === Number(munch.user_id)){
           </button>
         </div>
       </div>
-          )}
-        return (
+    );
+  }
+  return (
+    <div
+      className="p-5 bg-image"
+      style={{
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+        minHeight: "100vh",
+      }}
+    >
+      <div className="container mt-5">
+        <div className="row">
+          <div className="offset-3 col-6">
+            <div className="col mx-auto d-flex justify-content-center">
               <div
-        className="p-5 bg-image"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-          backgroundColor: "#FFFAEB",
-          backgroundSize: "cover",
-          backgroundAttachment: "fixed",
-          minHeight: "100vh",
-        }}
-      >
-        <div className="container mt-5">
-          <div className="row">
-            <div className="offset-3 col-6">
-              <div className="col mx-auto d-flex justify-content-center">
-                <div
-                  className="card"
-                  style={{
-                    height: "auto",
-                    width: "550px",
-                  }}
+                className="card munch-detail-card"
+                style={{
+                  height: "auto",
+                  width: "550px",
+                }}
+              >
+                <Link
+                  to={`/munches/${munch.user_username}`}
+                  className="card-link"
                 >
-                  <Link to={`/filtered/${userName}`} className="card-link">
-                    <div className="form-floating mx-3 mt-1">
-                      <h2
-                        style={{
-                          color: "black",
-                          fontSize: "15px",
-                          textAlign: "right",
-                        }}
-                      >
-                        @{userName}
-                      </h2>
-                    </div>
-                  </Link>
-                  <img
-                    src={munch.photo}
-                    className="card-img-top px-3"
-                    alt="Munch"
-                  />
-                  <div className="card-body">
-                    <h3
-                      className="card-location"
+                  <div className="form-floating mx-3 mt-1">
+                    <h2
                       style={{
-                        marginBottom: "0",
-                        display: "flex",
-                        alignItems: "center",
+                        fontSize: "15px",
+                        textAlign: "right",
                       }}
                     >
-                      {munch.location}
-                      <h7
-                        className="d-flex"
-                        style={{
-                          fontSize: "0.7em",
-                          justifyContent: "end",
-                          marginLeft: "auto",
-                        }}
-                      >
-                        {munch.rating}
-                        <img
-                          src="../star.png"
-                          alt="star"
-                          style={{
-                            width: "0.9em",
-                            height: "0.9em",
-                            marginTop: "0.15em",
-                          }}
-                        ></img>
-                      </h7>
-                    </h3>
-                    <h7 className="card-city-state" style={{ marginTop: "0" }}>
-                      {munch.city}, {munch.state}
-                    </h7>
-                    <p className="card-review pt-3">{munch.review}</p>
+                      @{munch.user_username}
+                    </h2>
                   </div>
+                </Link>
+                <img
+                  src={munch.photo}
+                  className="card-img-top px-3"
+                  alt="Munch"
+                />
+                <div className="card-body">
+                  <h3
+                    className="card-location"
+                    style={{
+                      marginBottom: "0",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    {munch.location}
+                    <div
+                      className="d-flex"
+                      style={{
+                        fontSize: "0.7em",
+                        justifyContent: "end",
+                        marginLeft: "auto",
+                      }}
+                    >
+                      {munch.rating}
+                      {"  "}
+                      <img
+                        src={star}
+                        alt="star"
+                        style={{
+                          width: "0.9em",
+                          height: "0.9em",
+                        }}
+                      ></img>
+                    </div>
+                  </h3>
+                  <p className="card-city-state" style={{ marginTop: "0" }}>
+                    {munch.city}, {munch.state}
+                  </p>
+                  <p className="card-review pt-3">{munch.review}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div
-          className="button-container mt-4"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-
-        </div>
       </div>
-
-            )
-          }
-
-
+      <div
+        className="button-container mt-4"
+        style={{ display: "flex", justifyContent: "center" }}
+      ></div>
+    </div>
+  );
+}
 export default MunchDetail;

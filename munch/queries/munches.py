@@ -16,6 +16,7 @@ class MunchIn(BaseModel):
     city: str
     state: str
     user_id: str
+    user_username: str
 
 
 class MunchOut(BaseModel):
@@ -28,6 +29,7 @@ class MunchOut(BaseModel):
     city: str
     state: str
     user_id: str
+    user_username: str
 
 
 class MunchRepository:
@@ -46,7 +48,8 @@ class MunchRepository:
                             tag,
                             city,
                             state,
-                            user_id
+                            user_id,
+                            user_username
                         FROM munches;
                         """
                     )
@@ -72,10 +75,11 @@ class MunchRepository:
                                 tag,
                                 city,
                                 state,
-                                user_id
+                                user_id,
+                                user_username
                             )
                         VALUES
-                            (%s, %s, %s, %s, %s, %s, %s, %s)
+                            (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
@@ -87,6 +91,7 @@ class MunchRepository:
                             munch.city,
                             munch.state,
                             munch.user_id,
+                            munch.user_username,
                         ]
                     )
                     id = result.fetchone()[0]
@@ -109,7 +114,8 @@ class MunchRepository:
                             tag,
                             city,
                             state,
-                            user_id
+                            user_id,
+                            user_username
                         FROM munches
                         WHERE id = %s
                         """,
@@ -151,7 +157,8 @@ class MunchRepository:
                             tag=%s,
                             city=%s,
                             state=%s,
-                            user_id=%s
+                            user_id=%s,
+                            user_username=%s
                         WHERE id=%s
                         """,
                         [
@@ -163,6 +170,7 @@ class MunchRepository:
                             munch.city,
                             munch.state,
                             munch.user_id,
+                            munch.user_username,
                             munch_id,
                         ]
                     )
@@ -184,5 +192,6 @@ class MunchRepository:
             tag=record[5],
             city=record[6],
             state=record[7],
-            user_id=record[8]
+            user_id=record[8],
+            user_username=record[9],
         )

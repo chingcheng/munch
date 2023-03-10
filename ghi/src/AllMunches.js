@@ -1,58 +1,85 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "./Auth";
+import munch_bunch from "./images/munch_bunch.png";
+import star from "./images/star.png";
 
 function MunchesColumn(props) {
   return (
     <div className="col">
       {props.list.map((munch) => (
         <div key={munch.id}>
-          <Link to={`/munches/${munch.id}`} className="card-link">
-            <div className="card mb-3 shadow" style={{ height: "415px" }}>
+          <Link to={`/munch/${munch.id}`} className="card-link">
+            <div
+              className="card"
+              style={{
+                height: "422px",
+                marginBottom: "45px",
+                marginLeft: "20px",
+                border: "0",
+              }}
+            >
+              <p
+                style={{
+                  textAlign: "right",
+                  marginBottom: "2px",
+                  fontSize: "14px",
+                }}
+              >
+                @{munch.user_username}
+              </p>
               <img
                 src={munch.photo}
                 className="card-img-top"
                 alt={`${munch.location}`}
-                style={{ maxWidth: "100%", maxHeight: "250px" }}
+                style={{ width: "100%", height: "250px", objectFit: "cover" }}
               />
               <div
                 className="card-body"
                 style={{
                   height: "100%",
                   overflow: "hidden",
+                  padding: 0,
+                  margin: 0,
                 }}
               >
-                <h5 className="card-location">{munch.location}</h5>
-                <p className="card-review">{munch.review}</p>
-              </div>
-              <div
-                className="card-footer"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  height: "40px",
-                }}
-              >
-                <div className="location-info">
-                  <small className="text-muted">
-                    {munch.city}, {munch.state}
-                  </small>
-                </div>
-                <div className="rating-info">
-                  <small className="text-muted">
-                    Rating: {munch.rating}
+                <h5
+                  className="card-location mt-3"
+                  style={{
+                    marginBottom: "0",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {munch.location}
+                  <div
+                    className="d-flex"
+                    style={{
+                      fontSize: "0.9em",
+                      justifyContent: "end",
+                      marginLeft: "auto",
+                    }}
+                  >
+                    {munch.rating}{" "}
                     <img
-                      src="/star.png"
+                      src={star}
                       alt="star"
                       style={{
                         width: "0.9em",
                         height: "0.9em",
-                        marginTop: "-0.25em",
                       }}
                     ></img>
-                  </small>
+                  </div>
+                </h5>
+                <div className="d-flex">
+                  <div
+                    className="card-city-state"
+                    style={{ marginTop: "0", marginBottom: "10px" }}
+                  >
+                    {munch.city}, {munch.state}
+                  </div>
                 </div>
+                <p className="card-review">{munch.review}</p>
               </div>
             </div>
           </Link>
@@ -61,7 +88,7 @@ function MunchesColumn(props) {
     </div>
   );
 }
-function AllMunches({ backgroundImage }) {
+function AllMunches() {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
 
@@ -96,16 +123,14 @@ function AllMunches({ backgroundImage }) {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-          backgroundColor: "#FFFAEB",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",
         }}
       >
-        <Link to="/feed">
+        <Link to="/munchbunch">
           <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
-            <img src="./munch_bunch.png" alt="Munch Bunch" width="450" />
+            <img src={munch_bunch} alt="Munch Bunch" width="450" />
           </div>
         </Link>
         <div className="container">

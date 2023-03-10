@@ -1,58 +1,77 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "./Auth";
+import munch_transparent from "./images/munch_transparent.png";
+import munch_slogan from "./images/munch_slogan.png";
+import star from "./images/star.png";
 
 function MunchesColumn(props) {
   return (
-    <div className="col">
+    <div className="col bg-color">
       {props.list.map((munch) => (
         <div key={munch.id}>
-          <Link to={`/munches/${munch.id}`} className="card-link">
-            <div className="card mb-3 shadow" style={{ height: "415px" }}>
+          <Link to={`/munch/${munch.id}`} className="card-link">
+            <div
+              className="card"
+              style={{
+                height: "400px",
+                marginBottom: "45px",
+                marginLeft: "20px",
+                border: "0",
+              }}
+            >
               <img
                 src={munch.photo}
                 className="card-img-top"
                 alt={`${munch.location}`}
-                style={{ maxWidth: "100%", maxHeight: "250px" }}
+                style={{ width: "100%", height: "250px", objectFit: "cover" }}
               />
               <div
                 className="card-body"
                 style={{
                   height: "100%",
                   overflow: "hidden",
+                  padding: 0,
+                  margin: 0,
                 }}
               >
-                <h5 className="card-location">{munch.location}</h5>
-                <p className="card-review">{munch.review}</p>
-              </div>
-              <div
-                className="card-footer"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  height: "40px",
-                }}
-              >
-                <div className="location-info">
-                  <small className="text-muted">
-                    {munch.city}, {munch.state}
-                  </small>
-                </div>
-                <div className="rating-info">
-                  <small className="text-muted">
-                    Rating: {munch.rating}
+                <h5
+                  className="card-location mt-3"
+                  style={{
+                    marginBottom: "0",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {munch.location}
+                  <div
+                    className="d-flex"
+                    style={{
+                      fontSize: "0.9em",
+                      justifyContent: "end",
+                      marginLeft: "auto",
+                    }}
+                  >
+                    {munch.rating}{" "}
                     <img
-                      src="/star.png"
+                      src={star}
                       alt="star"
                       style={{
                         width: "0.9em",
                         height: "0.9em",
-                        marginTop: "-0.25em",
                       }}
                     ></img>
-                  </small>
+                  </div>
+                </h5>
+                <div className="d-flex">
+                  <div
+                    className="card-city-state"
+                    style={{ marginTop: "0", marginBottom: "10px" }}
+                  >
+                    {munch.city}, {munch.state}
+                  </div>
                 </div>
+                <p className="card-review">{munch.review}</p>
               </div>
             </div>
           </Link>
@@ -62,7 +81,7 @@ function MunchesColumn(props) {
   );
 }
 
-function HomePage({ backgroundImage }) {
+function HomePage() {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
@@ -82,7 +101,7 @@ function HomePage({ backgroundImage }) {
         if (response.ok) {
           const munches = await response.json();
           const filteredMunches = munches
-            .filter((munch) => munch.user_id.includes(userId))
+            .filter((munch) => Number(munch.user_id) === userId)
             .reverse();
           const munchColumns = [[], [], []];
           filteredMunches.forEach((munch, index) =>
@@ -119,8 +138,6 @@ function HomePage({ backgroundImage }) {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-          backgroundColor: "#FFFAEB",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",
@@ -128,10 +145,10 @@ function HomePage({ backgroundImage }) {
       >
         <Link to="/home">
           <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
-            <img src="./munch_transparent.png" alt="" width="450" />
+            <img src={munch_transparent} alt="Logo" width="450" />
             <div>
               <p>
-                <img src="./munch_slogan.png" alt="Slogan" width="350px" />
+                <img src={munch_slogan} alt="Slogan" width="350px" />
               </p>
             </div>
           </div>

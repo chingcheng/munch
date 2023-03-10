@@ -1,13 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Figtree:wght@500&display=swap");
-/* @import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Karma:wght@500&display=swap");
+
+.card-location {
+  font-family: "Karma", serif;
+}
 
 body {
   margin: 0;
   font-family: "Figtree", sans-serif !important;
-  /* font-family: "Philosopher", sans-serif; */
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif; */
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -48,37 +51,6 @@ code {
   width: 140px;
 }
 
-.nav-link {
-  background-color: rgba(255, 255, 255, 0.35);
-  border-radius: 20px;
-  font-weight: bold;
-  margin: 6px;
-}
-
-.nav-item a:hover {
-  background-color: #ffbf01;
-  border-radius: 20px;
-  font-weight: bold;
-  color: #ffffff !important;
-}
-
-.card-link {
-  color: black;
-  text-decoration: none;
-}
-
-.card-link:hover {
-  color: inherit;
-}
-
-.card-city-state {
-  color: #999;
-}
-
-.nav-link.active {
-  background-color: #ffe185be;
-}
-
 .label-value {
   display: flex;
   align-items: baseline;
@@ -101,12 +73,11 @@ code {
 
 .munchkin-link {
   color: #ffe185be;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 a.munchkin-link:hover {
-  color: #512b20;
-  /* color: #ffe185be; */
+  color: #ffe185be;
   text-shadow: 0 0 10px #fff, 0 0 20px #ffe185be, 0 0 30px #ffe185be,
     0 0 40px #ffe185be, 0 0 70px #ffe185be, 0 0 80px #ffe185be,
     0 0 100px #ffe185be;
@@ -114,18 +85,16 @@ a.munchkin-link:hover {
 
 .signup-munchkin {
   color: #ffe185be;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 a.signup-munchkin:hover {
-  color: #512b20;
-  /* color: #ffe185be; */
+  color: #ffe185be;
   text-shadow: 0 0 10px #fff, 0 0 20px #ffe185be, 0 0 30px #ffe185be,
     0 0 40px #ffe185be, 0 0 70px #ffe185be, 0 0 80px #ffe185be,
     0 0 100px #ffe185be;
 }
 
-.btn:hover {
-  background: #ffbf01 !important;
-  color: #ffffffbe !important;
+.card-account-title {
+  margin-left: 40px;
 }

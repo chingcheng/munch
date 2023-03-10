@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./Nav";
-import "./App.css";
+// import "./light-mode.css";
+import "./dark-mode.css";
+import "./index.css";
 import { AuthProvider, useToken } from "./Auth";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
@@ -54,29 +56,25 @@ function getRandomImage(images) {
 }
 
 function App() {
-  const [munches, setMunches] = useState([]);
+  const [backgroundImage, setBackgroundImage] = useState(() => {
+    const storedImage = localStorage.getItem("backgroundImage");
+    return storedImage ? storedImage : getRandomImage(images);
+  });
 
-  const getMunches = async () => {
-    const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
-    const response = await fetch(url);
-    if (response.ok) {
-      const data = await response.json();
-      const munches = data.munches;
-      setMunches(munches);
+  useEffect(() => {
+    const storedImage = localStorage.getItem("backgroundImage");
+    if (storedImage) {
+      setBackgroundImage(storedImage);
+    } else {
+      const randomImage = getRandomImage(images);
+      setBackgroundImage(randomImage);
+      localStorage.setItem("backgroundImage", randomImage);
     }
-  };
 
-  useEffect(() => {
-    getMunches();
-  }, [setMunches]);
-
-  const [backgroundImage, setBackgroundImage] = useState(
-    getRandomImage(images)
-  );
-
-  useEffect(() => {
     const intervalId = setInterval(() => {
-      setBackgroundImage(getRandomImage(images));
+      const randomImage = getRandomImage(images);
+      setBackgroundImage(randomImage);
+      localStorage.setItem("backgroundImage", randomImage);
     }, 24 * 60 * 60 * 1000);
 
     return () => clearInterval(intervalId);
@@ -87,67 +85,35 @@ function App() {
 
   return (
     <>
-      <div>
-        <BrowserRouter basename={basename}>
+      <BrowserRouter basename={basename}>
+        <AuthProvider>
+          <GetToken />
           <Nav backgroundImage={backgroundImage} />
-          <AuthProvider>
-            <GetToken />
-            <Routes>
-              <Route
-                path="/"
-                element={<LandingPage backgroundImage={backgroundImage} />}
-              />
-              <Route
-                path="login"
-                element={<LoginForm backgroundImage={backgroundImage} />}
-              />
-              <Route path="logout" element={<Logout />} />
-              <Route
-                path="signup"
-                element={<SignupForm backgroundImage={backgroundImage} />}
-              />
-              <Route
-                path="accounts/:id"
-                element={<EditUser backgroundImage={backgroundImage} />}
-              />
-              <Route
-                path="accounts"
-                element={<GetAccount backgroundImage={backgroundImage} />}
-              />
-              <Route
-                path="munches/create"
-                element={<CreateMunch backgroundImage={backgroundImage} />}
-              />
-              <Route
-                path="munches/edit/:id"
-                element={<EditMunch backgroundImage={backgroundImage} />}
-              />
-              <Route
-                path="munches/:id"
-                element={<MunchDetail backgroundImage={backgroundImage} />}
-              />
-              <Route
-                path="home"
-                element={
-                  <HomePage
-                    munches={munches}
-                    getMunches={getMunches}
-                    backgroundImage={backgroundImage}
-                  />
-                }
-              />
-              <Route
-                path="munchbunch"
-                element={<AllMunches backgroundImage={backgroundImage} />}
-              />
-              <Route
-                path="munches/:userName"
-                element={<UserPage backgroundImage={backgroundImage} />}
-              />
-            </Routes>
-          </AuthProvider>
-        </BrowserRouter>
-      </div>
+          <Routes>
+            <Route
+              path="/"
+              element={<LandingPage backgroundImage={backgroundImage} />}
+            />
+            <Route
+              path="login"
+              element={<LoginForm backgroundImage={backgroundImage} />}
+            />
+            <Route path="logout" element={<Logout />} />
+            <Route
+              path="signup"
+              element={<SignupForm backgroundImage={backgroundImage} />}
+            />
+            <Route path="home" element={<HomePage />} />
+            <Route path="munch/edit/:id" element={<EditMunch />} />
+            <Route path="munchbunch" element={<AllMunches />} />
+            <Route path="munch/:id" element={<MunchDetail />} />
+            <Route path="munches/:userName" element={<UserPage />} />
+            <Route path="munch/create" element={<CreateMunch />} />
+            <Route path="accounts" element={<GetAccount />} />
+            <Route path="accounts/:id" element={<EditUser />} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
     </>
   );
 }

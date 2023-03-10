@@ -1,72 +1,91 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuthContext } from "./Auth";
+import munch_bunch from "./images/munch_bunch.png";
+import add_friend from "./images/add_friend.png";
+import star from "./images/star.png";
 
 function MunchesColumn(props) {
   return (
     <div className="col">
       {props.list.map((munch) => (
         <div key={munch.id}>
-          <Link to={`/munches/${munch.id}`} className="card-link">
-            <div className="card mb-3 shadow" style={{ height: "415px" }}>
+          <Link to={`/munch/${munch.id}`} className="card-link">
+            <div
+              className="card"
+              style={{
+                height: "400px",
+                marginBottom: "45px",
+                marginLeft: "20px",
+                border: "0",
+              }}
+            >
               <img
                 src={munch.photo}
                 className="card-img-top"
                 alt={`${munch.location}`}
-                style={{ maxWidth: "100%", maxHeight: "250px" }}
+                style={{ width: "100%", height: "250px", objectFit: "cover" }}
               />
               <div
                 className="card-body"
                 style={{
                   height: "100%",
                   overflow: "hidden",
+                  padding: 0,
+                  margin: 0,
                 }}
               >
-                <h5 className="card-location">{munch.location}</h5>
-                <p className="card-review">{munch.review}</p>
-              </div>
-              <div
-                className="card-footer"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  height: "40px",
-                }}
-              >
-                <div className="location-info">
-                  <small className="text-muted">
-                    {munch.city}, {munch.state}
-                  </small>
-                </div>
-                <div className="rating-info">
-                  <small className="text-muted">
-                    Rating: {munch.rating}
+                <h5
+                  className="card-location mt-3"
+                  style={{
+                    marginBottom: "0",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {munch.location}
+                  <div
+                    className="d-flex"
+                    style={{
+                      fontSize: "0.9em",
+                      justifyContent: "end",
+                      marginLeft: "auto",
+                    }}
+                  >
+                    {munch.rating}{" "}
                     <img
-                      src="/star.png"
+                      src={star}
                       alt="star"
                       style={{
                         width: "0.9em",
                         height: "0.9em",
-                        marginTop: "-0.25em",
                       }}
                     ></img>
-                  </small>
+                  </div>
+                </h5>
+                <div className="d-flex">
+                  <div
+                    className="card-city-state"
+                    style={{ marginTop: "0", marginBottom: "10px" }}
+                  >
+                    {munch.city}, {munch.state}
+                  </div>
                 </div>
+                <p className="card-review">{munch.review}</p>
               </div>
             </div>
           </Link>
         </div>
       ))}
-      ;
     </div>
   );
 }
-const UserPage = ({ backgroundImage }) => {
+const UserPage = () => {
   const { userName } = useParams();
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
+  const [userBio, setUserBio] = useState("");
 
   useEffect(() => {
     const getUserId = async () => {
@@ -83,7 +102,9 @@ const UserPage = ({ backgroundImage }) => {
         const users = await response.json();
         const current_user = users.filter((user) => user.username === userName);
         const current_user_id = current_user[0].id;
+        const bio = current_user[0].bio;
         setUserId(current_user_id);
+        setUserBio(bio);
         fetchFilterMunches(current_user[0].id);
       }
     };
@@ -101,8 +122,8 @@ const UserPage = ({ backgroundImage }) => {
 
         if (response.ok) {
           const munches = await response.json();
-          const filteredMunches = munches.filter((munch) =>
-            munch.user_id.includes(userId)
+          const filteredMunches = munches.filter(
+            (munch) => Number(munch.user_id) === userId
           );
           const munchColumns = [[], [], []];
           filteredMunches.forEach((munch, index) =>
@@ -122,44 +143,40 @@ const UserPage = ({ backgroundImage }) => {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-          backgroundColor: "#FFFAEB",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",
         }}
       >
-        <Link to="/feed">
-          <div className="px-4 py-5 mt-0 text-center bg-transparent">
-            <img src="/munch_bunch.png" alt="Munch Bunch" width="450" />
+        <Link to="/munchbunch">
+          <div className="px-4 py-4 mt-4 text-center bg-transparent">
+            <img src={munch_bunch} alt="Munch Bunch" width="450" />
           </div>
         </Link>
         <div className="container text-center">
           <div className="row">
             <div className="offset-3 col-6">
               <div className="col d-flex justify-content-center">
-                <div
-                  className="card"
-                  style={{ height: "65px", width: "180px", display: "flex" }}
-                >
-                  <div
-                    className="card-body"
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <div className="label-value">
-                      <h5 className="card-text mx-1">{userName}</h5>
+                <div className="card-bio">
+                  <div className="card-body d-flex justify-content-between">
+                    <div className="label-value-bio py-1 px-5">
+                      <h4 className="card-text mt-2">
+                        {userName}{" "}
+                        <img
+                          src={add_friend}
+                          alt="Add Friend"
+                          style={{
+                            maxWidth: "100%",
+                            width: "35px",
+                            alignItems: "end",
+                            marginLeft: "20px",
+                          }}
+                        />
+                      </h4>
+                      <p className="row mb-2" style={{ textAlign: "center" }}>
+                        {userBio}
+                      </p>
                     </div>
-                    <p className="add-friend mx-1">
-                      <img
-                        src="/add-friend.png"
-                        alt="Add Friend"
-                        style={{
-                          maxWidth: "100%",
-                          width: "35px",
-                          alignItems: "end",
-                        }}
-                      />
-                    </p>
                   </div>
                 </div>
               </div>

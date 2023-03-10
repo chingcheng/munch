@@ -1,7 +1,7 @@
-import "./index.css";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useToken } from "./Auth";
+import munch_transparent from "./images/munch_transparent.png";
 
 function LoginForm({ backgroundImage }) {
   const navigate = useNavigate();
@@ -45,14 +45,14 @@ function LoginForm({ backgroundImage }) {
             <div className="offset-3 col-6">
               <div className="shadow p-4 mt-4">
                 <form
-                  className="form p-5 m-5"
+                  className="login-form p-5 m-5"
                   id="create-login-form"
                   onSubmit={handleSubmit}
                 >
                   <Link to="/">
                     <h1 className="text-center mb-3">
                       <img
-                        src="./munch_transparent.png"
+                        src={munch_transparent}
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -104,7 +104,7 @@ function LoginForm({ backgroundImage }) {
                       Log In
                     </button>
                   </div>
-                  <a href="signup" class="signup-munchkin">
+                  <a href="signup" className="signup-munchkin">
                     Join the Munch Bunch!
                   </a>
                   {error && (

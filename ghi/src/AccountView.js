@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "./Auth";
 import { Link } from "react-router-dom";
+import munch_account from "./images/munch_account.png";
 
-function GetAccount({ backgroundImage }) {
+function GetAccount() {
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -49,7 +50,9 @@ function GetAccount({ backgroundImage }) {
       }
     };
     fetchID();
-    getUser();
+    if (userId) {
+      getUser();
+    }
   }, [token, userId]);
 
   return (
@@ -57,70 +60,72 @@ function GetAccount({ backgroundImage }) {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-          backgroundColor: "#FFFAEB",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",
         }}
       >
-        <div className="shadow p-2 m-4"></div>
-        <Link to="/account">
-          <p className="text-center">
-            <img
-              src="/munch_account.png"
-              alt="Munch Account"
-              style={{
-                maxWidth: "100%",
-                width: "350px",
-              }}
-            />
-          </p>
-        </Link>
         <div className="container text-center">
           <div className="row">
             <div className="offset-3 col-6">
-              <div className="col mx-auto d-flex justify-content-center">
+              <div className="col mx-auto mt-5 d-flex justify-content-center">
                 <div
-                  className="card"
-                  style={{ height: "auto", width: "auto", display: "flex" }}
+                  className="account-detail-card"
+                  style={{
+                    height: "auto",
+                    width: "auto",
+                    display: "flex",
+                    borderRadius: "70px",
+                  }}
                 >
-                  <div className="card-body">
-                    <p className="text-center mb-4">
+                  <div className="card-account-body">
+                    <Link to="/accounts">
+                      <p className="text-center mt-4 mb-5">
+                        <img
+                          src={munch_account}
+                          alt="Munch Account"
+                          style={{
+                            maxWidth: "100%",
+                            width: "350px",
+                          }}
+                        />
+                      </p>
+                    </Link>
+                    {/* <p className="text-center mt-3 mb-4">
                       <img
-                        src="/user.png"
+                        src={user}
                         alt="User"
                         style={{
                           maxWidth: "100%",
                           width: "125px",
                         }}
                       />
-                    </p>
+                    </p> */}
                     <div className="label-value">
-                      <h5 className="card-title label mx-3">User:</h5>
-                      <h5 className="card value mx-3">{username}</h5>
+                      <h5 className="card-account-title label">User:</h5>
+                      <h5 className="card value mx-5">{username}</h5>
                     </div>
                     <div className="label-value">
-                      <h5 className="card-title label mx-3">Name:</h5>
-                      <h5 className="card value mx-3">
+                      <h5 className="card-account-title label">Name:</h5>
+                      <h5 className="card value mx-5">
                         {firstName} {lastName}
                       </h5>
                     </div>
                     <div className="label-value">
-                      <h5 className="card-title label mx-3">Email:</h5>
-                      <h5 className="card value mx-3">{email}</h5>
+                      <h5 className="card-account-title label">Email:</h5>
+                      <h5 className="card value mx-5">{email}</h5>
                     </div>
                     <div className="label-value">
-                      <h5 className="card-title label mx-3">Bio:</h5>
-                      <h5 className="card value mx-3">{bio}</h5>
+                      <h5 className="card-account-title label">Bio:</h5>
+                      <h5 className="card value mx-5">{bio}</h5>
                     </div>
                     <Link to={`/accounts/${userId}`}>
                       <button
-                        className="btn btn-md lead text-bold text mx-2 mt-2"
+                        className="btn btn-md lead text-bold text mx-2 mt-2 mb-5"
                         style={{
-                          background: "#F8D876",
+                          background: "#FFEBAD",
                           fontWeight: "725",
-                          color: "#512b20",
+                          color: "#834534",
                           width: "150px",
                           height: "40px",
                         }}

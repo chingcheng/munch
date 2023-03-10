@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useToken } from "./Auth";
 import { useNavigate, Link } from "react-router-dom";
+import munch_transparent from "./images/munch_transparent.png";
+import munch_slogan from "./images/munch_slogan.png";
 
 function SignupForm({ backgroundImage }) {
   const navigate = useNavigate();
@@ -68,7 +70,7 @@ function SignupForm({ backgroundImage }) {
   return (
     <>
       <div
-        className="p-5 bg-image"
+        className="p-5 bg-image bg-color"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
           backgroundColor: "#FFFAEB",
@@ -82,14 +84,14 @@ function SignupForm({ backgroundImage }) {
             <div className="offset-3 col-6">
               <div className="shadow p-2 m-4">
                 <form
-                  className="form p-5 m-1"
+                  className="signup-form p-5 m-1"
                   id="create-signup-form"
                   onSubmit={handleSubmit}
                 >
                   <Link to="/">
                     <h1 className="text-center">
                       <img
-                        src="./munch_transparent.png"
+                        src={munch_transparent}
                         alt="Logo"
                         style={{
                           maxWidth: "100%",
@@ -100,7 +102,7 @@ function SignupForm({ backgroundImage }) {
                   </Link>
                   <p>
                     <img
-                      src="./munch_slogan.png"
+                      src={munch_slogan}
                       alt="Slogan"
                       style={{
                         maxWidth: "100%",
@@ -193,7 +195,7 @@ function SignupForm({ backgroundImage }) {
                       Sign Up
                     </button>
                   </div>
-                  <a href="login" class="munchkin-link">
+                  <a href="login" className="munchkin-link">
                     Already a Munchkin?
                   </a>
                   {error && (
