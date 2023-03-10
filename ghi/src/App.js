@@ -17,6 +17,7 @@ import AllMunches from "./AllMunches";
 import UserPage from "./UserPage";
 import GetAccount from "./AccountView";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
+import SigninApp from "./SigninApp";
 
 export const ThemeContext = createContext(null);
 
@@ -119,8 +120,8 @@ function App() {
             className="dark-mode-switch-container"
             style={{
               position: "fixed",
-              top: "25px",
-              right: "25px",
+              top: "15px",
+              right: "15px",
               padding: "10px",
               width: "50px",
               height: "55px",
