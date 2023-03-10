@@ -17,7 +17,6 @@ import AllMunches from "./AllMunches";
 import UserPage from "./UserPage";
 import GetAccount from "./AccountView";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import SigninApp from "./SigninApp";
 
 export const ThemeContext = createContext(null);
 
