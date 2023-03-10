@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./Nav";
 // import "./light-mode.css";
-import "./dark-mode.css";
-import "./index.css";
+// import "./dark-mode.css";
+// import "./index.css";
+import "./toggle-theme.css";
 import { AuthProvider, useToken } from "./Auth";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
@@ -17,6 +18,9 @@ import EditUser from "./EditUser";
 import AllMunches from "./AllMunches";
 import UserPage from "./UserPage";
 import GetAccount from "./AccountView";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
+
+export const ThemeContext = createContext(null);
 
 function GetToken() {
   useToken();
@@ -47,6 +51,12 @@ function getRandomImage(images) {
 }
 
 function App() {
+  const [theme, setTheme] = useState("dark");
+
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
+
   const [backgroundImage, setBackgroundImage] = useState(() => {
     const storedImage = localStorage.getItem("backgroundImage");
     return storedImage ? storedImage : getRandomImage(images);
@@ -76,35 +86,45 @@ function App() {
 
   return (
     <>
-      <BrowserRouter basename={basename}>
-        <AuthProvider>
-          <GetToken />
-          <Nav backgroundImage={backgroundImage} />
-          <Routes>
-            <Route
-              path="/"
-              element={<LandingPage backgroundImage={backgroundImage} />}
-            />
-            <Route
-              path="login"
-              element={<LoginForm backgroundImage={backgroundImage} />}
-            />
-            <Route path="logout" element={<Logout />} />
-            <Route
-              path="signup"
-              element={<SignupForm backgroundImage={backgroundImage} />}
-            />
-            <Route path="home" element={<HomePage />} />
-            <Route path="munch/edit/:id" element={<EditMunch />} />
-            <Route path="munchbunch" element={<AllMunches />} />
-            <Route path="munch/:id" element={<MunchDetail />} />
-            <Route path="munches/:userName" element={<UserPage />} />
-            <Route path="munch/create" element={<CreateMunch />} />
-            <Route path="accounts" element={<GetAccount />} />
-            <Route path="accounts/:id" element={<EditUser />} />
-          </Routes>
-        </AuthProvider>
-      </BrowserRouter>
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <div id={theme}>
+          <BrowserRouter basename={basename}>
+            <AuthProvider>
+              <GetToken />
+              <Nav backgroundImage={backgroundImage} />
+              <Routes>
+                <Route
+                  path="/"
+                  element={<LandingPage backgroundImage={backgroundImage} />}
+                />
+                <Route
+                  path="login"
+                  element={<LoginForm backgroundImage={backgroundImage} />}
+                />
+                <Route path="logout" element={<Logout />} />
+                <Route
+                  path="signup"
+                  element={<SignupForm backgroundImage={backgroundImage} />}
+                />
+                <Route path="home" element={<HomePage />} />
+                <Route path="munch/edit/:id" element={<EditMunch />} />
+                <Route path="munchbunch" element={<AllMunches />} />
+                <Route path="munch/:id" element={<MunchDetail />} />
+                <Route path="munches/:userName" element={<UserPage />} />
+                <Route path="munch/create" element={<CreateMunch />} />
+                <Route path="accounts" element={<GetAccount />} />
+                <Route path="accounts/:id" element={<EditUser />} />
+              </Routes>
+            </AuthProvider>
+          </BrowserRouter>
+          <DarkModeSwitch
+            // style={{ marginBottom: "2rem" }}
+            checked={theme === "dark"}
+            onChange={toggleTheme}
+            size={50}
+          />
+        </div>
+      </ThemeContext.Provider>
     </>
   );
 }
