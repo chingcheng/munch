@@ -18,6 +18,7 @@ View a live demo of this project here: https://munchbunch.gitlab.io/munch/
 - [GHI](docs/ghi.md)
 - [Wireframe](docs/wireframe.md)
 - [API](docs/api.md)
+- [Schemas](docs/schemas.md)
 
 ## Installation
 
