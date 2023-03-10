@@ -130,7 +130,6 @@ function EditUser() {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundColor: "#FFFBFA",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",
@@ -143,13 +142,12 @@ function EditUser() {
                 className="form form-shadow p-5 m-1"
                 id="update-user-form"
                 onSubmit={handleSubmit}
-                style={{ backgroundColor: "white" }}
               >
                 <Link to="/accounts">
-                  <h1 className="text-center mb-3">
+                  <h1 className="text-center mb-4">
                     <img
                       src={edit_account}
-                      alt="Logo"
+                      alt="Edit Account"
                       style={{
                         maxWidth: "100%",
                         width: "350px",

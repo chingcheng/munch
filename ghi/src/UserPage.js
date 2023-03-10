@@ -14,10 +14,9 @@ function MunchesColumn(props) {
             <div
               className="card"
               style={{
-                height: "415px",
+                height: "400px",
                 marginBottom: "45px",
                 marginLeft: "20px",
-                backgroundColor: "#FFFBFA",
                 border: "0",
               }}
             >
@@ -32,9 +31,11 @@ function MunchesColumn(props) {
                 style={{
                   height: "100%",
                   overflow: "hidden",
+                  padding: 0,
+                  margin: 0,
                 }}
               >
-                <h5 className="card-location">{munch.location}</h5>
+                <h5 className="card-location mt-3">{munch.location}</h5>
                 <p className="card-review">{munch.review}</p>
               </div>
               <div
@@ -43,18 +44,18 @@ function MunchesColumn(props) {
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  height: "40px",
-                  backgroundColor: "#FFFBFA",
+                  padding: 0,
+                  margin: 0,
                 }}
               >
                 <div className="location-info">
-                  <small className="text-muted">
+                  <small className="text">
                     {munch.city}, {munch.state}
                   </small>
                 </div>
                 <div className="rating-info">
-                  <small className="text-muted">
-                    {munch.rating}
+                  <small className="text">
+                    {munch.rating}{" "}
                     <img
                       src={star}
                       alt="star"
@@ -134,7 +135,6 @@ const UserPage = () => {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundColor: "#FFFBFA",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",

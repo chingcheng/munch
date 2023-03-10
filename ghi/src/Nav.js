@@ -56,8 +56,6 @@ function Nav({ backgroundImage }) {
         <nav
           className="navbar navbar-dark"
           style={{
-            backgroundColor: "#FFFBFA",
-            // backgroundColor: "#202231",
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
             position: "fixed",

@@ -1,0 +1,100 @@
+.login-form {
+  background-color: rgba(255, 245, 235, 0.1);
+  border-radius: 10%;
+}
+
+.signup-form {
+  background-color: rgba(255, 245, 235, 0.1);
+  border-radius: 10%;
+}
+
+.form {
+  background-color: white;
+  border-radius: 10%;
+}
+
+.btn {
+  color: #8f6036;
+}
+
+.nav-link {
+  background-color: #ffc383;
+  border-radius: 20px;
+  font-weight: bold;
+  margin: 6px;
+}
+
+.nav-item a:hover {
+  background-color: #ffbf01;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #ffffff !important;
+}
+
+.card-link {
+  color: black;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  color: inherit;
+}
+
+.card-city-state {
+  color: #8c8e8c;
+}
+
+.nav-link.active {
+  background-color: #ffa94d;
+}
+
+.btn:hover {
+  background: #ffbf01 !important;
+  color: #ffffffbe !important;
+}
+
+.form-shadow {
+  box-shadow: 0 2px 4px rgba(80, 80, 80, 0.15);
+}
+
+.navbar {
+  background: #fffbfa;
+}
+
+.bg-image {
+  background: #fffbfa;
+}
+
+.card {
+  background-color: #fffbfa !important;
+  color: black;
+}
+
+.munch-detail-card {
+  background-color: white !important;
+  color: black;
+  border: 1px solid rgb(0, 0, 0) !important;
+  border-color: white;
+}
+
+.card-footer {
+  background-color: #fffbfa;
+  border-color: black !important;
+  color: #9ba29e;
+}
+
+.card-detail {
+  border: 1px white;
+  color: black;
+}
+
+.card-username {
+  color: black;
+}
+
+.account-detail-card {
+  background-color: #ffffffbe !important;
+  color: black;
+  border: 1px solid #ffbf01 !important;
+  border-color: #ffbf01;
+}

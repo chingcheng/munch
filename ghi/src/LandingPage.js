@@ -1,7 +1,5 @@
-import "./index.css";
 import React from "react";
 import { Link } from "react-router-dom";
-import munch_icon from "./images/munch_icon.png";
 import munch_transparent from "./images/munch_transparent.png";
 import munch_slogan from "./images/munch_slogan.png";
 

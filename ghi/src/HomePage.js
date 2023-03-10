@@ -7,20 +7,17 @@ import star from "./images/star.png";
 
 function MunchesColumn(props) {
   return (
-    <div className="col">
+    <div className="col bg-color">
       {props.list.map((munch) => (
         <div key={munch.id}>
           <Link to={`/munch/${munch.id}`} className="card-link">
             <div
               className="card"
               style={{
-                height: "415px",
+                height: "400px",
                 marginBottom: "45px",
                 marginLeft: "20px",
-                backgroundColor: "#FFFBFA",
-                // backgroundColor: "#202231",
                 border: "0",
-                // color: "white",
               }}
             >
               <img
@@ -34,40 +31,50 @@ function MunchesColumn(props) {
                 style={{
                   height: "100%",
                   overflow: "hidden",
+                  padding: 0,
+                  margin: 0,
                 }}
               >
-                <h5 className="card-location">{munch.location}</h5>
-                <p className="card-review">{munch.review}</p>
-              </div>
-              <div
-                className="card-footer"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  height: "40px",
-                  backgroundColor: "#FFFBFA",
-                  // backgroundColor: "#202231",
-                }}
-              >
-                <div className="location-info">
-                  <small className="text-muted">
-                    {munch.city}, {munch.state}
-                  </small>
+                <h5 className="card-location mt-3">{munch.location}</h5>
+                <div
+                  className="d-flex"
+                  style={{
+                    fontSize: "0.7em",
+                    justifyContent: "end",
+                    marginLeft: "auto",
+                  }}
+                >
+                  <p className="card-review">{munch.review}</p>
                 </div>
-                <div className="rating-info">
-                  <small className="text-muted">
-                    {munch.rating}
-                    <img
-                      src={star}
-                      alt="star"
-                      style={{
-                        width: "0.9em",
-                        height: "0.9em",
-                        marginTop: "-0.25em",
-                      }}
-                    ></img>
-                  </small>
+                <div
+                  className="card-footer"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: 0,
+                    margin: 0,
+                  }}
+                >
+                  <div className="location-info">
+                    <small className="text">
+                      {munch.city}, {munch.state}
+                    </small>
+                  </div>
+                  <div className="rating-info">
+                    <small className="text">
+                      {munch.rating}{" "}
+                      <img
+                        src={star}
+                        alt="star"
+                        style={{
+                          width: "0.9em",
+                          height: "0.9em",
+                          marginTop: "-0.25em",
+                        }}
+                      ></img>
+                    </small>
+                  </div>
                 </div>
               </div>
             </div>
@@ -135,8 +142,6 @@ function HomePage() {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundColor: "#FFFBFA",
-          // backgroundColor: "#202231",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",

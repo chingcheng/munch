@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useToken } from "./Auth";
 import { useNavigate, Link } from "react-router-dom";
-import munch_icon from "./images/munch_icon.png";
 import munch_transparent from "./images/munch_transparent.png";
 import munch_slogan from "./images/munch_slogan.png";
 
@@ -71,7 +70,7 @@ function SignupForm({ backgroundImage }) {
   return (
     <>
       <div
-        className="p-5 bg-image"
+        className="p-5 bg-image bg-color"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
           backgroundColor: "#FFFAEB",
@@ -85,7 +84,7 @@ function SignupForm({ backgroundImage }) {
             <div className="offset-3 col-6">
               <div className="shadow p-2 m-4">
                 <form
-                  className="form p-5 m-1"
+                  className="signup-form p-5 m-1"
                   id="create-signup-form"
                   onSubmit={handleSubmit}
                 >

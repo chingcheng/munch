@@ -1,8 +1,6 @@
-import "./index.css";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useToken } from "./Auth";
-import munch_icon from "./images/munch_icon.png";
 import munch_transparent from "./images/munch_transparent.png";
 
 function LoginForm({ backgroundImage }) {
@@ -47,7 +45,7 @@ function LoginForm({ backgroundImage }) {
             <div className="offset-3 col-6">
               <div className="shadow p-4 mt-4">
                 <form
-                  className="form p-5 m-5"
+                  className="login-form p-5 m-5"
                   id="create-login-form"
                   onSubmit={handleSubmit}
                 >

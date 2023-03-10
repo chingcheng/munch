@@ -88,8 +88,6 @@ function MunchDetail() {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundColor: "#FFFBFA",
-          // backgroundColor: "#202231",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",
@@ -100,18 +98,16 @@ function MunchDetail() {
             <div className="offset-3 col-6">
               <div className="col mx-auto d-flex justify-content-center">
                 <div
-                  className="card"
+                  className="card munch-detail-card"
                   style={{
                     height: "auto",
                     width: "550px",
-                    // border: "0",
                   }}
                 >
                   <Link to={`/munches/${userName}`} className="card-link">
-                    <div className="form-floating mx-3 mt-1">
+                    <div className="card-username mx-3 mt-1">
                       <h2
                         style={{
-                          color: "black",
                           fontSize: "15px",
                           textAlign: "right",
                         }}
@@ -127,7 +123,7 @@ function MunchDetail() {
                   />
                   <div className="card-body">
                     <h3
-                      className="card-location"
+                      className="card-location mt-3"
                       style={{
                         marginBottom: "0",
                         display: "flex",
@@ -143,14 +139,13 @@ function MunchDetail() {
                           marginLeft: "auto",
                         }}
                       >
-                        {munch.rating}
+                        {munch.rating}{" "}
                         <img
                           src={star}
                           alt="star"
                           style={{
                             width: "0.9em",
                             height: "0.9em",
-                            marginTop: "0.15em",
                           }}
                         ></img>
                       </div>
@@ -209,8 +204,6 @@ function MunchDetail() {
     <div
       className="p-5 bg-image"
       style={{
-        backgroundColor: "#FFFBFA",
-        // backgroundColor: "#202231",
         backgroundSize: "cover",
         backgroundAttachment: "fixed",
         minHeight: "100vh",
@@ -221,7 +214,7 @@ function MunchDetail() {
           <div className="offset-3 col-6">
             <div className="col mx-auto d-flex justify-content-center">
               <div
-                className="card"
+                className="card munch-detail-card"
                 style={{
                   height: "auto",
                   width: "550px",
@@ -231,7 +224,6 @@ function MunchDetail() {
                   <div className="form-floating mx-3 mt-1">
                     <h2
                       style={{
-                        color: "black",
                         fontSize: "15px",
                         textAlign: "right",
                       }}
@@ -264,13 +256,13 @@ function MunchDetail() {
                       }}
                     >
                       {munch.rating}
+                      {"  "}
                       <img
                         src={star}
                         alt="star"
                         style={{
                           width: "0.9em",
                           height: "0.9em",
-                          marginTop: "0.15em",
                         }}
                       ></img>
                     </div>

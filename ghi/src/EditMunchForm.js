@@ -132,7 +132,6 @@ function EditMunch() {
       <div
         className="p-5 bg-image"
         style={{
-          backgroundColor: "#FFFBFA",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           minHeight: "100vh",
@@ -145,10 +144,9 @@ function EditMunch() {
                 className="form form-shadow p-5 m-1"
                 id="edit-munch-form"
                 onSubmit={handleSubmit}
-                style={{ backgroundColor: "white" }}
               >
                 <Link to="/home">
-                  <h1 className="text-center mb-3">
+                  <h1 className="text-center mb-4">
                     <img
                       src={edit_munch}
                       alt="Edit Munch"

@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Figtree:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karma:wght@500&display=swap");
+
+.card-location {
+  font-family: "Karma", serif;
+}
 
 body {
   margin: 0;
@@ -46,40 +51,6 @@ code {
   width: 140px;
 }
 
-.nav-link {
-  background-color: #e1d9d5;
-  /* background-color: #30324a; */
-  border-radius: 20px;
-  font-weight: bold;
-  margin: 6px;
-}
-
-.nav-item a:hover {
-  /* background-color: #ffbf01; */
-  background-color: #ffe085;
-  border-radius: 20px;
-  font-weight: bold;
-  color: #ffffff !important;
-}
-
-.card-link {
-  color: black;
-  text-decoration: none;
-}
-
-.card-link:hover {
-  color: inherit;
-}
-
-.card-city-state {
-  color: #999;
-}
-
-.nav-link.active {
-  background-color: #cbb6ad;
-  /* background-color: #494c6f; */
-}
-
 .label-value {
   display: flex;
   align-items: baseline;
@@ -106,7 +77,6 @@ code {
 }
 
 a.munchkin-link:hover {
-  /* color: #512b20; */
   color: #ffe185be;
   text-shadow: 0 0 10px #fff, 0 0 20px #ffe185be, 0 0 30px #ffe185be,
     0 0 40px #ffe185be, 0 0 70px #ffe185be, 0 0 80px #ffe185be,
@@ -119,24 +89,12 @@ a.munchkin-link:hover {
 }
 
 a.signup-munchkin:hover {
-  /* color: #512b20; */
   color: #ffe185be;
   text-shadow: 0 0 10px #fff, 0 0 20px #ffe185be, 0 0 30px #ffe185be,
     0 0 40px #ffe185be, 0 0 70px #ffe185be, 0 0 80px #ffe185be,
     0 0 100px #ffe185be;
 }
 
-.btn:hover {
-  background: #ffe085 !important;
-  color: #ffffffbe !important;
-}
-
-.navbar-not-logged {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.form-shadow {
-  box-shadow: 0 2px 4px rgba(80, 80, 80, 0.15);
+.card-account-title {
+  margin-left: 40px;
 }
