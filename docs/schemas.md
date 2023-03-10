@@ -1,6 +1,6 @@
 # Schemas
 
-## Users Tables
+## Users Table
 
 | Users           | Type                         |
 | --------------- | :--------------------------- |
@@ -12,7 +12,7 @@
 | hashed_password | VARCHAR(250) NOT NULL        |
 | bio             | TEXT                         |
 
-## Munches Tables
+## Munches Table
 
 | Munches       | Type                                                         |
 | ------------- | :----------------------------------------------------------- |
