@@ -12,7 +12,7 @@
 
 ![Home Page](ghi/home.png)
 
-## Create Munch Page
+## Create a Munch Page
 
 ![Create Page](ghi/create.png)
 
@@ -20,7 +20,7 @@
 
 ![Detail Page](ghi/detail.png)
 
-## Edit Munch Page
+## Edit a Munch Page
 
 ![Edit Page](ghi/edit.png)
 
