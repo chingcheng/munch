@@ -123,13 +123,14 @@ function MunchDetail() {
                           marginLeft: "auto",
                         }}
                       >
-                        {munch.rating}{" "}
+                        {munch.rating}
                         <img
                           src={star}
                           alt="star"
                           style={{
                             width: "0.9em",
                             height: "0.9em",
+                            marginLeft: "1",
                           }}
                         ></img>
                       </div>
@@ -243,13 +244,13 @@ function MunchDetail() {
                       }}
                     >
                       {munch.rating}
-                      {"  "}
                       <img
                         src={star}
                         alt="star"
                         style={{
                           width: "0.9em",
                           height: "0.9em",
+                          marginLeft: "1px",
                         }}
                       ></img>
                     </div>

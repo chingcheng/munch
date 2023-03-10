@@ -195,9 +195,9 @@ function SignupForm({ backgroundImage }) {
                       Sign Up
                     </button>
                   </div>
-                  <a href="login" className="munchkin-link">
+                  <Link to="/login" className="munchkin-link">
                     Already a Munchkin?
-                  </a>
+                  </Link>
                   {error && (
                     <div className="alert alert-danger mt-3">{error}</div>
                   )}
