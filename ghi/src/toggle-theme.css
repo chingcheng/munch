@@ -1,5 +1,30 @@
 /* LIGHT MODE */
 
+#light section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffbfa;
+  color: black;
+  scroll-snap-align: start;
+  scroll-behavior: smooth;
+}
+
+#light .landing-scroll {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+#light .landing-welcome {
+  color: black;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
 #light .login-form {
   background-color: rgba(255, 245, 235, 0.1);
   border-radius: 10%;
@@ -113,6 +138,29 @@
 }
 
 /* DARK MODE */
+#dark section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #202231;
+  color: white;
+  scroll-snap-align: start;
+}
+
+#dark .landing-scroll {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+#dark .landing-welcome {
+  color: white;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
 
 #dark .login-form {
   background-color: rgba(255, 245, 235, 0.1);

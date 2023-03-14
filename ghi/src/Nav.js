@@ -16,7 +16,7 @@ function Nav({ backgroundImage }) {
     return (
       <>
         <nav
-          className="navbar navbar-dark"
+          className="navbar"
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
             backgroundSize: "cover",

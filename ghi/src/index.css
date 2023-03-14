@@ -98,3 +98,8 @@ code {
 .card-account-title {
   margin-left: 40px;
 }
+
+.header-font {
+  font-family: "Karma", serif;
+  font-size: 88px;
+}

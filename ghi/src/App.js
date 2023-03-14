@@ -120,7 +120,7 @@ function App() {
             style={{
               position: "fixed",
               top: "15px",
-              right: "15px",
+              right: "21px",
               padding: "10px",
               width: "50px",
               height: "55px",
