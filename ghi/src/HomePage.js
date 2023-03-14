@@ -149,16 +149,16 @@ function HomePage() {
           minHeight: "100vh",
         }}
       >
-        <Link to="/home">
-          <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
+        <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
+          <Link to="/home">
             <img src={munch_transparent} alt="Logo" width="450" />
             <div>
               <p>
                 <img src={munch_slogan} alt="Slogan" width="350px" />
               </p>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
         <div className="container">
           <div className="row"></div>
         </div>

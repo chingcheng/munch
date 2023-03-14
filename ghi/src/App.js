@@ -134,6 +134,7 @@ function App() {
               padding: "10px",
               width: "50px",
               height: "55px",
+              background: "none",
             }}
           >
             <DarkModeSwitch

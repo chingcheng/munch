@@ -134,11 +134,11 @@ function AllMunches() {
           minHeight: "100vh",
         }}
       >
-        <Link to="/munchbunch">
-          <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
+        <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
+          <Link to="/munchbunch">
             <img src={munch_bunch} alt="Munch Bunch" width="450" />
-          </div>
-        </Link>
+          </Link>
+        </div>
         <div className="container">
           <div className="row"></div>
         </div>

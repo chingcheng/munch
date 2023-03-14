@@ -21,7 +21,7 @@ function Nav({ backgroundImage }) {
             backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
-            position: "fixed",
+            position: "absolute",
           }}
         >
           <div className="container-fluid">
