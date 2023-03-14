@@ -14,7 +14,7 @@ function MunchesColumn(props) {
             <div
               className="card"
               style={{
-                height: "400px",
+                height: "399px",
                 marginBottom: "45px",
                 marginLeft: "20px",
                 border: "0",
@@ -67,7 +67,11 @@ function MunchesColumn(props) {
                 <div className="d-flex">
                   <div
                     className="card-city-state"
-                    style={{ marginTop: "0", marginBottom: "10px" }}
+                    style={{
+                      marginTop: "0",
+                      marginBottom: "10px",
+                      fontSize: "0.9em",
+                    }}
                   >
                     {munch.city}, {munch.state}
                   </div>
@@ -123,9 +127,9 @@ const UserPage = () => {
 
         if (response.ok) {
           const munches = await response.json();
-          const filteredMunches = munches.filter(
-            (munch) => Number(munch.user_id) === userId
-          );
+          const filteredMunches = munches
+            .filter((munch) => Number(munch.user_id) === userId)
+            .reverse();
           const munchColumns = [[], [], []];
           filteredMunches.forEach((munch, index) =>
             munchColumns[index % 3].push(munch)
