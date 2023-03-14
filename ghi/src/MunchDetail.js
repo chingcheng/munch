@@ -9,7 +9,12 @@ function MunchDetail() {
   const [munch, setMunch] = useState([]);
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
-  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState("");
+  console.log("comment", comments)
+  console.log("id", id)
+  console.log("munch.id", munch.id)
+
+
 
   const handleDelete = async () => {
     const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
@@ -59,18 +64,23 @@ function MunchDetail() {
     };
 
     const getComments = async () => {
-      const commentUrl =`${process.env.REACT_APP_MUNCH_API_POST}/comments`;
+      const commentUrl =`${process.env.REACT_APP_MUNCH_API_HOST}/comments`;
       const fetchConfig = {
-          method: "get",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
+        method: "get",
+        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${token}`,
         }
+      };
         const response = await fetch(commentUrl, fetchConfig);
-        if(response.ok) {
-          const comments = await response.json();
-          const filteredComments = comments.filter((comment) => comment.munch_id === id)
-          setComment(filteredComments);
+        console.log(response.ok)
+        if (response.ok) {
+          const data = await response.json();
+          console.log("comments", data)
+          const filteredComments = data.filter((comment) => comment.munch_id === munch.id)
+          console.log("comment.munch_id", comments.munch_id)
+          setComments(filteredComments);
+          console.log("filtered comments", filteredComments)
         }
       };
 
@@ -80,7 +90,7 @@ function MunchDetail() {
     }
 
     fetchID();
-  }, [token, id, userId]);
+  }, [token, id, userId, comments.munch_id, munch.id]);
 
   if (userId === Number(munch.user_id)) {
     return (
@@ -202,8 +212,15 @@ function MunchDetail() {
           </button>
         </div>
       </div>
-      <div>
+      <div className="comments">
+         {/* {comments.list.map((comment, idx) =>{
+        return(
+          <p key={comment.id + idx.toString()}>
+          {comment.user_username} {comment.comment}</p>
+        )
+        })} */}
           <form>
+
           <textarea
             className="comment-form-textarea"
             />
@@ -300,9 +317,17 @@ function MunchDetail() {
         style={{ display: "flex", justifyContent: "center" }}
       ></div>
     </div><div>
+        {/* {comments.list.map((comment, idx) =>{
+        return(
+          <p key={comment.id + idx.toString()}>
+          {comment.user_username} {comment.comment}</p>
+        )
+        })} */}
+
         <form
         // onSubmit={onSubmit}
         >
+
           <textarea
             className="comment-form-textarea"
             />
