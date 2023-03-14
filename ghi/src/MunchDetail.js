@@ -104,6 +104,7 @@ function MunchDetail() {
                     src={munch.photo}
                     className="card-img-top px-3"
                     alt="Munch"
+                    loading="lazy"
                   />
                   <div className="card-body">
                     <h3
