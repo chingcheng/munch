@@ -13,7 +13,7 @@ function MunchesColumn(props) {
             <div
               className="card"
               style={{
-                height: "422px",
+                height: "420px",
                 marginBottom: "45px",
                 marginLeft: "20px",
                 border: "0",
@@ -75,7 +75,11 @@ function MunchesColumn(props) {
                 <div className="d-flex">
                   <div
                     className="card-city-state"
-                    style={{ marginTop: "0", marginBottom: "10px" }}
+                    style={{
+                      marginTop: "0",
+                      marginBottom: "10px",
+                      fontSize: "0.9em",
+                    }}
                   >
                     {munch.city}, {munch.state}
                   </div>
@@ -107,6 +111,7 @@ function AllMunches() {
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
           const data = await response.json();
+          data.sort((a, b) => new Date(a.date) - new Date(b.date)).reverse();
           const munchColumns = [[], [], []];
           data.forEach((munch, index) => munchColumns[index % 3].push(munch));
           setMunchColumns(munchColumns);
@@ -129,11 +134,11 @@ function AllMunches() {
           minHeight: "100vh",
         }}
       >
-        <Link to="/munchbunch">
-          <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
+        <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
+          <Link to="/munchbunch">
             <img src={munch_bunch} alt="Munch Bunch" width="450" />
-          </div>
-        </Link>
+          </Link>
+        </div>
         <div className="container">
           <div className="row"></div>
         </div>

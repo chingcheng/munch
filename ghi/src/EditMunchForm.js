@@ -251,17 +251,19 @@ function EditMunch() {
                     </div>
                   )}
                 </div>
-                <div className="form-floating mb-3">
-                  <Rating
-                    onClick={handleRatingChange}
-                    ratingValue={rating}
-                    size={35}
-                    label
-                    transition
-                    fillColor="#FFE085"
-                    emptyColor="gray"
-                    className="foo"
-                  />
+                <div className="form-edit-munch-star mb-3">
+                  {rating !== 0 && (
+                    <Rating
+                      onClick={handleRatingChange}
+                      ratingValue={rating}
+                      size={35}
+                      label
+                      transition
+                      fillColor="#FFE085"
+                      emptyColor="gray"
+                      className="foo"
+                    />
+                  )}
                 </div>
                 <div className="form-floating mb-3 d-none">
                   <input
