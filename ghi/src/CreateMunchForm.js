@@ -14,7 +14,7 @@ function CreateMunch() {
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState("");
   const [userId, setUserId] = useState("");
-  const[userUsername, setUserUsername] = useState("");
+  const [userUsername, setUserUsername] = useState("");
   const fileInputRef = React.createRef();
 
   const handleLocationChange = (event) => {
