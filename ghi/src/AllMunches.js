@@ -38,7 +38,7 @@ function MunchesColumn(props) {
               <div
                 className="card-body"
                 style={{
-                  height: "100%",.
+                  height: "100%",
                   overflow: "hidden",
                   padding: 0,
                   margin: 0,
