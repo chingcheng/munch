@@ -9,6 +9,7 @@ function MunchDetail() {
   const [munch, setMunch] = useState([]);
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
+  const [comment, setComment] = useState("");
 
   const handleDelete = async () => {
     const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
@@ -57,8 +58,25 @@ function MunchDetail() {
       }
     };
 
+    const getComments = async () => {
+      const commentUrl =`${process.env.REACT_APP_MUNCH_API_POST}/comments`;
+      const fetchConfig = {
+          method: "get",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        }
+        const response = await fetch(commentUrl, fetchConfig);
+        if(response.ok) {
+          const comments = await response.json();
+          const filteredComments = comments.filter((comment) => comment.munch_id === id)
+          setComment(filteredComments);
+        }
+      };
+
     if (token) {
       getOneMunch();
+      getComments();
     }
 
     fetchID();
@@ -66,6 +84,7 @@ function MunchDetail() {
 
   if (userId === Number(munch.user_id)) {
     return (
+      <>
       <div
         className="p-5 bg-image"
         style={{
@@ -183,10 +202,22 @@ function MunchDetail() {
           </button>
         </div>
       </div>
+      <div>
+          <form>
+          <textarea
+            className="comment-form-textarea"
+            />
+          <button>
+            Submit
+          </button>
+
+        </form>
+        </div>
+        </>
     );
   }
   return (
-    <div
+    <><div
       className="p-5 bg-image"
       style={{
         backgroundSize: "cover",
@@ -223,8 +254,7 @@ function MunchDetail() {
                 <img
                   src={munch.photo}
                   className="card-img-top px-3"
-                  alt="Munch"
-                />
+                  alt="Munch" />
                 <div className="card-body">
                   <h3
                     className="card-location"
@@ -269,7 +299,19 @@ function MunchDetail() {
         className="button-container mt-4"
         style={{ display: "flex", justifyContent: "center" }}
       ></div>
-    </div>
+    </div><div>
+        <form
+        // onSubmit={onSubmit}
+        >
+          <textarea
+            className="comment-form-textarea"
+            />
+          <button>
+            Submit
+          </button>
+
+        </form>
+      </div></>
   );
 }
 export default MunchDetail;
