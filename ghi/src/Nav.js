@@ -16,26 +16,13 @@ function Nav({ backgroundImage }) {
     return (
       <>
         <nav
-          className="navbar"
+          className="navbar-hidden"
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
-            position: "absolute",
           }}
-        >
-          <div className="container-fluid">
-            <NavLink className="navbar-brand mb-2" to="/">
-              <img
-                src={munch_icon}
-                alt="Munch"
-                style={{
-                  width: "60px",
-                }}
-              />
-            </NavLink>
-          </div>
-        </nav>
+        ></nav>
         <style>
           {`
           .nav-link {

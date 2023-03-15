@@ -9,12 +9,59 @@
   color: black;
   scroll-snap-align: start;
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
-#light .landing-scroll {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
+#light .footer-fix {
   height: 100vh;
+  background-color: #fffbfa;
+  color: black;
+  scroll-snap-align: start;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+#light footer {
+  background-color: #ffe085;
+  margin-top: auto;
+}
+
+#light .btm-footer {
+  border-top: 20px;
+  border-color: #ffa94d;
+}
+
+#light .meet-the-team {
+  height: 100vh;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  background-color: #fffbfa;
+  color: black;
+  scroll-snap-align: start;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+#light .meet-team-name {
+  font-family: "Karma", serif;
+  font-size: 20px;
+  color: #ffbf01;
+}
+
+#light .meet-team-quote {
+  font-size: 18px;
+}
+
+#light .meet-team-place {
+  font-size: 30px;
 }
 
 #light .landing-welcome {
@@ -138,6 +185,25 @@
 }
 
 /* DARK MODE */
+#dark .footer-fix {
+  height: 100vh;
+  background-color: #202231;
+  color: white;
+  scroll-snap-align: start;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+#dark footer {
+  background-color: #282b3e;
+  margin-top: auto;
+}
+
 #dark section {
   min-height: 100vh;
   display: flex;
@@ -148,18 +214,37 @@
   scroll-snap-align: start;
 }
 
-#dark .landing-scroll {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100vh;
-}
-
 #dark .landing-welcome {
   color: white;
   display: block;
   justify-content: center;
   align-items: center;
   margin: auto;
+}
+
+#dark .meet-the-team {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #202231;
+  color: white;
+  scroll-snap-align: start;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+#dark .meet-team-name {
+  font-family: "Karma", serif;
+  font-size: 20px;
+  font-weight: 515 !important;
+  color: #ffd044;
+}
+
+#dark .meet-team-quote {
+  font-size: 18px;
+  justify-content: space-between;
 }
 
 #dark .login-form {
@@ -291,5 +376,29 @@
 }
 
 #dark .dark-mode-switch-container label {
+  color: white;
+}
+
+#light .text-footer {
+  color: black;
+}
+
+#dark .text-footer {
+  color: white;
+}
+
+#light .text-footer:hover {
+  color: white;
+}
+
+#dark .text-footer:hover {
+  color: #ffbf01;
+}
+
+#light .btn-learn-more {
+  color: #ffbf01;
+}
+
+#dark .btn-learn-more {
   color: white;
 }
