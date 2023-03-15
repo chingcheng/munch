@@ -14,13 +14,7 @@ function MunchDetail() {
   const [comment, setComment] = useState("");
   const [munchId, setMunchId] = useState("");
   const [commentId, setCommentId] = useState("");
-  // const [userUserId, setUserUserId] = useState("");
   const [username, setUsername] = useState("");
-  console.log("commentId from top", commentId)
-  console.log("id", id)
-  // console.log("munch_id", munch_id)
-  console.log("munchId", munchId)
-  console.log("comments", comments)
 
   const handleCommentChange = (event) => {
     const value = event.target.value;
@@ -64,24 +58,26 @@ function MunchDetail() {
     }
   };
 
-  const handleDeleteComment = async () => {
-    console.log("comment", comment)
-    const commentId = comment.id
-    console.log("commentId", commentId)
-    const commentUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/comments/${commentId}`;
-    console.log("comment.id", comment.id)
+  const handleDeleteComment = async (comment) => {
+    const commentUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/comments/${comment.id}`;
     const fetchConfig = {
       method: "delete",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     };
     const response = await fetch(commentUrl, fetchConfig);
-    console.log("delete response", response)
     if (response.ok) {
-      // getComments();
+      clearState();
       }
   };
+
+  const handleEditComment = (event) => {
+    const value = event.target.value;
+    setComment(value);
+  };
+
 
   const handleDelete = async () => {
     const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
@@ -214,6 +210,7 @@ function MunchDetail() {
       getOneMunch();
       getComments();
       handleSubmit();
+      handleDeleteComment();
     }
 
     fetchID();
@@ -363,18 +360,6 @@ function MunchDetail() {
                                   className="btn btn-danger"
                                 >
                                   delete
-                                </button>
-                              }
-                            </td>
-                            <td>
-                              {
-                                <button
-                                  id={comment.id}
-                                  onClick={() => handleDeleteComment(comment)}
-                                  type="button"
-                                  className="btn btn-warning"
-                                >
-                                  edit
                                 </button>
                               }
                             </td>
@@ -529,12 +514,6 @@ function MunchDetail() {
                       type="button" className="btn btn-danger">
                       delete
                     </button>
-                  )}</td><td>{(
-                    <button id={comment.id} onClick={() => handleDeleteComment(comment)}
-                      type="button" className="btn btn-warning">
-                      edit
-                    </button>
-
                   )}</td></>
           ): (<div></div>)}
               </tr>
