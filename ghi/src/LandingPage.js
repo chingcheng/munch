@@ -81,16 +81,18 @@ function LandingPage({ backgroundImage }) {
         <div
           className="text-center bg-image"
           style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-            backgroundSize: "cover",
-            backgroundAttachment: "fixed",
             minHeight: "100vh",
           }}
         >
           {/* WELCOME/ABOUT US */}
           <div className="row row-cols-2 row-cols-md-2 p-5">
             <section className="col">
-              <img src={landing1} className="p-5 bg-image" width="550px"></img>
+              <img
+                src={landing1}
+                className="p-5 bg-image"
+                alt="landing1"
+                width="550px"
+              ></img>
             </section>
             <div className="col landing-welcome">
               <h2 className="p-0 m-0">welcome to</h2>
@@ -126,7 +128,7 @@ function LandingPage({ backgroundImage }) {
                   >
                     Ching Cheng
                   </h1>
-                  <img src={chingcheng1} width="100px"></img>
+                  <img src={chingcheng1} alt="chingcheng1" width="100px"></img>
 
                   <h1 className="meet-team-quote px-5 pt-3">
                     “San Francisco Nari's squid and pork jowl dish, ink-redibly
@@ -144,7 +146,11 @@ function LandingPage({ backgroundImage }) {
                   >
                     Kennedy Cassiday
                   </h1>
-                  <img src={kennedycassiday1} width="100px"></img>
+                  <img
+                    src={kennedycassiday1}
+                    alt="kennedycassiday1"
+                    width="100px"
+                  ></img>
 
                   <h1 className="meet-team-quote px-5 pt-3">
                     "Savoring every bite of the Green Dragon roll at Uchu!”
@@ -163,6 +169,7 @@ function LandingPage({ backgroundImage }) {
                   </h1>
                   <img
                     src={jasondai1}
+                    alt="jasondai1"
                     width="100px"
                     style={{
                       fontWeight: "615",
@@ -184,7 +191,7 @@ function LandingPage({ backgroundImage }) {
                   >
                     Matthew Mai
                   </h1>
-                  <img src={matthewmai1} width="100px"></img>
+                  <img src={matthewmai1} alt="matthewmai1" width="100px"></img>
 
                   <h1 className="meet-team-quote px-5 pt-3">
                     "Currently drowning in Wagyu House's clear pot broth.”
@@ -201,7 +208,11 @@ function LandingPage({ backgroundImage }) {
                   >
                     Tyler Herman
                   </h1>
-                  <img src={tylerherman1} width="100px"></img>
+                  <img
+                    src={tylerherman1}
+                    alt="tylerherman1"
+                    width="100px"
+                  ></img>
 
                   <h1 className="meet-team-quote px-5 pt-3">
                     "Knee deep in Austin's East side Kinda Tropical's
@@ -232,6 +243,7 @@ function LandingPage({ backgroundImage }) {
                         <div className="col text-center center px-5 pt-2">
                           <img
                             src={maui_cookie}
+                            alt="maui_cookie"
                             className="rounded"
                             style={{
                               height: "400px",
@@ -249,6 +261,7 @@ function LandingPage({ backgroundImage }) {
                           <img
                             src={maui_pizza}
                             className="rounded"
+                            alt="maui_pizza"
                             style={{
                               height: "400px",
                               width: "100%",
@@ -265,6 +278,7 @@ function LandingPage({ backgroundImage }) {
                           <img
                             src={munch_ubatuba}
                             className="rounded"
+                            alt="munch_ubatuba"
                             style={{
                               height: "400px",
                               width: "100%",
@@ -281,6 +295,7 @@ function LandingPage({ backgroundImage }) {
               <div className="col">
                 <img
                   src={moving_landing}
+                  alt="moving_landing"
                   className="px-3 moving-image"
                   width="750px"
                 ></img>
@@ -313,7 +328,11 @@ function LandingPage({ backgroundImage }) {
                     <div className="col-md-3 mx-auto text-center center">
                       <h3 className="white-munch-logo mt-1">
                         <Link to="/signup">
-                          <img src={white_munch} width="100px"></img>
+                          <img
+                            src={white_munch}
+                            alt="white_munch"
+                            width="100px"
+                          ></img>
                         </Link>
                       </h3>
                       <p>
