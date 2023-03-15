@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthContext } from "./Auth";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import star from "./images/star.png";
+// import Button from ".react-bootstrap"
 
 function MunchDetail() {
   let { id } = useParams();
@@ -12,8 +13,10 @@ function MunchDetail() {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const [munchId, setMunchId] = useState("");
+  const [commentId, setCommentId] = useState("");
   // const [userUserId, setUserUserId] = useState("");
   const [username, setUsername] = useState("");
+  console.log("commentId from top", commentId)
   console.log("id", id)
   // console.log("munch_id", munch_id)
   console.log("munchId", munchId)
@@ -40,6 +43,7 @@ function MunchDetail() {
     data.munch_id = munchId;
     data.user_id = userId;
     data.user_username = username;
+    data.id = commentId;
 
     console.log("DATA", data)
     const commentUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/comments/${data.munch_id}`;
@@ -56,19 +60,26 @@ function MunchDetail() {
     console.log("response", response)
     if (response.ok) {
       clearState();
+      setCommentId(commentId);
     }
   };
 
   const handleDeleteComment = async () => {
-    const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/comments/${id}`;
+    console.log("comment", comment)
+    const commentId = comment.id
+    console.log("commentId", commentId)
+    const commentUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/comments/${commentId}`;
+    console.log("comment.id", comment.id)
     const fetchConfig = {
       method: "delete",
       headers: {
         "Content-Type": "application/json",
       },
     };
-    const response = await fetch(munchUrl, fetchConfig);
+    const response = await fetch(commentUrl, fetchConfig);
+    console.log("delete response", response)
     if (response.ok) {
+      // getComments();
       }
   };
 
@@ -76,6 +87,7 @@ function MunchDetail() {
     const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
     const fetchConfig = {
       method: "delete",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -112,11 +124,14 @@ function MunchDetail() {
         const fetchConfig = {
           credentials: "include",
         };
+        console.log("token", token.data)
 
         const response = await fetch(url, fetchConfig);
+        console.log("token response", response)
         if (response.ok) {
           const data = await response.json();
           setUserId(data.account.id);
+          console.log("data.account.id", data.account.id)
           setUsername(data.account.username);
         }
       } catch (e) {
@@ -145,35 +160,64 @@ function MunchDetail() {
         }
       };
 
-    const getOneComment = async () => {
-      try {
-        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/comments/${id}`;
-        const fetchConfig = {
-          method: "get",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-        const response = await fetch(url, fetchConfig);
-        if (response.ok) {
-          const data = await response.json();
-          setComment(data.comment);
-          setMunchId(data.munch_id);
-          setUserId(data.user_id);
-          setUsername(data.user_username);
-        }
-      } catch (e) {
-        console.error(e);
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+
+      const data = {};
+
+      data.comment = comment
+      data.munch_id = munchId;
+      data.user_id = userId;
+      data.user_username = username;
+
+      console.log("DATA", data)
+      const commentUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/comments/${data.munch_id}`;
+      const fetchConfig = {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await fetch(commentUrl, fetchConfig);
+      console.log("response", response)
+      if (response.ok) {
+        clearState();
       }
     };
+
+    // const getOneComment = async () => {
+    //   try {
+    //     const url = `${process.env.REACT_APP_MUNCH_API_HOST}/comments/${id}`;
+    //     const fetchConfig = {
+    //       method: "get",
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     };
+    //     const response = await fetch(url, fetchConfig);
+    //     if (response.ok) {
+    //       const data = await response.json();
+    //       setComment(data.comment);
+    //       setMunchId(data.munch_id);
+    //       setUserId(data.user_id);
+    //       setUsername(data.user_username);
+    //     }
+    //   } catch (e) {
+    //     console.error(e);
+    //   }
+    // };
 
     if (token) {
       getOneMunch();
       getComments();
+      handleSubmit();
     }
 
     fetchID();
-  }, [token, id, userId, comments.munch_id, munch.id]);
+  }, [token, id, userId, comments.munch_id, munch.id, comment, munchId, username]);
 
   if (userId === Number(munch.user_id)) {
     return (
@@ -299,13 +343,53 @@ function MunchDetail() {
           </div>
         </div>
         <div className="comments">
-          {comments.map((comment, idx) => {
-            return (
-              <p key={comment.id + idx.toString()}>
-                {comment.user_username} {comment.comment}
-              </p>
-            );
-          })}
+          <table className="comments-table">
+            <tbody>
+              {comments.map((comment, idx) => {
+                return (
+                  <>
+                    <tr key={comment.id + idx.toString()}>
+                      <td>{comment.user_username}</td>
+                      <td>{comment.comment}</td>
+                      <>
+                        {userId === comment.user_id ? (
+                          <>
+                            <td>
+                              {
+                                <button
+                                  id={comment.id}
+                                  onClick={() => handleDeleteComment(comment)}
+                                  type="button"
+                                  className="btn btn-danger"
+                                >
+                                  delete
+                                </button>
+                              }
+                            </td>
+                            <td>
+                              {
+                                <button
+                                  id={comment.id}
+                                  onClick={() => handleDeleteComment(comment)}
+                                  type="button"
+                                  className="btn btn-warning"
+                                >
+                                  edit
+                                </button>
+                              }
+                            </td>
+                          </>
+                        ) : (
+                          <div></div>
+                        )}
+                      </>
+                    </tr>
+                  </>
+                );
+              })}
+              ;
+            </tbody>
+          </table>
           <form className="form form-shadow p-5 m-1" onSubmit={handleSubmit}>
             <div className="form-floating mb-3">
               <textarea
@@ -325,7 +409,20 @@ function MunchDetail() {
             </div>
 
             <button>Submit</button>
-
+            {
+            <button
+              onClick={handleDeleteComment}
+              className="btn btn-md lead text-bold text mx-2"
+              style={{
+                background: "#f4989c",
+                fontWeight: "725",
+                color: "white",
+                width: "150px",
+                height: "40px",
+              }}
+              type="button"
+              value="Delete Munch"
+            ></button>}
           </form>
         </div>
       </>
@@ -370,8 +467,7 @@ function MunchDetail() {
                   <img
                     src={munch.photo}
                     className="card-img-top px-3"
-                    alt="Munch"
-                  />
+                    alt="Munch" />
                   <div className="card-body">
                     <h3
                       className="card-location"
@@ -418,13 +514,37 @@ function MunchDetail() {
         ></div>
       </div>
       <div className="comments">
+        <table className="comments-table">
+          <tbody>
         {comments.map((comment, idx) => {
           return (
-            <p key={comment.id + idx.toString()}>
-              {comment.user_username} {comment.comment}
-            </p>
+            <>
+              <tr key={comment.id + idx.toString()}>
+                <td>{comment.user_username}</td>
+                <td>{comment.comment}</td>
+
+              {userId === comment.user_id ? (
+                <><td>{(
+                    <button id={comment.id} onClick={() => handleDeleteComment(comment)}
+                      type="button" className="btn btn-danger">
+                      delete
+                    </button>
+                  )}</td><td>{(
+                    <button id={comment.id} onClick={() => handleDeleteComment(comment)}
+                      type="button" className="btn btn-warning">
+                      edit
+                    </button>
+
+                  )}</td></>
+          ): (<div></div>)}
+              </tr>
+            </>
           );
-        })}
+        }
+
+        )};
+        </tbody>
+        </table>
         <form className="form form-shadow p-5 m-1" onSubmit={handleSubmit}>
           <div className="form-floating mb-3">
             <textarea
@@ -436,17 +556,17 @@ function MunchDetail() {
               type="text"
               name="comment"
               className="form-control"
-              value={comment}
-            />
+              value={comment} />
             <label className="form-label" htmlFor="comment">
               Comment
             </label>
           </div>
 
           <button>Submit</button>
+
         </form>
       </div>
-    </>
+      </>
   );
 }
 export default MunchDetail;
