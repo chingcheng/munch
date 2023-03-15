@@ -144,7 +144,7 @@ function LandingPage({ backgroundImage }) {
                   <img src={kennedycassiday1} width="100px"></img>
 
                   <h1 className="meet-team-quote px-5 pt-3">
-                    "I ate at Bavel and I loved the ambiance in the evening.”
+                    "Savoring every bite of the Green Dragon roll at Uchu!”
                   </h1>
                 </div>
 
@@ -201,7 +201,8 @@ function LandingPage({ backgroundImage }) {
                   <img src={tylerherman1} width="100px"></img>
 
                   <h1 className="meet-team-quote px-5 pt-3">
-                    "I ate at Bavel and I loved the ambiance in the evening.”
+                    "Knee deep in Austin's East side Kinda Tropical's
+                    tamari-glazed wings with a side of yucca fries.”
                   </h1>
                 </div>
               </div>
@@ -214,8 +215,8 @@ function LandingPage({ backgroundImage }) {
           </div>
 
           {/* COME JOIN US/FOOTER */}
-          <div className="footer-fix pt-5">
-            <div className="row row-cols-2 row-cols-md-2 p-4">
+          <div className="container-fluid footer-fix pt-5">
+            <div className="row row-cols-2 row-cols-md-2 p-4 mt-5">
               <div className="col landing-welcome">
                 <div className="container-carousel">
                   <Carousel
