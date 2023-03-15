@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Figtree:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Karma:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sono&display=swap");
 
 .card-location {
   font-family: "Karma", serif;
@@ -116,4 +117,24 @@ code {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+}
+
+strong {
+  font-weight: bold;
+  font-family: "Roboto Mono", monospace;
+  color: #ffbf01;
+}
+
+span {
+  font-family: "Sono", sans-serif;
+}
+
+.comments-container::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+}
+
+.comments-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
 }

@@ -81,6 +81,9 @@ function LandingPage({ backgroundImage }) {
         <div
           className="text-center bg-image"
           style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
             minHeight: "100vh",
           }}
         >

@@ -246,11 +246,9 @@ function EditUser() {
                   style={{ display: "flex", justifyContent: "center" }}
                 >
                   <button
-                    className="btn btn-md lead text-bold text mx-2 mt-1"
+                    className="btn btn-edit-munch btn-md text-bold text mx-2 mt-1"
                     style={{
-                      background: "#FFEBAD",
                       fontWeight: "725",
-                      color: "#834534",
                       width: "150px",
                       height: "40px",
                     }}
@@ -262,11 +260,9 @@ function EditUser() {
                   {"  "}
                   <button
                     onClick={handleDelete}
-                    className="btn btn-md lead text-bold text mx-2 mt-1"
+                    className="btn btn-delete-munch btn-md text-bold text mx-2 mt-1"
                     style={{
-                      background: "#f4989c",
                       fontWeight: "725",
-                      color: "white",
                       width: "150px",
                       height: "40px",
                     }}

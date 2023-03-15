@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
 import { useAuthContext } from "./Auth";
-import munch_icon from "./images/munch_icon.png";
 import munch_transparent from "./images/munch_transparent.png";
 import home from "./images/home.png";
 import friends from "./images/friends.png";

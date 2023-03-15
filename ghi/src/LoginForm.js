@@ -43,7 +43,7 @@ function LoginForm({ backgroundImage }) {
         <div className="container text-center mt-5">
           <div className="row row-login-size">
             <div className="offset-3 col-6">
-              <div className="shadow p-4 mt-4">
+              <div className="p-4 mt-4">
                 <form
                   className="login-form p-5 m-5"
                   id="create-login-form"
