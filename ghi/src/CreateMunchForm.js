@@ -78,7 +78,6 @@ function CreateMunch() {
     data.photo = photo;
     data.user_id = userId;
     data.user_username = userUsername;
-    console.log("DATA", data)
     const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
     const fetchConfig = {
       method: "post",
@@ -90,7 +89,6 @@ function CreateMunch() {
     };
 
     const response = await fetch(munchUrl, fetchConfig);
-    console.log("response", response)
     if (response.ok) {
       clearState();
       navigate("/home");
@@ -188,10 +186,8 @@ function CreateMunch() {
                 <div className="form-floating mb-3">
                   <button
                     type="button"
-                    className="btn"
+                    className="btn btn-add-photo"
                     style={{
-                      background: "#FFEBAD",
-                      color: "#834534",
                       fontWeight: "725",
                     }}
                     onClick={() => fileInputRef.current.click()}
@@ -231,19 +227,17 @@ function CreateMunch() {
                 </div>
                 <div className="col text-center">
                   <button
-                    className="btn btn-md lead text-bold text"
+                    className="btn btn-share-munch btn-md lead text-bold text"
                     style={{
                       width: "50%",
-                      background: "#FFEBAD",
                       fontWeight: "725",
                       fontSize: "18px",
                       height: "40px",
-                      color: "#834534",
                     }}
                     type="submit"
                     value="Create Munch"
                   >
-                    Post
+                    Share
                   </button>
                 </div>
               </form>

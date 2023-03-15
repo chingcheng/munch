@@ -82,7 +82,7 @@ function SignupForm({ backgroundImage }) {
         <div className="container text-center mt-5">
           <div className="row">
             <div className="offset-3 col-6">
-              <div className="shadow p-2 m-4">
+              <div className="p-2 m-4">
                 <form
                   className="signup-form p-5 m-1"
                   id="create-signup-form"

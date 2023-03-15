@@ -222,10 +222,8 @@ function EditMunch() {
                 <div className="form-floating">
                   <button
                     type="button"
-                    className="btn"
+                    className="btn btn-add-photo"
                     style={{
-                      background: "#FFEBAD",
-                      color: "#834534",
                       fontWeight: "725",
                     }}
                     onClick={() => fileInputRef.current.click()}
@@ -251,17 +249,19 @@ function EditMunch() {
                     </div>
                   )}
                 </div>
-                <div className="form-floating mb-3">
-                  <Rating
-                    onClick={handleRatingChange}
-                    ratingValue={rating}
-                    size={35}
-                    label
-                    transition
-                    fillColor="#FFE085"
-                    emptyColor="gray"
-                    className="foo"
-                  />
+                <div className="form-edit-munch-star mb-3">
+                  {rating !== 0 && (
+                    <Rating
+                      onClick={handleRatingChange}
+                      ratingValue={rating}
+                      size={35}
+                      label
+                      transition
+                      fillColor="#FFE085"
+                      emptyColor="gray"
+                      className="foo"
+                    />
+                  )}
                 </div>
                 <div className="form-floating mb-3 d-none">
                   <input
@@ -276,11 +276,9 @@ function EditMunch() {
                 </div>
                 <div className="button-container" style={{ display: "flex" }}>
                   <button
-                    className="btn btn-md lead text-bold text mx-2 update-btn"
+                    className="btn btn-share-munch btn-md lead text-bold text mx-2 update-btn"
                     style={{
-                      background: "#FFEBAD",
                       fontWeight: "725",
-                      color: "#834534",
                       width: "100%",
                       fontSize: "18px",
                       height: "40px",

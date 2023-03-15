@@ -14,7 +14,7 @@ function MunchesColumn(props) {
             <div
               className="card"
               style={{
-                height: "400px",
+                height: "399px",
                 marginBottom: "45px",
                 marginLeft: "20px",
                 border: "0",
@@ -25,6 +25,7 @@ function MunchesColumn(props) {
                 className="card-img-top"
                 alt={`${munch.location}`}
                 style={{ width: "100%", height: "250px", objectFit: "cover" }}
+                loading="lazy"
               />
               <div
                 className="card-body"
@@ -67,7 +68,11 @@ function MunchesColumn(props) {
                 <div className="d-flex">
                   <div
                     className="card-city-state"
-                    style={{ marginTop: "0", marginBottom: "10px" }}
+                    style={{
+                      marginTop: "0",
+                      marginBottom: "10px",
+                      fontSize: "0.9em",
+                    }}
                   >
                     {munch.city}, {munch.state}
                   </div>
@@ -144,16 +149,16 @@ function HomePage() {
           minHeight: "100vh",
         }}
       >
-        <Link to="/home">
-          <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
+        <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
+          <Link to="/home">
             <img src={munch_transparent} alt="Logo" width="450" />
             <div>
               <p>
                 <img src={munch_slogan} alt="Slogan" width="350px" />
               </p>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
         <div className="container">
           <div className="row"></div>
         </div>

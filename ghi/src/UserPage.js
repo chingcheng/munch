@@ -14,7 +14,7 @@ function MunchesColumn(props) {
             <div
               className="card"
               style={{
-                height: "400px",
+                height: "399px",
                 marginBottom: "45px",
                 marginLeft: "20px",
                 border: "0",
@@ -25,6 +25,7 @@ function MunchesColumn(props) {
                 className="card-img-top"
                 alt={`${munch.location}`}
                 style={{ width: "100%", height: "250px", objectFit: "cover" }}
+                loading="lazy"
               />
               <div
                 className="card-body"
@@ -67,7 +68,11 @@ function MunchesColumn(props) {
                 <div className="d-flex">
                   <div
                     className="card-city-state"
-                    style={{ marginTop: "0", marginBottom: "10px" }}
+                    style={{
+                      marginTop: "0",
+                      marginBottom: "10px",
+                      fontSize: "0.9em",
+                    }}
                   >
                     {munch.city}, {munch.state}
                   </div>
@@ -123,9 +128,9 @@ const UserPage = () => {
 
         if (response.ok) {
           const munches = await response.json();
-          const filteredMunches = munches.filter(
-            (munch) => Number(munch.user_id) === userId
-          );
+          const filteredMunches = munches
+            .filter((munch) => Number(munch.user_id) === userId)
+            .reverse();
           const munchColumns = [[], [], []];
           filteredMunches.forEach((munch, index) =>
             munchColumns[index % 3].push(munch)
@@ -149,11 +154,11 @@ const UserPage = () => {
           minHeight: "100vh",
         }}
       >
-        <Link to="/munchbunch">
-          <div className="px-4 py-4 mt-4 text-center bg-transparent">
+        <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
+          <Link to="/munchbunch">
             <img src={munch_bunch} alt="Munch Bunch" width="450" />
-          </div>
-        </Link>
+          </Link>
+        </div>
         <div className="container text-center">
           <div className="row">
             <div className="offset-3 col-6">

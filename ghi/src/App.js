@@ -62,19 +62,29 @@ function App() {
 
   useEffect(() => {
     const storedImage = localStorage.getItem("backgroundImage");
-    if (storedImage) {
+    const storedTime = localStorage.getItem("backgroundImageTime");
+    const now = Date.now();
+    if (storedImage && storedTime && now - storedTime < 30 * 60 * 1000) {
       setBackgroundImage(storedImage);
     } else {
+      localStorage.clear();
       const randomImage = getRandomImage(images);
       setBackgroundImage(randomImage);
       localStorage.setItem("backgroundImage", randomImage);
+      localStorage.setItem("backgroundImageTime", now);
     }
 
     const intervalId = setInterval(() => {
+      const now = Date.now();
+      const storedTime = localStorage.getItem("backgroundImageTime");
+      if (storedTime && now - storedTime >= 30 * 60 * 1000) {
+        localStorage.clear();
+      }
       const randomImage = getRandomImage(images);
       setBackgroundImage(randomImage);
       localStorage.setItem("backgroundImage", randomImage);
-    }, 24 * 60 * 60 * 1000);
+      localStorage.setItem("backgroundImageTime", now);
+    }, 30 * 60 * 1000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -124,6 +134,7 @@ function App() {
               padding: "10px",
               width: "50px",
               height: "55px",
+              background: "none",
             }}
           >
             <DarkModeSwitch

@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
 import { useAuthContext } from "./Auth";
-import munch_icon from "./images/munch_icon.png";
 import munch_transparent from "./images/munch_transparent.png";
 import home from "./images/home.png";
 import friends from "./images/friends.png";
@@ -21,21 +20,9 @@ function Nav({ backgroundImage }) {
             backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
-            position: "fixed",
+            position: "absolute",
           }}
-        >
-          <div className="container-fluid">
-            <NavLink className="navbar-brand mb-2" to="/">
-              <img
-                src={munch_icon}
-                alt="Munch"
-                style={{
-                  width: "60px",
-                }}
-              />
-            </NavLink>
-          </div>
-        </nav>
+        ></nav>
         <style>
           {`
           .nav-link {

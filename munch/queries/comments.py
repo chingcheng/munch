@@ -9,17 +9,17 @@ class Error(BaseModel):
 
 class CommentIn(BaseModel):
     comment: str
-    munch_id: int
     user_id: int
     user_username: str
+    munch_id: int
 
 
 class CommentOut(BaseModel):
     id: int
     comment: str
-    munch_id: int
     user_id: int
     user_username: str
+    munch_id: int
 
 
 class CommentRepository:
@@ -31,18 +31,18 @@ class CommentRepository:
                         """
                         INSERT INTO comments
                             (comment,
-                            munch_id,
                             user_id,
-                            user_username)
+                            user_username,
+                            munch_id)
                         VALUES
                             (%s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
                             comment.comment,
-                            comment.munch_id,
                             comment.user_id,
                             comment.user_username,
+                            comment.munch_id,
                         ]
                     )
                     id = result.fetchone()[0]
@@ -60,16 +60,16 @@ class CommentRepository:
                         UPDATE comments
                         SET
                         comment = %s,
-                        munch_id = %s,
                         user_id = %s,
-                        user_username = %s
+                        user_username = %s,
+                        munch_id = %s,
                         WHERE id = %s
                         """,
                         [
                             comment.comment,
-                            comment.munch_id,
                             comment.user_id,
                             comment.user_username,
+                            comment.munch_id,
                             comment_id,
                         ]
                     )
@@ -101,9 +101,9 @@ class CommentRepository:
                         SELECT
                             id,
                             comment,
-                            munch_id,
                             user_id,
-                            user_username
+                            user_username,
+                            munch_id
                         FROM comments;
                         """
                     )
@@ -123,9 +123,9 @@ class CommentRepository:
                         SELECT
                             id,
                             comment,
-                            munch_id,
                             user_id,
-                            user_username
+                            user_username,
+                            munch_id
                         FROM comments
                         WHERE id = %s
                         """,
@@ -146,7 +146,7 @@ class CommentRepository:
         return CommentOut(
             id=record[0],
             comment=record[1],
-            munch_id=record[2],
-            user_id=record[3],
-            user_username=record[4],
+            user_id=record[2],
+            user_username=record[3],
+            munch_id=record[4],
         )
