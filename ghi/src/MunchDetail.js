@@ -14,6 +14,20 @@ function MunchDetail() {
   const [munchId, setMunchId] = useState("");
   const [username, setUsername] = useState("");
 
+  const handleDelete = async () => {
+    const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
+    const fetchConfig = {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const response = await fetch(munchUrl, fetchConfig);
+    if (response.ok) {
+      navigate("/home");
+    }
+  };
+
   const handleCommentChange = (event) => {
     const value = event.target.value;
     setComment(value);
@@ -51,33 +65,6 @@ function MunchDetail() {
     const response = await fetch(commentUrl, fetchConfig);
     if (response.ok) {
       clearState();
-    }
-  };
-
-  const handleDeleteComment = async () => {
-    const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/comments/${id}`;
-    const fetchConfig = {
-      method: "delete",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const response = await fetch(munchUrl, fetchConfig);
-    if (response.ok) {
-    }
-  };
-
-  const handleDelete = async () => {
-    const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
-    const fetchConfig = {
-      method: "delete",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const response = await fetch(munchUrl, fetchConfig);
-    if (response.ok) {
-      navigate("/home");
     }
   };
 
@@ -136,34 +123,12 @@ function MunchDetail() {
       }
     };
 
-    const getOneComment = async () => {
-      try {
-        const url = `${process.env.REACT_APP_MUNCH_API_HOST}/comments/${id}`;
-        const fetchConfig = {
-          method: "get",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-        const response = await fetch(url, fetchConfig);
-        if (response.ok) {
-          const data = await response.json();
-          setComment(data.comment);
-          setMunchId(data.munch_id);
-          setUserId(data.user_id);
-          setUsername(data.user_username);
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    };
-
     if (token) {
       getOneMunch();
       getComments();
     }
-
     fetchID();
+    // eslint-disable-next-line
   }, [token, id, userId, comments.munch_id, munch.id]);
 
   if (userId === Number(munch.user_id)) {
