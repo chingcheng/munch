@@ -11,7 +11,6 @@ function LandingPage({ backgroundImage }) {
           className="p-5 bg-image"
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0, 0.68), rgba(0,0,0, 0.68)), url('${backgroundImage}')`,
-            backgroundColor: "#FFFAEB",
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
             minHeight: "100vh",
