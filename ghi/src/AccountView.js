@@ -91,16 +91,6 @@ function GetAccount() {
                         />
                       </p>
                     </Link>
-                    {/* <p className="text-center mt-3 mb-4">
-                      <img
-                        src={user}
-                        alt="User"
-                        style={{
-                          maxWidth: "100%",
-                          width: "125px",
-                        }}
-                      />
-                    </p> */}
                     <div className="label-value">
                       <h5 className="card-account-title label">User:</h5>
                       <h5 className="card value mx-5">{username}</h5>
@@ -121,11 +111,9 @@ function GetAccount() {
                     </div>
                     <Link to={`/accounts/${userId}`}>
                       <button
-                        className="btn btn-md lead text-bold text mx-2 mt-2 mb-5"
+                        className="btn btn-edit-account btn-md lead text-bold text mx-2 mt-2 mb-5"
                         style={{
-                          background: "#FFEBAD",
                           fontWeight: "725",
-                          color: "#834534",
                           width: "150px",
                           height: "40px",
                         }}

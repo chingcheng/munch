@@ -15,10 +15,6 @@
   border-radius: 10%;
 }
 
-#light .btn {
-  color: #8f6036;
-}
-
 #light .nav-link {
   background-color: #ffc383;
   border-radius: 20px;
@@ -51,8 +47,8 @@
 }
 
 #light .btn:hover {
-  background: #ffbf01 !important;
-  color: #ffffffbe !important;
+  background: #ffd146;
+  color: #ffffffbe;
 }
 
 #light .form-shadow {
@@ -76,12 +72,6 @@
   background-color: white !important;
   color: black;
   border: 1px solid #ffbf01 !important;
-}
-
-#light .card-footer {
-  background-color: #fffbfa;
-  border-color: black !important;
-  color: #9ba29e;
 }
 
 #light .card-detail {
@@ -112,6 +102,75 @@
   background-color: #fffbfa;
 }
 
+#light .comments-container::-webkit-scrollbar-thumb {
+  background: #ffbf01;
+  border-radius: 10px;
+}
+
+#light .comments-container::-webkit-scrollbar-thumb:hover {
+  background: #ffc383;
+  border-radius: 10px;
+}
+
+#light .comments-container {
+  color: black;
+  border-radius: 10px;
+  border: 1px solid #ffbf01;
+}
+
+#light .dark-mode-switch-container label {
+  color: black;
+}
+
+#light .btn-delete-munch {
+  background: #f4989c;
+  color: #ffffff;
+}
+
+#light .btn-delete-munch:hover {
+  background: #ff7178;
+  color: #ffffff;
+}
+
+#light .btn-comment {
+  background: #ffc383;
+  color: #ffffff;
+}
+
+#light .btn-edit-munch {
+  background: #ffebad;
+  color: #834534;
+}
+#light .btn-share-munch {
+  background: #ffebad;
+  color: #834534;
+}
+
+#light .btn-add-photo {
+  background: #ffebad;
+  color: #834534;
+}
+
+#light .btn-edit-account {
+  background: #ffebad;
+  color: #834534;
+}
+
+#light .btn-comment:hover {
+  background: #f9ad5c;
+  color: white;
+}
+
+#light .btn-delete-munch {
+  background: #f4989c;
+  color: #ffffff;
+}
+
+#light .btn-delete-munch:hover {
+  background: #fe4f4f;
+  color: #ffffff;
+}
+
 /* DARK MODE */
 
 #dark .login-form {
@@ -127,10 +186,6 @@
 #dark .form {
   background-color: #282b3e;
   border-radius: 10%;
-}
-
-#dark .btn {
-  color: #8f6036;
 }
 
 #dark .nav-link {
@@ -157,7 +212,7 @@
 }
 
 #dark .card-city-state {
-  color: white;
+  color: rgb(199, 199, 199);
 }
 
 #dark .nav-link.active {
@@ -165,7 +220,7 @@
 }
 
 #dark .btn:hover {
-  background: #ffbf01 !important;
+  background: #ffbf01;
   color: #ffffffbe !important;
 }
 
@@ -190,12 +245,6 @@
   background-color: #202231 !important;
   color: white;
   border: 1px solid white !important;
-}
-
-#dark .card-footer {
-  background-color: #202231;
-  border-color: white !important;
-  color: white;
 }
 
 #dark .card-detail {
@@ -227,7 +276,6 @@
   background-color: #202231;
 }
 
-/* CSS SWITCH */
 .dark-mode-switch-container {
   display: flex;
   width: 100vw;
@@ -238,10 +286,62 @@
   margin: 10px;
 }
 
-#light .dark-mode-switch-container label {
-  color: black;
+#dark .dark-mode-switch-container label {
+  color: white;
 }
 
-#dark .dark-mode-switch-container label {
+#dark .comments-container {
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+#dark .comments-container::-webkit-scrollbar-thumb {
+  background: #30324a;
+  border-radius: 10px;
+}
+
+#dark .comments-container::-webkit-scrollbar-thumb:hover {
+  background: #ffbf01;
+  border-radius: 10px;
+}
+
+#dark .btn-edit-munch {
+  background: #fed24f;
+  color: #834534;
+}
+
+#dark .btn-share-munch {
+  background: #fed24f;
+  color: #834534;
+}
+
+#dark .btn-add-photo {
+  background: #fed24f;
+  color: #834534;
+}
+
+#dark .btn-edit-account {
+  background: #fed24f;
+  color: #834534;
+}
+
+#dark .btn-delete-munch {
+  background: #fe4f4f;
+  color: #ffffff;
+}
+
+#dark .btn-delete-munch:hover {
+  background: #ff0000;
+  color: #ffffff;
+}
+
+#dark .btn-comment {
+  background: #3f415c;
+  color: #ffffff;
+}
+
+#dark .btn-comment:hover {
+  background: #ffbf00;
   color: white;
 }

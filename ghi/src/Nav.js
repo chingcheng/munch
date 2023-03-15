@@ -23,19 +23,7 @@ function Nav({ backgroundImage }) {
             backgroundAttachment: "fixed",
             position: "absolute",
           }}
-        >
-          <div className="container-fluid">
-            <NavLink className="navbar-brand mb-2" to="/">
-              <img
-                src={munch_icon}
-                alt="Munch"
-                style={{
-                  width: "60px",
-                }}
-              />
-            </NavLink>
-          </div>
-        </nav>
+        ></nav>
         <style>
           {`
           .nav-link {
