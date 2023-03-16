@@ -548,3 +548,15 @@
 #dark a:hover {
   color: #ffbf01 !important;
 }
+
+#light .team-card {
+  background-color: white !important;
+  color: black;
+  border: 1px solid #ffbf01 !important;
+}
+
+#dark .team-card {
+  background-color: #202231 !important;
+  color: white;
+  border: 1px solid white !important;
+}

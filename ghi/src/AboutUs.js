@@ -48,9 +48,9 @@ function AboutUs() {
             {/* CHING CHENG */}
             <div className="col align-items-stretch landing-welcome px-3 pb-0 ">
               <div
-                className="card munch-detail-card"
+                className="card team-card"
                 style={{
-                  height: "auto",
+                  height: "400px",
                   width: "auto",
                 }}
               >
@@ -65,9 +65,9 @@ function AboutUs() {
                   <h1 className="meet-team-degree">
                     Master of Arts, Education
                   </h1>
-                  <h1 className="meet-team-school mb-4">Stanford University</h1>
+                  <h1 className="meet-team-school">Stanford University</h1>
                   <img
-                    className="mb-3"
+                    className="mb-2"
                     src={about_divider}
                     alt="divider"
                     width="40"
@@ -102,9 +102,9 @@ function AboutUs() {
             {/* KENNEDY CASSIDAY */}
             <div className="col align-items-stretch landing-welcome px-3 pb-0 ">
               <div
-                className="card munch-detail-card"
+                className="card team-card"
                 style={{
-                  height: "auto",
+                  height: "400px",
                   width: "auto",
                 }}
               >
@@ -157,9 +157,9 @@ function AboutUs() {
             {/* JASON DAI */}
             <div className="col align-items-stretch landing-welcome px-3 pb-0 ">
               <div
-                className="card munch-detail-card"
+                className="card team-card"
                 style={{
-                  height: "auto",
+                  height: "400px",
                   width: "auto",
                 }}
               >
@@ -210,9 +210,9 @@ function AboutUs() {
             {/* MATTHEW MAI */}
             <div className="col align-items-stretch landing-welcome px-3 pb-0 ">
               <div
-                className="card munch-detail-card"
+                className="card team-card"
                 style={{
-                  height: "auto",
+                  height: "400px",
                   width: "auto",
                 }}
               >
@@ -266,9 +266,9 @@ function AboutUs() {
             {/* TYLER HERMAN */}
             <div className="col align-items-stretch landing-welcome px-3 pb-0 ">
               <div
-                className="card munch-detail-card"
+                className="card team-card"
                 style={{
-                  height: "auto",
+                  height: "400px",
                   width: "auto",
                 }}
               >
@@ -283,9 +283,9 @@ function AboutUs() {
                   <h1 className="meet-team-degree">
                     Doctor of Physical Therapy
                   </h1>
-                  <h1 className="meet-team-school mb-4">Drexel University</h1>
+                  <h1 className="meet-team-school">Drexel University</h1>
                   <img
-                    className="mb-3"
+                    className="mb-2"
                     src={about_divider}
                     alt="divider"
                     width="40"
@@ -333,19 +333,19 @@ function AboutUs() {
                       Featured links
                     </h6>
                     <p>
-                      <a href="/aboutus" className="text-reset">
+                      <a href="about-us" className="text-reset">
                         About the Team
                       </a>
                     </p>
                     <p>
-                      <a href="#!" className="text-reset">
+                      <a href="resources" className="text-reset">
                         Resources
                       </a>
                     </p>
                   </div>
                   <div className="col-md-3 mx-auto text-center center">
                     <h3 className="white-munch-logo mt-1">
-                      <Link to="/signup">
+                      <Link to="/">
                         <img
                           src={white_munch}
                           alt="white_munch"

@@ -107,7 +107,7 @@ function App() {
                   path="/"
                   element={<LandingPage backgroundImage={backgroundImage} />}
                 />
-                <Route path="aboutus" element={<AboutUs />} />
+                <Route path="about-us" element={<AboutUs />} />
                 <Route
                   path="login"
                   element={<LoginForm backgroundImage={backgroundImage} />}

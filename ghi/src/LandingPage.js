@@ -316,7 +316,7 @@ function LandingPage({ backgroundImage }) {
                         Featured links
                       </h6>
                       <p>
-                        <a href="#!" className="text-reset">
+                        <a href="about-us" className="text-reset">
                           About the Team
                         </a>
                       </p>

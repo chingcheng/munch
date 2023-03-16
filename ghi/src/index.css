@@ -181,3 +181,8 @@ span {
 .meet-team-quote-2 {
   font-size: 15px;
 }
+
+.team-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.1s ease-in-out;
+}
