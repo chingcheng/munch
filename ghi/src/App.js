@@ -5,6 +5,7 @@ import "./index.css";
 import "./toggle-theme.css";
 import { AuthProvider, useToken } from "./Auth";
 import LoginForm from "./LoginForm";
+import AboutUs from "./AboutUs";
 import SignupForm from "./SignupForm";
 import LandingPage from "./LandingPage";
 import CreateMunch from "./CreateMunchForm";
@@ -106,6 +107,7 @@ function App() {
                   path="/"
                   element={<LandingPage backgroundImage={backgroundImage} />}
                 />
+                <Route path="aboutus" element={<AboutUs />} />
                 <Route
                   path="login"
                   element={<LoginForm backgroundImage={backgroundImage} />}
