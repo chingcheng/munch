@@ -138,3 +138,21 @@ span {
   background: #f1f1f1;
   border-radius: 10px;
 }
+
+.about-img {
+  border-radius: 50%;
+}
+
+.meet-team-school {
+  font-size: 16px;
+}
+
+.meet-team-degree {
+  font-size: 12px;
+  color: rgb(140, 140, 140);
+  margin-bottom: 5px;
+}
+
+.meet-team-quote-2 {
+  font-size: 15px;
+}
