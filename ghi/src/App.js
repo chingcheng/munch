@@ -54,7 +54,9 @@ function App() {
   const [theme, setTheme] = useState("dark");
 
   const toggleTheme = () => {
-    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   const [backgroundImage, setBackgroundImage] = useState(() => {
@@ -63,6 +65,11 @@ function App() {
   });
 
   useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+
     const storedImage = localStorage.getItem("backgroundImage");
     const storedTime = localStorage.getItem("backgroundImageTime");
     const now = Date.now();
