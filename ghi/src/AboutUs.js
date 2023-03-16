@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import "./index.css";
 import "./toggle-theme.css";
 import white_munch from "./images/white_munch.png";
-import munch_transparent from "./images/munch_transparent.png";
 import chingcheng2 from "./images/chingcheng2.png";
 import kennedycassiday2 from "./images/kennedycassiday2.png";
 import jasondai2 from "./images/jasondai2.png";
