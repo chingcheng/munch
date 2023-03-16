@@ -337,7 +337,7 @@ function MunchDetail() {
             }}
           >
             <Link to={`/munches/${munch.user_username}`} className="card-link">
-              <div className="form-floating mx-3 mt-1">
+              <div className="at-username mx-3 mt-1">
                 <h2
                   style={{
                     fontSize: "15px",
