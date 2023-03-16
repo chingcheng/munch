@@ -347,7 +347,7 @@ function AboutUs() {
                     </p>
                   </div>
                   <div className="col-md-3 mx-auto text-center center">
-                    <h3 className="white-munch-logo mt-1">
+                    <h3 className="white-munch-logo mt-2">
                       <Link to="/">
                         <img
                           src={white_munch}
