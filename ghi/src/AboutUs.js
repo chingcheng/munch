@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./index.css";
 import "./toggle-theme.css";
 import white_munch from "./images/white_munch.png";
+import about_arrow from "./images/about_arrow.png";
 import chingcheng2 from "./images/chingcheng2.png";
 import kennedycassiday2 from "./images/kennedycassiday2.png";
 import jasondai2 from "./images/jasondai2.png";
@@ -20,8 +21,8 @@ function AboutUs() {
         {/* FIRST SECTION */}
         <div className="container-fluid">
           <div className="about-section">
-            <div className="col landing-welcome px-4 pb-0">
-              <h2 className="">meet the</h2>
+            <div className="col landing-welcome px-4 pb-0 mt-5 pt-5">
+              <h2 className="mt-5 pt-5">meet the</h2>
               <h5 className="header-font">munch bunch</h5>
               <p className="" style={{ fontSize: "22px" }}>
                 For us, our hope was to deliver an enjoyable experience where
@@ -34,13 +35,15 @@ function AboutUs() {
                 to be the foodie enthusiast while sharing that with your
                 network!
               </p>
+              <div className="container">
+                <img src={about_arrow} alt="about_arrow" width="300px"></img>
+              </div>
             </div>
             <div className="col text-center">
               <img src={about1} alt="Logo" width="688px" />
             </div>
           </div>
         </div>
-
         {/* TEAM CARDS */}
         <div className="container-fluid pb-4">
           <div className="about-section">
@@ -50,8 +53,8 @@ function AboutUs() {
               <div
                 className="card munch-detail-card"
                 style={{
-                  height: "auto",
-                  width: "auto",
+                  height: "383.79px",
+                  width: "259px",
                 }}
               >
                 <div className="container text-center">
@@ -63,20 +66,20 @@ function AboutUs() {
                   />
                   <h1 className="meet-team-name">Ching Cheng</h1>
                   <h1 className="meet-team-degree">
-                    Master of Arts, Education
+                    Masters of Arts, Education
                   </h1>
-                  <h1 className="meet-team-school mb-4">Stanford University</h1>
+                  <h1 className="meet-team-school">Standford University</h1>
                   <img
-                    className="mb-3"
+                    className="mb-2"
                     src={about_divider}
                     alt="divider"
                     width="40"
                   />
-                  <h1 className="meet-team-quote-2 mt-1 mb-2">
+                  <h1 className="meet-team-quote-2 pb-1">
                     Most likely to have an Instagram for her dog rather than for
                     herself
                   </h1>
-                  <div className="container mt-2 pt-1 pb-4">
+                  <div className="container pt-3 pb-4">
                     <Link to="https://www.linkedin.com/in/ching-cheng/">
                       <img
                         className="p-1"
@@ -104,8 +107,8 @@ function AboutUs() {
               <div
                 className="card munch-detail-card"
                 style={{
-                  height: "auto",
-                  width: "auto",
+                  height: "383.79px",
+                  width: "259px",
                 }}
               >
                 <div className="container text-center">
@@ -159,8 +162,8 @@ function AboutUs() {
               <div
                 className="card munch-detail-card"
                 style={{
-                  height: "auto",
-                  width: "auto",
+                  height: "383.79px",
+                  width: "259px",
                 }}
               >
                 <div className="container text-center">
@@ -212,8 +215,8 @@ function AboutUs() {
               <div
                 className="card munch-detail-card"
                 style={{
-                  height: "auto",
-                  width: "auto",
+                  height: "383.79px",
+                  width: "259px",
                 }}
               >
                 <div className="container text-center">
@@ -268,8 +271,8 @@ function AboutUs() {
               <div
                 className="card munch-detail-card"
                 style={{
-                  height: "auto",
-                  width: "auto",
+                  height: "383.79px",
+                  width: "259px",
                 }}
               >
                 <div className="container text-center">
@@ -283,17 +286,17 @@ function AboutUs() {
                   <h1 className="meet-team-degree">
                     Doctor of Physical Therapy
                   </h1>
-                  <h1 className="meet-team-school mb-4">Drexel University</h1>
+                  <h1 className="meet-team-school">Drexel University</h1>
                   <img
-                    className="mb-3"
+                    className="mb-2"
                     src={about_divider}
                     alt="divider"
                     width="40"
                   />
-                  <h1 className="meet-team-quote-2 mt-1 mb-2">
-                    Most likely to be a backup dancer on the side
+                  <h1 className="meet-team-quote-2 pb-1">
+                    Most likely to become a backup dancer on the side
                   </h1>
-                  <div className="container mt-2 pt-1 pb-4">
+                  <div className="container pt-3 pb-4">
                     <Link to="https://www.linkedin.com/in/tylercherman/">
                       <img
                         className="p-1"
