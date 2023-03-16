@@ -221,7 +221,7 @@ function LandingPage({ backgroundImage }) {
                 </div>
               </div>
               <div>
-                <NavLink className="btn btn-learn-more btn-lg">
+                <NavLink to="about-us" className="btn btn-learn-more btn-lg">
                   Learn more about us
                 </NavLink>
               </div>
@@ -316,18 +316,18 @@ function LandingPage({ backgroundImage }) {
                         Featured links
                       </h6>
                       <p>
-                        <a href="about-us" className="text-reset">
+                        <Link to="/about-us" className="text-reset">
                           About the Team
-                        </a>
+                        </Link>
                       </p>
                       <p>
-                        <a href="resources" className="text-reset">
+                        <Link to="/resources" className="text-reset">
                           Resources
-                        </a>
+                        </Link>
                       </p>
                     </div>
                     <div className="col-md-3 mx-auto text-center center">
-                      <h3 className="white-munch-logo mt-1">
+                      <h3 className="white-munch-logo mt-2">
                         <Link to="/signup">
                           <img
                             src={white_munch}

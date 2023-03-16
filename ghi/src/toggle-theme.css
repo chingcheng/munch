@@ -16,7 +16,7 @@
 #light .about-section {
   height: 100vh;
   display: flex;
-  justify-content: top;
+  justify-content: center;
   align-items: center;
   background-color: #fffbfa;
   color: black;
@@ -266,6 +266,7 @@
 
 #light .btn-learn-more {
   color: #ffbf01;
+  border-color: #ffbf01;
 }
 
 #light .card-tech {
@@ -479,6 +480,7 @@
 
 #dark .btn-learn-more {
   color: white;
+  border-color: white;
 }
 
 #dark .comments-container {
