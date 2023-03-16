@@ -166,7 +166,7 @@ const UserPage = () => {
                 <div className="card-bio">
                   <div className="card-body d-flex justify-content-between">
                     <div className="label-value-bio py-1 px-5">
-                      <h4 className="card-text mt-2">
+                      <h4 className="card-username mt-2">
                         {userName}{" "}
                         <img
                           src={add_friend}
