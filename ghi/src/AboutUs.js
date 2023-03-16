@@ -66,7 +66,7 @@ function AboutUs() {
                   />
                   <h1 className="meet-team-name">Ching Cheng</h1>
                   <h1 className="meet-team-degree">
-                    Masters of Arts, Education
+                    Master of Arts, Education
                   </h1>
                   <h1 className="meet-team-school">Standford University</h1>
                   <img

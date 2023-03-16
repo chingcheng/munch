@@ -221,9 +221,9 @@ function LandingPage({ backgroundImage }) {
                 </div>
               </div>
               <div>
-                <NavLink className="btn btn-learn-more btn-lg">
+                <Link to="about-us" className="btn btn-learn-more btn-lg">
                   Learn more about us
-                </NavLink>
+                </Link>
               </div>
             </div>
           </div>
