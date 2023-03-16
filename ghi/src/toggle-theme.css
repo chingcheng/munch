@@ -277,6 +277,10 @@
   color: white !important;
 }
 
+#light .at-username:hover {
+  color: #ffbf01 !important;
+}
+
 /* DARK MODE */
 #dark .footer-fix {
   /* height: 100vh; */
