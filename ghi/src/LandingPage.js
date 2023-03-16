@@ -246,7 +246,7 @@ function LandingPage({ backgroundImage }) {
                             alt="maui_cookie"
                             className="rounded"
                             style={{
-                              height: "400px",
+                              height: "550px",
                               width: "100%",
                               objectFit: "cover",
                               position: "center",
@@ -263,7 +263,7 @@ function LandingPage({ backgroundImage }) {
                             className="rounded"
                             alt="maui_pizza"
                             style={{
-                              height: "400px",
+                              height: "550px",
                               width: "100%",
                               objectFit: "cover",
                               position: "center",
@@ -280,7 +280,7 @@ function LandingPage({ backgroundImage }) {
                             className="rounded"
                             alt="munch_ubatuba"
                             style={{
-                              height: "400px",
+                              height: "550px",
                               width: "100%",
                               objectFit: "cover",
                               position: "center",
