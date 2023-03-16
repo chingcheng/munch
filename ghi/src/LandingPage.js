@@ -231,7 +231,7 @@ function LandingPage({ backgroundImage }) {
           {/* COME JOIN US/FOOTER */}
           <div className="container-fluid footer-fix pt-5">
             <div className="row row-cols-2 row-cols-md-2 p-4 mt-5">
-              <div className="col landing-welcome">
+              <div className="col landing-welcome mb-5">
                 <div className="container-carousel">
                   <Carousel
                     activeIndex={index}
@@ -303,6 +303,7 @@ function LandingPage({ backgroundImage }) {
             </div>
 
             <footer
+              className="mt-5"
               style={{
                 height: "auto",
               }}
