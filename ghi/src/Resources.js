@@ -166,14 +166,14 @@ function Resources() {
                   Featured links
                 </h6>
                 <p>
-                  <a href="about-us" className="text-reset">
+                  <Link to="about-us" className="text-reset">
                     About the Team
-                  </a>
+                  </Link>
                 </p>
                 <p>
-                  <a href="resources" className="text-reset">
+                  <Link to="resources" className="text-reset">
                     Resources
-                  </a>
+                  </Link>
                 </p>
               </div>
               <div className="col-md-3 mx-auto text-center center">
