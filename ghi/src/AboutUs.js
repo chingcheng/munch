@@ -54,7 +54,7 @@ function AboutUs() {
                 className="card team-card"
                 style={{
                   height: "383.79px",
-                  with: "auto",
+                  width: "auto",
                 }}
               >
                 <div className="container text-center">
@@ -108,7 +108,7 @@ function AboutUs() {
                 className="card team-card"
                 style={{
                   height: "383.79px",
-                  with: "auto",
+                  width: "auto",
                 }}
               >
                 <div className="container text-center">
@@ -163,7 +163,7 @@ function AboutUs() {
                 className="card team-card"
                 style={{
                   height: "383.79px",
-                  with: "auto",
+                  width: "auto",
                 }}
               >
                 <div className="container text-center">
@@ -216,7 +216,7 @@ function AboutUs() {
                 className="card team-card"
                 style={{
                   height: "383.79px",
-                  with: "auto",
+                  width: "auto",
                 }}
               >
                 <div className="container text-center">
@@ -272,7 +272,7 @@ function AboutUs() {
                 className="card team-card"
                 style={{
                   height: "383.79px",
-                  with: "auto",
+                  width: "auto",
                 }}
               >
                 <div className="container text-center">
