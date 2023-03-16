@@ -336,12 +336,12 @@ function AboutUs() {
                       Featured links
                     </h6>
                     <p>
-                      <Link to="about-us" className="text-reset">
+                      <Link to="/about-us" className="text-reset">
                         About the Team
                       </Link>
                     </p>
                     <p>
-                      <Link to="resources" className="text-reset">
+                      <Link to="/resources" className="text-reset">
                         Resources
                       </Link>
                     </p>
