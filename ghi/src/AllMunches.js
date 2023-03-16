@@ -11,7 +11,7 @@ function MunchesColumn(props) {
         <div key={munch.id}>
           <Link to={`/munch/${munch.id}`} className="card-link">
             <div
-              className="card"
+              className="card munch-card"
               style={{
                 height: "420px",
                 marginBottom: "45px",

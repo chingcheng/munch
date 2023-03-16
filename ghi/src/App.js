@@ -16,6 +16,7 @@ import EditUser from "./EditUser";
 import AllMunches from "./AllMunches";
 import UserPage from "./UserPage";
 import GetAccount from "./AccountView";
+import Resources from "./Resources";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 export const ThemeContext = createContext(null);
@@ -114,6 +115,7 @@ function App() {
                   path="signup"
                   element={<SignupForm backgroundImage={backgroundImage} />}
                 />
+                <Route path="resources" element={<Resources />} />
                 <Route path="home" element={<HomePage />} />
                 <Route path="munch/edit/:id" element={<EditMunch />} />
                 <Route path="munchbunch" element={<AllMunches />} />

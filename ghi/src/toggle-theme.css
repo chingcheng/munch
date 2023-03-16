@@ -243,6 +243,26 @@
   color: #ffffff;
 }
 
+#light .text-footer {
+  color: black;
+}
+
+#light .text-footer:hover {
+  color: white;
+}
+
+#light .btn-learn-more {
+  color: #ffbf01;
+}
+
+#light .card-tech {
+  border: 1px solid #b2b9bd;
+}
+
+#light a:hover {
+  color: white !important;
+}
+
 /* DARK MODE */
 #dark .footer-fix {
   height: 100vh;
@@ -370,7 +390,7 @@
 }
 
 #dark .card {
-  background-color: #202231 !important;
+  background-color: #202231;
   color: white;
 }
 
@@ -423,23 +443,11 @@
   color: white;
 }
 
-#light .text-footer {
-  color: black;
-}
-
 #dark .text-footer {
   color: white;
 }
 
-#light .text-footer:hover {
-  color: white;
-}
-
 #dark .text-footer:hover {
-  color: #ffbf01;
-}
-
-#light .btn-learn-more {
   color: #ffbf01;
 }
 
@@ -499,6 +507,18 @@
 }
 
 #dark .btn-comment:hover {
-  background: #ffbf00;
+  background: #ffbf01;
   color: white;
+}
+
+#dark .card-tech {
+  border: 1px solid #ffffff;
+}
+
+#dark .footer-text {
+  color: white;
+}
+
+#dark a:hover {
+  color: #ffbf01 !important;
 }

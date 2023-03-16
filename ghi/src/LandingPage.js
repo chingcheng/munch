@@ -320,7 +320,7 @@ function LandingPage({ backgroundImage }) {
                         </a>
                       </p>
                       <p>
-                        <a href="#!" className="text-reset">
+                        <a href="resources" className="text-reset">
                           Resources
                         </a>
                       </p>
