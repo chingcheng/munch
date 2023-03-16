@@ -51,10 +51,10 @@ function AboutUs() {
             {/* CHING CHENG */}
             <div className="col align-items-stretch landing-welcome px-3 pb-0 ">
               <div
-                className="card munch-detail-card"
+                className="card team-card"
                 style={{
                   height: "383.79px",
-                  width: "259px",
+                  with: "auto",
                 }}
               >
                 <div className="container text-center">
@@ -105,10 +105,10 @@ function AboutUs() {
             {/* KENNEDY CASSIDAY */}
             <div className="col align-items-stretch landing-welcome px-3 pb-0 ">
               <div
-                className="card munch-detail-card"
+                className="card team-card"
                 style={{
                   height: "383.79px",
-                  width: "259px",
+                  with: "auto",
                 }}
               >
                 <div className="container text-center">
@@ -160,10 +160,10 @@ function AboutUs() {
             {/* JASON DAI */}
             <div className="col align-items-stretch landing-welcome px-3 pb-0 ">
               <div
-                className="card munch-detail-card"
+                className="card team-card"
                 style={{
                   height: "383.79px",
-                  width: "259px",
+                  with: "auto",
                 }}
               >
                 <div className="container text-center">
@@ -213,10 +213,10 @@ function AboutUs() {
             {/* MATTHEW MAI */}
             <div className="col align-items-stretch landing-welcome px-3 pb-0 ">
               <div
-                className="card munch-detail-card"
+                className="card team-card"
                 style={{
                   height: "383.79px",
-                  width: "259px",
+                  with: "auto",
                 }}
               >
                 <div className="container text-center">
@@ -269,10 +269,10 @@ function AboutUs() {
             {/* TYLER HERMAN */}
             <div className="col align-items-stretch landing-welcome px-3 pb-0 ">
               <div
-                className="card munch-detail-card"
+                className="card team-card"
                 style={{
                   height: "383.79px",
-                  width: "259px",
+                  with: "auto",
                 }}
               >
                 <div className="container text-center">
@@ -336,19 +336,19 @@ function AboutUs() {
                       Featured links
                     </h6>
                     <p>
-                      <a href="/aboutus" className="text-reset">
+                      <a href="about-us" className="text-reset">
                         About the Team
                       </a>
                     </p>
                     <p>
-                      <a href="#!" className="text-reset">
+                      <a href="resources" className="text-reset">
                         Resources
                       </a>
                     </p>
                   </div>
                   <div className="col-md-3 mx-auto text-center center">
                     <h3 className="white-munch-logo mt-1">
-                      <Link to="/signup">
+                      <Link to="/">
                         <img
                           src={white_munch}
                           alt="white_munch"

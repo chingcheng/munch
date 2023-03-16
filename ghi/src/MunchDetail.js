@@ -406,7 +406,7 @@ function MunchDetail() {
                         @{comment.user_username}
                       </strong>
                     </Link>{" "}
-                    {comment.comment}
+                    <span>{comment.comment}</span>
                   </p>
                 );
               })}
