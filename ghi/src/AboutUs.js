@@ -68,7 +68,7 @@ function AboutUs() {
                   <h1 className="meet-team-degree">
                     Master of Arts, Education
                   </h1>
-                  <h1 className="meet-team-school">Standford University</h1>
+                  <h1 className="meet-team-school">Stanford University</h1>
                   <img
                     className="mb-2"
                     src={about_divider}
