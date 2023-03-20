@@ -186,3 +186,8 @@ span {
   transform: scale(1.05);
   transition: transform 0.1s ease-in-out;
 }
+
+.loader-container {
+  height: 300px;
+  width: 100%;
+}

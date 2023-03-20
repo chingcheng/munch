@@ -4,6 +4,7 @@ import { useAuthContext } from "./Auth";
 import munch_bunch from "./images/munch_bunch.png";
 import add_friend from "./images/add_friend.png";
 import star from "./images/star.png";
+import { PuffLoader } from "react-spinners";
 
 function MunchesColumn(props) {
   return (
@@ -92,9 +93,11 @@ const UserPage = () => {
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
   const [userBio, setUserBio] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getUserId = async () => {
+      setLoading(true);
       const userUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/accounts`;
       const fetchConfig = {
         method: "get",
@@ -139,6 +142,8 @@ const UserPage = () => {
         }
       } catch (e) {
         console.error(e);
+      } finally {
+        setLoading(false);
       }
     };
     getUserId();
@@ -154,7 +159,7 @@ const UserPage = () => {
           minHeight: "100vh",
         }}
       >
-        <div className="px-4 py-5 my-5 mt-0 text-center bg-transparent">
+        <div className="px-4 pt-5 my-5 mt-0 text-center bg-transparent">
           <Link to="/munchbunch">
             <img src={munch_bunch} alt="Munch Bunch" width="450" />
           </Link>
@@ -191,9 +196,19 @@ const UserPage = () => {
         </div>
         <div className="container mt-5">
           <div className="row">
-            {munchColumns.map((munchList, index) => (
-              <MunchesColumn key={index} list={munchList} />
-            ))}
+            {loading ? (
+              <div className="text-center">
+                <div className="loader-container d-flex justify-content-center align-items-center">
+                  <PuffLoader color="#ffbf01" size={100} />
+                </div>
+              </div>
+            ) : (
+              <div className="row">
+                {munchColumns.map((munchList, index) => (
+                  <MunchesColumn key={index} list={munchList} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

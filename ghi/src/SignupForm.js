@@ -14,6 +14,7 @@ function SignupForm({ backgroundImage }) {
   const [password, setPassword] = useState("");
   const [bio, setBio] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFirstNameChange = (event) => {
     const value = event.target.value;
@@ -51,6 +52,7 @@ function SignupForm({ backgroundImage }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const response = await signup(
       first_name,
       last_name,
@@ -59,6 +61,7 @@ function SignupForm({ backgroundImage }) {
       password,
       bio
     );
+    setIsLoading(false);
     if (response === true) {
       clearState();
       navigate("/login");
@@ -189,10 +192,19 @@ function SignupForm({ backgroundImage }) {
                         fontWeight: "725",
                         color: "#512b20",
                       }}
+                      disabled={isLoading}
                       type="submit"
                       value="Sign Up"
                     >
-                      Sign Up
+                      {isLoading ? (
+                        <span
+                          className="spinner-border spinner-border-sm"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                      ) : (
+                        "Sign Up"
+                      )}
                     </button>
                   </div>
                   <Link to="/login" className="munchkin-link">

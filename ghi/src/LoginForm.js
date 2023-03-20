@@ -9,6 +9,7 @@ function LoginForm({ backgroundImage }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -20,7 +21,9 @@ function LoginForm({ backgroundImage }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     const response = await login(username, password);
+    setIsLoading(false);
     if (response === true) {
       navigate("/home");
     } else {
@@ -100,8 +103,17 @@ function LoginForm({ backgroundImage }) {
                         fontWeight: "725",
                         color: "#512b20",
                       }}
+                      disabled={isLoading}
                     >
-                      Log In
+                      {isLoading ? (
+                        <span
+                          className="spinner-border spinner-border-sm"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                      ) : (
+                        "Log In"
+                      )}
                     </button>
                   </div>
                   <Link to="/signup" className="signup-munchkin">

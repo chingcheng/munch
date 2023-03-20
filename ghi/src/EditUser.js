@@ -14,6 +14,7 @@ function EditUser() {
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFirstNameChange = (event) => {
     const value = event.target.value;
@@ -72,6 +73,7 @@ function EditUser() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     const data = {};
 
@@ -94,6 +96,7 @@ function EditUser() {
     };
 
     const response = await fetch(url, fetchConfig);
+    setIsLoading(false);
     if (response.ok) {
       clearState();
       navigate("/accounts");
@@ -252,10 +255,19 @@ function EditUser() {
                       width: "150px",
                       height: "40px",
                     }}
+                    disabled={isLoading}
                     type="submit"
                     value="Edit Profile"
                   >
-                    Done
+                    {isLoading ? (
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                    ) : (
+                      "Done"
+                    )}
                   </button>
                   {"  "}
                   <button
@@ -266,10 +278,19 @@ function EditUser() {
                       width: "150px",
                       height: "40px",
                     }}
+                    disabled={isLoading}
                     type="button"
                     value="Delete Account"
                   >
-                    Delete Account
+                    {isLoading ? (
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                    ) : (
+                      "Delete Account"
+                    )}
                   </button>
                 </div>
               </form>

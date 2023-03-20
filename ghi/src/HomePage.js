@@ -4,6 +4,7 @@ import { useAuthContext } from "./Auth";
 import munch_transparent from "./images/munch_transparent.png";
 import munch_slogan from "./images/munch_slogan.png";
 import star from "./images/star.png";
+import { PuffLoader } from "react-spinners";
 
 function MunchesColumn(props) {
   return (
@@ -89,11 +90,13 @@ function MunchesColumn(props) {
 
 function HomePage() {
   const [munchColumns, setMunchColumns] = useState([[], [], []]);
+  const [loading, setLoading] = useState(true);
   const { token } = useAuthContext();
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
     const fetchFilterMunches = async (userId) => {
+      setLoading(true);
       try {
         const url = `${process.env.REACT_APP_MUNCH_API_HOST}/munches`;
         const fetchConfig = {
@@ -117,6 +120,8 @@ function HomePage() {
         }
       } catch (e) {
         console.error(e);
+      } finally {
+        setLoading(false);
       }
     };
     const fetchID = async () => {
@@ -164,9 +169,19 @@ function HomePage() {
         </div>
         <div className="container">
           <div className="row">
-            {munchColumns.map((munchList, index) => (
-              <MunchesColumn key={index} list={munchList} />
-            ))}
+            {loading ? (
+              <div className="text-center">
+                <div className="loader-container d-flex justify-content-center align-items-center">
+                  <PuffLoader color="#ffbf01" size={100} />
+                </div>
+              </div>
+            ) : (
+              <div className="row">
+                {munchColumns.map((munchList, index) => (
+                  <MunchesColumn key={index} list={munchList} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
