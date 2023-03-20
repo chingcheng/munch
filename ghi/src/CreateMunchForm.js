@@ -16,6 +16,7 @@ function CreateMunch() {
   const [userId, setUserId] = useState("");
   const [userUsername, setUserUsername] = useState("");
   const fileInputRef = React.createRef();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLocationChange = (event) => {
     const value = event.target.value;
@@ -67,6 +68,7 @@ function CreateMunch() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     const data = {};
 
@@ -90,6 +92,7 @@ function CreateMunch() {
 
     const response = await fetch(munchUrl, fetchConfig);
     if (response.ok) {
+      setIsLoading(false);
       clearState();
       navigate("/home");
     }
@@ -236,8 +239,17 @@ function CreateMunch() {
                     }}
                     type="submit"
                     value="Create Munch"
+                    disabled={isLoading}
                   >
-                    Share
+                    {isLoading ? (
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                    ) : (
+                      "Share"
+                    )}
                   </button>
                 </div>
               </form>
