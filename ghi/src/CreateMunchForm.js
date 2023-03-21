@@ -211,7 +211,7 @@ function CreateMunch() {
                       <img
                         src={photo}
                         alt="preview"
-                        style={{ maxWidth: "100%" }}
+                        style={{ maxWidth: "90%", borderRadius: "5%" }}
                       />
                     </div>
                   )}

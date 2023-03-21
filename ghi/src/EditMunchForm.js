@@ -244,7 +244,7 @@ function EditMunch() {
                       <img
                         src={photo}
                         alt="preview"
-                        style={{ maxWidth: "100%" }}
+                        style={{ maxWidth: "90%", borderRadius: "2%" }}
                       />
                     </div>
                   )}
