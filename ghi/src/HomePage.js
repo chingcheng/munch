@@ -4,9 +4,15 @@ import { useAuthContext } from "./Auth";
 import munch_transparent from "./images/munch_transparent.png";
 import munch_slogan from "./images/munch_slogan.png";
 import star from "./images/star.png";
+import no_photo from "./images/no_photo.png";
 import { PuffLoader } from "react-spinners";
 
 function MunchesColumn(props) {
+  const handleImageError = (event) => {
+    event.target.src = no_photo;
+    event.target.alt = "no_photo";
+  };
+
   return (
     <div className="col bg-color">
       {props.list.map((munch) => (
@@ -26,6 +32,7 @@ function MunchesColumn(props) {
                 className="card-img-top"
                 alt={`${munch.location}`}
                 style={{ width: "100%", height: "250px", objectFit: "cover" }}
+                onError={handleImageError}
                 loading="lazy"
               />
               <div

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthContext } from "./Auth";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import star from "./images/star.png";
+import no_photo from "./images/no_photo.png";
 
 function MunchDetail() {
   let { id } = useParams();
@@ -13,6 +14,11 @@ function MunchDetail() {
   const [comment, setComment] = useState("");
   const [munchId, setMunchId] = useState("");
   const [username, setUsername] = useState("");
+
+  const handleImageError = (event) => {
+    event.target.src = no_photo;
+    event.target.alt = "no_photo";
+  };
 
   const handleDelete = async () => {
     const munchUrl = `${process.env.REACT_APP_MUNCH_API_HOST}/munches/${id}`;
@@ -169,7 +175,9 @@ function MunchDetail() {
               <img
                 src={munch.photo}
                 className="card-img-top px-3"
-                alt="Munch"
+                alt={`${munch.location}`}
+                onError={handleImageError}
+                loading="lazy"
               />
               <div className="card-body">
                 <h3
@@ -348,7 +356,13 @@ function MunchDetail() {
                 </h2>
               </div>
             </Link>
-            <img src={munch.photo} className="card-img-top px-3" alt="Munch" />
+            <img
+              src={munch.photo}
+              className="card-img-top px-3"
+              alt={`${munch.location}`}
+              onError={handleImageError}
+              loading="lazy"
+            />
             <div className="card-body">
               <h3
                 className="card-location mt-3"
