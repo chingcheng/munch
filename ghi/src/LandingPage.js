@@ -370,7 +370,7 @@ function LandingPage({ backgroundImage }) {
                 >
                   Munch™
                 </NavLink>{" "}
-                . Munch Bunch . Hack Reactor - SJP Nov PT 2022
+                • Munch Bunch • Hack Reactor - SJP Nov PT 2022
               </div>
               <div className="pb-2"></div>
             </footer>
