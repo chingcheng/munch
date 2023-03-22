@@ -36,7 +36,6 @@ const images = [
   "https://images.unsplash.com/photo-1498588747262-0f2241707d13?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
   "https://cdn.discordapp.com/attachments/1048126003530186752/1079904744090370168/food-photographer-jennifer-pallian-8Jg4U4xHu-o-unsplash.jpg",
   "https://images.unsplash.com/photo-1563245739-fa3a4a274aad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
-  "https://o2bbq.com/wp-content/uploads/2019/12/o2-bbq-all-you-can-eat-korean-bbq-new-york-bayside-guttenberg-new-jersey-interior-food-00035.png",
   "https://cdn.shopify.com/s/files/1/0509/0541/5846/articles/image.jpg?v=1652910601",
   "https://www.tokyo.grand.hyatt.co.jp/en/restaurants/wp-content/uploads/2017/03/Dim-sum-above2-1400C-min.jpg",
   "https://images.squarespace-cdn.com/content/v1/52d3fafee4b03c7eaedee15f/c523fb53-2812-4cf3-8ef6-9b8036d04914/after-7576.jpg",
